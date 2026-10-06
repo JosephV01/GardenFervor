@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-06 — T1-TIMBER**.
+Dernière entrée historique : **2026-10-07 — T1-CLOSE**.
 
 ---
 
@@ -198,6 +198,14 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T1-CLOSE — C7 Timber VALIDÉ (clôture documentaire)
+
+- **Intention :** enregistrer la validation humaine de T1/C7 ; roadmap T1 → VALIDÉ ; sync `docs/index.html`.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay supplémentaire** · **T2 non démarré**
+- **Roadmap :** 1/9 VALIDÉ · prochaine = T2 · T2…T9 restent À FAIRE
+- **Design Gate :** aucune modification
+- **Suite :** T2 C1 ResourceKey uniquement sur ordre explicite
 
 ### 2026-10-06 — T1-TIMBER — C7 clé PE `Timber` (VALIDATION)
 

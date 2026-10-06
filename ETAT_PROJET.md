@@ -1,6 +1,6 @@
 # GardenFervor — État projet (baseline)
 
-Dernière mise à jour : **2026-10-06**  
+Dernière mise à jour : **2026-10-07**  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`).
 
 ---
@@ -124,15 +124,15 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 | Plan | `Plan de production/PLAN_PRODUCTION_COHORTE_S3.md` |
 | Roadmap | SoT `Roadmap/src/roadmap.data.js` · Pages `docs/index.html` · URL cible `https://JosephV01.github.io/GardenFervor/` |
 | Première preuve | Cohorte S3 **Cas A** (sans Terraform obligatoire) |
-| Tranches | **T1 VALIDATION** · T2…T9 À FAIRE · progression **0/9 VALIDÉ** |
-| Implémentation | T1 C7 Timber **codé** — en attente validation humaine (pas VALIDÉ) |
+| Tranches | **T1 VALIDÉ** · T2…T9 **À FAIRE** · progression **1/9 VALIDÉ** · prochaine = **T2** |
+| Implémentation | T1 C7 Timber **VALIDÉ** · T2 non démarré |
 
 ---
 
 ## Prochain pas
 
-1. Production : **valider humainement T1** (Timber dans `PhysicalResourceTypes.h`) puis passer roadmap T1 → VALIDÉ
-2. Ensuite : T2 C1 ResourceKey — sur ordre explicite
+1. Production : **T2 C1 ResourceKey** — uniquement sur ordre explicite (T1 clôturé)
+2. Conception : **DG-14 clôturé** — pas d’élargissement de catalogue
 3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)  
 4. **ODC-F9** Infrastructure lifecycle (sans contourner DG)  
 5. Interdit sans validation : carte / M4 / T01
