@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T2-CLOSE**.
+Dernière entrée historique : **2026-10-07 — T3-C2**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T3-C2 — Capacités U1/U2/U3 (VALIDATION)
+
+- **Intention :** contrat C2 — clés de capacités Extraction / Transport / Construction + rôles cohorte U1/U2/U3 sur UnitDefinition.
+- **Statut :** code livré · roadmap T3 = **VALIDATION** · **pas VALIDÉ**
+- **Changement :** `GardenFervorUnitCapabilityTypes.h` (enum + helpers) ; commentaire C2 sur `UGardenFervorUnitDefinition::Capabilities`
+- **Représentation :** U1→Extraction · U2→Transport · U3→Construction via `GardenFervorCohortUnitCapabilities` — pas de sous-classes C++
+- **Non modifié :** Extract/Haul/Build opérationnels · Worker legacy · Timber · Design Gate · T4…
+- **Suite :** validation humaine T3 → VALIDÉ → T4 sur ordre
 
 ### 2026-10-07 — T2-CLOSE — C1 OperationalResourceKey VALIDÉ (clôture documentaire)
 
