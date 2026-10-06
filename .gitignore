@@ -1,0 +1,40 @@
+# Unreal Engine / Visual Studio
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+Packaged/
+_PackBackup/
+*.VC.db
+*.opendb
+*.opensdf
+*.sdf
+*.sln.docstates
+*.suo
+*.user
+*.userosscache
+*.sln
+*.slnx
+.vs/
+.vscode/
+.idea/
+
+# Local / OS
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+*.pem
+*.key
+
+# Cursor / local agent (keep project rules out of accidental bulk)
+.cursor/
+
+# Node (Design Gate tooling — keep sources, ignore installs)
+**/node_modules/
+**/.cache/
+
+# Large / local Unreal content often managed separately — do not force-add
+# Content/ and Source/ are intentionally NOT ignored (may be added later by design)
