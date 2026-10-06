@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T2-C1**.
+Dernière entrée historique : **2026-10-07 — T2-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T2-CLOSE — C1 OperationalResourceKey VALIDÉ (clôture documentaire)
+
+- **Intention :** enregistrer la validation humaine de T2/C1 ; roadmap T2 → VALIDÉ ; sync `docs/index.html`.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay supplémentaire** · **T3 non démarré**
+- **Roadmap :** 2/9 VALIDÉ · prochaine = T3 · T3…T9 restent À FAIRE
+- **Contrôle technique :** T1+T2 PASS · aucune anomalie
+- **Design Gate :** aucune modification
+- **Suite :** T3 C2 U1/U2/U3 uniquement sur ordre explicite
 
 ### 2026-10-07 — T2-C1 — OperationalResourceKey sur Task (VALIDATION)
 

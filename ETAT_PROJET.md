@@ -124,15 +124,14 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 | Plan | `Plan de production/PLAN_PRODUCTION_COHORTE_S3.md` |
 | Roadmap | SoT `Roadmap/src/roadmap.data.js` · Pages `docs/index.html` · URL cible `https://JosephV01.github.io/GardenFervor/` |
 | Première preuve | Cohorte S3 **Cas A** (sans Terraform obligatoire) |
-| Tranches | T1 VALIDÉ · **T2 VALIDATION** · T3…T9 À FAIRE · progression **1/9 VALIDÉ** |
-| Implémentation | T2 C1 `OperationalResourceKey` **codé** — en attente validation humaine |
+| Tranches | T1 VALIDÉ · T2 VALIDÉ · T3…T9 À FAIRE · progression **2/9 VALIDÉ** |
+| Implémentation | T2 C1 `OperationalResourceKey` **VALIDÉ** — T3 non démarré |
 
 ---
 
 ## Prochain pas
 
-1. Production : **valider humainement T2** (`OperationalResourceKey` sur Task) puis T2 → VALIDÉ
-2. Ensuite : T3 C2 U1/U2/U3 — sur ordre explicite
-3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)  
-4. **ODC-F9** Infrastructure lifecycle (sans contourner DG)  
-5. Interdit sans validation : carte / M4 / T01
+1. Production : T3 C2 U1/U2/U3 — **uniquement sur ordre explicite**
+2. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)  
+3. **ODC-F9** Infrastructure lifecycle (sans contourner DG)  
+4. Interdit sans validation : carte / M4 / T01

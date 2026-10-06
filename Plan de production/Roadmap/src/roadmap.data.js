@@ -17,9 +17,9 @@ export const ROADMAP_META = {
   updated: '2026-10-07',
   planRef: 'Plan de production/PLAN_PRODUCTION_COHORTE_S3.md',
   controlRef: 'Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md',
-  globalState: 'T2 en validation humaine',
-  currentSliceId: 'T2',
-  nextSliceId: 'T2',
+  globalState: 'T2 VALIDÉ — en attente ordre T3',
+  currentSliceId: null,
+  nextSliceId: 'T3',
   blockNote: null,
 };
 
@@ -56,12 +56,12 @@ export const PHASES = [
         id: 'T2',
         name: 'C1 ResourceKey',
         objective: 'Extract/Haul génériques paramétrés (OperationalResourceKey).',
-        status: STATUS.REVIEW,
+        status: STATUS.DONE,
         dependsOn: ['T1'],
         expected: 'Task porte OperationalResourceKey (FName PE) ; pas de branche Timber',
         validation: 'Champ sur FGardenFervorTaskRecord ; compile ; aucune logique if-Timber',
         block: null,
-        validatedAt: null,
+        validatedAt: '2026-10-07',
         planSection: 'Plan §E T2',
       },
       {
