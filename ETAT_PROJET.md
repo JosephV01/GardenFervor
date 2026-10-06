@@ -122,7 +122,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 | --- | --- |
 | Contrôle final | **PASS — PRÊT POUR IMPLÉMENTATION CONTRÔLÉE** — `Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md` |
 | Plan | `Plan de production/PLAN_PRODUCTION_COHORTE_S3.md` |
-| Roadmap | `Plan de production/Roadmap/index.html` — SoT `Roadmap/src/roadmap.data.js` |
+| Roadmap | SoT `Roadmap/src/roadmap.data.js` · Pages `docs/index.html` · URL cible `https://JosephV01.github.io/GardenFervor/` |
 | Première preuve | Cohorte S3 **Cas A** (sans Terraform obligatoire) |
 | Tranches | T1…T9 toutes **À FAIRE** · progression **0/9 VALIDÉ** · prochaine = **T1** |
 | Implémentation | **Non démarrée** |

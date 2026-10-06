@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-06 — ROADMAP-INDEX**.
+Dernière entrée historique : **2026-10-06 — ROADMAP-PAGES**.
 
 ---
 
@@ -198,6 +198,14 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-06 — ROADMAP-PAGES — Publication GitHub Pages via `docs/index.html`
+
+- **Intention :** exposer la roadmap à `https://JosephV01.github.io/GardenFervor/` depuis `/docs`.
+- **SoT inchangée :** `Plan de production/Roadmap/src/roadmap.data.js`
+- **Sync :** écrit aussi `docs/index.html` (autonome) ; doc activation manuelle `docs/GITHUB_PAGES.md`
+- **Gameplay / Design Gate :** aucune modification
+- **Suite :** activer Pages dans Settings GitHub (branch `main` / folder `/docs`) si pas encore fait
 
 ### 2026-10-06 — ROADMAP-INDEX — Roadmap HTML renommée `index.html`
 

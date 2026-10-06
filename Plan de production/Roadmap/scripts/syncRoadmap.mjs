@@ -1,19 +1,26 @@
 /**
- * Sync index.html + roadmap.data.json from src/roadmap.data.js
- * Usage (from repo root or this folder):
+ * Sync roadmap HTML + JSON from src/roadmap.data.js
+ * Usage:
  *   node "Plan de production/Roadmap/scripts/syncRoadmap.mjs"
- * Source of truth: src/roadmap.data.js only.
- * HTML view MUST remain named index.html (GitHub Pages / online).
+ *
+ * Source of truth (edit only): src/roadmap.data.js
+ *
+ * Outputs:
+ *   - Plan de production/Roadmap/index.html  (working view)
+ *   - Plan de production/Roadmap/roadmap.data.json
+ *   - docs/index.html                         (GitHub Pages entry — always this path)
  */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, '..');
-const jsPath = path.join(root, 'src', 'roadmap.data.js');
-const htmlPath = path.join(root, 'index.html');
-const jsonPath = path.join(root, 'roadmap.data.json');
+const roadmapRoot = path.resolve(__dirname, '..');
+const repoRoot = path.resolve(roadmapRoot, '..', '..');
+const jsPath = path.join(roadmapRoot, 'src', 'roadmap.data.js');
+const htmlShellPath = path.join(roadmapRoot, 'index.html');
+const jsonPath = path.join(roadmapRoot, 'roadmap.data.json');
+const pagesHtmlPath = path.join(repoRoot, 'docs', 'index.html');
 
 const mod = await import(pathToFileURL(jsPath).href + `?t=${Date.now()}`);
 const payload = mod.serializeRoadmap();
@@ -21,12 +28,12 @@ const pretty = JSON.stringify(payload, null, 2) + '\n';
 
 fs.writeFileSync(jsonPath, pretty, 'utf8');
 
-if (!fs.existsSync(htmlPath)) {
-  console.error('ERROR: HTML shell missing:', htmlPath);
+if (!fs.existsSync(htmlShellPath)) {
+  console.error('ERROR: HTML shell missing:', htmlShellPath);
   process.exit(1);
 }
 
-let html = fs.readFileSync(htmlPath, 'utf8');
+let html = fs.readFileSync(htmlShellPath, 'utf8');
 const startMarker = '<script id="roadmap-data" type="application/json">';
 const start = html.indexOf(startMarker);
 if (start < 0) {
@@ -41,7 +48,14 @@ if (end < 0) {
 }
 
 html = html.slice(0, jsonStart) + '\n' + pretty + html.slice(end);
-fs.writeFileSync(htmlPath, html, 'utf8');
+fs.writeFileSync(htmlShellPath, html, 'utf8');
+
+fs.mkdirSync(path.dirname(pagesHtmlPath), { recursive: true });
+fs.writeFileSync(pagesHtmlPath, html, 'utf8');
 
 const p = payload.progress;
-console.log(`Roadmap synced · ${p.done}/${p.total} VALIDÉ (${p.percent}%) · next=${payload.meta.nextSliceId}`);
+console.log(
+  `Roadmap synced · ${p.done}/${p.total} VALIDÉ (${p.percent}%) · next=${payload.meta.nextSliceId}`,
+);
+console.log(`Working: ${htmlShellPath}`);
+console.log(`Pages:   ${pagesHtmlPath}`);

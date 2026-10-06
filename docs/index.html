@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GardenFervor — Roadmap de production</title>
+  <style>
+    :root {
+      --bg: #f3f0e8;
+      --bg-deep: #e7e2d4;
+      --ink: #1c2420;
+      --muted: #5a665f;
+      --line: #c9c2b0;
+      --card: #fffdf8;
+      --accent: #2f5d45;
+      --accent-soft: #d9ebe0;
+      --todo: #8a8478;
+      --doing: #1f6f8b;
+      --review: #b87a1a;
+      --done: #2f5d45;
+      --blocked: #9b2c2c;
+      --shadow: 0 1px 0 rgba(28,36,32,.06), 0 12px 28px rgba(28,36,32,.06);
+      --font: "Segoe UI", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      --sans: "Segoe UI", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #dfece4 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+      font-family: var(--sans);
+      line-height: 1.45;
+      min-height: 100vh;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 24px 64px; }
+    header.hero {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .brand {
+      font-family: var(--font);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+      margin: 0;
+    }
+    .subtitle { margin: 4px 0 0; color: var(--muted); font-size: 1.05rem; }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 18px 20px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 820px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    .stat label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .stat strong { font-size: 1.05rem; font-weight: 650; }
+    .progress-wrap { margin-top: 16px; }
+    .progress-bar {
+      height: 10px;
+      background: var(--bg-deep);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .progress-bar > i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #3a7a58, var(--accent));
+      width: 0%;
+      transition: width .25s ease;
+    }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 10px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .chip::before {
+      content: "";
+      width: 8px; height: 8px; border-radius: 50%;
+      background: currentColor;
+    }
+    .st-todo { color: var(--todo); background: #f0ebe1; border-color: #ddd5c5; }
+    .st-doing { color: var(--doing); background: #e4f2f7; border-color: #b9d7e3; }
+    .st-review { color: var(--review); background: #fff1d9; border-color: #edd4a0; }
+    .st-done { color: var(--done); background: var(--accent-soft); border-color: #b7d4c3; }
+    .st-blocked { color: var(--blocked); background: #f8e4e4; border-color: #e3b4b4; }
+    .phase { margin-top: 28px; }
+    .phase-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .phase-head h2 {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 1.45rem;
+    }
+    .phase-head p { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
+    .slices { display: grid; gap: 10px; }
+    .slice {
+      display: grid;
+      grid-template-columns: 88px 1fr auto;
+      gap: 14px;
+      align-items: start;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+    .slice.current {
+      border-color: #7aa892;
+      box-shadow: inset 0 0 0 1px #c5ddcf;
+    }
+    .slice-id {
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--accent);
+    }
+    .slice h3 { margin: 0 0 4px; font-size: 1rem; }
+    .slice .obj { margin: 0; color: var(--muted); font-size: 0.92rem; }
+    .slice .meta {
+      margin-top: 8px;
+      display: grid;
+      gap: 3px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .slice .meta b { color: var(--ink); font-weight: 600; }
+    .rules {
+      margin-top: 36px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .rules h2 {
+      font-family: var(--font);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin: 0 0 8px;
+    }
+    .rules ul { margin: 0; padding-left: 1.1rem; }
+    .rules li { margin: 4px 0; }
+    footer {
+      margin-top: 28px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .alert {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f8e4e4;
+      border: 1px solid #e3b4b4;
+      color: var(--blocked);
+      font-size: 0.9rem;
+      display: none;
+    }
+    .alert.show { display: block; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <h1 class="brand">GardenFervor</h1>
+        <p class="subtitle" id="page-title">Roadmap de production</p>
+      </div>
+      <div class="panel">
+        <div class="stats" id="stats"></div>
+        <div class="progress-wrap">
+          <div class="progress-bar"><i id="progress-fill"></i></div>
+          <div class="progress-meta">
+            <span id="progress-label">0 / 0 VALIDÉ</span>
+            <span id="updated">—</span>
+          </div>
+        </div>
+        <div class="alert" id="block-alert"></div>
+      </div>
+    </header>
+
+    <div class="legend">
+      <span class="chip st-todo">À FAIRE</span>
+      <span class="chip st-doing">EN COURS</span>
+      <span class="chip st-review">VALIDATION</span>
+      <span class="chip st-done">VALIDÉ</span>
+      <span class="chip st-blocked">BLOQUÉ</span>
+    </div>
+
+    <main id="phases"></main>
+
+    <section class="rules panel">
+      <h2>Règles de mise à jour</h2>
+      <ul>
+        <li>Source de vérité : <code>Plan de production/Roadmap/src/roadmap.data.js</code></li>
+        <li>Après chaque édition : <code>node "Plan de production/Roadmap/scripts/syncRoadmap.mjs"</code></li>
+        <li>Mettre à jour quand une tranche démarre, passe en validation, est validée, bloquée ou reformulée.</li>
+        <li><strong>Code terminé ≠ VALIDÉ</strong> — VALIDÉ exige la validation humaine du Plan de production.</li>
+        <li>Le Plan explique <em>comment</em> produire ; cette roadmap montre <em>où</em> en est la production.</li>
+        <li>Ne duplique pas le Design Gate et ne le modifie jamais.</li>
+      </ul>
+    </section>
+
+    <footer id="footer"></footer>
+  </div>
+
+  <script id="roadmap-data" type="application/json">
+{
+  "meta": {
+    "project": "GardenFervor",
+    "version": "1.0",
+    "title": "Roadmap de production",
+    "updated": "2026-10-06",
+    "planRef": "Plan de production/PLAN_PRODUCTION_COHORTE_S3.md",
+    "controlRef": "Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md",
+    "globalState": "Prêt — en attente ordre T1",
+    "currentSliceId": null,
+    "nextSliceId": "T1",
+    "blockNote": null
+  },
+  "statusLabels": {
+    "TODO": "À FAIRE",
+    "DOING": "EN COURS",
+    "REVIEW": "VALIDATION",
+    "DONE": "VALIDÉ",
+    "BLOCKED": "BLOQUÉ"
+  },
+  "phases": [
+    {
+      "id": "phase-s3",
+      "code": "P1",
+      "title": "Preuve cohorte forestière S3",
+      "summary": "Cas A — terrain déjà prêt. Première preuve jouable de la boucle RTS.",
+      "status": "À FAIRE",
+      "slices": [
+        {
+          "id": "T1",
+          "name": "C7 Timber",
+          "objective": "Enregistrer la ResourceKey officielle Timber dans PhysicalEconomy.",
+          "status": "À FAIRE",
+          "dependsOn": [
+            "F03 C7"
+          ],
+          "expected": "GardenFervorPhysicalResourceKey(Timber) == \"Timber\"",
+          "validation": "Compile ; helper Timber ; Wood legacy intact",
+          "block": null,
+          "validatedAt": null,
+          "planSection": "Plan §E T1"
+        },
+        {
+          "id": "T2",
+          "name": "C1 ResourceKey",
+          "objective": "Extract/Haul génériques paramétrés (OperationalResourceKey).",
+          "status": "À FAIRE",
+          "dependsOn": [
+            "T1"
+          ],
+          "expected": "Même agent : Spoil ou Timber selon la tâche",
+          "validation": "Spoil non régressé ; Deposit Timber possible",
+          "block": null,
+          "validatedAt": null,
+          "planSection": "Plan §E T2"
+        },
+        {
+          "id": "T3",
+          "name": "C2 U1/U2/U3",
+          "objective": "Caps Extraction / Transport / Construction (données).",
+          "status": "À FAIRE",
+          "dependsOn": [
+            "T2"
+          ],
+          "expected": "Trois rôles sans Worker fourre-tout",
+          "validation": "Claims séparés U1/U2/U3",
+          "block": null,
+          "validatedAt": null,
+          "planSection": "Plan §E T3"
+        },
+        {
+          "id": "T4",
+          "name": "Stocks A/B",
+          "objective": "Deux stocks PE distincts liés au Project.",
+          "status": "À FAIRE",
+          "dependsOn": [
+            "T1"
+          ],
+          "expected": "A ≠ B ; GetAvailable distincts",
+          "validation": "Ids différents ; Deposit A visible",
+          "block": null,
+          "validatedAt": null,
+          "planSection": "Plan §E T4"
+        },
+        {
+          "id": "T5",
+          "name": "Expand Cas A",
+          "objective": "Expand Project générique : Analyze→Extract→Transport→Build→Verify.",
+          "status": "À FAIRE",
+          "dependsOn": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "expected": "Graphe sans ExpandForest / sans LevelPad copié",
+          "validation": "Tâches + caps + Timber corrects",
+          "block": null,
+          "validatedAt": null,
+          "planSection": "Plan §E T5"
+        },
+        {
+          "id": "T6",
+          "name": "Intention smoke",
+          "objective": "Entrée dédiée Intention → Project (sans BeginPlace/TrySpend).",
+          "status": "À FAIRE",
+          "dependsOn": [
+            "T5"
+          ],
+          "expected": "Smoke crée Project Running + unités",
+          "validation": "Sans spend ; HUD Wood FWSG inchangé",
+          "block": null,
+          "validatedAt": null,
+          "planSection": "Plan §E T6"
+        },
+        {
+          "id": "T7",
+          "name": "En service S3",
+          "objective": "Achevé ≠ En service ; critère Achevé ∧ Stock B Timber > 0.",
+          "status": "À FAIRE",
+          "dependsOn": [
+            "T5",
+            "T4"
+          ],
+          "expected": "Deux jalons visibles ; pas de coût inventé",
+          "validation": "Pas En service si B vide",
+          "block": null,
+          "validatedAt": null,
+          "planSection": "Plan §E T7"
+        },
+        {
+          "id": "T8",
+          "name": "Observabilité PE",
+          "objective": "Smoke/overlay lisible ancré PhysicalEconomy.",
+          "status": "À FAIRE",
+          "dependsOn": [
+            "T6",
+            "T7"
+          ],
+          "expected": "Chaîne + A/B Timber + En service lisibles",
+          "validation": "Sans HUD FWSG comme vérité",
+          "block": null,
+          "validatedAt": null,
+          "planSection": "Plan §E T8"
+        },
+        {
+          "id": "T9",
+          "name": "Preuve bout-en-bout",
+          "objective": "Chaîne S3 Cas A complète et observable en PIE.",
+          "status": "À FAIRE",
+          "dependsOn": [
+            "T1",
+            "T2",
+            "T3",
+            "T4",
+            "T5",
+            "T6",
+            "T7",
+            "T8"
+          ],
+          "expected": "Intention→…→En service + Timber B > 0",
+          "validation": "Checklist Plan §G (humain)",
+          "block": null,
+          "validatedAt": null,
+          "planSection": "Plan §E T9"
+        }
+      ]
+    }
+  ],
+  "progress": {
+    "total": 9,
+    "done": 0,
+    "blocked": 0,
+    "doing": 0,
+    "review": 0,
+    "todo": 9,
+    "percent": 0
+  }
+}
+</script>
+  <script>
+    (function () {
+      const raw = document.getElementById('roadmap-data').textContent;
+      let data;
+      try { data = JSON.parse(raw); } catch (e) {
+        document.body.insertAdjacentHTML('afterbegin', '<p style="padding:2rem;color:#9b2c2c">Données roadmap invalides — relancer syncRoadmap.mjs</p>');
+        return;
+      }
+      if (!data.meta || !data.phases) {
+        document.body.insertAdjacentHTML('afterbegin', '<p style="padding:2rem;color:#9b2c2c">Roadmap vide — relancer syncRoadmap.mjs</p>');
+        return;
+      }
+
+      const statusClass = {
+        'À FAIRE': 'st-todo',
+        'EN COURS': 'st-doing',
+        'VALIDATION': 'st-review',
+        'VALIDÉ': 'st-done',
+        'BLOQUÉ': 'st-blocked'
+      };
+
+      document.getElementById('page-title').textContent = data.meta.title || 'Roadmap de production';
+      document.getElementById('updated').textContent = 'Maj ' + (data.meta.updated || '—');
+
+      const p = data.progress || { done: 0, total: 0, percent: 0 };
+      document.getElementById('progress-fill').style.width = (p.percent || 0) + '%';
+      document.getElementById('progress-label').textContent =
+        (p.done || 0) + ' / ' + (p.total || 0) + ' VALIDÉ (' + (p.percent || 0) + '%)';
+
+      const nextId = data.meta.nextSliceId;
+      const currentId = data.meta.currentSliceId;
+      const stats = [
+        ['État global', data.meta.globalState || '—'],
+        ['Phase', (data.phases[0] && data.phases[0].title) || '—'],
+        ['Tranche actuelle', currentId || '— (aucune)'],
+        ['Prochaine tranche', nextId || '—']
+      ];
+      document.getElementById('stats').innerHTML = stats.map(([k, v]) =>
+        '<div class="stat"><label>' + k + '</label><strong>' + escapeHtml(v) + '</strong></div>'
+      ).join('');
+
+      const alert = document.getElementById('block-alert');
+      if (data.meta.blockNote) {
+        alert.textContent = 'Blocage : ' + data.meta.blockNote;
+        alert.classList.add('show');
+      }
+
+      const root = document.getElementById('phases');
+      root.innerHTML = data.phases.map(function (phase) {
+        const slices = (phase.slices || []).map(function (s) {
+          const cls = statusClass[s.status] || 'st-todo';
+          const isFocus = s.id === currentId || (!currentId && s.id === nextId);
+          const deps = (s.dependsOn || []).join(', ') || '—';
+          const block = s.block ? '<div><b>Blocage :</b> ' + escapeHtml(s.block) + '</div>' : '';
+          const date = s.validatedAt ? '<div><b>Validé le :</b> ' + escapeHtml(s.validatedAt) + '</div>' : '';
+          const plan = s.planSection ? '<div><b>Plan :</b> ' + escapeHtml(s.planSection) + '</div>' : '';
+          return (
+            '<article class="slice' + (isFocus ? ' current' : '') + '">' +
+              '<div class="slice-id">' + escapeHtml(s.id) + '</div>' +
+              '<div>' +
+                '<h3>' + escapeHtml(s.name) + '</h3>' +
+                '<p class="obj">' + escapeHtml(s.objective || '') + '</p>' +
+                '<div class="meta">' +
+                  '<div><b>Dépendances :</b> ' + escapeHtml(deps) + '</div>' +
+                  '<div><b>Résultat :</b> ' + escapeHtml(s.expected || '—') + '</div>' +
+                  '<div><b>Validation :</b> ' + escapeHtml(s.validation || '—') + '</div>' +
+                  plan + date + block +
+                '</div>' +
+              '</div>' +
+              '<span class="chip ' + cls + '">' + escapeHtml(s.status) + '</span>' +
+            '</article>'
+          );
+        }).join('');
+        return (
+          '<section class="phase">' +
+            '<div class="phase-head"><div>' +
+              '<h2>' + escapeHtml(phase.code + ' — ' + phase.title) + '</h2>' +
+              '<p>' + escapeHtml(phase.summary || '') + '</p>' +
+            '</div></div>' +
+            '<div class="slices">' + slices + '</div>' +
+          '</section>'
+        );
+      }).join('');
+
+      document.getElementById('footer').textContent =
+        'Source : Plan de production/Roadmap/src/roadmap.data.js · Plan : ' +
+        (data.meta.planRef || '') +
+        ' · v' + (data.meta.version || '1');
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+    })();
+  </script>
+</body>
+</html>
