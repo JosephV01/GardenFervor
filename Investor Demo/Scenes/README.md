@@ -8,6 +8,8 @@
 | Chemin Unreal | `/Game/GardenFervor/InvestorDemo/L_InvestorDemo_S3` |
 | Fichier | `Content/GardenFervor/InvestorDemo/L_InvestorDemo_S3.umap` |
 | Validation visuelle | **Confirmée** (humain) |
+| Versionnement Git | **Oui** — `Content/GardenFervor/InvestorDemo/` (étape 2B) |
+| Git LFS | Non requis (assets ≈ 165 Ko) |
 | Gameplay T1→T9 | Non branché |
 
 **Ne pas modifier** `GardenFervorIsland` pour cette démo.

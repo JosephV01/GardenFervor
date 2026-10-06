@@ -4,7 +4,8 @@
 **Statut :** base visuelle prête · **aucun branchement gameplay T1→T9** · étape 3 non démarrée  
 **Preuve gameplay sous-jacente :** cohorte S3 Cas A · Roadmap **T1→T9 = 9/9 VALIDÉ (100 %)**  
 **Dépôt :** `C:\Users\sahel\Documents\Unreal Projects\GardenFervor` · remote `https://github.com/JosephV01/GardenFervor.git`  
-**Scène Unreal :** `/Game/GardenFervor/InvestorDemo/L_InvestorDemo_S3`
+**Scène Unreal :** `/Game/GardenFervor/InvestorDemo/L_InvestorDemo_S3`  
+**Versionnement :** assets sous `Content/GardenFervor/InvestorDemo/` suivis dans Git (blobs standards · pas de Git LFS requis — total ≈ 165 Ko)
 
 ---
 
@@ -63,18 +64,28 @@ Ils ne deviennent jamais une autorité gameplay.
 ## 5. Structure
 
 ```text
-Investor Demo/                          ← documentation
+Investor Demo/                          ← documentation (Git)
 ├── README.md
 ├── Documentation/
 ├── Presentation/
 ├── Scenes/
 └── Placeholders/
 
-Content/GardenFervor/InvestorDemo/      ← assets Unreal validés
+Content/GardenFervor/InvestorDemo/      ← assets Unreal versionnés (Git)
 ├── L_InvestorDemo_S3.umap
-└── Materials/MI_PH_*
+└── Materials/
+    ├── MI_DemoGround.uasset
+    └── MI_PH_*.uasset
 ```
 
+### Reproductibilité (étape 2B)
+
+```text
+GitHub → clone/checkout → ouvrir L_InvestorDemo_S3
+```
+
+Dépendances moteur uniquement : `/Engine/BasicShapes/*` + `BasicShapeMaterial` (fournis par UE).  
+Aucun script Python, aucun asset hors `InvestorDemo/` requis pour ouvrir la scène visuelle.
 ---
 
 ## 6. Étape 2 — VALIDÉE

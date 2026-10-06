@@ -63,6 +63,16 @@ Risque sémantique Pit/LevelPad documenté en Roadmap — **ne pas renommer** da
 | Caméra | `Demo_PlayerStart_Overview` + GameMode → `AGardenFervorStrategyPawn` |
 | Validation | Humaine — chaîne Intention→…→En service lisible |
 
+## Étape 2B — versionnement Git
+
+| Élément | Décision |
+| --- | --- |
+| Stratégie | Blobs Git standards sous `Content/GardenFervor/InvestorDemo/` uniquement |
+| Git LFS | Absent du dépôt · **non activé** (tailles trop faibles pour le justifier) |
+| `.gitignore` | Aucune exclusion de `Content/` · aucune règle générale Content ajoutée |
+| `.gitattributes` | Aucun · non nécessaire |
+| Reproductibilité | clone → ouvrir `L_InvestorDemo_S3` · meshes = Engine BasicShapes |
+
 Aucun système T1→T9 n’est invoqué par la scène à l’étape 2.  
 Script générateur temporaire supprimé après validation.  
 Polish futur : `TextRender` parfois inversés selon la vue (non bloquant).
