@@ -6,10 +6,10 @@
     "updated": "2026-10-07",
     "planRef": "Plan de production/PLAN_PRODUCTION_COHORTE_S3.md",
     "controlRef": "Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md",
-    "globalState": "T5 en validation humaine",
-    "currentSliceId": "T5",
-    "nextSliceId": "T5",
-    "blockNote": "LinkedPitStockId = Stock A (mapping PE) — risque sémantique Pit ; WorkSite Cas A sans Terraform"
+    "globalState": "T5 VALIDÉ — en attente ordre T6",
+    "currentSliceId": null,
+    "nextSliceId": "T6",
+    "blockNote": "LinkedPitStockId = Stock A PE (mapping cohorte) — risque sémantique Pit/LevelPad ; WorkSite ne réactive pas la legacy ; ne pas renommer (T4 intact)"
   },
   "statusLabels": {
     "TODO": "À FAIRE",
@@ -86,7 +86,7 @@
           "id": "T5",
           "name": "Expand Cas A",
           "objective": "C3 site prep générique WorkSite Cas A (AlreadyReady, sans Terraform).",
-          "status": "VALIDATION",
+          "status": "VALIDÉ",
           "dependsOn": [
             "T2",
             "T3",
@@ -94,8 +94,8 @@
           ],
           "expected": "SitePrep params + ExpandWorkSite ; pas ExpandForest ; LevelPad inchangé",
           "validation": "Cas A bSiteReady ; A≠B ; aucune Terraform/Extract/Transport branchée",
-          "block": "Surveiller: LinkedPitStockId = Stock A (mapping PE) — risque sémantique Pit ; ne pas réactiver Pit/Quarry/Worker",
-          "validatedAt": null,
+          "block": "Note: LinkedPitStockId = Stock A PE — risque sémantique Pit/LevelPad ; WorkSite sans legacy ; ne pas renommer",
+          "validatedAt": "2026-10-07",
           "planSection": "Plan §E T5"
         },
         {
@@ -168,11 +168,11 @@
   ],
   "progress": {
     "total": 9,
-    "done": 4,
+    "done": 5,
     "blocked": 0,
     "doing": 0,
-    "review": 1,
+    "review": 0,
     "todo": 4,
-    "percent": 44
+    "percent": 56
   }
 }

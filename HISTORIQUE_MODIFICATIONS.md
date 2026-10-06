@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T5-C3**.
+Dernière entrée historique : **2026-10-07 — T5-CLOSE**.
 
 ---
 
@@ -198,6 +198,16 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T5-CLOSE — C3 WorkSite Cas A VALIDÉ (clôture documentaire)
+
+- **Intention :** enregistrer la validation humaine de T5/C3 ; roadmap T5 → VALIDÉ ; sync `docs/index.html`.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay supplémentaire** · **T6 non démarré**
+- **Roadmap :** 5/9 VALIDÉ (56 %) · prochaine = T6 · T6…T9 restent À FAIRE
+- **Contrôle technique :** T1→T5 PASS · LinkedPitStockId PASS (risque sémantique noté, non bloquant)
+- **Note conservée :** `LinkedPitStockId` = identité Stock A PE cohorte — risque sémantique Pit/LevelPad ; WorkSite ne réactive pas la legacy ; **ne pas renommer** · T4 intact
+- **Design Gate :** aucune modification
+- **Suite :** T6 Intention smoke uniquement sur ordre explicite
 
 ### 2026-10-07 — T5-C3 — Extension site générique WorkSite Cas A (VALIDATION)
 
