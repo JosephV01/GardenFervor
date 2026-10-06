@@ -27,9 +27,9 @@ node "Plan de production/Roadmap/scripts/syncRoadmap.mjs"
 Génère / met à jour :
 
 - `roadmap.data.json`
-- `GardenFervor_ROADMAP.html` (données embarquées)
+- `index.html` (données embarquées — **nom fixe**, requis pour l’affichage en ligne / GitHub Pages)
 
-Ouvrir : `Plan de production/Roadmap/GardenFervor_ROADMAP.html`
+Ouvrir : `Plan de production/Roadmap/index.html`
 
 ## Quand mettre à jour
 

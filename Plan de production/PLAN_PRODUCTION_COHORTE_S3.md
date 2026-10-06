@@ -7,7 +7,7 @@
 
 **Sources (ne pas inventer de règles) :** Formalisation 01 · 02 · 03 · DG-14.3 / 14.4 · préparation contrats C7→C6
 
-**Pilotage avancement :** `Plan de production/Roadmap/GardenFervor_ROADMAP.html`  
+**Pilotage avancement :** `Plan de production/Roadmap/index.html`  
 (source : `Roadmap/src/roadmap.data.js` — ce Plan = *comment* ; roadmap = *où*)
 
 ---

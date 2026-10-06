@@ -1,8 +1,9 @@
 /**
- * Sync GardenFervor_ROADMAP.html + roadmap.data.json from src/roadmap.data.js
+ * Sync index.html + roadmap.data.json from src/roadmap.data.js
  * Usage (from repo root or this folder):
  *   node "Plan de production/Roadmap/scripts/syncRoadmap.mjs"
  * Source of truth: src/roadmap.data.js only.
+ * HTML view MUST remain named index.html (GitHub Pages / online).
  */
 import fs from 'fs';
 import path from 'path';
@@ -11,7 +12,7 @@ import { fileURLToPath, pathToFileURL } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const jsPath = path.join(root, 'src', 'roadmap.data.js');
-const htmlPath = path.join(root, 'GardenFervor_ROADMAP.html');
+const htmlPath = path.join(root, 'index.html');
 const jsonPath = path.join(root, 'roadmap.data.json');
 
 const mod = await import(pathToFileURL(jsPath).href + `?t=${Date.now()}`);

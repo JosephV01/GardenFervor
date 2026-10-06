@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-06 — ROADMAP-PROD**.
+Dernière entrée historique : **2026-10-06 — ROADMAP-INDEX**.
 
 ---
 
@@ -199,12 +199,19 @@ Format d’entrée (à dupliquer) :
 
 ---
 
+### 2026-10-06 — ROADMAP-INDEX — Roadmap HTML renommée `index.html`
+
+- **Intention :** nom fixe `index.html` pour publication / accès en ligne (GitHub Pages).
+- **Avant → Après :** `GardenFervor_ROADMAP.html` → `Plan de production/Roadmap/index.html`
+- **Règle :** la vue roadmap **reste toujours** `index.html` ; sync met à jour ce fichier uniquement.
+- **Suite :** push GitHub
+
 ### 2026-10-06 — ROADMAP-PROD — Roadmap de production (suivi T1–T9)
 
 - **Intention :** mettre en place la vue de pilotage de production avant T1, distincte Design Gate / Plan / ETAT / HISTORIQUE.
 - **Statut :** VALIDÉ (outil de suivi) — **pas un nouveau DG** · **≠ démarrage T1**
 - **Source de vérité :** `Plan de production/Roadmap/src/roadmap.data.js`
-- **Vue :** `Plan de production/Roadmap/GardenFervor_ROADMAP.html` — sync `scripts/syncRoadmap.mjs`
+- **Vue :** `Plan de production/Roadmap/index.html` (**nom fixe** pour publication en ligne) — sync `scripts/syncRoadmap.mjs`
 - **État initial :** T1–T9 = À FAIRE · 0/9 VALIDÉ · prochaine = T1 · aucune EN COURS
 - **Règle :** code terminé ≠ VALIDÉ (validation humaine Plan requise)
 - **Design Gate / gameplay :** **aucune modification**
