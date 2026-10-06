@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T4-STOCKS**.
+Dernière entrée historique : **2026-10-07 — T4-CLOSE**.
 
 ---
 
@@ -198,6 +198,16 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T4-CLOSE — Stocks A/B VALIDÉ (clôture documentaire)
+
+- **Intention :** enregistrer la validation humaine de T4 ; roadmap T4 → VALIDÉ ; sync `docs/index.html`.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay supplémentaire** · **T5 non démarré**
+- **Roadmap :** 4/9 VALIDÉ · prochaine = T5 · T5…T9 restent À FAIRE
+- **Contrôle technique :** T1+T2+T3+T4 PASS · aucune anomalie
+- **Note pour T5 :** `LinkedPitStockId` sert d’identité Stock A cohorte (mapping PE) **sans** réactivation Pit/Quarry/Worker — **risque sémantique à surveiller à l’expand** ; ne pas modifier T4 pour renommer
+- **Design Gate :** aucune modification
+- **Suite :** T5 Expand Cas A uniquement sur ordre explicite
 
 ### 2026-10-07 — T4-STOCKS — Stocks A/B PhysicalEconomy (VALIDATION)
 

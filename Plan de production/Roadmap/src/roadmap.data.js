@@ -17,10 +17,10 @@ export const ROADMAP_META = {
   updated: '2026-10-07',
   planRef: 'Plan de production/PLAN_PRODUCTION_COHORTE_S3.md',
   controlRef: 'Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md',
-  globalState: 'T4 en validation humaine',
-  currentSliceId: 'T4',
-  nextSliceId: 'T4',
-  blockNote: null,
+  globalState: 'T4 VALIDÉ — en attente ordre T5',
+  currentSliceId: null,
+  nextSliceId: 'T5',
+  blockNote: 'T5: LinkedPitStockId = Stock A (mapping cohorte) — risque sémantique Pit ; ne pas réactiver Pit/Quarry/Worker',
 };
 
 /** Statuts autorisés */
@@ -80,12 +80,12 @@ export const PHASES = [
         id: 'T4',
         name: 'Stocks A/B',
         objective: 'Deux stocks PE distincts liés au Project.',
-        status: STATUS.REVIEW,
+        status: STATUS.DONE,
         dependsOn: ['T1'],
         expected: 'A ≠ B ; GetAvailable distincts',
         validation: 'Ids différents ; Deposit A visible',
         block: null,
-        validatedAt: null,
+        validatedAt: '2026-10-07',
         planSection: 'Plan §E T4',
       },
       {
@@ -96,7 +96,7 @@ export const PHASES = [
         dependsOn: ['T2', 'T3', 'T4'],
         expected: 'Graphe sans ExpandForest / sans LevelPad copié',
         validation: 'Tâches + caps + Timber corrects',
-        block: null,
+        block: 'Surveiller: LinkedPitStockId = Stock A (mapping PE) — risque sémantique Pit ; ne pas réactiver Pit/Quarry/Worker ; ne pas modifier T4',
         validatedAt: null,
         planSection: 'Plan §E T5',
       },
