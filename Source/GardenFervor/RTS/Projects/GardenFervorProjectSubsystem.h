@@ -29,6 +29,17 @@ public:
 		const FBox& ZoneBounds,
 		int32 Priority = 100);
 
+	/**
+	 * C4 — Intention → Project (planning only).
+	 * No EconomyComponent / TrySpend / BeginPlace / Ages / expand / units / terraform.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "RTS|Project|Intention")
+	FGardenFervorProjectId CreateProjectFromIntention(
+		FName IntentionId,
+		EGardenFervorProjectObjective Objective,
+		const FBox& ZoneBounds,
+		int32 Priority = 100);
+
 	UFUNCTION(BlueprintPure, Category = "RTS|Project")
 	bool GetProject(FGardenFervorProjectId ProjectId, FGardenFervorProjectRecord& OutProject) const;
 
@@ -63,12 +74,29 @@ public:
 		bool bEnsureUnits = true,
 		float HalfExtentXY = 600.f);
 
+	/**
+	 * C4 dedicated smoke: Intention → Draft WorkSite Project near Center.
+	 * Does NOT expand WorkSite, activate, spawn units, spend, or terraform.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "RTS|Project|Dev")
+	FGardenFervorProjectId SmokeStartCohortIntentionNear(
+		FVector Center,
+		FString& OutMessage,
+		float HalfExtentXY = 600.f);
+
 	UFUNCTION(BlueprintPure, Category = "RTS|Project|Dev")
 	FGardenFervorProjectId GetLastSmokeProjectId() const { return LastSmokeProjectId; }
+
+	UFUNCTION(BlueprintPure, Category = "RTS|Project|Dev")
+	FGardenFervorProjectId GetLastCohortIntentionProjectId() const { return LastCohortIntentionProjectId; }
 
 	/** Short HUD line: project status + task progress for LastSmokeProjectId. */
 	UFUNCTION(BlueprintPure, Category = "RTS|Project|Dev")
 	FString GetSmokeStatusLine() const;
+
+	/** C4 smoke line: intention → project id/status (no PE / FWSG). */
+	UFUNCTION(BlueprintPure, Category = "RTS|Project|Dev")
+	FString GetCohortIntentionStatusLine() const;
 
 protected:
 	/** Legacy LevelPad Spoil→Fill→Raise planner (historical consumer). */
@@ -86,4 +114,5 @@ protected:
 	int32 NextProjectId = 1;
 	TMap<int32, FGardenFervorProjectRecord> Projects;
 	FGardenFervorProjectId LastSmokeProjectId;
+	FGardenFervorProjectId LastCohortIntentionProjectId;
 };

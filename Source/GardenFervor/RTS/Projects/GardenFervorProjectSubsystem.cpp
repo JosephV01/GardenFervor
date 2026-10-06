@@ -35,6 +35,7 @@ void UGardenFervorProjectSubsystem::ClearAll()
 	Projects.Reset();
 	NextProjectId = 1;
 	LastSmokeProjectId = FGardenFervorProjectId{};
+	LastCohortIntentionProjectId = FGardenFervorProjectId{};
 }
 
 FGardenFervorProjectRecord* UGardenFervorProjectSubsystem::FindMutable(int32 Id)
@@ -62,6 +63,43 @@ FGardenFervorProjectId UGardenFervorProjectSubsystem::CreateProject(
 	Rec.Status = EGardenFervorProjectStatus::Draft;
 	Projects.Add(Rec.ProjectId.Value, Rec);
 	return Rec.ProjectId;
+}
+
+FGardenFervorProjectId UGardenFervorProjectSubsystem::CreateProjectFromIntention(
+	FName IntentionId,
+	EGardenFervorProjectObjective Objective,
+	const FBox& ZoneBounds,
+	int32 Priority)
+{
+	if (IntentionId.IsNone() || !ZoneBounds.IsValid)
+	{
+		UE_LOG(LogGardenFervorProject, Warning,
+			TEXT("CreateProjectFromIntention rejected (intention=%s zoneValid=%d)"),
+			*IntentionId.ToString(), ZoneBounds.IsValid ? 1 : 0);
+		return FGardenFervorProjectId{};
+	}
+
+	// Planning Project only — no spend, BeginPlace, expand, units, or terraform.
+	const FGardenFervorProjectId ProjectId = CreateProject(
+		FName(*FString::Printf(TEXT("Intention_%s"), *IntentionId.ToString())),
+		Objective,
+		ZoneBounds,
+		Priority);
+	if (!ProjectId.IsValid())
+	{
+		return FGardenFervorProjectId{};
+	}
+
+	if (FGardenFervorProjectRecord* Rec = FindMutable(ProjectId.Value))
+	{
+		Rec->OriginIntention = IntentionId;
+		// Cas A defaults already on SitePrep; do not resolve/expand here (T5/T7+).
+	}
+
+	UE_LOG(LogGardenFervorProject, Log,
+		TEXT("C4 Intention→Project #%d intention=%s objective=%d (Draft, not expanded)"),
+		ProjectId.Value, *IntentionId.ToString(), static_cast<int32>(Objective));
+	return ProjectId;
 }
 
 bool UGardenFervorProjectSubsystem::GetProject(FGardenFervorProjectId ProjectId, FGardenFervorProjectRecord& OutProject) const
@@ -593,5 +631,115 @@ static FAutoConsoleCommandWithWorld GGardenFervorProjectSmokeLevelPadCmd(
 
 		FString Msg;
 		Projects->SmokeStartLevelPadNear(Center, Msg, true, 600.f);
+	}));
+
+FGardenFervorProjectId UGardenFervorProjectSubsystem::SmokeStartCohortIntentionNear(
+	FVector Center,
+	FString& OutMessage,
+	float HalfExtentXY)
+{
+	OutMessage.Reset();
+	if (!GetWorld())
+	{
+		OutMessage = TEXT("C4 smoke: no world");
+		return FGardenFervorProjectId{};
+	}
+
+	HalfExtentXY = FMath::Max(200.f, HalfExtentXY);
+	const FBox Zone(
+		FVector(Center.X - HalfExtentXY, Center.Y - HalfExtentXY, Center.Z - 20000.f),
+		FVector(Center.X + HalfExtentXY, Center.Y + HalfExtentXY, Center.Z + 20000.f));
+
+	const FName IntentionId(TEXT("Smoke_Cohort_C4"));
+	const FGardenFervorProjectId ProjectId = CreateProjectFromIntention(
+		IntentionId,
+		EGardenFervorProjectObjective::WorkSite,
+		Zone,
+		100);
+	if (!ProjectId.IsValid())
+	{
+		OutMessage = TEXT("C4 smoke: CreateProjectFromIntention failed");
+		return FGardenFervorProjectId{};
+	}
+
+	LastCohortIntentionProjectId = ProjectId;
+
+	FGardenFervorProjectRecord Project;
+	GetProject(ProjectId, Project);
+	OutMessage = FString::Printf(
+		TEXT("C4 Intention→Project #%d Draft WorkSite · intention=%s · no spend/expand/units"),
+		ProjectId.Value, *Project.OriginIntention.ToString());
+	UE_LOG(LogGardenFervorProject, Log, TEXT("%s"), *OutMessage);
+	return ProjectId;
+}
+
+FString UGardenFervorProjectSubsystem::GetCohortIntentionStatusLine() const
+{
+	if (!LastCohortIntentionProjectId.IsValid())
+	{
+		return TEXT("C4 Intention: none (gf.Project.SmokeCohortIntention)");
+	}
+	FGardenFervorProjectRecord Project;
+	if (!GetProject(LastCohortIntentionProjectId, Project))
+	{
+		return TEXT("C4 Intention: missing");
+	}
+	const TCHAR* StatusName = TEXT("?");
+	switch (Project.Status)
+	{
+	case EGardenFervorProjectStatus::Draft: StatusName = TEXT("Draft"); break;
+	case EGardenFervorProjectStatus::Ready: StatusName = TEXT("Ready"); break;
+	case EGardenFervorProjectStatus::Running: StatusName = TEXT("Running"); break;
+	case EGardenFervorProjectStatus::Blocked: StatusName = TEXT("Blocked"); break;
+	case EGardenFervorProjectStatus::Completed: StatusName = TEXT("Completed"); break;
+	case EGardenFervorProjectStatus::Failed: StatusName = TEXT("Failed"); break;
+	case EGardenFervorProjectStatus::Cancelled: StatusName = TEXT("Cancelled"); break;
+	default: break;
+	}
+	return FString::Printf(
+		TEXT("C4 Intention→Project #%d %s · %s · obj=WorkSite · tasks=%d · expanded=no"),
+		Project.ProjectId.Value,
+		StatusName,
+		*Project.OriginIntention.ToString(),
+		Project.TaskIds.Num());
+}
+
+static FAutoConsoleCommandWithWorld GGardenFervorProjectSmokeCohortIntentionCmd(
+	TEXT("gf.Project.SmokeCohortIntention"),
+	TEXT("C4 smoke: Intention→Draft WorkSite Project near player (no spend, expand, units, terraform)"),
+	FConsoleCommandWithWorldDelegate::CreateLambda([](UWorld* World)
+	{
+		if (!World)
+		{
+			UE_LOG(LogGardenFervorProject, Warning, TEXT("gf.Project.SmokeCohortIntention: no world"));
+			return;
+		}
+		UGardenFervorProjectSubsystem* Projects = World->GetSubsystem<UGardenFervorProjectSubsystem>();
+		if (!Projects)
+		{
+			UE_LOG(LogGardenFervorProject, Warning, TEXT("gf.Project.SmokeCohortIntention: no ProjectSubsystem"));
+			return;
+		}
+
+		FVector Center = FVector::ZeroVector;
+		if (APlayerController* PC = World->GetFirstPlayerController())
+		{
+			if (APawn* Pawn = PC->GetPawn())
+			{
+				Center = Pawn->GetActorLocation();
+			}
+			else
+			{
+				FVector CamLoc = FVector::ZeroVector;
+				FRotator CamRot = FRotator::ZeroRotator;
+				PC->GetPlayerViewPoint(CamLoc, CamRot);
+				Center = CamLoc + CamRot.Vector() * 1500.f;
+				Center.Z = CamLoc.Z;
+			}
+		}
+
+		FString Msg;
+		Projects->SmokeStartCohortIntentionNear(Center, Msg, 600.f);
+		UE_LOG(LogGardenFervorProject, Display, TEXT("%s"), *Msg);
 	}));
 

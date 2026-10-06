@@ -58,6 +58,13 @@ struct FGardenFervorProjectRecord
 	UPROPERTY(BlueprintReadOnly, Category = "RTS|Project")
 	FName DisplayName = NAME_None;
 
+	/**
+	 * C4: player / smoke intention that created this Project (e.g. Smoke_Cohort_C4).
+	 * Empty = not created via Intention→Project path.
+	 */
+	UPROPERTY(BlueprintReadOnly, Category = "RTS|Project|Intention")
+	FName OriginIntention = NAME_None;
+
 	UPROPERTY(BlueprintReadOnly, Category = "RTS|Project")
 	EGardenFervorProjectObjective Objective = EGardenFervorProjectObjective::None;
 

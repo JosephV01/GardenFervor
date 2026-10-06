@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T5-CLOSE**.
+Dernière entrée historique : **2026-10-07 — T6-C4**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T6-C4 — Intention → Project smoke (VALIDATION)
+
+- **Intention :** contrat C4 — Intention joueur → Project sans économie legacy.
+- **Statut :** code livré · roadmap T6 = **VALIDATION** · **pas VALIDÉ**
+- **Changement :** `CreateProjectFromIntention` · `OriginIntention` · smoke `SmokeStartCohortIntentionNear` / `gf.Project.SmokeCohortIntention`
+- **Résultat :** Project Draft `WorkSite` · intention `Smoke_Cohort_C4` · **pas** ExpandWorkSite · **pas** unités · **pas** TrySpend/BeginPlace/EconomyComponent
+- **Non modifié :** T1–T5 · LinkedPitStockId · HUD FWSG · Design Gate · T7+
+- **Suite :** validation humaine PIE (console) → VALIDÉ → T7 sur ordre
 
 ### 2026-10-07 — T5-CLOSE — C3 WorkSite Cas A VALIDÉ (clôture documentaire)
 

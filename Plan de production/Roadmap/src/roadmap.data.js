@@ -17,10 +17,10 @@ export const ROADMAP_META = {
   updated: '2026-10-07',
   planRef: 'Plan de production/PLAN_PRODUCTION_COHORTE_S3.md',
   controlRef: 'Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md',
-  globalState: 'T5 VALIDÉ — en attente ordre T6',
-  currentSliceId: null,
+  globalState: 'T6 en validation humaine',
+  currentSliceId: 'T6',
   nextSliceId: 'T6',
-  blockNote: 'LinkedPitStockId = Stock A PE (mapping cohorte) — risque sémantique Pit/LevelPad ; WorkSite ne réactive pas la legacy ; ne pas renommer (T4 intact)',
+  blockNote: 'LinkedPitStockId = Stock A PE — risque sémantique Pit/LevelPad ; C4 smoke sans spend/expand',
 };
 
 /** Statuts autorisés */
@@ -104,10 +104,10 @@ export const PHASES = [
         id: 'T6',
         name: 'Intention smoke',
         objective: 'Entrée dédiée Intention → Project (sans BeginPlace/TrySpend).',
-        status: STATUS.TODO,
+        status: STATUS.REVIEW,
         dependsOn: ['T5'],
-        expected: 'Smoke crée Project Running + unités',
-        validation: 'Sans spend ; HUD Wood FWSG inchangé',
+        expected: 'Smoke crée Project Draft WorkSite ; OriginIntention ; pas d’expand/unités',
+        validation: 'Sans spend ; pas BeginPlace ; HUD Wood FWSG inchangé',
         block: null,
         validatedAt: null,
         planSection: 'Plan §E T6',
