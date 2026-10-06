@@ -124,15 +124,16 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 | Plan | `Plan de production/PLAN_PRODUCTION_COHORTE_S3.md` |
 | Roadmap | SoT `Roadmap/src/roadmap.data.js` · Pages `docs/index.html` · URL cible `https://JosephV01.github.io/GardenFervor/` |
 | Première preuve | Cohorte S3 **Cas A** (sans Terraform obligatoire) |
-| Tranches | T1–T4 VALIDÉ · T5…T9 À FAIRE · progression **4/9 VALIDÉ** |
-| Implémentation | T4 Stocks A/B **VALIDÉ** — T5 non démarré |
-| Note T5 | `LinkedPitStockId` = identité Stock A cohorte (mapping PE) — **risque sémantique Pit** à surveiller à l’expand ; ne pas réactiver Pit/Quarry/Worker · T4 inchangé |
+| Tranches | T1–T4 VALIDÉ · **T5 VALIDATION** · T6…T9 À FAIRE · progression **4/9 VALIDÉ** |
+| Implémentation | T5 C3 `WorkSite` + `SitePrep` Cas A **codé** — en attente validation humaine |
+| Note T5 | `LinkedPitStockId` = Stock A PE (mapping) — **risque sémantique Pit** ; ExpandWorkSite n’active pas Pit/Quarry/Worker · LevelPad legacy parallèle |
 
 ---
 
 ## Prochain pas
 
-1. Production : T5 Expand Cas A — **uniquement sur ordre explicite** (tenir compte du risque sémantique `LinkedPitStockId` = Stock A)
-2. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)  
-3. **ODC-F9** Infrastructure lifecycle (sans contourner DG)  
-4. Interdit sans validation : carte / M4 / T01
+1. Production : **valider humainement T5** (WorkSite Cas A, pas de Terraform) puis T5 → VALIDÉ
+2. Ensuite : T6 Intention smoke — sur ordre explicite
+3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)  
+4. **ODC-F9** Infrastructure lifecycle (sans contourner DG)  
+5. Interdit sans validation : carte / M4 / T01

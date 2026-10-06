@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T4-CLOSE**.
+Dernière entrée historique : **2026-10-07 — T5-C3**.
 
 ---
 
@@ -198,6 +198,16 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T5-C3 — Extension site générique WorkSite Cas A (VALIDATION)
+
+- **Intention :** contrat C3 — préparation/extension de site paramétrée ; Cas A = déjà prêt, sans Terraform.
+- **Statut :** code livré · roadmap T5 = **VALIDATION** · **pas VALIDÉ**
+- **Changement :** `SitePrep` params + `GardenFervorApplySitePreparation` · objective `WorkSite` · `ExpandWorkSite` · LevelPad inchangé
+- **Cas A :** `AlreadyReady` → `bSiteReady` · stocks A/B via EnsureCohort · **aucune** Raise/Lower/Paint · **pas** ExpandForest · **pas** Extract/Transport/Build
+- **LinkedPitStockId :** mapping Stock A PE uniquement sur WorkSite ; ExpandLevelPad conserve sa sémantique Spoil pit (legacy parallèle) — pas de rename
+- **Design Gate :** aucune modification
+- **Suite :** validation humaine T5 → VALIDÉ → T6 sur ordre
 
 ### 2026-10-07 — T4-CLOSE — Stocks A/B VALIDÉ (clôture documentaire)
 

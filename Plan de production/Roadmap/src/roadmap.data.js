@@ -17,10 +17,10 @@ export const ROADMAP_META = {
   updated: '2026-10-07',
   planRef: 'Plan de production/PLAN_PRODUCTION_COHORTE_S3.md',
   controlRef: 'Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md',
-  globalState: 'T4 VALIDÉ — en attente ordre T5',
-  currentSliceId: null,
+  globalState: 'T5 en validation humaine',
+  currentSliceId: 'T5',
   nextSliceId: 'T5',
-  blockNote: 'T5: LinkedPitStockId = Stock A (mapping cohorte) — risque sémantique Pit ; ne pas réactiver Pit/Quarry/Worker',
+  blockNote: 'LinkedPitStockId = Stock A (mapping PE) — risque sémantique Pit ; WorkSite Cas A sans Terraform',
 };
 
 /** Statuts autorisés */
@@ -91,12 +91,12 @@ export const PHASES = [
       {
         id: 'T5',
         name: 'Expand Cas A',
-        objective: 'Expand Project générique : Analyze→Extract→Transport→Build→Verify.',
-        status: STATUS.TODO,
+        objective: 'C3 site prep générique WorkSite Cas A (AlreadyReady, sans Terraform).',
+        status: STATUS.REVIEW,
         dependsOn: ['T2', 'T3', 'T4'],
-        expected: 'Graphe sans ExpandForest / sans LevelPad copié',
-        validation: 'Tâches + caps + Timber corrects',
-        block: 'Surveiller: LinkedPitStockId = Stock A (mapping PE) — risque sémantique Pit ; ne pas réactiver Pit/Quarry/Worker ; ne pas modifier T4',
+        expected: 'SitePrep params + ExpandWorkSite ; pas ExpandForest ; LevelPad inchangé',
+        validation: 'Cas A bSiteReady ; A≠B ; aucune Terraform/Extract/Transport branchée',
+        block: 'Surveiller: LinkedPitStockId = Stock A (mapping PE) — risque sémantique Pit ; ne pas réactiver Pit/Quarry/Worker',
         validatedAt: null,
         planSection: 'Plan §E T5',
       },
