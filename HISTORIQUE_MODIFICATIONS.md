@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T3-C2**.
+Dernière entrée historique : **2026-10-07 — T3-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T3-CLOSE — C2 capacités U1/U2/U3 VALIDÉ (clôture documentaire)
+
+- **Intention :** enregistrer la validation humaine de T3/C2 ; roadmap T3 → VALIDÉ ; sync `docs/index.html`.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay supplémentaire** · **T4 non démarré**
+- **Roadmap :** 3/9 VALIDÉ · prochaine = T4 · T4…T9 restent À FAIRE
+- **Contrôle technique :** T1+T2+T3 PASS · aucune anomalie
+- **Design Gate :** aucune modification
+- **Suite :** T4 Stocks A/B uniquement sur ordre explicite
 
 ### 2026-10-07 — T3-C2 — Capacités U1/U2/U3 (VALIDATION)
 

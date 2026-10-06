@@ -17,9 +17,9 @@ export const ROADMAP_META = {
   updated: '2026-10-07',
   planRef: 'Plan de production/PLAN_PRODUCTION_COHORTE_S3.md',
   controlRef: 'Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md',
-  globalState: 'T3 en validation humaine',
-  currentSliceId: 'T3',
-  nextSliceId: 'T3',
+  globalState: 'T3 VALIDÉ — en attente ordre T4',
+  currentSliceId: null,
+  nextSliceId: 'T4',
   blockNote: null,
 };
 
@@ -68,12 +68,12 @@ export const PHASES = [
         id: 'T3',
         name: 'C2 U1/U2/U3',
         objective: 'Caps Extraction / Transport / Construction (données).',
-        status: STATUS.REVIEW,
+        status: STATUS.DONE,
         dependsOn: ['T2'],
         expected: 'Trois rôles sans Worker fourre-tout',
         validation: 'Claims séparés U1/U2/U3',
         block: null,
-        validatedAt: null,
+        validatedAt: '2026-10-07',
         planSection: 'Plan §E T3',
       },
       {
