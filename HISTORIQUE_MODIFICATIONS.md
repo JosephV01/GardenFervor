@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T8-C6**.
+Dernière entrée historique : **2026-10-07 — T8-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T8-CLOSE — C6 observabilité PhysicalEconomy VALIDÉ (clôture documentaire)
+
+- **Intention :** enregistrer la validation humaine PIE de T8/C6 ; roadmap T8 → VALIDÉ ; sync `docs/index.html`.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay supplémentaire** · **T9 non démarré**
+- **Preuve PIE :** `gf.Project.SmokeCohortObservability` · Stock A id=1 Timber 0.0→0.0 · Stock B id=2 Timber 0.0→1.0 · A stable · B +1 · PE live · no mirror · ok=1 · EnService=0 tant que Complete=0
+- **Roadmap :** 8/9 VALIDÉ (89 %) · prochaine = T9 · T9 reste À FAIRE
+- **Design Gate :** aucune modification
+- **Suite :** T9 Preuve bout-en-bout uniquement sur ordre explicite
 
 ### 2026-10-07 — T8-C6 — Observabilité PhysicalEconomy Stock A/B Timber (VALIDATION)
 

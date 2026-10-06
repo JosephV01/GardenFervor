@@ -251,8 +251,8 @@
     "updated": "2026-10-07",
     "planRef": "Plan de production/PLAN_PRODUCTION_COHORTE_S3.md",
     "controlRef": "Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md",
-    "globalState": "T8 VALIDATION — C6 observabilité PE · attente validation humaine",
-    "currentSliceId": "T8",
+    "globalState": "T8 VALIDÉ — en attente ordre T9",
+    "currentSliceId": null,
     "nextSliceId": "T9",
     "blockNote": "C6: lecture live PE Stock A/B Timber ; pas miroir/HUD FWSG ; LinkedPitStockId=Stock A (risque sémantique)"
   },
@@ -376,7 +376,7 @@
           "id": "T8",
           "name": "Observabilité PE",
           "objective": "Smoke/overlay lisible ancré PhysicalEconomy.",
-          "status": "VALIDATION",
+          "status": "VALIDÉ",
           "dependsOn": [
             "T6",
             "T7"
@@ -384,7 +384,7 @@
           "expected": "Chaîne + A/B Timber + En service lisibles",
           "validation": "Sans HUD FWSG comme vérité ; lecture live GetAvailable(Timber) ; smoke Deposit B",
           "block": null,
-          "validatedAt": null,
+          "validatedAt": "2026-10-07",
           "planSection": "Plan §E T8"
         },
         {
@@ -413,12 +413,12 @@
   ],
   "progress": {
     "total": 9,
-    "done": 7,
+    "done": 8,
     "blocked": 0,
     "doing": 0,
-    "review": 1,
+    "review": 0,
     "todo": 1,
-    "percent": 78
+    "percent": 89
   }
 }
 </script>
