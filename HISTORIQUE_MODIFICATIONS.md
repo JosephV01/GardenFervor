@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-06 — ROADMAP-PAGES**.
+Dernière entrée historique : **2026-10-06 — T1-TIMBER**.
 
 ---
 
@@ -198,6 +198,14 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-06 — T1-TIMBER — C7 clé PE `Timber` (VALIDATION)
+
+- **Intention :** implémenter uniquement C7 — ResourceKey officielle `Timber` dans PhysicalEconomy types.
+- **Statut :** code livré · roadmap T1 = **VALIDATION** · **pas VALIDÉ** (attente humaine)
+- **Changement :** `GardenFervorPhysicalResourceTypes.h` — enum + `GardenFervorPhysicalResourceKey(Timber)` → `FName("Timber")`
+- **Non modifié :** EconomyComponent · Wood legacy · Harvest · unités · stocks · tasks · terraform · Design Gate
+- **Suite :** validation humaine T1 → VALIDÉ roadmap → T2 sur ordre
 
 ### 2026-10-06 — ROADMAP-PAGES — Publication GitHub Pages via `docs/index.html`
 

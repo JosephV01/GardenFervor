@@ -6,8 +6,8 @@
     "updated": "2026-10-06",
     "planRef": "Plan de production/PLAN_PRODUCTION_COHORTE_S3.md",
     "controlRef": "Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md",
-    "globalState": "Prêt — en attente ordre T1",
-    "currentSliceId": null,
+    "globalState": "T1 en validation humaine",
+    "currentSliceId": "T1",
     "nextSliceId": "T1",
     "blockNote": null
   },
@@ -30,7 +30,7 @@
           "id": "T1",
           "name": "C7 Timber",
           "objective": "Enregistrer la ResourceKey officielle Timber dans PhysicalEconomy.",
-          "status": "À FAIRE",
+          "status": "VALIDATION",
           "dependsOn": [
             "F03 C7"
           ],
@@ -171,8 +171,8 @@
     "done": 0,
     "blocked": 0,
     "doing": 0,
-    "review": 0,
-    "todo": 9,
+    "review": 1,
+    "todo": 8,
     "percent": 0
   }
 }
