@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T6-C4**.
+Dernière entrée historique : **2026-10-07 — T6-CLOSE**.
 
 ---
 
@@ -198,6 +198,16 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T6-CLOSE — C4 Intention → Project VALIDÉ (clôture documentaire)
+
+- **Intention :** enregistrer la validation humaine PIE de T6/C4 ; roadmap T6 → VALIDÉ ; sync `docs/index.html`.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay supplémentaire** · **T7 non démarré**
+- **Preuve PIE :** `gf.Project.SmokeCohortIntention` → Project Draft `WorkSite` · aucun spend · aucun expand · aucune unité
+- **Roadmap :** 6/9 VALIDÉ (67 %) · prochaine = T7 · T7…T9 restent À FAIRE
+- **Note :** log Niagara observé en PIE hors périmètre T6 (non anomalie C4)
+- **Design Gate :** aucune modification
+- **Suite :** T7 En service S3 uniquement sur ordre explicite
 
 ### 2026-10-07 — T6-C4 — Intention → Project smoke (VALIDATION)
 

@@ -17,10 +17,10 @@ export const ROADMAP_META = {
   updated: '2026-10-07',
   planRef: 'Plan de production/PLAN_PRODUCTION_COHORTE_S3.md',
   controlRef: 'Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md',
-  globalState: 'T6 en validation humaine',
-  currentSliceId: 'T6',
-  nextSliceId: 'T6',
-  blockNote: 'LinkedPitStockId = Stock A PE — risque sémantique Pit/LevelPad ; C4 smoke sans spend/expand',
+  globalState: 'T6 VALIDÉ — en attente ordre T7',
+  currentSliceId: null,
+  nextSliceId: 'T7',
+  blockNote: 'LinkedPitStockId = Stock A PE — risque sémantique Pit/LevelPad ; ne pas renommer',
 };
 
 /** Statuts autorisés */
@@ -104,12 +104,12 @@ export const PHASES = [
         id: 'T6',
         name: 'Intention smoke',
         objective: 'Entrée dédiée Intention → Project (sans BeginPlace/TrySpend).',
-        status: STATUS.REVIEW,
+        status: STATUS.DONE,
         dependsOn: ['T5'],
         expected: 'Smoke crée Project Draft WorkSite ; OriginIntention ; pas d’expand/unités',
         validation: 'Sans spend ; pas BeginPlace ; HUD Wood FWSG inchangé',
         block: null,
-        validatedAt: null,
+        validatedAt: '2026-10-07',
         planSection: 'Plan §E T6',
       },
       {
