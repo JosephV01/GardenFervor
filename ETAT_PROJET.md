@@ -124,16 +124,15 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 | Plan | `Plan de production/PLAN_PRODUCTION_COHORTE_S3.md` |
 | Roadmap | SoT `Roadmap/src/roadmap.data.js` · Pages `docs/index.html` · URL cible `https://JosephV01.github.io/GardenFervor/` |
 | Première preuve | Cohorte S3 **Cas A** (sans Terraform obligatoire) |
-| Tranches | T1–T6 VALIDÉ · **T7 VALIDATION** · T8…T9 À FAIRE · progression **6/9 VALIDÉ** (67 %) |
-| Implémentation | T7 C5 Complete≠En service **codé** (`bConstructionComplete` / `bInService` · critère Stock B Timber) — en attente validation humaine |
+| Tranches | T1–T7 VALIDÉ · T8…T9 À FAIRE · progression **7/9 VALIDÉ** (78 %) |
+| Implémentation | T7 C5 Complete≠En service **VALIDÉ** (smoke PIE ok) — T8 non démarré · critère S3 non universel |
 | Note stocks | `LinkedPitStockId` = Stock A PE ; critère En service = **Stock B** · ne pas renommer |
 
 ---
 
 ## Prochain pas
 
-1. Production : **valider humainement T7** (`gf.Project.SmokeCohortService`) puis T7 → VALIDÉ
-2. Ensuite : T8 Observabilité — sur ordre explicite
-3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)  
-4. **ODC-F9** Infrastructure lifecycle (sans contourner DG)  
-5. Interdit sans validation : carte / M4 / T01
+1. Production : T8 Observabilité — **uniquement sur ordre explicite**
+2. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)  
+3. **ODC-F9** Infrastructure lifecycle (sans contourner DG)  
+4. Interdit sans validation : carte / M4 / T01

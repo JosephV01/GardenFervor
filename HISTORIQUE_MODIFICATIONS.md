@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T7-C5**.
+Dernière entrée historique : **2026-10-07 — T7-CLOSE**.
 
 ---
 
@@ -198,6 +198,16 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T7-CLOSE — C5 Complete ≠ En service VALIDÉ (clôture documentaire)
+
+- **Intention :** enregistrer la validation humaine PIE de T7/C5 ; roadmap T7 → VALIDÉ ; sync `docs/index.html`.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay supplémentaire** · **T8 non démarré**
+- **Preuve PIE :** `gf.Project.SmokeCohortService` · step1 Complete sans Timber → InService=0 ok=1 · step2 Stock B Timber → InService=1 ok=1 · pas de Withdraw
+- **Roadmap :** 7/9 VALIDÉ (78 %) · prochaine = T8 · T8…T9 restent À FAIRE
+- **Rappel :** critère S3 uniquement — **pas** une règle universelle pour tous les chantiers
+- **Design Gate :** aucune modification
+- **Suite :** T8 Observabilité uniquement sur ordre explicite
 
 ### 2026-10-07 — T7-C5 — Complete ≠ En service S3 (VALIDATION)
 
