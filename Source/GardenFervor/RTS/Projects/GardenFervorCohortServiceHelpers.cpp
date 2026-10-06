@@ -1,26 +1,14 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "GardenFervorCohortServiceHelpers.h"
-#include "GardenFervorCohortStockHelpers.h"
-#include "GardenFervorPhysicalEconomySubsystem.h"
-#include "GardenFervorPhysicalResourceTypes.h"
+#include "GardenFervorCohortObservabilityHelpers.h"
 
 float GardenFervorGetCohortStockBTimberAvailable(
 	const UGardenFervorPhysicalEconomySubsystem* Eco,
 	const FGardenFervorProjectRecord& Project)
 {
-	if (!Eco)
-	{
-		return 0.f;
-	}
-	const int32 StockB = GardenFervorCohortStockBId(Project);
-	if (StockB <= 0)
-	{
-		return 0.f;
-	}
-	FGardenFervorPhysicalStockId Id;
-	Id.Value = StockB;
-	return Eco->GetAvailable(Id, GardenFervorPhysicalResourceKey(EGardenFervorPhysicalResource::Timber));
+	// Same PE truth as C6 observability (no mirror).
+	return GardenFervorGetCohortStockBTimberAvailableLive(Eco, Project);
 }
 
 bool GardenFervorCohortStockBHasTimber(

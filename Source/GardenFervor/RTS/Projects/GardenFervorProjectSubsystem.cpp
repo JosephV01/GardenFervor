@@ -2,6 +2,7 @@
 
 #include "GardenFervorProjectSubsystem.h"
 
+#include "GardenFervorCohortObservabilityHelpers.h"
 #include "GardenFervorCohortServiceHelpers.h"
 #include "GardenFervorCohortStockHelpers.h"
 #include "GardenFervorDeveloperSettings.h"
@@ -40,6 +41,7 @@ void UGardenFervorProjectSubsystem::ClearAll()
 	LastSmokeProjectId = FGardenFervorProjectId{};
 	LastCohortIntentionProjectId = FGardenFervorProjectId{};
 	LastCohortServiceProjectId = FGardenFervorProjectId{};
+	LastCohortObservabilityProjectId = FGardenFervorProjectId{};
 }
 
 FGardenFervorProjectRecord* UGardenFervorProjectSubsystem::FindMutable(int32 Id)
@@ -919,6 +921,137 @@ static FAutoConsoleCommandWithWorld GGardenFervorProjectSmokeCohortServiceCmd(
 
 		FString Msg;
 		Projects->SmokeDemonstrateCohortServiceNear(Center, Msg, 600.f);
+		UE_LOG(LogGardenFervorProject, Display, TEXT("%s"), *Msg);
+	}));
+
+FString UGardenFervorProjectSubsystem::GetCohortPhysicalEconomyStatusLine(
+	FGardenFervorProjectId ProjectId) const
+{
+	FGardenFervorProjectRecord Project;
+	if (!GetProject(ProjectId, Project))
+	{
+		return TEXT("C6 PE: project missing");
+	}
+	const UWorld* World = GetWorld();
+	const UGardenFervorPhysicalEconomySubsystem* Eco = World
+		? World->GetSubsystem<UGardenFervorPhysicalEconomySubsystem>()
+		: nullptr;
+	return GardenFervorFormatCohortPhysicalEconomySnapshot(Eco, Project);
+}
+
+FGardenFervorProjectId UGardenFervorProjectSubsystem::SmokeDemonstrateCohortObservabilityNear(
+	FVector Center,
+	FString& OutMessage,
+	float HalfExtentXY)
+{
+	OutMessage.Reset();
+	UWorld* World = GetWorld();
+	UGardenFervorPhysicalEconomySubsystem* Eco = World
+		? World->GetSubsystem<UGardenFervorPhysicalEconomySubsystem>()
+		: nullptr;
+	if (!World || !Eco)
+	{
+		OutMessage = TEXT("C6 smoke: no world/PhysicalEconomy");
+		return FGardenFervorProjectId{};
+	}
+
+	HalfExtentXY = FMath::Max(200.f, HalfExtentXY);
+	const FBox Zone(
+		FVector(Center.X - HalfExtentXY, Center.Y - HalfExtentXY, Center.Z - 20000.f),
+		FVector(Center.X + HalfExtentXY, Center.Y + HalfExtentXY, Center.Z + 20000.f));
+
+	const FGardenFervorProjectId ProjectId = CreateProjectFromIntention(
+		FName(TEXT("Smoke_Cohort_C6")),
+		EGardenFervorProjectObjective::WorkSite,
+		Zone,
+		100);
+	if (!ProjectId.IsValid())
+	{
+		OutMessage = TEXT("C6 smoke: create project failed");
+		return FGardenFervorProjectId{};
+	}
+
+	FGardenFervorProjectRecord* Project = FindMutable(ProjectId.Value);
+	if (!Project || !GardenFervorEnsureCohortStocks(Eco, *Project))
+	{
+		OutMessage = TEXT("C6 smoke: ensure stocks A/B failed");
+		return FGardenFervorProjectId{};
+	}
+
+	const FString Snap0 = GardenFervorFormatCohortPhysicalEconomySnapshot(Eco, *Project);
+	const float A0 = GardenFervorGetCohortStockATimberAvailable(Eco, *Project);
+	const float B0 = GardenFervorGetCohortStockBTimberAvailableLive(Eco, *Project);
+
+	FGardenFervorPhysicalStockId StockB;
+	StockB.Value = GardenFervorCohortStockBId(*Project);
+	const FName TimberKey = GardenFervorPhysicalResourceKey(EGardenFervorPhysicalResource::Timber);
+	const bool bDeposited = Eco->Deposit(StockB, TimberKey, 1.f);
+
+	const FString Snap1 = GardenFervorFormatCohortPhysicalEconomySnapshot(Eco, *Project);
+	const float A1 = GardenFervorGetCohortStockATimberAvailable(Eco, *Project);
+	const float B1 = GardenFervorGetCohortStockBTimberAvailableLive(Eco, *Project);
+
+	const bool bOk =
+		bDeposited
+		&& FMath::IsNearlyEqual(A0, A1)
+		&& B0 < B1
+		&& B1 >= 1.f
+		&& GardenFervorCohortStocksAreDistinct(*Project);
+
+	LastCohortObservabilityProjectId = ProjectId;
+
+	OutMessage = FString::Printf(
+		TEXT("C6 smoke Project #%d ok=%d · before[%s] · after Deposit B+1[%s] · A=%.1f→%.1f B=%.1f→%.1f (PE live, no mirror)"),
+		ProjectId.Value,
+		bOk ? 1 : 0,
+		*Snap0,
+		*Snap1,
+		A0, A1, B0, B1);
+
+	UE_LOG(LogGardenFervorProject, Log, TEXT("%s"), *OutMessage);
+	if (!bOk)
+	{
+		UE_LOG(LogGardenFervorProject, Warning, TEXT("C6 smoke FAILED observability criteria"));
+	}
+	return ProjectId;
+}
+
+static FAutoConsoleCommandWithWorld GGardenFervorProjectSmokeCohortObservabilityCmd(
+	TEXT("gf.Project.SmokeCohortObservability"),
+	TEXT("C6 smoke: read Stock A/B Timber from PhysicalEconomy, Deposit B, re-read (no mirror/HUD)"),
+	FConsoleCommandWithWorldDelegate::CreateLambda([](UWorld* World)
+	{
+		if (!World)
+		{
+			UE_LOG(LogGardenFervorProject, Warning, TEXT("gf.Project.SmokeCohortObservability: no world"));
+			return;
+		}
+		UGardenFervorProjectSubsystem* Projects = World->GetSubsystem<UGardenFervorProjectSubsystem>();
+		if (!Projects)
+		{
+			UE_LOG(LogGardenFervorProject, Warning, TEXT("gf.Project.SmokeCohortObservability: no ProjectSubsystem"));
+			return;
+		}
+
+		FVector Center = FVector::ZeroVector;
+		if (APlayerController* PC = World->GetFirstPlayerController())
+		{
+			if (APawn* Pawn = PC->GetPawn())
+			{
+				Center = Pawn->GetActorLocation();
+			}
+			else
+			{
+				FVector CamLoc = FVector::ZeroVector;
+				FRotator CamRot = FRotator::ZeroRotator;
+				PC->GetPlayerViewPoint(CamLoc, CamRot);
+				Center = CamLoc + CamRot.Vector() * 1500.f;
+				Center.Z = CamLoc.Z;
+			}
+		}
+
+		FString Msg;
+		Projects->SmokeDemonstrateCohortObservabilityNear(Center, Msg, 600.f);
 		UE_LOG(LogGardenFervorProject, Display, TEXT("%s"), *Msg);
 	}));
 

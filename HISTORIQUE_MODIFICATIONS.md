@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T7-CLOSE**.
+Dernière entrée historique : **2026-10-07 — T8-C6**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T8-C6 — Observabilité PhysicalEconomy Stock A/B Timber (VALIDATION)
+
+- **Intention :** contrat C6 — état Timber Stock A/B observable depuis PhysicalEconomy (pas HUD legacy).
+- **Statut :** code livré · roadmap T8 = **VALIDATION** · **pas VALIDÉ**
+- **Changement :** `GardenFervorCohortObservabilityHelpers` (lecture live `GetAvailable` + clé PE Timber) · `GetCohortPhysicalEconomyStatusLine` · smoke `gf.Project.SmokeCohortObservability` · T7 service B délègue à la même lecture Live
+- **Preuve attendue PIE :** lecture initiale → `Deposit` Timber Stock B → relecture ; A inchangé ; B augmente ; pas de miroir
+- **Non modifié :** LinkedPitStockId · HUD FWSG · EconomyComponent · Design Gate · T9
+- **Suite :** validation humaine PIE → VALIDÉ → T9 sur ordre
 
 ### 2026-10-07 — T7-CLOSE — C5 Complete ≠ En service VALIDÉ (clôture documentaire)
 

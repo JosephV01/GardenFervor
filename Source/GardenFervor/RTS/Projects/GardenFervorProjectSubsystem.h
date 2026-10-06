@@ -128,6 +128,23 @@ public:
 	UFUNCTION(BlueprintPure, Category = "RTS|Project|Dev")
 	FString GetCohortServiceStatusLine() const;
 
+	/**
+	 * C6 — live PhysicalEconomy snapshot for a cohort Project (Stock A/B Timber).
+	 * Reads PE at call time; no mirror state.
+	 */
+	UFUNCTION(BlueprintPure, Category = "RTS|Project|Dev")
+	FString GetCohortPhysicalEconomyStatusLine(FGardenFervorProjectId ProjectId) const;
+
+	/**
+	 * C6 smoke: ensure A/B, read Timber, Deposit on B, read again — PE is sole authority.
+	 * No Extract/Transport/Build/Terraform. No legacy HUD.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "RTS|Project|Dev")
+	FGardenFervorProjectId SmokeDemonstrateCohortObservabilityNear(
+		FVector Center,
+		FString& OutMessage,
+		float HalfExtentXY = 600.f);
+
 protected:
 	/** Legacy LevelPad Spoil→Fill→Raise planner (historical consumer). */
 	int32 ExpandLevelPad(FGardenFervorProjectRecord& Project, UGardenFervorTaskSubsystem* Tasks);
@@ -146,4 +163,5 @@ protected:
 	FGardenFervorProjectId LastSmokeProjectId;
 	FGardenFervorProjectId LastCohortIntentionProjectId;
 	FGardenFervorProjectId LastCohortServiceProjectId;
+	FGardenFervorProjectId LastCohortObservabilityProjectId;
 };

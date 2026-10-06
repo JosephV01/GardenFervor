@@ -17,10 +17,10 @@ export const ROADMAP_META = {
   updated: '2026-10-07',
   planRef: 'Plan de production/PLAN_PRODUCTION_COHORTE_S3.md',
   controlRef: 'Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md',
-  globalState: 'T7 VALIDÉ — en attente ordre T8',
-  currentSliceId: null,
-  nextSliceId: 'T8',
-  blockNote: 'C5 S3 (non universel): Complete ∧ Stock B Timber>0 → En service ; LinkedPitStockId=Stock A (risque sémantique)',
+  globalState: 'T8 VALIDATION — C6 observabilité PE · attente validation humaine',
+  currentSliceId: 'T8',
+  nextSliceId: 'T9',
+  blockNote: 'C6: lecture live PE Stock A/B Timber ; pas miroir/HUD FWSG ; LinkedPitStockId=Stock A (risque sémantique)',
 };
 
 /** Statuts autorisés */
@@ -128,10 +128,10 @@ export const PHASES = [
         id: 'T8',
         name: 'Observabilité PE',
         objective: 'Smoke/overlay lisible ancré PhysicalEconomy.',
-        status: STATUS.TODO,
+        status: STATUS.REVIEW,
         dependsOn: ['T6', 'T7'],
         expected: 'Chaîne + A/B Timber + En service lisibles',
-        validation: 'Sans HUD FWSG comme vérité',
+        validation: 'Sans HUD FWSG comme vérité ; lecture live GetAvailable(Timber) ; smoke Deposit B',
         block: null,
         validatedAt: null,
         planSection: 'Plan §E T8',
