@@ -17,10 +17,10 @@ export const ROADMAP_META = {
   updated: '2026-10-07',
   planRef: 'Plan de production/PLAN_PRODUCTION_COHORTE_S3.md',
   controlRef: 'Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md',
-  globalState: 'T6 VALIDÉ — en attente ordre T7',
-  currentSliceId: null,
+  globalState: 'T7 en validation humaine',
+  currentSliceId: 'T7',
   nextSliceId: 'T7',
-  blockNote: 'LinkedPitStockId = Stock A PE — risque sémantique Pit/LevelPad ; ne pas renommer',
+  blockNote: 'C5 S3: Complete ∧ Stock B Timber>0 → En service ; Stock A=LinkedPitStockId (risque sémantique)',
 };
 
 /** Statuts autorisés */
@@ -116,10 +116,10 @@ export const PHASES = [
         id: 'T7',
         name: 'En service S3',
         objective: 'Achevé ≠ En service ; critère Achevé ∧ Stock B Timber > 0.',
-        status: STATUS.TODO,
+        status: STATUS.REVIEW,
         dependsOn: ['T5', 'T4'],
-        expected: 'Deux jalons visibles ; pas de coût inventé',
-        validation: 'Pas En service si B vide',
+        expected: 'bConstructionComplete ≠ bInService ; S3: Complete ∧ B Timber>0',
+        validation: 'Smoke C5: sans Timber→pas En service ; avec Timber→En service ; pas de consume',
         block: null,
         validatedAt: null,
         planSection: 'Plan §E T7',

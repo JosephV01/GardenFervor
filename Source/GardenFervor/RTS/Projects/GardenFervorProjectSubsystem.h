@@ -98,6 +98,36 @@ public:
 	UFUNCTION(BlueprintPure, Category = "RTS|Project|Dev")
 	FString GetCohortIntentionStatusLine() const;
 
+	/**
+	 * C5 — mark construction Complete (Achevé). Distinct from En service.
+	 * Re-evaluates S3 service criterion (Stock B Timber). Does not spend or expand.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "RTS|Project|Service")
+	bool MarkConstructionComplete(FGardenFervorProjectId ProjectId);
+
+	/** C5 — refresh bInService from Complete + Stock B Timber (no consume). */
+	UFUNCTION(BlueprintCallable, Category = "RTS|Project|Service")
+	bool RefreshCohortServiceState(FGardenFervorProjectId ProjectId);
+
+	UFUNCTION(BlueprintPure, Category = "RTS|Project|Service")
+	bool IsConstructionComplete(FGardenFervorProjectId ProjectId) const;
+
+	UFUNCTION(BlueprintPure, Category = "RTS|Project|Service")
+	bool IsInService(FGardenFervorProjectId ProjectId) const;
+
+	/**
+	 * C5 smoke: Complete without Timber → not En service; Deposit Timber on B → En service.
+	 * Does not run Extract/Transport/Build gameplay. Does not consume Timber after Deposit.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "RTS|Project|Dev")
+	FGardenFervorProjectId SmokeDemonstrateCohortServiceNear(
+		FVector Center,
+		FString& OutMessage,
+		float HalfExtentXY = 600.f);
+
+	UFUNCTION(BlueprintPure, Category = "RTS|Project|Dev")
+	FString GetCohortServiceStatusLine() const;
+
 protected:
 	/** Legacy LevelPad Spoil→Fill→Raise planner (historical consumer). */
 	int32 ExpandLevelPad(FGardenFervorProjectRecord& Project, UGardenFervorTaskSubsystem* Tasks);
@@ -115,4 +145,5 @@ protected:
 	TMap<int32, FGardenFervorProjectRecord> Projects;
 	FGardenFervorProjectId LastSmokeProjectId;
 	FGardenFervorProjectId LastCohortIntentionProjectId;
+	FGardenFervorProjectId LastCohortServiceProjectId;
 };

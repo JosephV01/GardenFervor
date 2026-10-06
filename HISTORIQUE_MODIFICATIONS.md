@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T6-CLOSE**.
+Dernière entrée historique : **2026-10-07 — T7-C5**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T7-C5 — Complete ≠ En service S3 (VALIDATION)
+
+- **Intention :** contrat C5 — Achevé distinct d’En service ; critère cohorte Stock B Timber.
+- **Statut :** code livré · roadmap T7 = **VALIDATION** · **pas VALIDÉ**
+- **Changement :** `bConstructionComplete` / `bInService` · `GardenFervorRefreshCohortServiceState` · smoke `gf.Project.SmokeCohortService`
+- **Critère S3 :** Complete ∧ `GetAvailable(Stock B, Timber) > 0` → En service · **pas** de consommation · **pas** coût inventé · **pas** règle universelle
+- **Stock B :** `LinkedStockId` · clé PE `Timber` · Stock A non utilisé pour le service
+- **Suite :** validation humaine PIE → VALIDÉ → T8 sur ordre
 
 ### 2026-10-07 — T6-CLOSE — C4 Intention → Project VALIDÉ (clôture documentaire)
 

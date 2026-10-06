@@ -96,6 +96,21 @@ struct FGardenFervorProjectRecord
 	UPROPERTY(BlueprintReadOnly, Category = "RTS|Project")
 	FString BlockReason;
 
+	/**
+	 * C5 — construction works finished (Achevé / Complete).
+	 * Distinct from ProjectStatus lifecycle and from bInService (En service).
+	 */
+	UPROPERTY(BlueprintReadOnly, Category = "RTS|Project|Service")
+	bool bConstructionComplete = false;
+
+	/**
+	 * C5 — En service (operational). Not the same as bConstructionComplete.
+	 * Cohort S3 only: true when bConstructionComplete && Stock B Timber available > 0.
+	 * Not a universal game rule for all future projects.
+	 */
+	UPROPERTY(BlueprintReadOnly, Category = "RTS|Project|Service")
+	bool bInService = false;
+
 	UPROPERTY(BlueprintReadOnly, Category = "RTS|Project")
 	TArray<int32> TaskIds;
 

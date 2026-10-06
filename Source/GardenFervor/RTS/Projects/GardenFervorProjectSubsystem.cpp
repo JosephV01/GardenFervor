@@ -2,8 +2,11 @@
 
 #include "GardenFervorProjectSubsystem.h"
 
+#include "GardenFervorCohortServiceHelpers.h"
+#include "GardenFervorCohortStockHelpers.h"
 #include "GardenFervorDeveloperSettings.h"
 #include "GardenFervorPhysicalEconomySubsystem.h"
+#include "GardenFervorPhysicalResourceTypes.h"
 #include "GardenFervorRTSCatalog.h"
 #include "GardenFervorSitePrepHelpers.h"
 #include "GardenFervorTaskSubsystem.h"
@@ -36,6 +39,7 @@ void UGardenFervorProjectSubsystem::ClearAll()
 	NextProjectId = 1;
 	LastSmokeProjectId = FGardenFervorProjectId{};
 	LastCohortIntentionProjectId = FGardenFervorProjectId{};
+	LastCohortServiceProjectId = FGardenFervorProjectId{};
 }
 
 FGardenFervorProjectRecord* UGardenFervorProjectSubsystem::FindMutable(int32 Id)
@@ -740,6 +744,181 @@ static FAutoConsoleCommandWithWorld GGardenFervorProjectSmokeCohortIntentionCmd(
 
 		FString Msg;
 		Projects->SmokeStartCohortIntentionNear(Center, Msg, 600.f);
+		UE_LOG(LogGardenFervorProject, Display, TEXT("%s"), *Msg);
+	}));
+
+bool UGardenFervorProjectSubsystem::MarkConstructionComplete(FGardenFervorProjectId ProjectId)
+{
+	FGardenFervorProjectRecord* Project = FindMutable(ProjectId.Value);
+	if (!Project)
+	{
+		return false;
+	}
+	Project->bConstructionComplete = true;
+	UWorld* World = GetWorld();
+	UGardenFervorPhysicalEconomySubsystem* Eco = World
+		? World->GetSubsystem<UGardenFervorPhysicalEconomySubsystem>()
+		: nullptr;
+	GardenFervorRefreshCohortServiceState(Eco, *Project);
+	UE_LOG(LogGardenFervorProject, Log,
+		TEXT("C5 MarkConstructionComplete project #%d · Complete=1 · InService=%d"),
+		ProjectId.Value, Project->bInService ? 1 : 0);
+	return true;
+}
+
+bool UGardenFervorProjectSubsystem::RefreshCohortServiceState(FGardenFervorProjectId ProjectId)
+{
+	FGardenFervorProjectRecord* Project = FindMutable(ProjectId.Value);
+	if (!Project)
+	{
+		return false;
+	}
+	UWorld* World = GetWorld();
+	UGardenFervorPhysicalEconomySubsystem* Eco = World
+		? World->GetSubsystem<UGardenFervorPhysicalEconomySubsystem>()
+		: nullptr;
+	return GardenFervorRefreshCohortServiceState(Eco, *Project);
+}
+
+bool UGardenFervorProjectSubsystem::IsConstructionComplete(FGardenFervorProjectId ProjectId) const
+{
+	const FGardenFervorProjectRecord* Project = FindConst(ProjectId.Value);
+	return Project && Project->bConstructionComplete;
+}
+
+bool UGardenFervorProjectSubsystem::IsInService(FGardenFervorProjectId ProjectId) const
+{
+	const FGardenFervorProjectRecord* Project = FindConst(ProjectId.Value);
+	return Project && Project->bInService;
+}
+
+FGardenFervorProjectId UGardenFervorProjectSubsystem::SmokeDemonstrateCohortServiceNear(
+	FVector Center,
+	FString& OutMessage,
+	float HalfExtentXY)
+{
+	OutMessage.Reset();
+	UWorld* World = GetWorld();
+	UGardenFervorPhysicalEconomySubsystem* Eco = World
+		? World->GetSubsystem<UGardenFervorPhysicalEconomySubsystem>()
+		: nullptr;
+	if (!World || !Eco)
+	{
+		OutMessage = TEXT("C5 smoke: no world/PhysicalEconomy");
+		return FGardenFervorProjectId{};
+	}
+
+	HalfExtentXY = FMath::Max(200.f, HalfExtentXY);
+	const FBox Zone(
+		FVector(Center.X - HalfExtentXY, Center.Y - HalfExtentXY, Center.Z - 20000.f),
+		FVector(Center.X + HalfExtentXY, Center.Y + HalfExtentXY, Center.Z + 20000.f));
+
+	const FGardenFervorProjectId ProjectId = CreateProjectFromIntention(
+		FName(TEXT("Smoke_Cohort_C5")),
+		EGardenFervorProjectObjective::WorkSite,
+		Zone,
+		100);
+	if (!ProjectId.IsValid())
+	{
+		OutMessage = TEXT("C5 smoke: create intention project failed");
+		return FGardenFervorProjectId{};
+	}
+
+	FGardenFervorProjectRecord* Project = FindMutable(ProjectId.Value);
+	if (!Project || !GardenFervorEnsureCohortStocks(Eco, *Project))
+	{
+		OutMessage = TEXT("C5 smoke: ensure stocks A/B failed");
+		return FGardenFervorProjectId{};
+	}
+
+	// Step 1: Complete without Timber on B → must NOT be En service.
+	Project->bConstructionComplete = true;
+	GardenFervorRefreshCohortServiceState(Eco, *Project);
+	const bool bStep1Ok = Project->bConstructionComplete && !Project->bInService;
+	const float TimberBefore = GardenFervorGetCohortStockBTimberAvailable(Eco, *Project);
+
+	// Step 2: availability only — Deposit Timber on Stock B (no cost inventé, no Withdraw after).
+	FGardenFervorPhysicalStockId StockB;
+	StockB.Value = GardenFervorCohortStockBId(*Project);
+	const FName TimberKey = GardenFervorPhysicalResourceKey(EGardenFervorPhysicalResource::Timber);
+	const bool bDeposited = Eco->Deposit(StockB, TimberKey, 1.f);
+	GardenFervorRefreshCohortServiceState(Eco, *Project);
+	const float TimberAfter = GardenFervorGetCohortStockBTimberAvailable(Eco, *Project);
+	const bool bStep2Ok = bDeposited && Project->bConstructionComplete && Project->bInService && TimberAfter > 0.f;
+
+	LastCohortServiceProjectId = ProjectId;
+
+	OutMessage = FString::Printf(
+		TEXT("C5 smoke Project #%d · step1 Complete sans Timber: InService=0 ok=%d · step2 StockB Timber>0: InService=1 ok=%d · timber=%.1f→%.1f (no Withdraw)"),
+		ProjectId.Value,
+		bStep1Ok ? 1 : 0,
+		bStep2Ok ? 1 : 0,
+		TimberBefore,
+		TimberAfter);
+
+	UE_LOG(LogGardenFervorProject, Log, TEXT("%s"), *OutMessage);
+	if (!bStep1Ok || !bStep2Ok)
+	{
+		UE_LOG(LogGardenFervorProject, Warning, TEXT("C5 smoke FAILED criteria"));
+	}
+	return ProjectId;
+}
+
+FString UGardenFervorProjectSubsystem::GetCohortServiceStatusLine() const
+{
+	if (!LastCohortServiceProjectId.IsValid())
+	{
+		return TEXT("C5 Service: none (gf.Project.SmokeCohortService)");
+	}
+	FGardenFervorProjectRecord Project;
+	if (!GetProject(LastCohortServiceProjectId, Project))
+	{
+		return TEXT("C5 Service: missing");
+	}
+	return FString::Printf(
+		TEXT("C5 Project #%d · Complete=%d · EnService=%d · StockB=%d"),
+		Project.ProjectId.Value,
+		Project.bConstructionComplete ? 1 : 0,
+		Project.bInService ? 1 : 0,
+		GardenFervorCohortStockBId(Project));
+}
+
+static FAutoConsoleCommandWithWorld GGardenFervorProjectSmokeCohortServiceCmd(
+	TEXT("gf.Project.SmokeCohortService"),
+	TEXT("C5 smoke: Complete≠En service — Complete without Timber then with Stock B Timber (no consume)"),
+	FConsoleCommandWithWorldDelegate::CreateLambda([](UWorld* World)
+	{
+		if (!World)
+		{
+			UE_LOG(LogGardenFervorProject, Warning, TEXT("gf.Project.SmokeCohortService: no world"));
+			return;
+		}
+		UGardenFervorProjectSubsystem* Projects = World->GetSubsystem<UGardenFervorProjectSubsystem>();
+		if (!Projects)
+		{
+			UE_LOG(LogGardenFervorProject, Warning, TEXT("gf.Project.SmokeCohortService: no ProjectSubsystem"));
+			return;
+		}
+
+		FVector Center = FVector::ZeroVector;
+		if (APlayerController* PC = World->GetFirstPlayerController())
+		{
+			if (APawn* Pawn = PC->GetPawn())
+			{
+				Center = Pawn->GetActorLocation();
+			}
+			else
+			{
+				FVector CamLoc = FVector::ZeroVector;
+				FRotator CamRot = FRotator::ZeroRotator;
+				PC->GetPlayerViewPoint(CamLoc, CamRot);
+				Center = CamLoc + CamRot.Vector() * 1500.f;
+				Center.Z = CamLoc.Z;
+			}
+		}
+
+		FString Msg;
+		Projects->SmokeDemonstrateCohortServiceNear(Center, Msg, 600.f);
 		UE_LOG(LogGardenFervorProject, Display, TEXT("%s"), *Msg);
 	}));
 
