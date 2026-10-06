@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T8-CLOSE**.
+Dernière entrée historique : **2026-10-07 — T9-S3**.
 
 ---
 
@@ -198,6 +198,18 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T9-S3 — Preuve end-to-end cohorte Cas A (VALIDATION)
+
+- **Intention :** intégrer T1–T8 en une preuve jouable S3 Cas A (pas forêt complète).
+- **Statut :** code livré · roadmap T9 = **VALIDATION** · **pas VALIDÉ**
+- **Chaîne :** Intention → Analyze → WorkSite AlreadyReady → U1 Extract Timber → Stock A → U2 Withdraw/cargo/Deposit B → U3 Construct → Complete → En service → lecture PE C6
+- **Agent :** Extract/Haul utilisent `Task.OperationalResourceKey` (fallback SpoilDirt legacy si unset) · Build Construction → `MarkConstructionComplete`
+- **ExpandWorkSite :** crée Analyze→Extract→Transport→Build (caps Extraction/Transport/Construction) · **aucune** Terraform
+- **Smoke :** `gf.Project.SmokeCohortS3` · spawn U1/U2/U3 · autonomie instantanée · ok si A→0 B≥1 Complete EnService
+- **Preuve PIE (technique) :** ok=1 steps=24 · Analyze/Extract/Haul/Construct=Completed · A=0→0 B=0→1 · Complete=1 EnService=1 · C6 PE live · CasA no terraform
+- **Non modifié :** LinkedPitStockId (Stock A) · HUD FWSG · EconomyComponent/Wood · Design Gate · LevelPad Spoil
+- **Suite :** validation humaine formelle → VALIDÉ (clôture documentaire)
 
 ### 2026-10-07 — T8-CLOSE — C6 observabilité PhysicalEconomy VALIDÉ (clôture documentaire)
 

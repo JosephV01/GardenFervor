@@ -12,6 +12,7 @@
 #include "GardenFervorSitePrepHelpers.h"
 #include "GardenFervorTaskSubsystem.h"
 #include "GardenFervorUnitBase.h"
+#include "GardenFervorUnitCapabilityTypes.h"
 #include "GardenFervorUnitDefinition.h"
 #include "GardenFervorUnitTaskAgent.h"
 
@@ -42,6 +43,7 @@ void UGardenFervorProjectSubsystem::ClearAll()
 	LastCohortIntentionProjectId = FGardenFervorProjectId{};
 	LastCohortServiceProjectId = FGardenFervorProjectId{};
 	LastCohortObservabilityProjectId = FGardenFervorProjectId{};
+	LastCohortS3ProjectId = FGardenFervorProjectId{};
 }
 
 FGardenFervorProjectRecord* UGardenFervorProjectSubsystem::FindMutable(int32 Id)
@@ -244,14 +246,74 @@ int32 UGardenFervorProjectSubsystem::ExpandWorkSite(
 	}
 
 	Project.BlockReason.Reset();
-	// T5 Cas A foundation only: site ready + stocks A/B. No Terraform / Spoil / Extract-Transport-Build.
-	if (TaskSys)
+
+	// T9 Cas A operational chain (no Terraform). SitePrep AlreadyReady already applied above.
+	if (TaskSys && Project.TaskIds.Num() == 0)
+	{
+		const int32 StockA = GardenFervorCohortStockAId(Project);
+		const int32 StockB = GardenFervorCohortStockBId(Project);
+		const FName TimberKey = GardenFervorPhysicalResourceKey(EGardenFervorPhysicalResource::Timber);
+		const FName CapExtract = GardenFervorUnitCapabilityKey(EGardenFervorUnitCapability::Extraction);
+		const FName CapTransport = GardenFervorUnitCapabilityKey(EGardenFervorUnitCapability::Transport);
+		const FName CapConstruct = GardenFervorUnitCapabilityKey(EGardenFervorUnitCapability::Construction);
+
+		FGardenFervorPhysicalStockId StockAId;
+		StockAId.Value = StockA;
+		const FVector LocA = Eco ? Eco->GetStockLocation(StockAId) : Project.ZoneBounds.GetCenter();
+		const FBox BoundsA(
+			LocA - FVector(400.f, 400.f, 20000.f),
+			LocA + FVector(400.f, 400.f, 20000.f));
+
+		auto MakeTask = [&](EGardenFervorTaskType Type, FName Name, const TArray<int32>& Prereqs,
+			const FBox& Area, int32 SourceStock, int32 DestStock, FName RequiredCap, bool bSetTimberKey)
+		{
+			FGardenFervorTaskRecord T;
+			T.ProjectId = Project.ProjectId;
+			T.TaskType = Type;
+			T.DisplayName = Name;
+			T.PrerequisiteTaskIds = Prereqs;
+			T.AreaBounds = Area;
+			T.Priority = Project.Priority;
+			T.Status = EGardenFervorTaskStatus::Pending;
+			T.SourceStockId = SourceStock;
+			T.DestStockId = DestStock;
+			if (!RequiredCap.IsNone())
+			{
+				T.RequiredCapabilities.Add(RequiredCap);
+			}
+			if (bSetTimberKey)
+			{
+				T.OperationalResourceKey = TimberKey;
+			}
+			const FGardenFervorTaskId Id = TaskSys->CreateTask(T);
+			Project.TaskIds.Add(Id.Value);
+			return Id.Value;
+		};
+
+		// Analyze: generic (no forest-specific analyser). Any cohort unit may claim (empty caps).
+		const int32 AnalyzeId = MakeTask(
+			EGardenFervorTaskType::Analyze, FName(TEXT("AnalyzeSite")), {},
+			Project.ZoneBounds, 0, 0, NAME_None, false);
+		const int32 ExtractId = MakeTask(
+			EGardenFervorTaskType::Extract, FName(TEXT("ExtractResource")), {AnalyzeId},
+			BoundsA, StockA, 0, CapExtract, true);
+		const int32 HaulId = MakeTask(
+			EGardenFervorTaskType::Transport, FName(TEXT("HaulResource")), {ExtractId},
+			Project.ZoneBounds, StockA, StockB, CapTransport, true);
+		MakeTask(
+			EGardenFervorTaskType::Build, FName(TEXT("ConstructWorkSite")), {HaulId},
+			Project.ZoneBounds, 0, 0, CapConstruct, false);
+
+		TaskSys->RefreshReadiness(Project.ProjectId);
+	}
+	else if (TaskSys)
 	{
 		TaskSys->RefreshReadiness(Project.ProjectId);
 	}
+
 	UE_LOG(LogGardenFervorProject, Log,
-		TEXT("WorkSite Cas A ready project %d — StockA=%d StockB=%d (no terraform)"),
-		Project.ProjectId.Value, Project.LinkedPitStockId, Project.LinkedStockId);
+		TEXT("WorkSite Cas A ready project %d — StockA=%d StockB=%d tasks=%d (no terraform)"),
+		Project.ProjectId.Value, Project.LinkedPitStockId, Project.LinkedStockId, Project.TaskIds.Num());
 	return Project.TaskIds.Num();
 }
 
@@ -1052,6 +1114,251 @@ static FAutoConsoleCommandWithWorld GGardenFervorProjectSmokeCohortObservability
 
 		FString Msg;
 		Projects->SmokeDemonstrateCohortObservabilityNear(Center, Msg, 600.f);
+		UE_LOG(LogGardenFervorProject, Display, TEXT("%s"), *Msg);
+	}));
+
+FGardenFervorProjectId UGardenFervorProjectSubsystem::SmokeDemonstrateCohortS3Near(
+	FVector Center,
+	FString& OutMessage,
+	float HalfExtentXY)
+{
+	OutMessage.Reset();
+	UWorld* World = GetWorld();
+	UGardenFervorTaskSubsystem* Tasks = World ? World->GetSubsystem<UGardenFervorTaskSubsystem>() : nullptr;
+	UGardenFervorPhysicalEconomySubsystem* Eco = World
+		? World->GetSubsystem<UGardenFervorPhysicalEconomySubsystem>()
+		: nullptr;
+	if (!World || !Tasks || !Eco)
+	{
+		OutMessage = TEXT("T9 smoke: no world/tasks/PhysicalEconomy");
+		return FGardenFervorProjectId{};
+	}
+
+	HalfExtentXY = FMath::Max(200.f, HalfExtentXY);
+	const FBox Zone(
+		FVector(Center.X - HalfExtentXY, Center.Y - HalfExtentXY, Center.Z - 20000.f),
+		FVector(Center.X + HalfExtentXY, Center.Y + HalfExtentXY, Center.Z + 20000.f));
+
+	const FName IntentionId(TEXT("Smoke_Cohort_S3"));
+	const FGardenFervorProjectId ProjectId = CreateProjectFromIntention(
+		IntentionId,
+		EGardenFervorProjectObjective::WorkSite,
+		Zone,
+		100);
+	if (!ProjectId.IsValid())
+	{
+		OutMessage = TEXT("T9 smoke: Intention→Project failed");
+		return FGardenFervorProjectId{};
+	}
+
+	const int32 Expanded = ExpandProjectToTasks(ProjectId);
+	if (Expanded < 4 || !ActivateProject(ProjectId))
+	{
+		OutMessage = FString::Printf(
+			TEXT("T9 smoke: expand/activate failed (tasks=%d want>=4)"), Expanded);
+		return FGardenFervorProjectId{};
+	}
+
+	FGardenFervorProjectRecord Project;
+	if (!GetProject(ProjectId, Project)
+		|| !GardenFervorCohortStocksAreDistinct(Project)
+		|| Project.SitePrep.Mode != EGardenFervorSitePrepMode::AlreadyReady)
+	{
+		OutMessage = TEXT("T9 smoke: WorkSite Cas A / stocks A/B invalid");
+		return FGardenFervorProjectId{};
+	}
+
+	const FName TimberKey = GardenFervorPhysicalResourceKey(EGardenFervorPhysicalResource::Timber);
+	bool bExtractHasTimberKey = false;
+	bool bHaulHasStocks = false;
+	for (const FGardenFervorTaskRecord& T : Tasks->GetTasksForProject(ProjectId))
+	{
+		if (T.TaskType == EGardenFervorTaskType::Extract
+			&& T.OperationalResourceKey == TimberKey)
+		{
+			bExtractHasTimberKey = true;
+		}
+		if (T.TaskType == EGardenFervorTaskType::Transport
+			&& T.SourceStockId == GardenFervorCohortStockAId(Project)
+			&& T.DestStockId == GardenFervorCohortStockBId(Project)
+			&& T.OperationalResourceKey == TimberKey)
+		{
+			bHaulHasStocks = true;
+		}
+	}
+	if (!bExtractHasTimberKey || !bHaulHasStocks)
+	{
+		OutMessage = TEXT("T9 smoke: Extract/Haul tasks missing Timber OperationalResourceKey or A→B stocks");
+		return FGardenFervorProjectId{};
+	}
+
+	const float ABefore = GardenFervorGetCohortStockATimberAvailable(Eco, Project);
+	const float BBefore = GardenFervorGetCohortStockBTimberAvailableLive(Eco, Project);
+
+	auto SpawnCohortUnit = [&](EGardenFervorCohortUnitRole Role, const FVector& Offset) -> AGardenFervorUnitBase*
+	{
+		const FName UnitId = GardenFervorCohortUnitId(Role);
+		UGardenFervorUnitDefinition* Def = NewObject<UGardenFervorUnitDefinition>(World);
+		Def->UnitId = UnitId;
+		Def->DisplayName = FText::FromName(UnitId);
+		Def->Capabilities = GardenFervorCohortUnitCapabilities(Role);
+		Def->UnitClass = AGardenFervorUnitBase::StaticClass();
+
+		FActorSpawnParameters Params;
+		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		AGardenFervorUnitBase* Unit = World->SpawnActor<AGardenFervorUnitBase>(
+			AGardenFervorUnitBase::StaticClass(), Center + Offset, FRotator::ZeroRotator, Params);
+		if (!Unit)
+		{
+			return nullptr;
+		}
+		Unit->ApplyDefinition(Def);
+		Unit->SnapToGroundAt(Center + Offset);
+		if (UGardenFervorUnitTaskAgent* Agent = Unit->GetTaskAgent())
+		{
+			Agent->MaterialBatchAmount = 1.f;
+			Agent->SetInstantMode(true);
+			Agent->SetProjectFilter(ProjectId);
+			Agent->SetAutonomyEnabled(true);
+		}
+		return Unit;
+	};
+
+	AGardenFervorUnitBase* U1 = SpawnCohortUnit(EGardenFervorCohortUnitRole::U1, FVector(-350.f, -200.f, 0.f));
+	AGardenFervorUnitBase* U2 = SpawnCohortUnit(EGardenFervorCohortUnitRole::U2, FVector(-350.f, 0.f, 0.f));
+	AGardenFervorUnitBase* U3 = SpawnCohortUnit(EGardenFervorCohortUnitRole::U3, FVector(-350.f, 200.f, 0.f));
+	if (!U1 || !U2 || !U3)
+	{
+		OutMessage = TEXT("T9 smoke: failed to spawn U1/U2/U3");
+		return FGardenFervorProjectId{};
+	}
+
+	constexpr int32 MaxSteps = 400;
+	int32 Steps = 0;
+	bool bAllTasksDone = false;
+	for (; Steps < MaxSteps; ++Steps)
+	{
+		if (U1->GetTaskAgent())
+		{
+			U1->GetTaskAgent()->ProcessAutonomy(0.1f);
+		}
+		if (U2->GetTaskAgent())
+		{
+			U2->GetTaskAgent()->ProcessAutonomy(0.1f);
+		}
+		if (U3->GetTaskAgent())
+		{
+			U3->GetTaskAgent()->ProcessAutonomy(0.1f);
+		}
+		SyncProjectStatusFromTasks(ProjectId);
+
+		int32 Completed = 0;
+		const TArray<FGardenFervorTaskRecord> Chain = Tasks->GetTasksForProject(ProjectId);
+		for (const FGardenFervorTaskRecord& T : Chain)
+		{
+			if (T.Status == EGardenFervorTaskStatus::Completed)
+			{
+				++Completed;
+			}
+		}
+		if (Completed >= 4)
+		{
+			bAllTasksDone = true;
+			break;
+		}
+	}
+
+	GetProject(ProjectId, Project);
+	RefreshCohortServiceState(ProjectId);
+	GetProject(ProjectId, Project);
+
+	const float AAfter = GardenFervorGetCohortStockATimberAvailable(Eco, Project);
+	const float BAfter = GardenFervorGetCohortStockBTimberAvailableLive(Eco, Project);
+	const FString Snap = GardenFervorFormatCohortPhysicalEconomySnapshot(Eco, Project);
+
+	int32 CompletedCount = 0;
+	FString TaskSummary;
+	for (const FGardenFervorTaskRecord& T : Tasks->GetTasksForProject(ProjectId))
+	{
+		if (T.Status == EGardenFervorTaskStatus::Completed)
+		{
+			++CompletedCount;
+		}
+		TaskSummary += FString::Printf(
+			TEXT("%s=%d "),
+			*T.DisplayName.ToString(),
+			static_cast<int32>(T.Status));
+	}
+
+	const bool bOk =
+		bAllTasksDone
+		&& CompletedCount >= 4
+		&& Project.bConstructionComplete
+		&& Project.bInService
+		&& ABefore <= 0.01f
+		&& BBefore <= 0.01f
+		&& AAfter <= 0.01f
+		&& BAfter >= 0.99f
+		&& GardenFervorCohortStocksAreDistinct(Project);
+
+	LastCohortS3ProjectId = ProjectId;
+
+	OutMessage = FString::Printf(
+		TEXT("T9 S3 Project #%d ok=%d steps=%d · Intention=%s · tasks[%s] · A=%.1f→%.1f B=%.1f→%.1f · Complete=%d EnService=%d · [%s] · CasA no terraform · PE live"),
+		ProjectId.Value,
+		bOk ? 1 : 0,
+		Steps,
+		*Project.OriginIntention.ToString(),
+		*TaskSummary.TrimEnd(),
+		ABefore, AAfter, BBefore, BAfter,
+		Project.bConstructionComplete ? 1 : 0,
+		Project.bInService ? 1 : 0,
+		*Snap);
+
+	UE_LOG(LogGardenFervorProject, Log, TEXT("%s"), *OutMessage);
+	if (!bOk)
+	{
+		UE_LOG(LogGardenFervorProject, Warning, TEXT("T9 smoke FAILED end-to-end criteria"));
+	}
+	return ProjectId;
+}
+
+static FAutoConsoleCommandWithWorld GGardenFervorProjectSmokeCohortS3Cmd(
+	TEXT("gf.Project.SmokeCohortS3"),
+	TEXT("T9 smoke: Intention→Analyze→WorkSite→U1 Extract Timber→U2 Haul A→B→U3 Complete→En service (Cas A)"),
+	FConsoleCommandWithWorldDelegate::CreateLambda([](UWorld* World)
+	{
+		if (!World)
+		{
+			UE_LOG(LogGardenFervorProject, Warning, TEXT("gf.Project.SmokeCohortS3: no world"));
+			return;
+		}
+		UGardenFervorProjectSubsystem* Projects = World->GetSubsystem<UGardenFervorProjectSubsystem>();
+		if (!Projects)
+		{
+			UE_LOG(LogGardenFervorProject, Warning, TEXT("gf.Project.SmokeCohortS3: no ProjectSubsystem"));
+			return;
+		}
+
+		FVector Center = FVector::ZeroVector;
+		if (APlayerController* PC = World->GetFirstPlayerController())
+		{
+			if (APawn* Pawn = PC->GetPawn())
+			{
+				Center = Pawn->GetActorLocation();
+			}
+			else
+			{
+				FVector CamLoc = FVector::ZeroVector;
+				FRotator CamRot = FRotator::ZeroRotator;
+				PC->GetPlayerViewPoint(CamLoc, CamRot);
+				Center = CamLoc + CamRot.Vector() * 1500.f;
+				Center.Z = CamLoc.Z;
+			}
+		}
+
+		FString Msg;
+		Projects->SmokeDemonstrateCohortS3Near(Center, Msg, 600.f);
 		UE_LOG(LogGardenFervorProject, Display, TEXT("%s"), *Msg);
 	}));
 

@@ -17,10 +17,10 @@ export const ROADMAP_META = {
   updated: '2026-10-07',
   planRef: 'Plan de production/PLAN_PRODUCTION_COHORTE_S3.md',
   controlRef: 'Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md',
-  globalState: 'T8 VALIDÉ — en attente ordre T9',
-  currentSliceId: null,
-  nextSliceId: 'T9',
-  blockNote: 'C6: lecture live PE Stock A/B Timber ; pas miroir/HUD FWSG ; LinkedPitStockId=Stock A (risque sémantique)',
+  globalState: 'T9 VALIDATION — preuve S3 Cas A · attente validation humaine',
+  currentSliceId: 'T9',
+  nextSliceId: null,
+  blockNote: 'T9: Intention→Analyze→WorkSite→U1/U2/U3 Timber A→B→Complete→En service ; LinkedPitStockId=Stock A (risque sémantique)',
 };
 
 /** Statuts autorisés */
@@ -140,10 +140,10 @@ export const PHASES = [
         id: 'T9',
         name: 'Preuve bout-en-bout',
         objective: 'Chaîne S3 Cas A complète et observable en PIE.',
-        status: STATUS.TODO,
+        status: STATUS.REVIEW,
         dependsOn: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8'],
         expected: 'Intention→…→En service + Timber B > 0',
-        validation: 'Checklist Plan §G (humain)',
+        validation: 'gf.Project.SmokeCohortS3 · ok=1 · A→B Timber via U1/U2 · Complete+EnService · PE live',
         block: null,
         validatedAt: null,
         planSection: 'Plan §E T9',

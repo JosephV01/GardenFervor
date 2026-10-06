@@ -145,13 +145,28 @@ public:
 		FString& OutMessage,
 		float HalfExtentXY = 600.f);
 
+	/**
+	 * T9 — end-to-end S3 Cas A proof:
+	 * Intention → Analyze → WorkSite AlreadyReady → U1 Extract Timber → A
+	 * → U2 Withdraw A → cargo → Deposit B → U3 Build → Complete → En service → PE read.
+	 * No Terraform / TrySpend / BeginPlace / Wood / HUD authority.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "RTS|Project|Dev")
+	FGardenFervorProjectId SmokeDemonstrateCohortS3Near(
+		FVector Center,
+		FString& OutMessage,
+		float HalfExtentXY = 600.f);
+
+	UFUNCTION(BlueprintPure, Category = "RTS|Project|Dev")
+	FGardenFervorProjectId GetLastCohortS3ProjectId() const { return LastCohortS3ProjectId; }
+
 protected:
 	/** Legacy LevelPad Spoil→Fill→Raise planner (historical consumer). */
 	int32 ExpandLevelPad(FGardenFervorProjectRecord& Project, UGardenFervorTaskSubsystem* Tasks);
 
 	/**
-	 * C3 generic WorkSite expand (Cas A): apply SitePrep params, ensure stocks A/B,
-	 * no Terraform / ExpandForest / Extract-Transport-Build chain in T5.
+	 * C3/T9 WorkSite expand (Cas A): SitePrep AlreadyReady + stocks A/B,
+	 * then Analyze→Extract→Transport→Build (Timber / U1·U2·U3). No Terraform.
 	 */
 	int32 ExpandWorkSite(FGardenFervorProjectRecord& Project, UGardenFervorTaskSubsystem* Tasks);
 
@@ -164,4 +179,5 @@ protected:
 	FGardenFervorProjectId LastCohortIntentionProjectId;
 	FGardenFervorProjectId LastCohortServiceProjectId;
 	FGardenFervorProjectId LastCohortObservabilityProjectId;
+	FGardenFervorProjectId LastCohortS3ProjectId;
 };
