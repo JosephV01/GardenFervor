@@ -251,10 +251,10 @@
     "updated": "2026-10-07",
     "planRef": "Plan de production/PLAN_PRODUCTION_COHORTE_S3.md",
     "controlRef": "Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md",
-    "globalState": "T9 VALIDATION — preuve S3 Cas A · attente validation humaine",
-    "currentSliceId": "T9",
+    "globalState": "T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9",
+    "currentSliceId": null,
     "nextSliceId": null,
-    "blockNote": "T9: Intention→Analyze→WorkSite→U1/U2/U3 Timber A→B→Complete→En service ; LinkedPitStockId=Stock A (risque sémantique)"
+    "blockNote": "S3 Cas A clôturée ; LinkedPitStockId=Stock A PE (risque sémantique Pit/LevelPad — ne pas renommer)"
   },
   "statusLabels": {
     "TODO": "À FAIRE",
@@ -391,7 +391,7 @@
           "id": "T9",
           "name": "Preuve bout-en-bout",
           "objective": "Chaîne S3 Cas A complète et observable en PIE.",
-          "status": "VALIDATION",
+          "status": "VALIDÉ",
           "dependsOn": [
             "T1",
             "T2",
@@ -405,7 +405,7 @@
           "expected": "Intention→…→En service + Timber B > 0",
           "validation": "gf.Project.SmokeCohortS3 · ok=1 · A→B Timber via U1/U2 · Complete+EnService · PE live",
           "block": null,
-          "validatedAt": null,
+          "validatedAt": "2026-10-07",
           "planSection": "Plan §E T9"
         }
       ]
@@ -413,12 +413,12 @@
   ],
   "progress": {
     "total": 9,
-    "done": 8,
+    "done": 9,
     "blocked": 0,
     "doing": 0,
-    "review": 1,
+    "review": 0,
     "todo": 0,
-    "percent": 89
+    "percent": 100
   }
 }
 </script>

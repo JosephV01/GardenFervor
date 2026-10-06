@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T9-S3**.
+Dernière entrée historique : **2026-10-07 — T9-CLOSE**.
 
 ---
 
@@ -198,6 +198,17 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-07 — T9-CLOSE — Preuve S3 Cas A VALIDÉ (clôture documentaire)
+
+- **Intention :** enregistrer la validation humaine PIE + audit final PASS ; roadmap T9 → VALIDÉ ; sync `docs/index.html`.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay supplémentaire** · **aucun travail suivant démarré**
+- **Preuve PIE :** `gf.Project.SmokeCohortS3` → ok=1 · Intention→Analyze→WorkSite AlreadyReady→U1 Extract Timber→A→U2 Withdraw/cargo/Deposit B→U3 Complete→En service→obs PE
+- **UnrealEditor-Cmd :** interrompu au lancement — **non bloquant** ; preuve fonctionnelle = smoke PIE uniquement
+- **Roadmap :** **9/9 VALIDÉ (100 %)** · `nextSliceId=null` · cohorte S3 Cas A **clôturée**
+- **LinkedPitStockId :** conserve identité Stock A PE · risque sémantique Pit/LevelPad documenté · **ne pas renommer**
+- **Design Gate :** aucune modification
+- **Suite :** aucun travail gameplay hors ordre explicite
 
 ### 2026-10-07 — T9-S3 — Preuve end-to-end cohorte Cas A (VALIDATION)
 
