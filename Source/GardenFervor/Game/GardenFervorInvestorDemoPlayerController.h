@@ -28,7 +28,13 @@ public:
 
 	bool GetMouseViewportPosition(FVector2D& OutPos) const;
 
+	/** Étape 3 — one-shot: run real S3 Cas A T1→T9 path + refresh placeholders. */
+	UFUNCTION(Exec, Category = "RTS|InvestorDemo")
+	void InvestorDemoRunS3();
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "RTS|Selection")
 	TObjectPtr<UGardenFervorSelectionComponent> SelectionComponent;
+
+	bool bInvestorDemoS3Ran = false;
 };

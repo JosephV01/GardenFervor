@@ -1,7 +1,9 @@
 # GardenFervor — Investor Demo
 
-**Étape actuelle :** 2B + **P0 isolement runtime = VALIDÉ**  
-**Statut :** scène + runtime Demo isolé · validation humaine PIE confirmée · **aucun branchement T1→T9** · étape 3 **non démarrée**  
+**Étape actuelle :** **3 — VALIDÉ** (branchement + présentation S3 Cas A)  
+**Statut :** P0 VALIDÉ · étape 3 VALIDÉE (technique + humaine) · cinématique / UI riche **non démarrées**  
+
+
 **Preuve gameplay sous-jacente :** cohorte S3 Cas A · Roadmap **T1→T9 = 9/9 VALIDÉ (100 %)** · Design Gate / Roadmap T1→T9 **inchangés**  
 **Dépôt :** `C:\Users\sahel\Documents\Unreal Projects\GardenFervor` · remote `https://github.com/JosephV01/GardenFervor.git`  
 **Scène Unreal :** `/Game/GardenFervor/InvestorDemo/L_InvestorDemo_S3`  
@@ -118,8 +120,7 @@ Enregistré pour une étape ultérieure — **non corrigé** à la clôture éta
 | GameMode Island | `AGardenFervorGameMode` **inchangé** |
 | Absents observés | TC · Worker · ResourceNodes · HUD FWSG · Ages · BuildMenu · LevelPad |
 | T1→T9 / Design Gate / Roadmap | **Inchangés** |
-| Étape 3 | **Non démarrée** |
-| Anomalie `.umap` ~178 Mo | **Non traitée** (sujet séparé) |
+| Étape 3 | **VALIDÉ** (voir §12) |
 
 ---
 
@@ -174,7 +175,24 @@ Statuts T1→T9 **non modifiés** par cette démo.
 
 ---
 
-## 12. Prochaines étapes
+## 12. Étape 3 — VALIDÉE
 
-P0 clôturé.  
-Étape 3 (branchement / animation / UI d’état) : **non démarrée** — uniquement sur ordre explicite.
+| Champ | État |
+| --- | --- |
+| Statut | **VALIDÉ** |
+| Objectif | Brancher `L_InvestorDemo_S3` sur le vrai parcours S3 Cas A |
+| Déclenchement | **F8** en PIE · ou `gf.InvestorDemo.RunS3` · ou `InvestorDemoRunS3` |
+| Parcours | Intention→Project→Analyze→WorkSite AlreadyReady→U1 Extract Timber→A→U2 Haul→B→U3 Complete→En service |
+| Présentation | Async (`AGardenFervorInvestorDemoS3Director`) · PH_* sur Landscape · labels face caméra · U1/U2/U3 différenciés · déplacements réels |
+| Autorité | Project / Task / UnitTaskAgent / PhysicalEconomy (**pas de miroir**) |
+| Terraform | **Aucun** — Case A site déjà prêt |
+| Mobilité PH_/LBL_ | Warnings Movable corrigés (présentation ciblée) |
+| Validation technique | `ok=1 · PeakA=1.0 · A=0.0 · B=1.0 · Complete=1 · EnService=1 · PE live` |
+| Validation humaine PIE | **PASS** |
+
+Pont code : `FGardenFervorInvestorDemoS3Bridge` + `AGardenFervorInvestorDemoS3Director` (`Source/GardenFervor/Game/`).
+
+## 13. Prochaines étapes
+
+Étape 3 clôturée.  
+Étapes ultérieures (cinématique / UI riche) : **non démarrées**.

@@ -1,6 +1,6 @@
 # Scenes
 
-## Scène dédiée — étape 2 VALIDÉE · P0 runtime VALIDÉ
+## Scène dédiée — étape 2 VALIDÉE · P0 VALIDÉ · étape 3 VALIDÉE
 
 | Champ | Valeur |
 | --- | --- |
@@ -9,10 +9,11 @@
 | Fichier | `Content/GardenFervor/InvestorDemo/L_InvestorDemo_S3.umap` |
 | Validation visuelle | **Confirmée** (humain) |
 | P0 isolement runtime | **VALIDÉ** (humain) — aucun boot AoE legacy |
-| Versionnement Git | **Oui** — `Content/GardenFervor/InvestorDemo/` (étape 2B) |
-| Git LFS | Non requis (assets ≈ 165 Ko) |
+| Étape 3 S3 | **VALIDÉ** (humain) — parcours + présentation Cas A |
+| Versionnement Git | **Oui** — `Content/GardenFervor/InvestorDemo/` |
+| Git LFS | `L_InvestorDemo_S3.umap` (règle fichier spécifique) |
 | GameMode PIE | `GardenFervorInvestorDemoGameMode` (prefix `L_InvestorDemo`) |
-| Gameplay T1→T9 | Non branché · étape 3 non démarrée |
+| Gameplay T1→T9 | Branché — F8 / `gf.InvestorDemo.RunS3` · Case A **sans Terraform** |
 
 **Ne pas modifier** `GardenFervorIsland` pour cette démo (`AGardenFervorGameMode` inchangé).
 
@@ -21,6 +22,9 @@
 1. Ouvrir `GardenFervorEditor`.
 2. Content Browser → `GardenFervor/InvestorDemo/L_InvestorDemo_S3`.
 3. PIE : `GardenFervorInvestorDemoGameMode` → `AGardenFervorStrategyPawn` depuis `Demo_PlayerStart_Overview`.
+4. Déclencher le parcours : **F8** (ou console `gf.InvestorDemo.RunS3`).
+5. Observer ~10–20 s : PH_* / labels / unités colorées qui se déplacent (parcours async).
+6. Log attendu : `ok=1 · PeakA=1.0 · B=1.0 · Complete=1 EnService=1` · Case A sans Terraform.
 
 ### Chaîne visuelle validée
 

@@ -33,9 +33,9 @@ Organisation spatiale validée :
           [EN SERVICE]
 ```
 
-HUD / états futurs : plan réservé (coin NW).  
-Placeholders présents · **T1→T9 non branchés**.  
-Polish futur : certains `TextRender` inversés selon la vue (non bloquant).
+HUD / états : plan réservé (coin NW) — mis à jour live.  
+Placeholders + **étape 3 VALIDÉE** : F8 / `gf.InvestorDemo.RunS3` · Case A sans Terraform · validation humaine **PASS**.  
+Polish éventuel labels : hors clôture étape 3.
 
 ---
 

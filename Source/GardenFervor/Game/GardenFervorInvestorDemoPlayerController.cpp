@@ -2,8 +2,11 @@
 
 #include "GardenFervorInvestorDemoPlayerController.h"
 
+#include "GardenFervorInvestorDemoS3Bridge.h"
 #include "GardenFervorSelectionComponent.h"
 #include "Blueprint/WidgetLayoutLibrary.h"
+
+DEFINE_LOG_CATEGORY_STATIC(LogGardenFervorInvestorDemoPC, Log, All);
 
 AGardenFervorInvestorDemoPlayerController::AGardenFervorInvestorDemoPlayerController()
 {
@@ -26,13 +29,40 @@ void AGardenFervorInvestorDemoPlayerController::BeginPlay()
 	SetInputMode(InputMode);
 
 	// Intentionally no FWSG CreateHUD / BuildMenu / Ages / LevelPad.
+	UE_LOG(LogGardenFervorInvestorDemoPC, Log,
+		TEXT("InvestorDemo PC ready — press F8 or: InvestorDemoRunS3 / gf.InvestorDemo.RunS3"));
+}
+
+void AGardenFervorInvestorDemoPlayerController::InvestorDemoRunS3()
+{
+	if (bInvestorDemoS3Ran)
+	{
+		UE_LOG(LogGardenFervorInvestorDemoPC, Warning,
+			TEXT("InvestorDemo S3 already started this session (one-shot)"));
+		return;
+	}
+
+	FString Msg;
+	const bool bStarted = FGardenFervorInvestorDemoS3Bridge::RunS3CasA(GetWorld(), Msg);
+	bInvestorDemoS3Ran = bStarted;
+	UE_LOG(LogGardenFervorInvestorDemoPC, Display, TEXT("%s"), *Msg);
 }
 
 void AGardenFervorInvestorDemoPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
 
-	if (!SelectionComponent || !IsLocalController())
+	if (!IsLocalController())
+	{
+		return;
+	}
+
+	if (WasInputKeyJustPressed(EKeys::F8))
+	{
+		InvestorDemoRunS3();
+	}
+
+	if (!SelectionComponent)
 	{
 		return;
 	}
