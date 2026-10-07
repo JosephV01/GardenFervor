@@ -73,16 +73,19 @@ Risque sémantique Pit/LevelPad documenté en Roadmap — **ne pas renommer** da
 | `.gitattributes` | Aucun · non nécessaire |
 | Reproductibilité | clone → ouvrir `L_InvestorDemo_S3` · meshes = Engine BasicShapes |
 
-## P0 — isolement runtime
+## P0 — isolement runtime = VALIDÉ
 
 | Élément | Valeur |
 | --- | --- |
-| GameMode | `AGardenFervorInvestorDemoGameMode` |
+| Statut | **VALIDÉ** (validation humaine PIE confirmée) |
+| GameMode | `AGardenFervorInvestorDemoGameMode` (opérationnel) |
 | PlayerController | `AGardenFervorInvestorDemoPlayerController` |
 | Pawn | `AGardenFervorStrategyPawn` (réutilisé) |
 | Binding | `Config/DefaultEngine.ini` → `+GameModeMapPrefixes=(Prefix="L_InvestorDemo",…)` |
-| Island | `AGardenFervorGameMode` inchangé |
+| Island | `AGardenFervorGameMode` **inchangé** |
 
-**Absents du boot Demo :** TC · Worker · ResourceNodes · init FWSG · Ages · HUD FWSG · BuildMenu · LevelPad · BeginPlace.  
-**Non branché :** T1→T9 (étape 3).  
+**Absents du boot Demo (confirmés en PIE) :** TC · Worker · ResourceNodes · init FWSG · Ages · HUD FWSG · BuildMenu · LevelPad · BeginPlace.  
+**Inchangés :** T1→T9 · Design Gate · Roadmap T1→T9.  
+**Étape 3 :** non démarrée.  
+**Anomalie `.umap` ~178 Mo :** non traitée.  
 Helper éditeur optionnel : `Content/Python/set_investor_demo_gamemode.py` (World Settings local — ne pas confondre avec le commit umap Landscape).

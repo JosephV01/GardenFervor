@@ -1,6 +1,6 @@
 # Scenes
 
-## Scène dédiée — étape 2 VALIDÉE
+## Scène dédiée — étape 2 VALIDÉE · P0 runtime VALIDÉ
 
 | Champ | Valeur |
 | --- | --- |
@@ -8,18 +8,19 @@
 | Chemin Unreal | `/Game/GardenFervor/InvestorDemo/L_InvestorDemo_S3` |
 | Fichier | `Content/GardenFervor/InvestorDemo/L_InvestorDemo_S3.umap` |
 | Validation visuelle | **Confirmée** (humain) |
+| P0 isolement runtime | **VALIDÉ** (humain) — aucun boot AoE legacy |
 | Versionnement Git | **Oui** — `Content/GardenFervor/InvestorDemo/` (étape 2B) |
 | Git LFS | Non requis (assets ≈ 165 Ko) |
 | GameMode PIE | `GardenFervorInvestorDemoGameMode` (prefix `L_InvestorDemo`) |
-| Gameplay T1→T9 | Non branché |
+| Gameplay T1→T9 | Non branché · étape 3 non démarrée |
 
-**Ne pas modifier** `GardenFervorIsland` pour cette démo.
+**Ne pas modifier** `GardenFervorIsland` pour cette démo (`AGardenFervorGameMode` inchangé).
 
 ### Ouverture
 
 1. Ouvrir `GardenFervorEditor`.
 2. Content Browser → `GardenFervor/InvestorDemo/L_InvestorDemo_S3`.
-3. PIE : `GardenFervorGameMode` → `AGardenFervorStrategyPawn` depuis `Demo_PlayerStart_Overview`.
+3. PIE : `GardenFervorInvestorDemoGameMode` → `AGardenFervorStrategyPawn` depuis `Demo_PlayerStart_Overview`.
 
 ### Chaîne visuelle validée
 

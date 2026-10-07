@@ -1,12 +1,12 @@
 # GardenFervor — Investor Demo
 
-**Étape actuelle :** 2B + **P0 isolement runtime**  
-**Statut :** scène visuelle + runtime Demo dédié · **aucun branchement T1→T9** · étape 3 non démarrée  
-**Preuve gameplay sous-jacente :** cohorte S3 Cas A · Roadmap **T1→T9 = 9/9 VALIDÉ (100 %)**  
+**Étape actuelle :** 2B + **P0 isolement runtime = VALIDÉ**  
+**Statut :** scène + runtime Demo isolé · validation humaine PIE confirmée · **aucun branchement T1→T9** · étape 3 **non démarrée**  
+**Preuve gameplay sous-jacente :** cohorte S3 Cas A · Roadmap **T1→T9 = 9/9 VALIDÉ (100 %)** · Design Gate / Roadmap T1→T9 **inchangés**  
 **Dépôt :** `C:\Users\sahel\Documents\Unreal Projects\GardenFervor` · remote `https://github.com/JosephV01/GardenFervor.git`  
 **Scène Unreal :** `/Game/GardenFervor/InvestorDemo/L_InvestorDemo_S3`  
-**Runtime Demo :** `AGardenFervorInvestorDemoGameMode` + `AGardenFervorInvestorDemoPlayerController`  
-**Binding map :** `DefaultEngine.ini` → `GameModeMapPrefixes` Prefix=`L_InvestorDemo` (Island inchangé)
+**Runtime Demo :** `AGardenFervorInvestorDemoGameMode` + `AGardenFervorInvestorDemoPlayerController` (opérationnel)  
+**Binding map :** `DefaultEngine.ini` → `GameModeMapPrefixes` Prefix=`L_InvestorDemo` · `AGardenFervorGameMode` (Island) **inchangé**
 
 ---
 
@@ -107,6 +107,22 @@ Enregistré pour une étape ultérieure — **non corrigé** à la clôture éta
 
 ---
 
+## 6bis. P0 — isolement runtime = VALIDÉ
+
+| Champ | État |
+| --- | --- |
+| Statut | **VALIDÉ** |
+| Validation humaine PIE | **Confirmée** — scène lisible · placeholders présents · boot legacy absent |
+| GameMode Demo | `AGardenFervorInvestorDemoGameMode` opérationnel |
+| PlayerController Demo | `AGardenFervorInvestorDemoPlayerController` |
+| GameMode Island | `AGardenFervorGameMode` **inchangé** |
+| Absents observés | TC · Worker · ResourceNodes · HUD FWSG · Ages · BuildMenu · LevelPad |
+| T1→T9 / Design Gate / Roadmap | **Inchangés** |
+| Étape 3 | **Non démarrée** |
+| Anomalie `.umap` ~178 Mo | **Non traitée** (sujet séparé) |
+
+---
+
 ## 7. Scénario T1→T9 (résumé)
 
 Voir `Documentation/SCENARIO_T1_T9.md`. Disposition : `Placeholders/LAYOUT.md`.
@@ -160,4 +176,5 @@ Statuts T1→T9 **non modifiés** par cette démo.
 
 ## 12. Prochaines étapes
 
+P0 clôturé.  
 Étape 3 (branchement / animation / UI d’état) : **non démarrée** — uniquement sur ordre explicite.
