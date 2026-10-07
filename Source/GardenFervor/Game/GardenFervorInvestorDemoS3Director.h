@@ -11,10 +11,12 @@
 class AGardenFervorUnitBase;
 class ATextRenderActor;
 class UStaticMeshComponent;
+class UGardenFervorInvestorDemoPresentationWidget;
 
 /**
- * Investor Demo étape 3 — présentation asynchrone (Tick).
+ * Investor Demo — présentation asynchrone (Tick).
  * Orchestrates real T1→T9 APIs across frames so movement / PH feedback are visible.
+ * Étape 4: caméra guidée + beats lisibles + UI légère (sans simuler le gameplay).
  */
 UCLASS()
 class GARDENFERVOR_API AGardenFervorInvestorDemoS3Director : public AActor
@@ -25,6 +27,7 @@ public:
 	AGardenFervorInvestorDemoS3Director();
 
 	virtual void Tick(float DeltaSeconds) override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 	/** Start (or restart) the demo presentation. */
 	void StartPresentation();
@@ -45,6 +48,23 @@ protected:
 		Done
 	};
 
+	/** Investor-facing beats — derived from real systems, never invent events. */
+	enum class EPresentationBeat : uint8
+	{
+		Idle = 0,
+		Intention,
+		Project,
+		Analyse,
+		WorkSite,
+		Extraction,
+		Transport,
+		StockB,
+		Construction,
+		Acheve,
+		EnService,
+		Conclusion
+	};
+
 	void Advance(float DeltaSeconds);
 	void EnterPhase(EPhase NewPhase);
 	bool ResolvePresentationActors();
@@ -62,11 +82,29 @@ protected:
 	ATextRenderActor* FindLabel(const TCHAR* Key) const;
 	bool SampleLandscape(const FVector& ApproxXY, FVector& OutLocation) const;
 
+	void SetPresentationBeat(EPresentationBeat NewBeat, const FString& Detail);
+	void SetCameraFocus(const FVector& WorldXY, float ArmLength);
+	void UpdateCamera(float DeltaSeconds);
+	void EnsurePresentationWidget();
+	void RefreshPresentationWidget();
+	void TearDownPresentationWidget();
+	static void GetBeatMeta(EPresentationBeat Beat, int32& OutStep, FString& OutTitle);
+
 	EPhase Phase = EPhase::Idle;
 	float PhaseTimer = 0.f;
 	bool bRunning = false;
 	bool bSucceeded = false;
 	float PeakStockA = 0.f;
+
+	bool bCreateProjectApiDone = false;
+	bool bExpandApiDone = false;
+	bool bFinishLogged = false;
+	bool bDriveCamera = false;
+
+	EPresentationBeat PresentationBeat = EPresentationBeat::Idle;
+	FString PresentationDetail;
+	FVector CameraFocusXY = FVector::ZeroVector;
+	float CameraArmLength = 3200.f;
 
 	FGardenFervorProjectId ProjectId;
 	FVector WorkSiteCenter = FVector::ZeroVector;
@@ -84,4 +122,7 @@ protected:
 	TMap<FName, TObjectPtr<ATextRenderActor>> LabelByKey;
 	UPROPERTY()
 	TMap<FName, FVector> PlaceholderBaseScale;
+
+	UPROPERTY()
+	TObjectPtr<UGardenFervorInvestorDemoPresentationWidget> PresentationWidget;
 };

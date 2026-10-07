@@ -29,7 +29,7 @@ void AGardenFervorInvestorDemoGameMode::BeginPlay()
 	}
 
 	UE_LOG(LogGardenFervorInvestorDemo, Log,
-		TEXT("InvestorDemo GameMode ready — no TC/Worker/ResourceNodes/FWSG HUD/Ages boot · étape3: F8 / gf.InvestorDemo.RunS3"));
+		TEXT("InvestorDemo GameMode ready — no TC/Worker/ResourceNodes/FWSG HUD/Ages boot · F8 / gf.InvestorDemo.RunS3"));
 }
 
 APlayerController* AGardenFervorInvestorDemoGameMode::SpawnPlayerController(

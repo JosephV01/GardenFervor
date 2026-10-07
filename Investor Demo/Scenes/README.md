@@ -1,6 +1,6 @@
 # Scenes
 
-## Scène dédiée — étape 2 VALIDÉE · P0 VALIDÉ · étape 3 VALIDÉE
+## Scène dédiée — étape 2 · P0 · étape 3 · étape 4 = VALIDÉES
 
 | Champ | Valeur |
 | --- | --- |
@@ -10,6 +10,7 @@
 | Validation visuelle | **Confirmée** (humain) |
 | P0 isolement runtime | **VALIDÉ** (humain) — aucun boot AoE legacy |
 | Étape 3 S3 | **VALIDÉ** (humain) — parcours + présentation Cas A |
+| Étape 4 présentation | **VALIDÉ** (humain) — caméra · 10 beats · overlay compact haut-gauche |
 | Versionnement Git | **Oui** — `Content/GardenFervor/InvestorDemo/` |
 | Git LFS | `L_InvestorDemo_S3.umap` (règle fichier spécifique) |
 | GameMode PIE | `GardenFervorInvestorDemoGameMode` (prefix `L_InvestorDemo`) |
@@ -23,12 +24,12 @@
 2. Content Browser → `GardenFervor/InvestorDemo/L_InvestorDemo_S3`.
 3. PIE : `GardenFervorInvestorDemoGameMode` → `AGardenFervorStrategyPawn` depuis `Demo_PlayerStart_Overview`.
 4. Déclencher le parcours : **F8** (ou console `gf.InvestorDemo.RunS3`).
-5. Observer ~10–20 s : PH_* / labels / unités colorées qui se déplacent (parcours async).
+5. Observer : caméra guidée · overlay haut-gauche · unités colorées · parcours async.
 6. Log attendu : `ok=1 · PeakA=1.0 · B=1.0 · Complete=1 EnService=1` · Case A sans Terraform.
 
 ### Chaîne visuelle validée
 
-`Intention → Project → WorkSite → U1 → Stock A → U2 → Stock B → U3 → En service`
+`Intention → Project → Analyse → WorkSite → U1 → Stock A → U2 → Stock B → U3 → Achevé → En service`
 
 ### Polish futur (non bloquant)
 

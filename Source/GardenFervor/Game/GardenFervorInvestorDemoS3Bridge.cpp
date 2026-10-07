@@ -62,7 +62,7 @@ void FGardenFervorInvestorDemoS3Bridge::RefreshPlaceholderLabels(
 
 static FAutoConsoleCommandWithWorld GGardenFervorInvestorDemoRunS3Cmd(
 	TEXT("gf.InvestorDemo.RunS3"),
-	TEXT("Investor Demo étape 3: start async S3 Cas A T1→T9 presentation (PE live)"),
+	TEXT("Investor Demo: start async S3 Cas A T1→T9 presentation (PE live · étape4 camera/UI)"),
 	FConsoleCommandWithWorldDelegate::CreateLambda([](UWorld* World)
 	{
 		FString Msg;

@@ -1,7 +1,7 @@
 # GardenFervor — Investor Demo
 
-**Étape actuelle :** **3 — VALIDÉ** (branchement + présentation S3 Cas A)  
-**Statut :** P0 VALIDÉ · étape 3 VALIDÉE (technique + humaine) · cinématique / UI riche **non démarrées**  
+**Étape actuelle :** **4 — VALIDÉ** (présentation investisseur)  
+**Statut :** P0 VALIDÉ · étapes 3–4 VALIDÉES · cinématique / assets finaux / Case B **non démarrés**  
 
 
 **Preuve gameplay sous-jacente :** cohorte S3 Cas A · Roadmap **T1→T9 = 9/9 VALIDÉ (100 %)** · Design Gate / Roadmap T1→T9 **inchangés**  
@@ -121,6 +121,7 @@ Enregistré pour une étape ultérieure — **non corrigé** à la clôture éta
 | Absents observés | TC · Worker · ResourceNodes · HUD FWSG · Ages · BuildMenu · LevelPad |
 | T1→T9 / Design Gate / Roadmap | **Inchangés** |
 | Étape 3 | **VALIDÉ** (voir §12) |
+| Étape 4 | **VALIDÉ** (voir §14) |
 
 ---
 
@@ -194,5 +195,23 @@ Pont code : `FGardenFervorInvestorDemoS3Bridge` + `AGardenFervorInvestorDemoS3Di
 
 ## 13. Prochaines étapes
 
-Étape 3 clôturée.  
-Étapes ultérieures (cinématique / UI riche) : **non démarrées**.
+Étape 4 clôturée.  
+Étapes ultérieures (cinématique / assets finaux / Terraform Case B) : **non démarrées**.
+
+## 14. Étape 4 — VALIDÉE
+
+| Champ | État |
+| --- | --- |
+| Statut | **VALIDÉ** |
+| Objectif | Présentation investisseur lisible sans changer le parcours T1→T9 |
+| Caméra | Guidée (focus interpolé sur les beats / unités / stocks) |
+| Beats 1–10 | Intention · Projet · Analyse · WorkSite · Extraction · Transport · Stock B · Construction · Achevé · En service |
+| UI | Overlay léger `UGardenFervorInvestorDemoPresentationWidget` — carte **haut-gauche** compacte (~320 px) |
+| Overlay final | Scène dominante · N/10 + pastilles + PE `A/B/C/S` + statut / `EN SERVICE` |
+| Rythme | Pauses Intention / Projet / Analyse / WorkSite / spawn + hold conclusion |
+| Conclusion | Vue d’ensemble + indicateur En service |
+| Autorité | Inchangée — APIs T1→T9 réelles · **pas de simulation** |
+| Terraform | **Aucun** — Case A |
+| Validation humaine | **PASS** (après correctif overlay) |
+
+Gameplay S3 / T1→T9 / Design Gate / Roadmap / `GardenFervorIsland` : **inchangés**.

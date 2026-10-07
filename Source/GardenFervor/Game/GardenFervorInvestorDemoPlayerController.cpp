@@ -30,7 +30,7 @@ void AGardenFervorInvestorDemoPlayerController::BeginPlay()
 
 	// Intentionally no FWSG CreateHUD / BuildMenu / Ages / LevelPad.
 	UE_LOG(LogGardenFervorInvestorDemoPC, Log,
-		TEXT("InvestorDemo PC ready — press F8 or: InvestorDemoRunS3 / gf.InvestorDemo.RunS3"));
+		TEXT("InvestorDemo PC ready — F8 / InvestorDemoRunS3 / gf.InvestorDemo.RunS3 (étape4 présentation)"));
 }
 
 void AGardenFervorInvestorDemoPlayerController::InvestorDemoRunS3()

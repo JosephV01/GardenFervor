@@ -87,5 +87,6 @@ Risque sémantique Pit/LevelPad documenté en Roadmap — **ne pas renommer** da
 **Absents du boot Demo (confirmés en PIE) :** TC · Worker · ResourceNodes · init FWSG · Ages · HUD FWSG · BuildMenu · LevelPad · BeginPlace.  
 **Inchangés :** T1→T9 · Design Gate · Roadmap T1→T9.  
 **Étape 3 :** **VALIDÉ** — `FGardenFervorInvestorDemoS3Bridge` + `AGardenFervorInvestorDemoS3Director` · `gf.InvestorDemo.RunS3` / F8 · APIs T1→T9 réelles · Case A sans Terraform · validation humaine PIE **PASS**.  
+**Étape 4 :** **VALIDÉ** — caméra guidée · 10 beats · UI légère (carte haut-gauche) · pauses · conclusion · correctif overlay · validation humaine **PASS**. Gameplay T1→T9 inchangé.  
 **Git LFS :** `L_InvestorDemo_S3.umap` tracké spécifiquement (pas `*.umap` global).  
 Helper éditeur optionnel : `Content/Python/set_investor_demo_gamemode.py`.

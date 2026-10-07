@@ -33,9 +33,9 @@ Organisation spatiale validée :
           [EN SERVICE]
 ```
 
-HUD / états : plan réservé (coin NW) — mis à jour live.  
-Placeholders + **étape 3 VALIDÉE** : F8 / `gf.InvestorDemo.RunS3` · Case A sans Terraform · validation humaine **PASS**.  
-Polish éventuel labels : hors clôture étape 3.
+HUD / états : overlay compact haut-gauche (étape 4) — N/10 · PE live · statut.  
+Placeholders + **étapes 3–4 VALIDÉES** : F8 / `gf.InvestorDemo.RunS3` · Case A sans Terraform · caméra guidée · 10 beats · validation humaine **PASS**.  
+Polish éventuel labels TextRender : hors clôture étape 4.
 
 ---
 
