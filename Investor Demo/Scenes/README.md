@@ -1,6 +1,6 @@
 # Scenes
 
-## Scène dédiée — étape 2 · P0 · étape 3 · étape 4 = VALIDÉES
+## Scène dédiée — étapes 2 · P0 · 3 · 4 · 5 = VALIDÉES
 
 | Champ | Valeur |
 | --- | --- |
@@ -11,10 +11,11 @@
 | P0 isolement runtime | **VALIDÉ** (humain) — aucun boot AoE legacy |
 | Étape 3 S3 | **VALIDÉ** (humain) — parcours + présentation Cas A |
 | Étape 4 présentation | **VALIDÉ** (humain) — caméra · 10 beats · overlay compact haut-gauche |
+| Étape 5 narration | **VALIDÉ** (humain) — racontable · autonomie · bouton de lancement |
 | Versionnement Git | **Oui** — `Content/GardenFervor/InvestorDemo/` |
 | Git LFS | `L_InvestorDemo_S3.umap` (règle fichier spécifique) |
 | GameMode PIE | `GardenFervorInvestorDemoGameMode` (prefix `L_InvestorDemo`) |
-| Gameplay T1→T9 | Branché — F8 / `gf.InvestorDemo.RunS3` · Case A **sans Terraform** |
+| Gameplay T1→T9 | Branché — bouton / F8 / `gf.InvestorDemo.RunS3` · Case A **sans Terraform** |
 
 **Ne pas modifier** `GardenFervorIsland` pour cette démo (`AGardenFervorGameMode` inchangé).
 
@@ -23,8 +24,8 @@
 1. Ouvrir `GardenFervorEditor`.
 2. Content Browser → `GardenFervor/InvestorDemo/L_InvestorDemo_S3`.
 3. PIE : `GardenFervorInvestorDemoGameMode` → `AGardenFervorStrategyPawn` depuis `Demo_PlayerStart_Overview`.
-4. Déclencher le parcours : **F8** (ou console `gf.InvestorDemo.RunS3`).
-5. Observer : caméra guidée · overlay haut-gauche · unités colorées · parcours async.
+4. Déclencher : bouton **LANCER LA DÉMONSTRATION** (ou F8 / `gf.InvestorDemo.RunS3`) — one-shot.
+5. Observer : narration · caméra guidée · overlay haut-gauche · unités autonomes · parcours async.
 6. Log attendu : `ok=1 · PeakA=1.0 · B=1.0 · Complete=1 EnService=1` · Case A sans Terraform.
 
 ### Chaîne visuelle validée

@@ -16,7 +16,7 @@ class UGardenFervorInvestorDemoPresentationWidget;
 /**
  * Investor Demo — présentation asynchrone (Tick).
  * Orchestrates real T1→T9 APIs across frames so movement / PH feedback are visible.
- * Étape 4: caméra guidée + beats lisibles + UI légère (sans simuler le gameplay).
+ * Étape 4–5: caméra guidée + beats narratifs + UI légère (sans simuler le gameplay).
  */
 UCLASS()
 class GARDENFERVOR_API AGardenFervorInvestorDemoS3Director : public AActor
@@ -88,6 +88,7 @@ protected:
 	void EnsurePresentationWidget();
 	void RefreshPresentationWidget();
 	void TearDownPresentationWidget();
+	void HighlightAutonomousUnit(AGardenFervorUnitBase* ActiveUnit);
 	static void GetBeatMeta(EPresentationBeat Beat, int32& OutStep, FString& OutTitle);
 
 	EPhase Phase = EPhase::Idle;

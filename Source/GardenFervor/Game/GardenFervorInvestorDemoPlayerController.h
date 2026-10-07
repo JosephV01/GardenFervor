@@ -7,6 +7,7 @@
 #include "GardenFervorInvestorDemoPlayerController.generated.h"
 
 class UGardenFervorSelectionComponent;
+class UGardenFervorInvestorDemoLaunchWidget;
 
 /**
  * Investor Demo — RTS control without FWSG HUD / BeginPlace / Ages UI.
@@ -21,6 +22,7 @@ public:
 	AGardenFervorInvestorDemoPlayerController();
 
 	virtual void BeginPlay() override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 	virtual void PlayerTick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintPure, Category = "RTS|Selection")
@@ -28,13 +30,25 @@ public:
 
 	bool GetMouseViewportPosition(FVector2D& OutPos) const;
 
-	/** Étape 3 — one-shot: run real S3 Cas A T1→T9 path + refresh placeholders. */
+	/** One-shot: same entry as gf.InvestorDemo.RunS3 / F8. */
 	UFUNCTION(Exec, Category = "RTS|InvestorDemo")
 	void InvestorDemoRunS3();
 
+	/** Called when S3 starts (button / F8 / console) so the launch button hides. */
+	void NotifyDemoS3Started();
+
 protected:
+	void EnsureLaunchWidget();
+	void HideLaunchWidget();
+
+	UFUNCTION()
+	void HandleLaunchButtonClicked();
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "RTS|Selection")
 	TObjectPtr<UGardenFervorSelectionComponent> SelectionComponent;
+
+	UPROPERTY()
+	TObjectPtr<UGardenFervorInvestorDemoLaunchWidget> LaunchWidget;
 
 	bool bInvestorDemoS3Ran = false;
 };

@@ -33,9 +33,10 @@ Organisation spatiale validée :
           [EN SERVICE]
 ```
 
-HUD / états : overlay compact haut-gauche (étape 4) — N/10 · PE live · statut.  
-Placeholders + **étapes 3–4 VALIDÉES** : F8 / `gf.InvestorDemo.RunS3` · Case A sans Terraform · caméra guidée · 10 beats · validation humaine **PASS**.  
-Polish éventuel labels TextRender : hors clôture étape 4.
+HUD / états : overlay compact haut-gauche — N/10 · narration · Bois A/B · Achevé / En service.  
+Déclenchement : bouton **LANCER LA DÉMONSTRATION** (ou F8 / console) · one-shot.  
+Placeholders + **étapes 3–5 VALIDÉES** : Case A sans Terraform · caméra guidée · narration cause/action/résultat · autonomie · validation humaine **PASS**.  
+Polish éventuel labels TextRender : hors clôture étape 5.
 
 ---
 

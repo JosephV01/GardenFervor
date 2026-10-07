@@ -12,8 +12,8 @@ class UCanvasPanel;
 class USizeBox;
 
 /**
- * Investor Demo étape 4 — overlay compact (coin écran), pas un HUD gameplay.
- * Priorité : scène / unités visibles · infos N/10 + PE + état final lisibles.
+ * Investor Demo — overlay compact (coin écran), pas un HUD gameplay.
+ * Étape 5 : titres / statut orientés narration investisseur (sans jargon technique).
  */
 UCLASS()
 class GARDENFERVOR_API UGardenFervorInvestorDemoPresentationWidget : public UUserWidget

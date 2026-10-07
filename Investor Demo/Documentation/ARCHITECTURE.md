@@ -88,5 +88,6 @@ Risque sémantique Pit/LevelPad documenté en Roadmap — **ne pas renommer** da
 **Inchangés :** T1→T9 · Design Gate · Roadmap T1→T9.  
 **Étape 3 :** **VALIDÉ** — `FGardenFervorInvestorDemoS3Bridge` + `AGardenFervorInvestorDemoS3Director` · `gf.InvestorDemo.RunS3` / F8 · APIs T1→T9 réelles · Case A sans Terraform · validation humaine PIE **PASS**.  
 **Étape 4 :** **VALIDÉ** — caméra guidée · 10 beats · UI légère (carte haut-gauche) · pauses · conclusion · correctif overlay · validation humaine **PASS**. Gameplay T1→T9 inchangé.  
+**Étape 5 :** **VALIDÉ** — narration accessible · cause/action/résultat · autonomie mise en évidence · bouton **LANCER LA DÉMONSTRATION** → `RunS3CasA` · one-shot · validation humaine **PASS**.  
 **Git LFS :** `L_InvestorDemo_S3.umap` tracké spécifiquement (pas `*.umap` global).  
 Helper éditeur optionnel : `Content/Python/set_investor_demo_gamemode.py`.

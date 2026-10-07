@@ -2,8 +2,10 @@
 
 #include "GardenFervorInvestorDemoPlayerController.h"
 
+#include "GardenFervorInvestorDemoLaunchWidget.h"
 #include "GardenFervorInvestorDemoS3Bridge.h"
 #include "GardenFervorSelectionComponent.h"
+#include "Blueprint/UserWidget.h"
 #include "Blueprint/WidgetLayoutLibrary.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogGardenFervorInvestorDemoPC, Log, All);
@@ -28,15 +30,70 @@ void AGardenFervorInvestorDemoPlayerController::BeginPlay()
 	InputMode.SetWidgetToFocus(nullptr);
 	SetInputMode(InputMode);
 
+	EnsureLaunchWidget();
+
 	// Intentionally no FWSG CreateHUD / BuildMenu / Ages / LevelPad.
 	UE_LOG(LogGardenFervorInvestorDemoPC, Log,
-		TEXT("InvestorDemo PC ready — F8 / InvestorDemoRunS3 / gf.InvestorDemo.RunS3 (étape4 présentation)"));
+		TEXT("InvestorDemo PC ready — bouton / F8 / gf.InvestorDemo.RunS3"));
+}
+
+void AGardenFervorInvestorDemoPlayerController::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	HideLaunchWidget();
+	if (LaunchWidget)
+	{
+		LaunchWidget->RemoveFromParent();
+		LaunchWidget = nullptr;
+	}
+	Super::EndPlay(EndPlayReason);
+}
+
+void AGardenFervorInvestorDemoPlayerController::EnsureLaunchWidget()
+{
+	if (LaunchWidget || !IsLocalController())
+	{
+		return;
+	}
+
+	LaunchWidget = CreateWidget<UGardenFervorInvestorDemoLaunchWidget>(
+		this, UGardenFervorInvestorDemoLaunchWidget::StaticClass());
+	if (!LaunchWidget)
+	{
+		return;
+	}
+
+	LaunchWidget->AddToViewport(40);
+	LaunchWidget->SetLaunchVisible(true);
+	if (!LaunchWidget->OnLaunchClicked.IsAlreadyBound(this, &ThisClass::HandleLaunchButtonClicked))
+	{
+		LaunchWidget->OnLaunchClicked.AddDynamic(this, &ThisClass::HandleLaunchButtonClicked);
+	}
+}
+
+void AGardenFervorInvestorDemoPlayerController::HideLaunchWidget()
+{
+	if (LaunchWidget)
+	{
+		LaunchWidget->SetLaunchVisible(false);
+	}
+}
+
+void AGardenFervorInvestorDemoPlayerController::HandleLaunchButtonClicked()
+{
+	InvestorDemoRunS3();
+}
+
+void AGardenFervorInvestorDemoPlayerController::NotifyDemoS3Started()
+{
+	bInvestorDemoS3Ran = true;
+	HideLaunchWidget();
 }
 
 void AGardenFervorInvestorDemoPlayerController::InvestorDemoRunS3()
 {
 	if (bInvestorDemoS3Ran)
 	{
+		HideLaunchWidget();
 		UE_LOG(LogGardenFervorInvestorDemoPC, Warning,
 			TEXT("InvestorDemo S3 already started this session (one-shot)"));
 		return;
@@ -44,7 +101,10 @@ void AGardenFervorInvestorDemoPlayerController::InvestorDemoRunS3()
 
 	FString Msg;
 	const bool bStarted = FGardenFervorInvestorDemoS3Bridge::RunS3CasA(GetWorld(), Msg);
-	bInvestorDemoS3Ran = bStarted;
+	if (bStarted)
+	{
+		NotifyDemoS3Started();
+	}
 	UE_LOG(LogGardenFervorInvestorDemoPC, Display, TEXT("%s"), *Msg);
 }
 

@@ -1,7 +1,7 @@
 # GardenFervor — Investor Demo
 
-**Étape actuelle :** **4 — VALIDÉ** (présentation investisseur)  
-**Statut :** P0 VALIDÉ · étapes 3–4 VALIDÉES · cinématique / assets finaux / Case B **non démarrés**  
+**Étape actuelle :** **5 — VALIDÉ** (démonstration racontable)  
+**Statut :** P0 VALIDÉ · étapes 3–5 VALIDÉES · cinématique / assets finaux / Case B **non démarrés**  
 
 
 **Preuve gameplay sous-jacente :** cohorte S3 Cas A · Roadmap **T1→T9 = 9/9 VALIDÉ (100 %)** · Design Gate / Roadmap T1→T9 **inchangés**  
@@ -122,6 +122,7 @@ Enregistré pour une étape ultérieure — **non corrigé** à la clôture éta
 | T1→T9 / Design Gate / Roadmap | **Inchangés** |
 | Étape 3 | **VALIDÉ** (voir §12) |
 | Étape 4 | **VALIDÉ** (voir §14) |
+| Étape 5 | **VALIDÉ** (voir §15) |
 
 ---
 
@@ -182,7 +183,7 @@ Statuts T1→T9 **non modifiés** par cette démo.
 | --- | --- |
 | Statut | **VALIDÉ** |
 | Objectif | Brancher `L_InvestorDemo_S3` sur le vrai parcours S3 Cas A |
-| Déclenchement | **F8** en PIE · ou `gf.InvestorDemo.RunS3` · ou `InvestorDemoRunS3` |
+| Déclenchement | Bouton **LANCER LA DÉMONSTRATION** · **F8** · `gf.InvestorDemo.RunS3` |
 | Parcours | Intention→Project→Analyze→WorkSite AlreadyReady→U1 Extract Timber→A→U2 Haul→B→U3 Complete→En service |
 | Présentation | Async (`AGardenFervorInvestorDemoS3Director`) · PH_* sur Landscape · labels face caméra · U1/U2/U3 différenciés · déplacements réels |
 | Autorité | Project / Task / UnitTaskAgent / PhysicalEconomy (**pas de miroir**) |
@@ -195,7 +196,7 @@ Pont code : `FGardenFervorInvestorDemoS3Bridge` + `AGardenFervorInvestorDemoS3Di
 
 ## 13. Prochaines étapes
 
-Étape 4 clôturée.  
+Étape 5 clôturée.  
 Étapes ultérieures (cinématique / assets finaux / Terraform Case B) : **non démarrées**.
 
 ## 14. Étape 4 — VALIDÉE
@@ -213,5 +214,23 @@ Pont code : `FGardenFervorInvestorDemoS3Bridge` + `AGardenFervorInvestorDemoS3Di
 | Autorité | Inchangée — APIs T1→T9 réelles · **pas de simulation** |
 | Terraform | **Aucun** — Case A |
 | Validation humaine | **PASS** (après correctif overlay) |
+
+Gameplay S3 / T1→T9 / Design Gate / Roadmap / `GardenFervorIsland` : **inchangés**.
+
+## 15. Étape 5 — VALIDÉE
+
+| Champ | État |
+| --- | --- |
+| Statut | **VALIDÉ** |
+| Objectif | Démonstration racontable pour non-technicien (sans changer T1→T9) |
+| Narration | Intention → projet → analyse → chantier prêt → unités autonomes → ressources → Achevé → En service |
+| Cause / action / résultat | Statuts overlay + labels monde orientés résultat (sans jargon API) |
+| Autonomie | Mise en évidence U1/U2/U3 · « pas de pilotage manuel » |
+| Déclenchement | Bouton **LANCER LA DÉMONSTRATION** → `RunS3CasA` (identique F8 / console) |
+| Bouton | Visible au démarrage · bas-centre · masqué après lancement · **one-shot** · pas de replay |
+| Overlay | Compact haut-gauche conservé (étape 4) |
+| Autorité | APIs T1→T9 réelles · **pas de simulation** |
+| Terraform | **Aucun** — Case A |
+| Validation humaine | **PASS** |
 
 Gameplay S3 / T1→T9 / Design Gate / Roadmap / `GardenFervorIsland` : **inchangés**.

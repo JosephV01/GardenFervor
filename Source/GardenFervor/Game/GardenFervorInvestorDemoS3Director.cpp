@@ -44,12 +44,12 @@ namespace InvestorDemoS3DirPrivate
 	static const FName KeyHud(TEXT("HUD"));
 
 	static constexpr int32 PresentationStepCount = 10;
-	static constexpr float HoldIntention = 1.15f;
-	static constexpr float HoldProject = 1.25f;
-	static constexpr float HoldAnalyse = 1.15f;
-	static constexpr float HoldWorkSite = 1.25f;
-	static constexpr float HoldSpawn = 0.85f;
-	static constexpr float HoldConclusion = 3.6f;
+	static constexpr float HoldIntention = 1.55f;
+	static constexpr float HoldProject = 1.35f;
+	static constexpr float HoldAnalyse = 1.2f;
+	static constexpr float HoldWorkSite = 1.3f;
+	static constexpr float HoldSpawn = 1.1f;
+	static constexpr float HoldConclusion = 4.2f;
 
 	static bool NameMatchesKey(const FString& Name, const FName& Key)
 	{
@@ -111,7 +111,7 @@ void AGardenFervorInvestorDemoS3Director::StartPresentation()
 	EnsurePresentationWidget();
 	EnterPhase(EPhase::BootLayout);
 	UE_LOG(LogGardenFervorInvestorDemoS3Dir, Display,
-		TEXT("InvestorDemo S3 presentation started (async · étape4 camera/UI)"));
+		TEXT("InvestorDemo S3 presentation started (async · étape5 narrative)"));
 }
 
 void AGardenFervorInvestorDemoS3Director::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -143,19 +143,38 @@ void AGardenFervorInvestorDemoS3Director::GetBeatMeta(
 {
 	switch (Beat)
 	{
-	case EPresentationBeat::Intention: OutStep = 1; OutTitle = TEXT("Intention"); break;
-	case EPresentationBeat::Project: OutStep = 2; OutTitle = TEXT("Projet"); break;
+	case EPresentationBeat::Intention: OutStep = 1; OutTitle = TEXT("Votre intention"); break;
+	case EPresentationBeat::Project: OutStep = 2; OutTitle = TEXT("Projet créé"); break;
 	case EPresentationBeat::Analyse: OutStep = 3; OutTitle = TEXT("Analyse"); break;
-	case EPresentationBeat::WorkSite: OutStep = 4; OutTitle = TEXT("WorkSite"); break;
+	case EPresentationBeat::WorkSite: OutStep = 4; OutTitle = TEXT("Chantier prêt"); break;
 	case EPresentationBeat::Extraction: OutStep = 5; OutTitle = TEXT("Extraction"); break;
 	case EPresentationBeat::Transport: OutStep = 6; OutTitle = TEXT("Transport"); break;
-	case EPresentationBeat::StockB: OutStep = 7; OutTitle = TEXT("Stock B"); break;
+	case EPresentationBeat::StockB: OutStep = 7; OutTitle = TEXT("Bois livré"); break;
 	case EPresentationBeat::Construction: OutStep = 8; OutTitle = TEXT("Construction"); break;
 	case EPresentationBeat::Acheve: OutStep = 9; OutTitle = TEXT("Achevé"); break;
 	case EPresentationBeat::EnService:
 	case EPresentationBeat::Conclusion: OutStep = 10; OutTitle = TEXT("En service"); break;
 	default: OutStep = 0; OutTitle = TEXT("…"); break;
 	}
+}
+
+void AGardenFervorInvestorDemoS3Director::HighlightAutonomousUnit(AGardenFervorUnitBase* ActiveUnit)
+{
+	auto ApplyScale = [](AGardenFervorUnitBase* Unit, bool bActive)
+	{
+		if (!Unit)
+		{
+			return;
+		}
+		if (UStaticMeshComponent* Mesh = Unit->FindComponentByClass<UStaticMeshComponent>())
+		{
+			const FVector Base(2.4f, 2.4f, 3.2f);
+			Mesh->SetRelativeScale3D(bActive ? Base * 1.28f : Base);
+		}
+	};
+	ApplyScale(UnitU1.Get(), ActiveUnit == UnitU1);
+	ApplyScale(UnitU2.Get(), ActiveUnit == UnitU2);
+	ApplyScale(UnitU3.Get(), ActiveUnit == UnitU3);
 }
 
 void AGardenFervorInvestorDemoS3Director::SetPresentationBeat(
@@ -249,7 +268,7 @@ void AGardenFervorInvestorDemoS3Director::RefreshPresentationWidget()
 	FString Title;
 	GetBeatMeta(PresentationBeat, Step, Title);
 
-	FString PeLine = TEXT("PE — en attente");
+	FString PeLine = TEXT("Bois A=…  B=…");
 	UWorld* World = GetWorld();
 	if (World && ProjectId.IsValid())
 	{
@@ -262,11 +281,15 @@ void AGardenFervorInvestorDemoS3Director::RefreshPresentationWidget()
 				{
 					const float A = GardenFervorGetCohortStockATimberAvailable(Eco, Project);
 					const float B = GardenFervorGetCohortStockBTimberAvailableLive(Eco, Project);
-					PeLine = FString::Printf(
-						TEXT("A=%.1f  B=%.1f  C=%d  S=%d"),
-						A, B,
-						Project.bConstructionComplete ? 1 : 0,
-						Project.bInService ? 1 : 0);
+					PeLine = FString::Printf(TEXT("Bois A=%.1f  B=%.1f"), A, B);
+					if (Project.bConstructionComplete)
+					{
+						PeLine += TEXT(" · Achevé");
+					}
+					if (Project.bInService)
+					{
+						PeLine += TEXT(" · En service");
+					}
 				}
 			}
 		}
@@ -677,13 +700,13 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 				TEXT("InvestorDemo S3: placeholders/labels incomplete — continuing with what exists"));
 		}
 		PlaceChainOnLandscape();
-		SetLabelText(TEXT("INTENTION"), TEXT("INTENTION\nready"));
-		SetLabelText(TEXT("PROJECT"), TEXT("PROJECT\n…"));
-		SetLabelText(TEXT("WORKSITE"), TEXT("WORKSITE\n…"));
+		SetLabelText(TEXT("INTENTION"), TEXT("INTENTION\nVous demandez"));
+		SetLabelText(TEXT("PROJECT"), TEXT("PROJET\n…"));
+		SetLabelText(TEXT("WORKSITE"), TEXT("CHANTIER\n…"));
 		SetPlaceholderActive(TEXT("INTENTION"), true, FLinearColor(0.2f, 0.85f, 1.f));
 		SetCameraFocus(WorkSiteCenter + FVector(0.f, -1400.f, 0.f), 3400.f);
 		SetPresentationBeat(EPresentationBeat::Intention,
-			TEXT("Le joueur formule une intention — site Case A déjà prêt."));
+			TEXT("Le joueur exprime une intention"));
 		EnsurePresentationWidget();
 		EnterPhase(EPhase::CreateProject);
 		break;
@@ -702,14 +725,14 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 		{
 			if (AActor* Intention = FindByKey(TEXT("INTENTION")))
 			{
-				SetCameraFocus(Intention->GetActorLocation(), 2600.f);
+				SetCameraFocus(Intention->GetActorLocation(), 2400.f);
 			}
 			else
 			{
-				SetCameraFocus(WorkSiteCenter + FVector(0.f, -2800.f, 0.f), 2600.f);
+				SetCameraFocus(WorkSiteCenter + FVector(0.f, -2800.f, 0.f), 2400.f);
 			}
 			SetPresentationBeat(EPresentationBeat::Intention,
-				TEXT("Intention visible — création du projet à l'instant suivant."));
+				TEXT("Le joueur demande un chantier"));
 
 			if (PhaseTimer < HoldIntention)
 			{
@@ -734,11 +757,11 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 			}
 			bCreateProjectApiDone = true;
 			PhaseTimer = 0.f;
-			SetLabelText(TEXT("INTENTION"), TEXT("INTENTION\nInvestorDemo_S3_CasA"));
-			SetLabelText(TEXT("PROJECT"), FString::Printf(TEXT("PROJECT #%d\nDraft"), ProjectId.Value));
+			SetLabelText(TEXT("INTENTION"), TEXT("INTENTION\nformulée"));
+			SetLabelText(TEXT("PROJECT"), FString::Printf(TEXT("PROJET #%d\ncréé par le jeu"), ProjectId.Value));
 			SetPlaceholderActive(TEXT("PROJECT"), true, FLinearColor(0.65f, 0.35f, 1.f));
 			SetPresentationBeat(EPresentationBeat::Project,
-				FString::Printf(TEXT("Projet #%d créé (Draft) via CreateProjectFromIntention."), ProjectId.Value));
+				TEXT("Le jeu transforme l'intention en projet"));
 			if (AActor* ProjectPH = FindByKey(TEXT("PROJECT")))
 			{
 				SetCameraFocus(ProjectPH->GetActorLocation(), 2500.f);
@@ -758,8 +781,8 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 		if (!bExpandApiDone)
 		{
 			SetPresentationBeat(EPresentationBeat::Analyse,
-				TEXT("Analyse de site (tâche Analyze réelle) — pas de ForestAnalysis."));
-			SetLabelText(TEXT("WORKSITE"), TEXT("WORKSITE\nAnalyse…"));
+				TEXT("Le jeu analyse le site"));
+			SetLabelText(TEXT("WORKSITE"), TEXT("CHANTIER\nanalyse…"));
 			SetCameraFocus(WorkSiteCenter, 2800.f);
 
 			if (PhaseTimer < HoldAnalyse)
@@ -788,15 +811,15 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 			AlignStocksToPhysicalEconomy();
 			bExpandApiDone = true;
 			PhaseTimer = 0.f;
-			SetLabelText(TEXT("PROJECT"), FString::Printf(TEXT("PROJECT #%d\nActive"), ProjectId.Value));
-			SetLabelText(TEXT("WORKSITE"), TEXT("WORKSITE\nAlreadyReady (Cas A)"));
+			SetLabelText(TEXT("PROJECT"), FString::Printf(TEXT("PROJET #%d\nactif"), ProjectId.Value));
+			SetLabelText(TEXT("WORKSITE"), TEXT("CHANTIER\ndéjà prêt"));
 			SetPlaceholderActive(TEXT("WORKSITE"), true, FLinearColor(0.15f, 0.75f, 0.25f));
 			SetPlaceholderActive(TEXT("STOCK_A"), false, FLinearColor(0.55f, 0.35f, 0.15f));
 			SetPlaceholderActive(TEXT("STOCK_B"), false, FLinearColor(0.15f, 0.55f, 0.55f));
-			SetLabelText(TEXT("STOCK_A"), TEXT("STOCK A\nTimber=0 (live)"));
-			SetLabelText(TEXT("STOCK_B"), TEXT("STOCK B\nTimber=0 (live)"));
+			SetLabelText(TEXT("STOCK_A"), TEXT("STOCK A\nBois = 0"));
+			SetLabelText(TEXT("STOCK_B"), TEXT("STOCK B\nBois = 0"));
 			SetPresentationBeat(EPresentationBeat::WorkSite,
-				TEXT("WorkSite AlreadyReady — Case A · aucun Raise/Lower/Paint."));
+				TEXT("Le chantier est déjà prêt"));
 			break;
 		}
 
@@ -812,7 +835,7 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 		if (PhaseTimer < HoldSpawn)
 		{
 			SetPresentationBeat(EPresentationBeat::Extraction,
-				TEXT("Roster U1 / U2 / U3 — Extraction · Transport · Construction."));
+				TEXT("Unités autonomes — pas de pilotage manuel"));
 			SetCameraFocus(WorkSiteCenter + FVector(-800.f, 400.f, 0.f), 3000.f);
 			break;
 		}
@@ -842,12 +865,13 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 			EnterPhase(EPhase::Done);
 			break;
 		}
-		SetLabelText(TEXT("U1"), TEXT("U1 — EXTRACTION\nactive"));
-		SetLabelText(TEXT("U2"), TEXT("U2 — TRANSPORT\nwaiting"));
-		SetLabelText(TEXT("U3"), TEXT("U3 — CONSTRUCTION\nwaiting"));
+		SetLabelText(TEXT("U1"), TEXT("U1 Extraction\nautonome"));
+		SetLabelText(TEXT("U2"), TEXT("U2 Transport\nautonome"));
+		SetLabelText(TEXT("U3"), TEXT("U3 Construction\nautonome"));
 		SetPlaceholderActive(TEXT("U1"), true, FLinearColor(1.f, 0.45f, 0.1f));
+		HighlightAutonomousUnit(UnitU1);
 		SetPresentationBeat(EPresentationBeat::Extraction,
-			TEXT("U1 extrait Timber vers Stock A (PE live)."));
+			TEXT("U1 extrait le bois seule"));
 		SetCameraFocus(LocU1, 2400.f);
 		EnterPhase(EPhase::AutonomousRun);
 		break;
@@ -867,10 +891,15 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 			PeakStockA = FMath::Max(PeakStockA, A);
 
 			SetLabelText(TEXT("STOCK_A"),
-				FString::Printf(TEXT("STOCK A\nTimber=%.1f (live PE)\nid=%d"), A, GardenFervorCohortStockAId(Project)));
+				FString::Printf(TEXT("STOCK A\nBois = %.1f"), A));
 			SetLabelText(TEXT("STOCK_B"),
-				FString::Printf(TEXT("STOCK B\nTimber=%.1f (live PE)\nid=%d"), B, GardenFervorCohortStockBId(Project)));
-			SetLabelText(TEXT("HUD"), GardenFervorFormatCohortPhysicalEconomySnapshot(Eco, Project));
+				FString::Printf(TEXT("STOCK B\nBois = %.1f"), B));
+			SetLabelText(TEXT("HUD"),
+				FString::Printf(
+					TEXT("Résultat\nBois A=%.1f  B=%.1f\nAchevé=%s  En service=%s"),
+					A, B,
+					Project.bConstructionComplete ? TEXT("oui") : TEXT("non"),
+					Project.bInService ? TEXT("oui") : TEXT("non")));
 
 			bool bAnalyzeDone = false;
 			bool bAnalyzeActive = false;
@@ -914,40 +943,42 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 			if (A > 0.01f)
 			{
 				SetPlaceholderActive(TEXT("STOCK_A"), true, FLinearColor(0.75f, 0.45f, 0.15f));
-				SetLabelText(TEXT("U1"), TEXT("U1 — EXTRACTION\nTimber → A"));
+				SetLabelText(TEXT("U1"), TEXT("U1 Extraction\nbois → Stock A"));
 			}
 			if (B > 0.01f)
 			{
 				SetPlaceholderActive(TEXT("STOCK_B"), true, FLinearColor(0.15f, 0.75f, 0.7f));
 				SetPlaceholderActive(TEXT("U2"), true, FLinearColor(1.f, 0.9f, 0.15f));
-				SetLabelText(TEXT("U2"), TEXT("U2 — TRANSPORT\nA → B"));
+				SetLabelText(TEXT("U2"), TEXT("U2 Transport\nA → B"));
 			}
 			if (bBuildDone || Project.bConstructionComplete || bBuildActive)
 			{
 				SetPlaceholderActive(TEXT("U3"), true, FLinearColor(0.85f, 0.2f, 0.85f));
 				SetLabelText(TEXT("U3"),
 					Project.bConstructionComplete
-						? TEXT("U3 — CONSTRUCTION\nAchevé")
-						: TEXT("U3 — CONSTRUCTION\nen cours"));
+						? TEXT("U3 Construction\nAchevé")
+						: TEXT("U3 Construction\nen cours"));
 			}
 
 			// Beats from real state only (highest priority last).
+			AGardenFervorUnitBase* Highlight = nullptr;
 			if (!bAnalyzeDone && (bAnalyzeActive || !bExtractActive))
 			{
 				SetPresentationBeat(EPresentationBeat::Analyse,
-					TEXT("Analyse en cours (tâche Analyze réelle)."));
+					TEXT("Le jeu détermine les opérations"));
 				SetCameraFocus(WorkSiteCenter, 2700.f);
 			}
 			if (bAnalyzeDone && !bExtractDone && A < 0.01f && !bExtractActive)
 			{
 				SetPresentationBeat(EPresentationBeat::WorkSite,
-					TEXT("WorkSite AlreadyReady — extraction imminente."));
+					TEXT("Chantier prêt — exécution imminente"));
 				SetCameraFocus(WorkSiteCenter, 2800.f);
 			}
 			if (bExtractActive || A > 0.01f || bExtractDone)
 			{
 				SetPresentationBeat(EPresentationBeat::Extraction,
-					TEXT("U1 Extraction Timber → Stock A (Deposit PE)."));
+					TEXT("Besoin de bois → U1 extrait → Stock A"));
+				Highlight = UnitU1;
 				const FVector Focus = UnitU1 ? UnitU1->GetActorLocation()
 					: (FindByKey(TEXT("STOCK_A")) ? FindByKey(TEXT("STOCK_A"))->GetActorLocation()
 						: WorkSiteCenter + FVector(-1500.f, 0.f, 0.f));
@@ -956,14 +987,15 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 			if (bHaulActive || (A < PeakStockA - 0.01f && PeakStockA > 0.01f && B < 0.01f))
 			{
 				SetPresentationBeat(EPresentationBeat::Transport,
-					TEXT("U2 Transport réel Stock A → Stock B (Withdraw / cargo / Deposit)."));
+					TEXT("Le bois doit rejoindre Stock B → U2 livre"));
+				Highlight = UnitU2;
 				const FVector Focus = UnitU2 ? UnitU2->GetActorLocation() : WorkSiteCenter;
 				SetCameraFocus(Focus, 2400.f);
 			}
 			if (B > 0.01f)
 			{
 				SetPresentationBeat(EPresentationBeat::StockB,
-					TEXT("Stock B Timber > 0 — PE GetAvailable live."));
+					TEXT("Résultat : bois disponible au Stock B"));
 				if (AActor* StockB = FindByKey(TEXT("STOCK_B")))
 				{
 					SetCameraFocus(StockB->GetActorLocation(), 2300.f);
@@ -972,17 +1004,20 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 			if (bBuildActive || (bHaulDone && !Project.bConstructionComplete))
 			{
 				SetPresentationBeat(EPresentationBeat::Construction,
-					TEXT("U3 Construction sur le WorkSite."));
+					TEXT("Ressource prête → U3 construit seule"));
+				Highlight = UnitU3;
 				const FVector Focus = UnitU3 ? UnitU3->GetActorLocation() : WorkSiteCenter + FVector(2200.f, 1200.f, 0.f);
 				SetCameraFocus(Focus, 2400.f);
 			}
 			if (Project.bConstructionComplete && !Project.bInService)
 			{
 				SetPresentationBeat(EPresentationBeat::Acheve,
-					TEXT("Achevé (Complete) — distinct de En service."));
-				SetLabelText(TEXT("U3"), TEXT("U3 — CONSTRUCTION\nAchevé (Complete)"));
+					TEXT("Résultat : chantier achevé (pas encore en service)"));
+				SetLabelText(TEXT("U3"), TEXT("U3 Construction\nAchevé"));
+				Highlight = UnitU3;
 				SetCameraFocus(WorkSiteCenter + FVector(1800.f, 1600.f, 0.f), 2600.f);
 			}
+			HighlightAutonomousUnit(Highlight);
 
 			if (Project.bConstructionComplete && !Project.bInService)
 			{
@@ -993,9 +1028,10 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 			if (Project.bInService)
 			{
 				SetPlaceholderActive(TEXT("EN_SERVICE"), true, FLinearColor(0.2f, 1.f, 0.35f));
-				SetLabelText(TEXT("EN_SERVICE"), TEXT("EN SERVICE\nACTIVE (T7 live)"));
+				SetLabelText(TEXT("EN_SERVICE"), TEXT("EN SERVICE\nrésultat obtenu"));
 				SetPresentationBeat(EPresentationBeat::EnService,
-					TEXT("En service — Complete + Stock B Timber > 0 (T7 live)."));
+					TEXT("Conditions remplies → En service"));
+				HighlightAutonomousUnit(nullptr);
 				EnterPhase(EPhase::Finish);
 				break;
 			}
@@ -1019,15 +1055,20 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 			Projects->GetProject(ProjectId, Project);
 			AFinal = GardenFervorGetCohortStockATimberAvailable(Eco, Project);
 			BFinal = GardenFervorGetCohortStockBTimberAvailableLive(Eco, Project);
-			SetLabelText(TEXT("HUD"), GardenFervorFormatCohortPhysicalEconomySnapshot(Eco, Project));
+			SetLabelText(TEXT("HUD"),
+				FString::Printf(
+					TEXT("Résultat\nBois A=%.1f  B=%.1f\nAchevé=%s  En service=%s"),
+					AFinal, BFinal,
+					Project.bConstructionComplete ? TEXT("oui") : TEXT("non"),
+					Project.bInService ? TEXT("oui") : TEXT("non")));
 			if (Project.bConstructionComplete)
 			{
-				SetLabelText(TEXT("U3"), TEXT("U3 — CONSTRUCTION\nAchevé (Complete)"));
+				SetLabelText(TEXT("U3"), TEXT("U3 Construction\nAchevé"));
 			}
 			if (Project.bInService)
 			{
 				SetPlaceholderActive(TEXT("EN_SERVICE"), true, FLinearColor(0.2f, 1.f, 0.35f));
-				SetLabelText(TEXT("EN_SERVICE"), TEXT("EN SERVICE\nACTIVE (T7 live)"));
+				SetLabelText(TEXT("EN_SERVICE"), TEXT("EN SERVICE\nrésultat obtenu"));
 			}
 		}
 
@@ -1052,11 +1093,12 @@ void AGardenFervorInvestorDemoS3Director::Advance(float DeltaSeconds)
 
 			bFinishLogged = true;
 			PhaseTimer = 0.f;
+			HighlightAutonomousUnit(nullptr);
 			SetCameraFocus(WorkSiteCenter + FVector(200.f, 400.f, 0.f), 3800.f);
 			SetPresentationBeat(EPresentationBeat::Conclusion,
 				bSucceeded
-					? TEXT("Conclusion — preuve S3 Cas A lisible · PE live · aucun Terraform.")
-					: TEXT("Conclusion — parcours incomplet · voir log ok=."));
+					? TEXT("Intention → unités autonomes → En service")
+					: TEXT("Parcours incomplet"));
 		}
 
 		if (PhaseTimer < HoldConclusion)

@@ -13,7 +13,7 @@
 
 namespace InvestorDemoOverlayPrivate
 {
-	static constexpr float PanelMaxWidth = 320.f;
+	static constexpr float PanelMaxWidth = 340.f;
 	static constexpr float EdgePad = 14.f;
 }
 
@@ -59,11 +59,11 @@ TSharedRef<SWidget> UGardenFervorInvestorDemoPresentationWidget::RebuildWidget()
 		ProgressText = MakeLabel(TEXT("DemoProgress"), FLinearColor(0.55f, 0.75f, 0.65f), 11);
 		Column->AddChild(ProgressText);
 
+		StatusText = MakeLabel(TEXT("DemoStatus"), FLinearColor(0.9f, 0.93f, 0.96f), 12);
+		Column->AddChild(StatusText);
+
 		PeText = MakeLabel(TEXT("DemoPe"), FLinearColor(0.55f, 0.95f, 0.75f), 12);
 		Column->AddChild(PeText);
-
-		StatusText = MakeLabel(TEXT("DemoStatus"), FLinearColor(0.75f, 0.82f, 0.88f), 12);
-		Column->AddChild(StatusText);
 
 		if (UVerticalBoxSlot* StepSlot = Cast<UVerticalBoxSlot>(StepText->Slot))
 		{
@@ -73,9 +73,9 @@ TSharedRef<SWidget> UGardenFervorInvestorDemoPresentationWidget::RebuildWidget()
 		{
 			ProgressSlot->SetPadding(FMargin(0.f, 0.f, 0.f, 4.f));
 		}
-		if (UVerticalBoxSlot* PeSlot = Cast<UVerticalBoxSlot>(PeText->Slot))
+		if (UVerticalBoxSlot* StatusSlot = Cast<UVerticalBoxSlot>(StatusText->Slot))
 		{
-			PeSlot->SetPadding(FMargin(0.f, 0.f, 0.f, 2.f));
+			StatusSlot->SetPadding(FMargin(0.f, 0.f, 0.f, 3.f));
 		}
 
 		UCanvasPanelSlot* CanvasSlot = Canvas->AddChildToCanvas(Size);
@@ -118,7 +118,6 @@ void UGardenFervorInvestorDemoPresentationWidget::SetPresentationState(
 	const int32 SafeCount = FMath::Max(StepCount, 1);
 	const int32 SafeIndex = FMath::Clamp(StepIndex, 0, SafeCount);
 
-	// Compact progress — no spaces between dots (narrower).
 	FString Bars;
 	Bars.Reserve(SafeCount);
 	for (int32 i = 1; i <= SafeCount; ++i)
@@ -139,44 +138,36 @@ void UGardenFervorInvestorDemoPresentationWidget::SetPresentationState(
 	{
 		ProgressText->SetText(FText::FromString(Bars));
 	}
-	if (PeText)
-	{
-		// Prefer a short PE line if Director sent the long format.
-		FString ShortPe = PeLine;
-		ShortPe.ReplaceInline(TEXT("PE live  "), TEXT(""));
-		ShortPe.ReplaceInline(TEXT("PE — en attente"), TEXT("PE …"));
-		PeText->SetText(FText::FromString(ShortPe));
-	}
 	if (StatusText)
 	{
 		if (bConcluded)
 		{
 			StatusText->SetText(FText::FromString(
-				bSucceeded ? TEXT("EN SERVICE") : TEXT("incomplet")));
+				bSucceeded
+					? TEXT("Intention → unités autonomes → En service")
+					: (DetailLine.IsEmpty() ? TEXT("Parcours incomplet") : DetailLine)));
 			StatusText->SetColorAndOpacity(FSlateColor(
 				bSucceeded ? FLinearColor(0.3f, 1.f, 0.5f) : FLinearColor(1.f, 0.55f, 0.3f)));
 		}
 		else if (!DetailLine.IsEmpty() && DetailLine != TEXT(" "))
 		{
-			// One short status cue only — truncate long director sentences.
 			FString Short = DetailLine;
-			const int32 Dot = Short.Find(TEXT(" — "));
-			if (Dot != INDEX_NONE)
+			if (Short.Len() > 56)
 			{
-				Short = Short.Left(Dot);
-			}
-			if (Short.Len() > 42)
-			{
-				Short = Short.Left(40) + TEXT("…");
+				Short = Short.Left(54) + TEXT("…");
 			}
 			StatusText->SetText(FText::FromString(Short));
-			StatusText->SetColorAndOpacity(FSlateColor(FLinearColor(0.75f, 0.82f, 0.88f)));
+			StatusText->SetColorAndOpacity(FSlateColor(FLinearColor(0.9f, 0.93f, 0.96f)));
 		}
 		else
 		{
-			StatusText->SetText(FText::FromString(TEXT("Case A · PE live")));
+			StatusText->SetText(FText::FromString(TEXT("Suivez la scène")));
 			StatusText->SetColorAndOpacity(FSlateColor(FLinearColor(0.6f, 0.7f, 0.75f)));
 		}
+	}
+	if (PeText)
+	{
+		PeText->SetText(FText::FromString(PeLine.IsEmpty() ? TEXT("Bois A=…  B=…") : PeLine));
 	}
 	if (PanelBorder)
 	{

@@ -2,10 +2,12 @@
 
 #include "GardenFervorInvestorDemoS3Bridge.h"
 
+#include "GardenFervorInvestorDemoPlayerController.h"
 #include "GardenFervorInvestorDemoS3Director.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "HAL/IConsoleManager.h"
+#include "GameFramework/PlayerController.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogGardenFervorInvestorDemoS3, Log, All);
 
@@ -46,6 +48,14 @@ bool FGardenFervorInvestorDemoS3Bridge::RunS3CasA(UWorld* World, FString& OutMes
 	}
 
 	Director->StartPresentation();
+	if (APlayerController* PC = World->GetFirstPlayerController())
+	{
+		if (AGardenFervorInvestorDemoPlayerController* DemoPC =
+			Cast<AGardenFervorInvestorDemoPlayerController>(PC))
+		{
+			DemoPC->NotifyDemoS3Started();
+		}
+	}
 	OutMessage = TEXT("InvestorDemo S3: presentation started — watch PH/labels/units (async). Final ok= logged when En service.");
 	UE_LOG(LogGardenFervorInvestorDemoS3, Display, TEXT("%s"), *OutMessage);
 	return true;
