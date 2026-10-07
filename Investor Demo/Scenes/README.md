@@ -10,6 +10,7 @@
 | Validation visuelle | **Confirmée** (humain) |
 | Versionnement Git | **Oui** — `Content/GardenFervor/InvestorDemo/` (étape 2B) |
 | Git LFS | Non requis (assets ≈ 165 Ko) |
+| GameMode PIE | `GardenFervorInvestorDemoGameMode` (prefix `L_InvestorDemo`) |
 | Gameplay T1→T9 | Non branché |
 
 **Ne pas modifier** `GardenFervorIsland` pour cette démo.

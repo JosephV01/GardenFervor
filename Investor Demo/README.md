@@ -1,11 +1,12 @@
 # GardenFervor — Investor Demo
 
-**Étape actuelle :** 2 — **VALIDÉE** (scène + placeholders)  
-**Statut :** base visuelle prête · **aucun branchement gameplay T1→T9** · étape 3 non démarrée  
+**Étape actuelle :** 2B + **P0 isolement runtime**  
+**Statut :** scène visuelle + runtime Demo dédié · **aucun branchement T1→T9** · étape 3 non démarrée  
 **Preuve gameplay sous-jacente :** cohorte S3 Cas A · Roadmap **T1→T9 = 9/9 VALIDÉ (100 %)**  
 **Dépôt :** `C:\Users\sahel\Documents\Unreal Projects\GardenFervor` · remote `https://github.com/JosephV01/GardenFervor.git`  
 **Scène Unreal :** `/Game/GardenFervor/InvestorDemo/L_InvestorDemo_S3`  
-**Versionnement :** assets sous `Content/GardenFervor/InvestorDemo/` suivis dans Git (blobs standards · pas de Git LFS requis — total ≈ 165 Ko)
+**Runtime Demo :** `AGardenFervorInvestorDemoGameMode` + `AGardenFervorInvestorDemoPlayerController`  
+**Binding map :** `DefaultEngine.ini` → `GameModeMapPrefixes` Prefix=`L_InvestorDemo` (Island inchangé)
 
 ---
 

@@ -73,6 +73,16 @@ Risque sémantique Pit/LevelPad documenté en Roadmap — **ne pas renommer** da
 | `.gitattributes` | Aucun · non nécessaire |
 | Reproductibilité | clone → ouvrir `L_InvestorDemo_S3` · meshes = Engine BasicShapes |
 
-Aucun système T1→T9 n’est invoqué par la scène à l’étape 2.  
-Script générateur temporaire supprimé après validation.  
-Polish futur : `TextRender` parfois inversés selon la vue (non bloquant).
+## P0 — isolement runtime
+
+| Élément | Valeur |
+| --- | --- |
+| GameMode | `AGardenFervorInvestorDemoGameMode` |
+| PlayerController | `AGardenFervorInvestorDemoPlayerController` |
+| Pawn | `AGardenFervorStrategyPawn` (réutilisé) |
+| Binding | `Config/DefaultEngine.ini` → `+GameModeMapPrefixes=(Prefix="L_InvestorDemo",…)` |
+| Island | `AGardenFervorGameMode` inchangé |
+
+**Absents du boot Demo :** TC · Worker · ResourceNodes · init FWSG · Ages · HUD FWSG · BuildMenu · LevelPad · BeginPlace.  
+**Non branché :** T1→T9 (étape 3).  
+Helper éditeur optionnel : `Content/Python/set_investor_demo_gamemode.py` (World Settings local — ne pas confondre avec le commit umap Landscape).
