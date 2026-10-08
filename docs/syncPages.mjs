@@ -8,8 +8,10 @@
  * - Design Gate → docs/design-gate.html
  * - Contrats → docs/contracts.html (depuis contractsSuivi.js)
  * - Hub      → docs/index.html (bandeau d’état + liens)
+ * - Présentation Investor Demo → docs/presentation-client.html
  *
- * Sources de vérité : Markdown CONTRATS/, roadmap.data.js, designGate.js.
+ * Sources de vérité : Markdown CONTRATS/, roadmap.data.js, designGate.js,
+ * Investor Demo/PrésentationClientHtml/PrésentationClient.html.
  * Ne pas inventer de VALIDÉ.
  */
 import fs from 'fs';
@@ -136,6 +138,21 @@ hub = hub.replace(
 
 fs.writeFileSync(hubPath, hub, 'utf8');
 
+console.log('— Sync présentation Investor Demo —');
+const presentationSrc = path.join(
+  repoRoot,
+  'Investor Demo',
+  'PrésentationClientHtml',
+  'PrésentationClient.html'
+);
+const presentationDst = path.join(docsDir, 'presentation-client.html');
+if (!fs.existsSync(presentationSrc)) {
+  console.error('ERROR: missing presentation source:', presentationSrc);
+  process.exit(1);
+}
+fs.copyFileSync(presentationSrc, presentationDst);
+console.log('Copied → docs/presentation-client.html');
+
 console.log(
   JSON.stringify(
     {
@@ -145,6 +162,7 @@ console.log(
       contracts: `${SUIVI.progress.validated}/${SUIVI.progress.required}`,
       active: SUIVI.activeContractId,
       activeStatus: active ? displayStatus(active) : null,
+      presentation: 'docs/presentation-client.html',
       syncedAt: today,
     },
     null,

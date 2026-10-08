@@ -12,6 +12,7 @@
 | `roadmap.html` | Roadmap de production |
 | `design-gate.html` | Design Gate autonome |
 | `contracts.html` | Suivi des contrats |
+| `presentation-client.html` | Présentation Investor Demo (copie publiée) |
 | `syncPages.mjs` | Synchronisation complète des pages |
 
 ## Historique
@@ -41,7 +42,8 @@ Cette commande :
 1. synchronise `docs/roadmap.html` ;
 2. synchronise `docs/design-gate.html` ;
 3. régénère `docs/contracts.html` depuis `contractsSuivi.js` ;
-4. met à jour le bandeau d’état et les résumés de cartes dans `docs/index.html`.
+4. met à jour le bandeau d’état et les résumés de cartes dans `docs/index.html` ;
+5. copie `Investor Demo/PrésentationClientHtml/PrésentationClient.html` → `docs/presentation-client.html`.
 
 **Ne pas** écraser manuellement le bandeau entre `<!-- SYNC:STATUS:START -->` et `<!-- SYNC:STATUS:END -->` — il est généré.
 
@@ -52,6 +54,7 @@ Cette commande :
 | Roadmap | `Plan de production/Roadmap/src/roadmap.data.js` |
 | Design Gate | `GardenFervor_DesignGate_React/src/data/designGate.js` |
 | Contrats | `CONTRATS/*.md` (miroir UI : `contractsSuivi.js`) |
+| Présentation client | `Investor Demo/PrésentationClientHtml/PrésentationClient.html` |
 | Hub navigation | `docs/index.html` (structure) + sync pour l’état |
 
 ## Activation manuelle (GitHub)
