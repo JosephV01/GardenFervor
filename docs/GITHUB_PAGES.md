@@ -43,7 +43,8 @@ Cette commande :
 2. synchronise `docs/design-gate.html` ;
 3. régénère `docs/contracts.html` depuis `contractsSuivi.js` ;
 4. met à jour le bandeau d’état et les résumés de cartes dans `docs/index.html` ;
-5. copie `Investor Demo/PrésentationClientHtml/PrésentationClient.html` → `docs/presentation-client.html`.
+5. copie `Investor Demo/PrésentationClientHtml/PrésentationClient.html` → `docs/presentation-client.html` ;
+6. copie `Investor Demo/PrésentationClientHtml/images/` → `docs/images/` (galerie lot1).
 
 **Ne pas** écraser manuellement le bandeau entre `<!-- SYNC:STATUS:START -->` et `<!-- SYNC:STATUS:END -->` — il est généré.
 

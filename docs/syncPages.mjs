@@ -153,6 +153,18 @@ if (!fs.existsSync(presentationSrc)) {
 fs.copyFileSync(presentationSrc, presentationDst);
 console.log('Copied → docs/presentation-client.html');
 
+const presentationImagesSrc = path.join(
+  repoRoot,
+  'Investor Demo',
+  'PrésentationClientHtml',
+  'images'
+);
+const presentationImagesDst = path.join(docsDir, 'images');
+if (fs.existsSync(presentationImagesSrc)) {
+  fs.cpSync(presentationImagesSrc, presentationImagesDst, { recursive: true });
+  console.log('Copied → docs/images/ (incl. lot1 gallery)');
+}
+
 console.log(
   JSON.stringify(
     {
@@ -163,6 +175,7 @@ console.log(
       active: SUIVI.activeContractId,
       activeStatus: active ? displayStatus(active) : null,
       presentation: 'docs/presentation-client.html',
+      presentationImages: 'docs/images/',
       syncedAt: today,
     },
     null,
