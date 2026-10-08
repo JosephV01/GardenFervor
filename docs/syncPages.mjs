@@ -162,8 +162,8 @@ function buildHubStatus({ today, roadmap, suivi, active }) {
       </div>
       <div class="statusCard accent">
         <span>Contrats</span>
-        <strong>${suivi.activeContractId} · ${escapeHtml(aStatus)}</strong>
-        <em>${suivi.progress.validated}/${suivi.progress.required} dédiés validés · ${escapeHtml(active?.note || '')}</em>
+        <strong>${suivi.activeContractId} · ${escapeHtml(aStatus)} · ${suivi.progress.validated}/${suivi.progress.required}</strong>
+        <em>Prochain autorisé : ${escapeHtml(suivi.nextAuthorizedId || '—')} (non commencé) · ${escapeHtml(active?.note || '')}</em>
       </div>
       <div class="statusCard">
         <span>Case B</span>

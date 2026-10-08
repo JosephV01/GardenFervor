@@ -21,9 +21,11 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-01_TERRAIN_RUNTIME.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
+  /** Dernier contrat VALIDÉ ; aucun contrat en rédaction tant que C-02 n’est pas ouvert. */
   activeContractId: 'C-01',
+  nextAuthorizedId: 'C-02',
   progress: {
-    validated: 0,
+    validated: 1,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -60,12 +62,12 @@ export const CONTRACTS_SUIVI = {
       order: 1,
       category: 'REQUIS',
       coverage: 'partielle',
-      productionStatus: 'REVUE',
+      productionStatus: 'VALIDÉ',
       blocking: true,
       dependsOn: ['C-00'],
       providesTo: ['C-02', 'C-05', 'C-08', 'C-15', 'C-16', 'C-17', 'C-19'],
-      note: 'Contrat rédigé / en attente d’audit et validation',
-      dedicatedValidated: false,
+      note: 'VALIDÉ humainement — écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil|Water, lexique)',
+      dedicatedValidated: true,
       file: 'CONTRATS/C-01_TERRAIN_RUNTIME.md',
       detail: {
         decisionsTaken: 14,

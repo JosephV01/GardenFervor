@@ -1,7 +1,7 @@
 # CONTRATS — SUIVI DE PRODUCTION
 
 **Fichier :** `CONTRATS/00_SUIVI_CONTRATS.md`  
-**Statut :** initialisé  
+**Statut :** actif  
 **Référence ordre / nécessité :** `CONTRATS/00_REGISTRE_CONTRATS.md` (non modifié ici)  
 **Date d’initialisation :** 2026-10-08
 
@@ -39,6 +39,7 @@ Contrat dédié validé
 5. Un contrat à couverture « suffisante » ailleurs n’est **pas** un contrat dédié VALIDÉ.
 6. Les addenda `*` (C-03, C-06, C-09, C-10, C-13) ne démarrent que si le périmètre S3 ne suffit plus (registre §5).
 7. Case B reste **suspendu** ; sa reprise dépend des contrats bloquants (registre), pas de ce suivi seul.
+8. Un contrat **VALIDÉ** reste la règle opérationnelle même si l’implémentation présente encore des écarts documentés (dettes ultérieures).
 
 ---
 
@@ -69,8 +70,8 @@ Périmètre compté = contrats pour lesquels le registre exige un **contrat auto
 | ID concernés | C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 |
 | --- | --- |
 | Total à créer/valider | **16** |
-| Contrats dédiés VALIDÉS | **0** |
-| Progression validation | **0 / 16** |
+| Contrats dédiés VALIDÉS | **1** |
+| Progression validation | **1 / 16** |
 
 *(Les `SUFFISANT*` et `NON REQUIS` sont suivis dans le tableau mais exclus du dénominateur tant qu’aucun addendum / contrat dédié n’est ouvert.)*
 
@@ -81,8 +82,8 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 | ID | Nom | Ordre | Contrat requis | Couverture existante | Audit | Décisions | Rédaction | Revue | Validation | Statut | Bloquant | Notes |
 | -- | --- | ----: | -------------- | -------------------- | ----- | --------- | --------- | ----- | ---------- | ------ | -------- | ----- |
 | C-00 | Cadre / invariants fondateurs | — | non | suffisante | n/a | n/a | n/a | n/a | n/a | NON COMMENCÉ | non | Pas de contrat dédié (DG-00) |
-| C-01 | Terrain runtime | 1 | oui | partielle | OK | OK | OK | EN COURS | — | **REVUE** | oui | Contrat rédigé — en attente d’audit et validation ; fichier `C-01_TERRAIN_RUNTIME.md` |
-| C-02 | Substrat spatial | 2 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Après C-01 |
+| C-01 | Terrain runtime | 1 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil\|Water, lexique) |
+| C-02 | Substrat spatial | 2 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Prochain autorisé — **pas commencé** |
 | C-03 | Projet / Intention | 3* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | S3 suffisant ; pas VALIDÉ dédié |
 | C-04 | Tâches / graphe / dépendances | 4 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
 | C-05 | WorkSite / SitePrep | 5 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Lié Case B suspendu |
@@ -112,21 +113,23 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 ## 5. Contrat actuellement en cours
 
 ```text
-Contrat actuel : C-01
-Étape : REVUE
+Contrat actuel : aucun
+Dernier validé : C-01
 ```
 
-**C-01 — contrat rédigé / en attente d’audit et validation**
+**C-01 — VALIDÉ** (clôture formelle)
 
 | Étape | État |
 | --- | --- |
 | Audit préparatoire | **terminé** |
-| Décisions | **prises** (14/14 reprises dans le contrat) |
+| Décisions | **prises** (14/14) |
 | Rédaction | **terminée** — `CONTRATS/C-01_TERRAIN_RUNTIME.md` |
-| Revue | **en cours** (audit / validation humaine en attente) |
-| Validation | **non acquise** — statut ≠ VALIDÉ |
+| Revue / audit contrat | **terminé** (AUDIT C-01 — PASS) |
+| Validation | **acquise** — validation humaine explicite |
 
-C-02 et suivants restent **NON COMMENCÉS**.
+Écarts d’implémentation constatés à l’audit : **dettes / sujets ultérieurs** (non corrigés ; ne constituent pas une fausse conformité code).
+
+C-02 et suivants restent **NON COMMENCÉS**. Aucune rédaction de C-02 engagée.
 
 ---
 
@@ -134,10 +137,10 @@ C-02 et suivants restent **NON COMMENCÉS**.
 
 ```text
 Prochain contrat autorisé :
-C-01
+C-02
 ```
 
-Tant que **C-01** n’est pas **VALIDÉ**, aucun contrat d’ordre supérieur (C-02, …) ne doit être considéré comme en cours.  
+C-02 n’est **pas commencé**. Aucun audit / décisions / rédaction C-02 engagé dans cette clôture.  
 Les addenda `*` restent fermés tant que le besoin S3 n’est pas dépassé (registre).
 
 ---
@@ -159,7 +162,8 @@ Les addenda `*` restent fermés tant que le besoin S3 n’est pas dépassé (reg
 | 2026-10-08 | — | — | — | Création du suivi de production |
 | 2026-10-08 | C-01 | NON COMMENCÉ | AUDIT PRÉPARATOIRE → **DÉCISIONS EN COURS** | Audit préparatoire terminé ; décisions humaines requises ; rédaction non ouverte |
 | 2026-10-08 | C-01 | DÉCISIONS EN COURS | **REVUE** | Contrat `C-01_TERRAIN_RUNTIME.md` rédigé ; en attente d’audit et validation ; pas VALIDÉ |
+| 2026-10-08 | C-01 | REVUE | **VALIDÉ** | Validation humaine explicite ; audit contrat PASS ; écarts d’implémentation conservés comme dettes |
 
 ---
 
-*Fin du suivi — C-01 rédigé non validé ; aucun autre contrat individuel ouvert.*
+*Fin du suivi — C-01 VALIDÉ ; C-02 autorisé mais non commencé ; Case B suspendu.*
