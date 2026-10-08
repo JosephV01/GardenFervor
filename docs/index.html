@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="GardenFervor — hub de documentation HTML" />
+  <meta name="description" content="GardenFervor — hub de documentation" />
   <title>GardenFervor — Documentation</title>
   <style>
     :root {
       --bg: #0e1413;
       --panel: #141d1b;
-      --panel2: #182320;
       --line: #26332f;
       --muted: #8fa19b;
       --text: #e9efec;
       --accent: #7bd7a8;
       --amber: #e5c28d;
       --blue: #8ecdf8;
-      --shadow: 0 16px 38px rgba(0,0,0,.22);
       --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     }
     * { box-sizing: border-box; }
@@ -26,11 +24,11 @@
       font-family: var(--font);
       color: var(--text);
       background:
-        radial-gradient(circle at 80% -10%, rgba(83,150,117,.14), transparent 28%),
+        radial-gradient(circle at 78% -8%, rgba(83,150,117,.13), transparent 32%),
         var(--bg);
       line-height: 1.5;
     }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 36px 22px 72px; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 36px 22px 64px; }
     .eyebrow {
       font-size: 11px;
       letter-spacing: .16em;
@@ -40,40 +38,110 @@
     }
     h1 {
       margin: 8px 0 10px;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-size: clamp(1.85rem, 4vw, 2.55rem);
       letter-spacing: -.03em;
       line-height: 1.1;
     }
-    .lead { margin: 0; color: var(--muted); max-width: 620px; font-size: 15px; }
-    .rule {
-      margin: 22px 0 28px;
-      border-left: 2px solid var(--accent);
-      padding: 10px 0 10px 14px;
-      color: #bac9c3;
-      font-size: 13px;
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 560px;
+      font-size: 15px;
     }
+
+    /* —— Status —— */
+    .statusStrip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 22px 0 28px;
+    }
+    .statusCard {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 12px 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-height: 96px;
+    }
+    .statusCard.accent { border-color: #3d6350; background: #15231e; }
+    .statusCard.warn { border-color: #5a4229; background: #1c1812; }
+    .statusCard span {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 800;
+      color: #6f857c;
+    }
+    .statusCard strong {
+      font-size: 13px;
+      line-height: 1.3;
+      color: #dce7e2;
+    }
+    .statusCard em {
+      font-style: normal;
+      font-size: 11px;
+      color: #7d9189;
+      line-height: 1.4;
+    }
+
+    /* —— Sections —— */
+    .section { margin: 0 0 28px; }
+    .sectionHead {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .sectionHead h2 {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #86a399;
+      font-weight: 800;
+    }
+    .sectionHead p {
+      margin: 0;
+      font-size: 12px;
+      color: #6f857c;
+      text-align: right;
+      max-width: 340px;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
+    .grid.one { grid-template-columns: 1fr; }
+
     a.card {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       text-decoration: none;
       color: inherit;
-      background: linear-gradient(135deg, #151f1d, #101816);
+      background: linear-gradient(145deg, #151f1d, #101816);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 20px 18px;
-      box-shadow: var(--shadow);
+      padding: 18px 16px;
       transition: border-color .15s ease, transform .15s ease;
-      min-height: 168px;
+      min-height: 132px;
     }
     a.card:hover {
       border-color: #3d6350;
       transform: translateY(-1px);
+    }
+    a.card.primary {
+      border-color: #355647;
+      background: linear-gradient(145deg, #1a2822, #121c18);
+      min-height: 148px;
     }
     a.card .tag {
       align-self: flex-start;
@@ -81,20 +149,21 @@
       font-weight: 800;
       letter-spacing: .08em;
       text-transform: uppercase;
-      padding: 4px 8px;
+      padding: 3px 8px;
       border-radius: 999px;
       border: 1px solid transparent;
     }
-    .tag.roadmap { background: #152a37; border-color: #284b62; color: var(--blue); }
+    .tag.pilot { background: #243018; border-color: #4a6230; color: #c5e08e; }
     .tag.gate { background: #143026; border-color: #244c3b; color: var(--accent); }
     .tag.contracts { background: #30241a; border-color: #5a4229; color: var(--amber); }
+    .tag.graph { background: #1a2430; border-color: #3a5270; color: var(--blue); }
     .tag.demo { background: #241828; border-color: #4a3358; color: #d4a8ef; }
-    .tag.graph { background: #1a2430; border-color: #3a5270; color: #8ecdf8; }
-    .tag.global { background: #243018; border-color: #4a6230; color: #c5e08e; }
-    a.card h2 {
-      margin: 4px 0 0;
-      font-size: 1.2rem;
+    .tag.proof { background: #152a37; border-color: #284b62; color: var(--blue); }
+    a.card h3 {
+      margin: 2px 0 0;
+      font-size: 1.12rem;
       letter-spacing: -.02em;
+      font-weight: 700;
     }
     a.card p {
       margin: 0;
@@ -103,33 +172,34 @@
       flex: 1;
     }
     a.card .go {
-      margin-top: 8px;
+      margin-top: 4px;
       font-size: 12px;
       font-weight: 700;
       color: var(--accent);
     }
-    .meta {
-      margin-top: 28px;
+
+    .howto {
       border: 1px solid var(--line);
       background: var(--panel);
       border-radius: 12px;
-      padding: 16px 18px;
+      padding: 14px 16px;
+      margin-top: 8px;
     }
-    .meta h3 {
+    .howto h2 {
       margin: 0 0 8px;
       font-size: 11px;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: #86a399;
     }
-    .meta ul {
+    .howto ol {
       margin: 0;
       padding-left: 18px;
       color: #9eb0a8;
       font-size: 13px;
     }
-    .meta li { margin: 5px 0; }
-    .meta code {
+    .howto li { margin: 5px 0; }
+    .howto code {
       font-size: 12px;
       color: #c5d4ce;
       background: #101715;
@@ -137,6 +207,7 @@
       padding: 1px 6px;
       border-radius: 5px;
     }
+
     footer {
       margin-top: 28px;
       display: flex;
@@ -146,44 +217,14 @@
       color: #5f736a;
       font-size: 11px;
     }
-    .statusStrip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin: 0 0 22px;
-    }
-    .statusCard {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 12px;
-      padding: 12px 13px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .statusCard.accent { border-color: #3d6350; background: #15231e; }
-    .statusCard span {
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      font-weight: 800;
-      color: #6f857c;
-    }
-    .statusCard strong {
-      font-size: 12px;
-      line-height: 1.35;
-      color: #dce7e2;
-    }
-    .statusCard em {
-      font-style: normal;
-      font-size: 10px;
-      color: #7d9189;
-      line-height: 1.4;
-    }
-    @media (max-width: 900px) {
+
+    @media (max-width: 800px) {
       .statusStrip { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .sectionHead { flex-direction: column; align-items: flex-start; }
+      .sectionHead p { text-align: left; }
     }
-    @media (max-width: 560px) {
+    @media (max-width: 520px) {
       .statusStrip { grid-template-columns: 1fr; }
     }
   </style>
@@ -191,29 +232,25 @@
 <body>
   <div class="wrap">
     <div class="eyebrow">GardenFervor</div>
-    <h1>Documentation</h1>
+    <h1>Documentation du projet</h1>
     <p class="lead">
-      Hub d’accès aux documents HTML du projet. Chaque carte ouvre un document autonome
-      publié via GitHub Pages.
+      Point d’entrée unique. Choisissez d’abord <strong style="color:#dce7e2;font-weight:650">où va le projet</strong>,
+      puis les décisions, les règles, ou la cartographie technique.
     </p>
-    <div class="rule">
-      <strong>Mise à jour :</strong> après une modification documentaire du projet, exécuter
-      <code style="color:#c5d4ce">node docs/syncPages.mjs</code> puis pousser — le hub et les pages liées restent alignés.
-    </div>
 
     <!-- SYNC:STATUS:START -->
     <section class="statusStrip" aria-label="État projet synchronisé">
+      <div class="statusCard accent">
+        <span>Contrats</span>
+        <strong>2 / 16 validés · dernier C-02</strong>
+        <em>Prochain registre : C-03 (addendum fermé) — travail utile suivant : C-04</em>
+      </div>
       <div class="statusCard">
-        <span>Roadmap</span>
+        <span>Preuve S3</span>
         <strong>T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9</strong>
         <em>9/9 VALIDÉ (100%)</em>
       </div>
-      <div class="statusCard accent">
-        <span>Contrats</span>
-        <strong>C-02 · VALIDÉ · 2/16</strong>
-        <em>Prochain autorisé : C-03 (non commencé) · VALIDÉ humainement — 31/31 décisions A1–F3 ; audit final PASS</em>
-      </div>
-      <div class="statusCard">
+      <div class="statusCard warn">
         <span>Case B</span>
         <strong>SUSPENDU</strong>
         <em>Case B reste suspendu (registre §9). Aucune reprise sans contrats bloquants.</em>
@@ -226,66 +263,90 @@
     </section>
     <!-- SYNC:STATUS:END -->
 
-    <div class="grid">
-      <a class="card" href="roadmap-globale.html">
-        <span class="tag global">Pilot</span>
-        <h2>Roadmap GardenFervor</h2>
-        <p>Pilotage global jusqu’au jeu final · acquis, prochain (C-04), suspensions, phases.</p>
-        <span class="go">Ouvrir la Roadmap globale →</span>
-      </a>
+    <section class="section" aria-labelledby="sec-pilot">
+      <div class="sectionHead">
+        <h2 id="sec-pilot">1 · Pilotage</h2>
+        <p>Où en est le projet, et que faire ensuite</p>
+      </div>
+      <div class="grid one">
+        <a class="card primary" href="roadmap-globale.html">
+          <span class="tag pilot">Commencer ici</span>
+          <h3>Roadmap GardenFervor</h3>
+          <p>Vision globale jusqu’au jeu final : acquis, prochain travail (C-04), suspensions, phases.</p>
+          <span class="go">Ouvrir la Roadmap →</span>
+        </a>
+      </div>
+    </section>
 
-      <a class="card" href="roadmap.html">
-        <span class="tag roadmap">Production</span>
-        <h2>Roadmap de production</h2>
-        <p>T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9 · progression 9/9 (100%).</p>
-        <span class="go">Ouvrir la roadmap S3 →</span>
-      </a>
+    <section class="section" aria-labelledby="sec-rules">
+      <div class="sectionHead">
+        <h2 id="sec-rules">2 · Décisions et règles</h2>
+        <p>Ce qui est décidé, et ce qui gouverne l’exécution</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="design-gate.html">
+          <span class="tag gate">Conception</span>
+          <h3>Design Gate</h3>
+          <p>Décisions de gameplay VALIDÉES (DG-00 → DG-14). Source de vérité de conception.</p>
+          <span class="go">Ouvrir le Design Gate →</span>
+        </a>
+        <a class="card" href="contracts.html" data-sync="contracts-card">
+          <span class="tag contracts">Contrats</span>
+          <h3>Suivi des contrats</h3>
+          <p data-sync="contracts-blurb">Pilotage documentaire · 2/16 validés · dernier C-02 (VALIDÉ).</p>
+          <span class="go">Ouvrir les contrats →</span>
+        </a>
+      </div>
+    </section>
 
-      <a class="card" href="design-gate.html">
-        <span class="tag gate">Conception</span>
-        <h2>Design Gate</h2>
-        <p>Décisions de gameplay DG-00→DG-14. Source de vérité de conception (document vivant).</p>
-        <span class="go">Ouvrir le Design Gate →</span>
-      </a>
+    <section class="section" aria-labelledby="sec-map">
+      <div class="sectionHead">
+        <h2 id="sec-map">3 · Comprendre le système</h2>
+        <p>Architecture, liens entre systèmes, présentation</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="project-graph.html">
+          <span class="tag graph">Architecture</span>
+          <h3>Project Graph</h3>
+          <p>Cartographie des systèmes, contrats, données et preuves — et comment ils se relient.</p>
+          <span class="go">Ouvrir le graphe →</span>
+        </a>
+        <a class="card" href="presentation-client.html">
+          <span class="tag demo">Présentation</span>
+          <h3>Présentation client</h3>
+          <p>Pitch vision + état réel du projet · galerie concept (clic pour agrandir).</p>
+          <span class="go">Ouvrir la présentation →</span>
+        </a>
+      </div>
+    </section>
 
-      <a class="card" href="contracts.html">
-        <span class="tag contracts">Contrats</span>
-        <h2>Suivi des contrats</h2>
-        <p>Pilotage documentaire C-01→C-21 · 2/16 validés · actif C-02 (VALIDÉ).</p>
-        <span class="go">Ouvrir le suivi →</span>
-      </a>
+    <section class="section" aria-labelledby="sec-s3">
+      <div class="sectionHead">
+        <h2 id="sec-s3">4 · Preuve contrôlée S3</h2>
+        <p>Suivi des tranches T1–T9 (cohorte forestière) — distinct de la Roadmap globale</p>
+      </div>
+      <div class="grid one">
+        <a class="card" href="roadmap.html" data-sync="s3-card">
+          <span class="tag proof">Cohorte S3</span>
+          <h3>Roadmap de production S3</h3>
+          <p data-sync="s3-blurb">T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9 · 9/9 (100%).</p>
+          <span class="go">Ouvrir le suivi S3 →</span>
+        </a>
+      </div>
+    </section>
 
-      <a class="card" href="presentation-client.html">
-        <span class="tag demo">GardenFervor</span>
-        <h2>Présentation client</h2>
-        <p>Pitch vision + état réel · galerie lot1 (clic = agrandir). Source : PrésentationClientHtml.</p>
-        <span class="go">Ouvrir la présentation →</span>
-      </a>
-
-      <a class="card" href="project-graph.html">
-        <span class="tag graph">Architecture</span>
-        <h2>Project Graph</h2>
-        <p>Cartographie vivante systèmes · contrats · données · preuves. Source : PROJECT_GRAPH/.</p>
-        <span class="go">Ouvrir le graphe →</span>
-      </a>
-    </div>
-
-    <section class="meta">
-      <h3>Fichiers publiés sous /docs</h3>
-      <ul>
-        <li><code>index.html</code> — hub (cette page)</li>
-        <li><code>roadmap-globale.html</code> — Roadmap globale GardenFervor</li>
-        <li><code>roadmap.html</code> — roadmap de production S3 (tranches T1–T9)</li>
-        <li><code>design-gate.html</code> — Design Gate autonome</li>
-        <li><code>contracts.html</code> — suivi des contrats</li>
-        <li><code>presentation-client.html</code> — présentation client GardenFervor</li>
-        <li><code>project-graph.html</code> — cartographie Project Graph</li>
-      </ul>
+    <section class="howto">
+      <h2>Mettre à jour les pages</h2>
+      <ol>
+        <li>Modifier les sources dans le dépôt (Markdown, Design Gate, contrats, Roadmap…)</li>
+        <li>Exécuter <code>node docs/syncPages.mjs</code> depuis la racine</li>
+        <li>Commit + push <code>main</code> pour rafraîchir GitHub Pages</li>
+      </ol>
     </section>
 
     <footer>
       <span>https://josephv01.github.io/GardenFervor/</span>
-      <span>Sources Markdown dans le dépôt · les HTML Pages sont des vues publiées</span>
+      <span>Les HTML sous /docs sont des vues publiées — pas les sources de vérité</span>
     </footer>
   </div>
 </body>

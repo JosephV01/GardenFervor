@@ -130,14 +130,14 @@ hub =
   '\n    ' +
   hub.slice(hub.indexOf(end));
 
-// Keep contracts card blurb current
+// Keep hub blurbs current (data-sync anchors — do not invent statuses)
 hub = hub.replace(
-  /(<a class="card" href="contracts\.html">[\s\S]*?<p>)([\s\S]*?)(<\/p>)/,
-  `$1Pilotage documentaire C-01→C-21 · ${SUIVI.progress.validated}/${SUIVI.progress.required} validés · actif ${SUIVI.activeContractId} (${active ? displayStatus(active) : '—'}).$3`
+  /(<p data-sync="contracts-blurb">)([\s\S]*?)(<\/p>)/,
+  `$1Pilotage documentaire · ${SUIVI.progress.validated}/${SUIVI.progress.required} validés · dernier ${SUIVI.activeContractId} (${active ? displayStatus(active) : '—'}).$3`
 );
 hub = hub.replace(
-  /(<a class="card" href="roadmap\.html">[\s\S]*?<p>)([\s\S]*?)(<\/p>)/,
-  `$1${roadmapPayload.meta.globalState} · progression ${roadmapPayload.progress.done}/${roadmapPayload.progress.total} (${roadmapPayload.progress.percent}%).$3`
+  /(<p data-sync="s3-blurb">)([\s\S]*?)(<\/p>)/,
+  `$1${roadmapPayload.meta.globalState} · ${roadmapPayload.progress.done}/${roadmapPayload.progress.total} (${roadmapPayload.progress.percent}%).$3`
 );
 
 fs.writeFileSync(hubPath, hub, 'utf8');
@@ -219,18 +219,23 @@ console.log(
 
 function buildHubStatus({ today, roadmap, suivi, active }) {
   const aStatus = active ? displayStatus(active) : '—';
+  const nextReg = suivi.nextAuthorizedId || '—';
+  const nextNote =
+    nextReg === 'C-03'
+      ? 'Prochain registre : C-03 (addendum fermé) — travail utile suivant : C-04'
+      : `Prochain autorisé : ${nextReg}`;
   return `    <section class="statusStrip" aria-label="État projet synchronisé">
+      <div class="statusCard accent">
+        <span>Contrats</span>
+        <strong>${suivi.progress.validated} / ${suivi.progress.required} validés · dernier ${suivi.activeContractId}</strong>
+        <em>${escapeHtml(nextNote)}</em>
+      </div>
       <div class="statusCard">
-        <span>Roadmap</span>
+        <span>Preuve S3</span>
         <strong>${escapeHtml(roadmap.meta.globalState)}</strong>
         <em>${roadmap.progress.done}/${roadmap.progress.total} VALIDÉ (${roadmap.progress.percent}%)</em>
       </div>
-      <div class="statusCard accent">
-        <span>Contrats</span>
-        <strong>${suivi.activeContractId} · ${escapeHtml(aStatus)} · ${suivi.progress.validated}/${suivi.progress.required}</strong>
-        <em>Prochain autorisé : ${escapeHtml(suivi.nextAuthorizedId || '—')} (non commencé) · ${escapeHtml(active?.note || '')}</em>
-      </div>
-      <div class="statusCard">
+      <div class="statusCard warn">
         <span>Case B</span>
         <strong>${escapeHtml(suivi.caseB.status)}</strong>
         <em>${escapeHtml(suivi.caseB.note)}</em>
