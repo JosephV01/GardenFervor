@@ -74,7 +74,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-02 | Substrat spatial (cellules / dirty / queries) | PARTIEL→REQUIS | détaillée | DG-08/09 · ODC-F3 PASS stubs | P | C-01 | **oui** | 2 |
 | C-03 | Projet / Intention→Project | SUFFISANT* | secondaire | DG-01/11 · C4 · T6 | I (S3) | C-00 | non* | 3* |
 | C-04 | Tâches / graphe / dépendances | PARTIEL | détaillée | DG-11 · ODC-F4 · **C-04 VALIDÉ** | I (S3) | C-03 | **oui** | 4 |
-| C-05 | WorkSite / SitePrep (Cas A/B) | PARTIEL→REQUIS | détaillée | DG-11 · SitePrepTypes · T5 | P | C-01 · C-04 | **oui** | 5 |
+| C-05 | WorkSite / SitePrep (Cas A/B) | PARTIEL→REQUIS | détaillée | DG-11 · SitePrepTypes · T5 · **C-05 VALIDÉ** | P | C-01 · C-04 | **oui** | 5 |
 | C-06 | Capacités / roster unités | SUFFISANT* | secondaire | DG-03 · UnitCapabilityTypes · T3 | I (S3) | C-00 | non* | 6* |
 | C-07 | Autonomie unité (agent générique) | PARTIEL | détaillée | DG-04 · UnitTaskAgent · ODC-F5 | I | C-04 · C-06 | **oui** | 7 |
 | C-08 | Terraformer opérationnel | REQUIS | détaillée | DG-08 · F8 · agent Terraform | P | C-01 · C-05 · C-07 | **oui** | 8 |
@@ -153,11 +153,11 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 ### C-05 — WorkSite / SitePrep
 
 - **Sous-systèmes :** `SitePrepTypes` · `ApplySitePreparation` · `ExpandWorkSite` · Cas A AlreadyReady · Cas B RequiresTerraform (code partiel, **suspendu**).
-- **État :** Cas A VALIDÉ (T5/T9) · Cas B non VALIDÉ / suspendu.
-- **Manque :** contrat Cas B (quand non prêt ; critères prêts ; pas de timer ; interaction Terraform).
-- **Contrat :** **requis détaillé** avant reprise Case B / prep obligatoire.
+- **État :** Cas A VALIDÉ (T5/T9) · Cas B non VALIDÉ / **suspendu** (produit).
+- **Contrat dédié :** **VALIDÉ** — `CONTRATS/C-05_WORKSITE_SITEPREP.md` · **62/62** décisions A1–N3 · audit PASS · D5=C · D6=B.
+- **Dettes d’implémentation (hors décision) :** ExpandWorkSite ; Ready≈Terraform Completed ; LevelPad/WorkSite ; Case B suspendu ; LinkedPitStockId ; TargetHeightOffsetCm.
 - **Amont :** C-01 · C-04 · **Aval :** C-08 · C-13 · Demo Case B.
-- **Bloquant :** **oui** pour Case B.
+- **Bloquant :** **oui** pour Case B (contrat opérationnel désormais disponible ; Case B reste suspendu jusqu’à C-07 · C-08).
 - **Ordre 5.**
 
 ### C-06 — Capacités / roster

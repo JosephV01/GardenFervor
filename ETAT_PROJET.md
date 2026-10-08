@@ -3,7 +3,7 @@
 Dernière mise à jour : **2026-10-08**  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
 
-**Contrats opérationnels :** C-01 · C-02 · C-04 = **VALIDÉ** · progression **3 / 16** · prochain requis = C-05 (non commencé) · C-03 addendum **fermé** · Case B **suspendu**.
+**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 = **VALIDÉ** · progression **4 / 16** · prochain requis = C-07 (non commencé) · C-03 et C-06 addenda **fermés** · Case B **suspendu**.
 
 ---
 

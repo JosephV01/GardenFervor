@@ -1,5 +1,11 @@
 # PROJECT_GRAPH — CHANGELOG
 
+## 2026-10-08 — 1.0.2 — Clôture C-05
+
+- Nœud `c_05` : documentStatus **VALIDÉ** · fichier `CONTRATS/C-05_WORKSITE_SITEPREP.md`.
+- Relation `c_05 → sys_siteprep` : confiance HIGH (contrat VALIDÉ).
+- Frontière `c_04 ↔ c_05` : notes mises à jour (plus FUTURE).
+
 ## 2026-10-08 — 1.0.1 — Clôture C-04
 
 - Nœud `c_04` : documentStatus **VALIDÉ** · fichier contrat référencé.

@@ -108,6 +108,8 @@ function main() {
   const byId = Object.fromEntries((data.nodes || []).map((n) => [n.id, n]));
   if (byId.c_01?.documentStatus !== 'VALIDÉ') warn('C-01 expected VALIDÉ in suivi');
   if (byId.c_02?.documentStatus !== 'VALIDÉ') warn('C-02 expected VALIDÉ in suivi');
+  if (byId.c_04?.documentStatus !== 'VALIDÉ') warn('C-04 expected VALIDÉ');
+  if (byId.c_05?.documentStatus !== 'VALIDÉ') warn('C-05 expected VALIDÉ');
   if (byId.c_03 && byId.c_03.documentStatus !== 'NON COMMENCÉ') warn('C-03 expected closed (NON COMMENCÉ)');
   if (!byId.sys_runtime_store) fail('missing sys_runtime_store');
   if (!byId.sys_spatial) fail('missing sys_spatial');

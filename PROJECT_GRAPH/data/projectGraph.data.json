@@ -21,14 +21,14 @@
     ]
   },
   "generationInfo": {
-    "generatedAt": "2026-10-08T18:15:01.408Z",
+    "generatedAt": "2026-10-08T18:34:37.121Z",
     "curatedVersion": "1.0.0",
     "generator": "PROJECT_GRAPH/scripts/buildProjectGraph.mjs",
     "git": {
-      "head": "4f9b88c15bd2ae534bb3894953b3ae30876bf760",
-      "short": "4f9b88c",
+      "head": "d9b8ef8c0a07a6d2b331a3c5d3dbb4ec2a542810",
+      "short": "d9b8ef8",
       "branch": "main",
-      "dirtyFiles": 83,
+      "dirtyFiles": 86,
       "workingTree": "dirty"
     },
     "sourcesInspected": [
@@ -46,7 +46,7 @@
     "scan": {
       "discoveredHeaderCount": 13,
       "evidenceFileCount": 14,
-      "contractFileCount": 6,
+      "contractFileCount": 7,
       "contentDirs": [
         "Collections",
         "Developers",
@@ -72,7 +72,7 @@
       "sourceFiles": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "gov_etat",
@@ -89,7 +89,7 @@
       "evidence": [],
       "confidence": "HIGH",
       "notes": "Peut diverger du suivi contrats ; le graphe signale les écarts.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "gov_historique",
@@ -105,7 +105,7 @@
       "sourceFiles": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "gov_registre_contrats",
@@ -121,7 +121,7 @@
       "sourceFiles": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "gov_suivi_contrats",
@@ -137,7 +137,7 @@
       "sourceFiles": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_hub",
@@ -157,7 +157,7 @@
       "evidence": [],
       "confidence": "HIGH",
       "notes": "Sections DG-00…DG-14 clôturées VALIDÉ (ETAT_PROJET).",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_00",
@@ -173,7 +173,7 @@
       "sourceFiles": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_04",
@@ -191,7 +191,7 @@
         "evid_odc_f5"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_05",
@@ -209,7 +209,7 @@
         "evid_odc_f6"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_06",
@@ -227,7 +227,7 @@
         "evid_odc_f7"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_08",
@@ -245,7 +245,7 @@
         "evid_odc_f8"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_09",
@@ -263,7 +263,7 @@
         "evid_odc_f3"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_11",
@@ -282,7 +282,7 @@
         "evid_s3_cohort"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_11_6",
@@ -299,7 +299,7 @@
       "evidence": [],
       "confidence": "HIGH",
       "notes": "Complémentaire au mécanisme tâche (futur C-04) ; pas d’implémentation dédiée observée.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "dg_13",
@@ -315,7 +315,7 @@
       "sourceFiles": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_00",
@@ -335,7 +335,7 @@
       "contractNeed": "NON REQUIS",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": false,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_01",
@@ -359,7 +359,7 @@
       "documentStatus": "VALIDÉ",
       "inValidationCounter": true,
       "notes": "Contrat VALIDÉ ; dettes d’implémentation documentées (F1, persist, dirty Soil/Water…).",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_02",
@@ -383,7 +383,7 @@
       "documentStatus": "VALIDÉ",
       "inValidationCounter": true,
       "notes": "31 décisions A1–F3 ; contrat VALIDÉ.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_03",
@@ -404,7 +404,7 @@
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": false,
       "notes": "Addendum fermé pour S3 ; hors compteur 16 tant que non ouvert.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_04",
@@ -428,28 +428,31 @@
       "documentStatus": "VALIDÉ",
       "inValidationCounter": true,
       "notes": "VALIDÉ — 48/48 A1–K6 ; audit PASS ; dettes d’implémentation conservées.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_05",
       "name": "C-05 — WorkSite / SitePrep",
       "category": "CONTRACTS",
-      "designStatus": "PLANNED",
+      "designStatus": "VALIDÉ",
       "implementationStatus": "PARTIAL",
-      "validationStatus": "n/a",
+      "validationStatus": "PASS",
       "responsibility": "Contrat opérationnel C-05",
       "sourceDocuments": [
+        "CONTRATS/C-05_WORKSITE_SITEPREP.md",
         "CONTRATS/00_REGISTRE_CONTRATS.md",
         "CONTRATS/00_SUIVI_CONTRATS.md"
       ],
-      "sourceFiles": [],
+      "sourceFiles": [
+        "CONTRATS/C-05_WORKSITE_SITEPREP.md"
+      ],
       "evidence": [],
       "confidence": "HIGH",
       "contractNeed": "PARTIEL→REQUIS",
-      "documentStatus": "NON COMMENCÉ",
+      "documentStatus": "VALIDÉ",
       "inValidationCounter": true,
-      "notes": "Cas A validé cohorte ; Case B suspendu.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "notes": "VALIDÉ — 62/62 A1–N3 ; audit PASS ; Case B produit suspendu ; dettes d’implémentation conservées.",
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_06",
@@ -469,7 +472,7 @@
       "contractNeed": "SUFFISANT*",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": false,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_07",
@@ -489,7 +492,7 @@
       "contractNeed": "PARTIEL",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_08",
@@ -510,7 +513,7 @@
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
       "notes": "Bloque Demo Case B.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_09",
@@ -530,7 +533,7 @@
       "contractNeed": "SUFFISANT*",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": false,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_10",
@@ -550,7 +553,7 @@
       "contractNeed": "SUFFISANT*",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": false,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_11",
@@ -570,7 +573,7 @@
       "contractNeed": "PARTIEL",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_12",
@@ -590,7 +593,7 @@
       "contractNeed": "PARTIEL",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_13",
@@ -610,7 +613,7 @@
       "contractNeed": "SUFFISANT*",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": false,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_14",
@@ -630,7 +633,7 @@
       "contractNeed": "REQUIS",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_15",
@@ -650,7 +653,7 @@
       "contractNeed": "REQUIS",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_16",
@@ -670,7 +673,7 @@
       "contractNeed": "REQUIS",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_17",
@@ -690,7 +693,7 @@
       "contractNeed": "PARTIEL→REQUIS",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_18",
@@ -710,7 +713,7 @@
       "contractNeed": "PARTIEL",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_19",
@@ -730,7 +733,7 @@
       "contractNeed": "REQUIS",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_20",
@@ -750,7 +753,7 @@
       "contractNeed": "PARTIEL",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_21",
@@ -770,7 +773,7 @@
       "contractNeed": "PARTIEL",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": true,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_22",
@@ -790,7 +793,7 @@
       "contractNeed": "NON REQUIS",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": false,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "c_23",
@@ -810,7 +813,7 @@
       "contractNeed": "NON REQUIS",
       "documentStatus": "NON COMMENCÉ",
       "inValidationCounter": false,
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_landscape_terraform",
@@ -831,7 +834,7 @@
         "evid_odc_f8"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_runtime_store",
@@ -854,7 +857,7 @@
       ],
       "confidence": "HIGH",
       "notes": "ODC-F1 INVALIDÉ ; shipping Base+Delta À REFAIRE.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_base_height",
@@ -873,7 +876,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_terraform_visualizer",
@@ -894,7 +897,7 @@
         "evid_odc_f1"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_terraform_collision",
@@ -913,7 +916,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_terraform_save",
@@ -934,7 +937,7 @@
         "evid_odc_f1"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_spatial",
@@ -956,7 +959,7 @@
         "evid_odc_f3"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_project",
@@ -979,7 +982,7 @@
         "evid_s3_cohort"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_siteprep",
@@ -995,13 +998,14 @@
         "Source/GardenFervor/RTS/Projects/GardenFervorSitePrepHelpers.cpp"
       ],
       "sourceDocuments": [
+        "CONTRATS/C-05_WORKSITE_SITEPREP.md",
         "CONTRATS/00_REGISTRE_CONTRATS.md"
       ],
       "evidence": [
         "evid_s3_cohort"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_task",
@@ -1025,7 +1029,7 @@
       ],
       "confidence": "HIGH",
       "notes": "Contrat C-04 non rédigé ; runtime S3 opérationnel.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_unit_base",
@@ -1044,7 +1048,7 @@
         "evid_s3_cohort"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_unit_agent",
@@ -1066,7 +1070,7 @@
         "evid_s3_cohort"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_terraform_tool",
@@ -1085,7 +1089,7 @@
         "evid_odc_f8"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_harvest",
@@ -1104,7 +1108,7 @@
         "evid_s3_cohort"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_physical_economy",
@@ -1125,7 +1129,7 @@
         "evid_s3_cohort"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_economy_component",
@@ -1143,7 +1147,7 @@
       "evidence": [],
       "confidence": "HIGH",
       "notes": "Présent ; cohorte S3 privilégie PhysicalEconomy.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_buildings_placement",
@@ -1160,7 +1164,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_production_queue",
@@ -1177,7 +1181,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_tech",
@@ -1194,7 +1198,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_rts_catalog",
@@ -1215,7 +1219,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_selection",
@@ -1232,7 +1236,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_input",
@@ -1250,7 +1254,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_rts_hud",
@@ -1267,7 +1271,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_visual_runtime_gate",
@@ -1288,7 +1292,7 @@
         "evid_odc_f2"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_game_framework",
@@ -1307,7 +1311,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_investor_demo",
@@ -1330,7 +1334,7 @@
         "evid_s3_cohort"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "sys_case_b",
@@ -1351,7 +1355,7 @@
       "evidence": [],
       "confidence": "HIGH",
       "notes": "Code partiel présent ; évolution gameplay suspendue.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "data_project_record",
@@ -1367,7 +1371,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "data_task_record",
@@ -1383,7 +1387,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "data_spatial_cell",
@@ -1399,7 +1403,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "data_height_store",
@@ -1415,7 +1419,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "data_stock",
@@ -1432,7 +1436,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "data_reservation",
@@ -1448,7 +1452,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "data_capabilities",
@@ -1464,7 +1468,7 @@
       "sourceDocuments": [],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "evid_odc_f1",
@@ -1482,7 +1486,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "evid_odc_f2",
@@ -1500,7 +1504,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "evid_odc_f3",
@@ -1518,7 +1522,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "evid_odc_f4",
@@ -1536,7 +1540,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "evid_odc_f5",
@@ -1554,7 +1558,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "evid_odc_f6",
@@ -1572,7 +1576,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "evid_odc_f7",
@@ -1590,7 +1594,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "evid_odc_f8",
@@ -1608,7 +1612,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "evid_s3_cohort",
@@ -1626,7 +1630,7 @@
       "evidence": [],
       "confidence": "HIGH",
       "notes": "9/9 tranches VALIDÉ ; Case B hors périmètre.",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "ext_m4",
@@ -1646,7 +1650,7 @@
         "evid_odc_f2"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "ext_uds",
@@ -1666,7 +1670,7 @@
         "evid_odc_f2"
       ],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "ext_ue_plugins",
@@ -1684,7 +1688,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "tool_docs_pages",
@@ -1703,7 +1707,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "tool_designgate_react",
@@ -1719,7 +1723,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     },
     {
       "id": "tool_project_graph",
@@ -1737,7 +1741,7 @@
       ],
       "evidence": [],
       "confidence": "HIGH",
-      "lastVerified": "2026-10-08T18:15:01.408Z"
+      "lastVerified": "2026-10-08T18:34:37.121Z"
     }
   ],
   "edges": [
@@ -2106,10 +2110,10 @@
       "from": "c_05",
       "to": "sys_siteprep",
       "type": "GOVERNS",
-      "confidence": "MEDIUM",
-      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-05_WORKSITE_SITEPREP.md",
       "relationKind": "ACTIVE",
-      "notes": ""
+      "notes": "Contrat C-05 VALIDÉ — besoin SitePrep / SiteReady."
     },
     {
       "id": "c_04__GOVERNS__sys_task",
@@ -2542,14 +2546,14 @@
       "notes": "Frontière contractuelle VALIDÉE (G4) ; câblage runtime Dirty→tâches encore dette."
     },
     {
-      "id": "c_04__CONSTRAINS__c_05__FUTURE",
+      "id": "c_04__CONSTRAINS__c_05",
       "from": "c_04",
       "to": "c_05",
       "type": "CONSTRAINS",
-      "confidence": "MEDIUM",
-      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
-      "relationKind": "FUTURE",
-      "notes": "C-05 décide SitePrep ; C-04 orchestre tâches résultantes."
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-05_WORKSITE_SITEPREP.md",
+      "relationKind": "ACTIVE",
+      "notes": "Frontière VALIDÉE — C-05 décide SitePrep ; C-04 orchestre tâches résultantes."
     },
     {
       "id": "c_04__CONSTRAINS__c_07__FUTURE",
@@ -2799,6 +2803,7 @@
       "CONTRATS/C-01_TERRAIN_RUNTIME.md",
       "CONTRATS/C-02_SUBSTRAT_SPATIAL.md",
       "CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md",
+      "CONTRATS/C-05_WORKSITE_SITEPREP.md",
       "CONTRATS/ReglesRoutinesContrats.md"
     ],
     "evidenceFiles": [

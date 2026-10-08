@@ -73,7 +73,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-04",
+  "activeId": "C-05",
   "order": [
     "C-01",
     "C-02",
@@ -98,7 +98,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 3,
+    "validated": 4,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -260,11 +260,11 @@
       "id": "C-05",
       "order": "5",
       "name": "WorkSite / SitePrep (Cas A/B)",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "Lié Case B suspendu",
+      "note": "VALIDÉ humainement — 62/62 décisions A1–N3 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées",
       "dependsOn": [
         "C-01",
         "C-04"
@@ -273,7 +273,27 @@
         "C-08",
         "C-13",
         "C-14"
-      ]
+      ],
+      "file": "CONTRATS/C-05_WORKSITE_SITEPREP.md",
+      "detail": {
+        "decisions": "62 / 62",
+        "frontiers": [
+          "C-01 — autorité terrain",
+          "C-02 — référence spatiale / Dirty",
+          "C-04 — graphe des tâches",
+          "C-07 — exécution unité",
+          "C-08 — métier Terraform",
+          "C-13 — Achevé / En service",
+          "DG-11.6 — réaction chantier"
+        ],
+        "gaps": [
+          "ExpandWorkSite mélange décision + graphe",
+          "Ready runtime ≈ Terraform Completed (écart D3)",
+          "Case B code présent mais produit suspendu",
+          "LevelPad / WorkSite coexistants",
+          "LinkedPitStockId / TargetHeightOffsetCm"
+        ]
+      }
     },
     {
       "id": "C-06",

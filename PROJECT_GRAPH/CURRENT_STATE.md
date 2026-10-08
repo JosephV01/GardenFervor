@@ -1,7 +1,7 @@
 # PROJECT_GRAPH — CURRENT_STATE
 
-Généré : **2026-10-08T18:15:01.408Z**
-HEAD : `4f9b88c15bd2ae534bb3894953b3ae30876bf760` (dirty, 83 fichiers dirty)
+Généré : **2026-10-08T18:34:37.121Z**
+HEAD : `d9b8ef8c0a07a6d2b331a3c5d3dbb4ec2a542810` (dirty, 86 fichiers dirty)
 Curated schema : `1.0.0`
 
 ## Inventaire
@@ -10,14 +10,14 @@ Curated schema : `1.0.0`
 | --- | ---: |
 | Nœuds | 88 |
 | Relations | 105 |
-| Relations HIGH | 80 |
-| Relations MEDIUM | 25 |
+| Relations HIGH | 82 |
+| Relations MEDIUM | 23 |
 | Relations LOW | 0 |
-| Relations ACTIVE | 98 |
-| Relations FUTURE | 7 |
+| Relations ACTIVE | 99 |
+| Relations FUTURE | 6 |
 | Relations UNVERIFIED | 0 |
 | Contrats (registre) | 24 |
-| Contrats fichiers présents | 3 |
+| Contrats fichiers présents | 4 |
 | Preuves inventoriées | 9 |
 | Gates Saved détectés | 14 |
 | Headers systèmes scannés | 13 |
@@ -56,6 +56,7 @@ Curated schema : `1.0.0`
 - C-01 — Terrain runtime
 - C-02 — Substrat spatial
 - C-04 — Tâches / graphe / dépendances
+- C-05 — WorkSite / SitePrep
 
 ## Systèmes SUSPENDED / LEGACY / STUB
 
@@ -96,8 +97,8 @@ Curated schema : `1.0.0`
 - C-01 = autorité terrain (gouverne Store / contraint Landscape)
 - C-02 = référence spatiale (gouverne SpatialSubsystem)
 - C-03 = addendum fermé (NON COMMENCÉ)
-- C-04 = graphe tâches (contrat non rédigé ; runtime TaskSubsystem présent)
-- C-05 = SitePrep (helpers présents ; Case B SUSPENDED)
+- C-04 = graphe tâches (contrat VALIDÉ ; runtime TaskSubsystem présent)
+- C-05 = SitePrep (contrat VALIDÉ ; helpers présents ; Case B SUSPENDED)
 - C-07 / C-08 / C-11 = frontières FUTURE marquées tant que contrats non VALIDÉS
 
 ## Règle

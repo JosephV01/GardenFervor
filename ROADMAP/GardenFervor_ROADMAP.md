@@ -6,11 +6,11 @@ Balises machine : RM:META, RM:NOW, RM:NEXT, RM:PHASE, RM:JALON, RM:WORK
 -->
 
 <!--RM:META
-version: 1.0.0
+version: 1.0.2
 updated: 2026-10-08
 title: GardenFervor — Roadmap globale
-git_head_at_audit: 1e0337b
-notes: Première génération. Distincte de Plan de production/Roadmap (cohorte S3).
+git_head_at_audit: d9b8ef8
+notes: Clôture C-05 · compteur 4/16 · prochain C-07. Distincte de Plan de production/Roadmap (cohorte S3).
 -->
 
 # GardenFervor — Roadmap globale
@@ -34,11 +34,11 @@ notes: Première génération. Distincte de Plan de production/Roadmap (cohorte 
 ## Où en est GardenFervor ?
 
 <!--RM:NOW
-summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 3/16 (C-01·C-02·C-04 VALIDÉS) · prochain requis = C-05 (non commencé) · C-03 addendum fermé · Case B SUSPENDU
+summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 4/16 (C-01·C-02·C-04·C-05 VALIDÉS) · prochain requis = C-07 (non commencé) · C-03 et C-06 addenda fermés · Case B SUSPENDU
 conception: VALIDÉ
 realisation: PARTIELLE
 validation: PARTIELLE
-contracts_validated: 3
+contracts_validated: 4
 contracts_required: 16
 s3_case_a: VALIDÉ
 case_b: SUSPENDU
@@ -46,7 +46,7 @@ design_gate: VALIDÉ (DG-00→DG-14)
 odc_f1: À REFAIRE
 -->
 
-**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; le graphe de tâches a son contrat opérationnel ; la suite consiste à écrire les règles de préparation de site et d’exécution, puis à élargir le jeu jusqu’au produit final.
+**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; graphe de tâches et préparation de site ont leurs contrats opérationnels ; la suite consiste à formaliser l’autonomie d’exécution puis le métier Terraform, puis à élargir le jeu jusqu’au produit final.
 
 ### Acquis confirmés
 
@@ -55,7 +55,8 @@ odc_f1: À REFAIRE
 - **Contrats opérationnels VALIDÉS :**
   - **C-01** — vérité du terrain (hauteur runtime) ;
   - **C-02** — grille spatiale / zones modifiées / consultations ;
-  - **C-04** — tâches / graphe / dépendances (**48/48** décisions).
+  - **C-04** — tâches / graphe / dépendances (**48/48** décisions) ;
+  - **C-05** — WorkSite / SitePrep (**62/62** décisions).
 - **Preuves techniques majeures (ODC) :** F2 présentation · F3 spatial · F4 tâches · F5 autonomie · F6 économie physique · F7 logistique · F8 opérations terrain — **PASS** (F5/F7 avec validation humaine).
 - **Investor Demo** : présentation et démonstration S3 présentes.
 - **Cartographie** : `PROJECT_GRAPH/` disponible (projection, pas SoT).
@@ -63,51 +64,50 @@ odc_f1: À REFAIRE
 ### En construction / partiel
 
 - Runtime terrain **shipping** (ODC-F1 **À REFAIRE** — preuve précédente INVALIDÉE).
-- Chaîne chantiers / préparation : code S3 opérationnel ; **C-04 VALIDÉ** ; contrats C-05+ non rédigés ; dettes runtime tâches documentées.
+- Chaîne chantiers / préparation : code S3 opérationnel ; **C-04** et **C-05 VALIDÉS** ; contrats C-07+ non rédigés ; dettes runtime SitePrep / tâches documentées.
 - Eau / sol spatiaux : **stubs**.
 - Persistance terrain : **désactivée**.
 
 ### Suspendu
 
-- **Case B** — chantier qui exige d’abord de préparer / transformer le terrain : **SUSPENDU** jusqu’aux contrats bloquants restants (notamment C-05, C-07, C-08).
+- **Case B** — chantier qui exige d’abord de préparer / transformer le terrain : **SUSPENDU** jusqu’aux contrats bloquants restants (notamment C-07, C-08).
 
 ### Notes d’ordre
 
-- **C-03** reste un **addendum fermé** (suffisant pour S3) : **ne pas l’ouvrir** sans besoin réel.
-- **Prochain contrat requis du compteur 16 = C-05** (ordre registre 5) — **non commencé**.
+- **C-03** et **C-06** restent des **addenda fermés** (suffisants pour S3) : **ne pas les ouvrir** sans besoin réel.
+- **Prochain contrat requis du compteur 16 = C-07** (ordre registre 7) — **non commencé**.
 
 ---
 
 ## Prochain travail autorisé
 
 <!--RM:NEXT
-id: next-c05
-title: C-05 — WorkSite / SitePrep
+id: next-c07
+title: C-07 — Autonomie unité
 status: À FAIRE
 horizon: Prochain
-note: Prochain contrat requis après C-04 VALIDÉ. Ne pas démarrer sans ordre explicite. C-03 reste addendum fermé.
-depends: C-01 VALIDÉ · C-04 VALIDÉ
-unlocks: C-08 · Case B (plus tard) · chantiers avec préparation
+note: Prochain contrat requis après C-05 VALIDÉ. Ne pas démarrer sans ordre explicite. C-03 et C-06 restent addenda fermés. Case B suspendu.
+depends: C-04 VALIDÉ · C-06 addendum fermé (S3)
+unlocks: C-08 · Case B (plus tard) · exécution unité formalisée
 -->
 
-### Prochain — C-05 : préparer une zone avant construction
+### Prochain — C-07 : comment une unité choisit et exécute une tâche
 
 **Statut :** À FAIRE (non commencé)  
 **Horizon :** Prochain  
-**En langage simple :** décider si et quand un chantier doit d’abord préparer / transformer le terrain, et quelles tâches en découlent — sans reprendre Case B ni inventer le métier Terraform.
+**En langage simple :** formaliser l’autonomie générique des unités (sélection, claim, exécution, reprise) sans réactiver Case B ni inventer le métier Terraform.
 
 | | |
 | --- | --- |
-| Prérequis | C-01 et C-04 VALIDÉS |
-| Débloque | enchaînement vers C-07 / C-08 et, plus tard, Case B |
-| Ne pas faire maintenant | ouvrir C-03 · reprendre Case B · démarrer l’implémentation sans contrat |
+| Prérequis | C-04 VALIDÉ · C-05 VALIDÉ · C-06 addendum fermé (S3) |
+| Débloque | enchaînement vers C-08 et, plus tard, Case B |
+| Ne pas faire maintenant | ouvrir C-03/C-06 · reprendre Case B · démarrer l’implémentation sans contrat |
 
 ### Travaux ultérieurs (non autorisés comme « en cours »)
 
-1. **C-05** (prochain requis) — préparation de site.
-2. **Puis** C-07 (comment une unité choisit et exécute une tâche).
-3. **Puis** C-08 (terrassement réellement progressif) — condition de reprise **Case B**.
-4. **En parallèle / ensuite** : dettes terrain shipping (F1), réservations (C-11), logistique élargie (C-12), infrastructures (C-14), écosystèmes (C-15…), UX joueur (C-20), sauvegarde (C-19).
+1. **C-07** (prochain requis) — autonomie unité.
+2. **Puis** C-08 (terrassement réellement progressif) — condition de reprise **Case B**.
+3. **En parallèle / ensuite** : dettes terrain shipping (F1), réservations (C-11), logistique élargie (C-12), infrastructures (C-14), écosystèmes (C-15…), UX joueur (C-20), sauvegarde (C-19).
 
 ---
 
@@ -354,24 +354,25 @@ Contrat dédié : `CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md`.
 id: P2.J4
 phase: P2
 title: Contrats chantiers / unités / terraform (C-05 · C-07 · C-08)
-status: À FAIRE
-conception: À CONCEVOIR
+status: EN COURS
+conception: PARTIEL
 realisation: PARTIELLE
-validation: NON TERMINÉE
+validation: PARTIEL
 depends: P2.J3
 unlocks: P1.J2,P4,P5,P6
-sources: CONTRATS/00_REGISTRE_CONTRATS.md
+sources: CONTRATS/C-05_WORKSITE_SITEPREP.md · CONTRATS/00_REGISTRE_CONTRATS.md
+note: C-05 VALIDÉ (62/62) ; prochain requis = C-07 ; C-08 encore À FAIRE ; Case B suspendu.
 -->
 
 ### Jalon P2.J4 — C-05 · C-07 · C-08
 
-**Statut :** À FAIRE (C-05 = prochain requis ; non commencé)  
+**Statut :** EN COURS (**C-05 VALIDÉ** · C-07 = prochain requis · C-08 encore À FAIRE)
 
-- **C-05** — savoir si / quand préparer un site ;  
-- **C-07** — autonomie générique des unités ;  
+- **C-05** — **VALIDÉ** — savoir si / quand préparer un site (`CONTRATS/C-05_WORKSITE_SITEPREP.md`) ;  
+- **C-07** — autonomie générique des unités (prochain requis) ;  
 - **C-08** — terrassement opérationnel progressif.  
 
-Nécessaires avant une reprise saine de **Case B**.
+C-07 et C-08 restent nécessaires avant une reprise saine de **Case B**.
 
 <!--RM:JALON
 id: P2.J5
@@ -905,9 +906,9 @@ Validation humaine des boucles critiques, stabilité, build shipping — **sans 
 ```text
 P0 Fondations (TERMINÉ)
  └─► P1 Preuve S3 Cas A (TERMINÉ) · Case B (SUSPENDU)
-      └─► P2 Contrats (EN COURS : C-01·C-02·C-04 VALIDÉS → C-05 prochain)
+      └─► P2 Contrats (EN COURS : C-01·C-02·C-04·C-05 VALIDÉS → C-07 prochain)
            ├─► P3 Monde / terrain (F1 À REFAIRE)
-           ├─► P4 Chantiers (après C-05…)
+           ├─► P4 Chantiers (C-05 VALIDÉ · suite C-07/C-08)
            ├─► P5 Unités (après C-07)
            └─► P6 Ressources / logistique
                 └─► P7 Infrastructures
@@ -924,10 +925,12 @@ P0 Fondations (TERMINÉ)
 
 | Sujet | Statut | Pourquoi | Débloqué par |
 | --- | --- | --- | --- |
-| Case B | SUSPENDU | Contrats SitePrep / autonomie / Terraform encore à faire | C-05 · C-07 · C-08 (+ C-01 dettes utiles) |
+| Case B | SUSPENDU | Autonomie / Terraform encore à contractualiser (SitePrep = C-05 VALIDÉ) | C-07 · C-08 (+ C-01 dettes utiles) |
 | C-03 | Fermé (addendum) | S3 suffit | Ouverture humaine seulement si besoin |
+| C-06 | Fermé (addendum) | S3 suffit | Ouverture humaine seulement si besoin |
 | ODC-F1 | À REFAIRE | Preuve shipping INVALIDÉE | Travaux terrain shipping |
-| C-05 | À FAIRE | Prochain requis (non commencé) | Ordre explicite de rédaction |
+| C-05 | VALIDÉ | Contrat opérationnel 62/62 | — |
+| C-07 | À FAIRE | Prochain requis (non commencé) | Ordre explicite de rédaction |
 
 ---
 
@@ -950,6 +953,7 @@ P0 Fondations (TERMINÉ)
 
 | Date | Version | Changement |
 | --- | --- | --- |
+| 2026-10-08 | 1.0.2 | Clôture C-05 VALIDÉ · compteur 4/16 · prochain = C-07 |
 | 2026-10-08 | 1.0.1 | Clôture C-04 VALIDÉ · compteur 3/16 · prochain = C-05 |
 | 2026-10-08 | 1.0.0 | Création initiale après audit dépôt |
 

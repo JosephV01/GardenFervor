@@ -231,8 +231,8 @@ export const curatedNodes = [
   mkContract('c_04', 'C-04', 'Tâches / graphe / dépendances', 'PARTIEL', 'VALIDÉ', 'I', true, 'CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md', {
     notes: 'VALIDÉ — 48/48 A1–K6 ; audit PASS ; dettes d’implémentation conservées.',
   }),
-  mkContract('c_05', 'C-05', 'WorkSite / SitePrep', 'PARTIEL→REQUIS', 'NON COMMENCÉ', 'P', true, null, {
-    notes: 'Cas A validé cohorte ; Case B suspendu.',
+  mkContract('c_05', 'C-05', 'WorkSite / SitePrep', 'PARTIEL→REQUIS', 'VALIDÉ', 'P', true, 'CONTRATS/C-05_WORKSITE_SITEPREP.md', {
+    notes: 'VALIDÉ — 62/62 A1–N3 ; audit PASS ; Case B produit suspendu ; dettes d’implémentation conservées.',
   }),
   mkContract('c_06', 'C-06', 'Capacités / roster', 'SUFFISANT*', 'NON COMMENCÉ', 'I', false, null),
   mkContract('c_07', 'C-07', 'Autonomie unité', 'PARTIEL', 'NON COMMENCÉ', 'I', true, null),
@@ -400,7 +400,7 @@ export const curatedNodes = [
       'Source/GardenFervor/RTS/Projects/GardenFervorSitePrepHelpers.h',
       'Source/GardenFervor/RTS/Projects/GardenFervorSitePrepHelpers.cpp',
     ],
-    sourceDocuments: ['CONTRATS/00_REGISTRE_CONTRATS.md'],
+    sourceDocuments: ['CONTRATS/C-05_WORKSITE_SITEPREP.md', 'CONTRATS/00_REGISTRE_CONTRATS.md'],
     evidence: ['evid_s3_cohort'],
     confidence: 'HIGH',
   },
@@ -886,7 +886,9 @@ export const curatedEdges = [
   e('c_01', 'sys_terraform_save', 'CONSTRAINS', 'HIGH', 'CONTRATS/C-01_TERRAIN_RUNTIME.md'),
   e('c_02', 'sys_spatial', 'GOVERNS', 'HIGH', 'CONTRATS/C-02_SUBSTRAT_SPATIAL.md'),
   e('c_02', 'data_spatial_cell', 'OWNS', 'HIGH', 'CONTRATS/C-02_SUBSTRAT_SPATIAL.md'),
-  e('c_05', 'sys_siteprep', 'GOVERNS', 'MEDIUM', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_05', 'sys_siteprep', 'GOVERNS', 'HIGH', 'CONTRATS/C-05_WORKSITE_SITEPREP.md', {
+    notes: 'Contrat C-05 VALIDÉ — besoin SitePrep / SiteReady.',
+  }),
   e('c_04', 'sys_task', 'GOVERNS', 'HIGH', 'CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md', {
     notes: 'Contrat C-04 VALIDÉ — autorité graphe / cycle de vie.',
   }),
@@ -954,9 +956,8 @@ export const curatedEdges = [
     relationKind: 'FUTURE',
     notes: 'Frontière contractuelle VALIDÉE (G4) ; câblage runtime Dirty→tâches encore dette.',
   }),
-  e('c_04', 'c_05', 'CONSTRAINS', 'MEDIUM', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
-    relationKind: 'FUTURE',
-    notes: 'C-05 décide SitePrep ; C-04 orchestre tâches résultantes.',
+  e('c_04', 'c_05', 'CONSTRAINS', 'HIGH', 'CONTRATS/C-05_WORKSITE_SITEPREP.md', {
+    notes: 'Frontière VALIDÉE — C-05 décide SitePrep ; C-04 orchestre tâches résultantes.',
   }),
   e('c_04', 'c_07', 'CONSTRAINS', 'MEDIUM', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
     relationKind: 'FUTURE',

@@ -1,5 +1,11 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-08 — 1.0.2 — Clôture C-05
+
+- C-05 VALIDÉ (62/62) · progression contrats **4 / 16**.
+- Prochain requis = **C-07** (non commencé) · C-03 et C-06 addenda fermés · Case B suspendu.
+- Régénération HTML depuis le Markdown.
+
 ## 2026-10-08 — 1.0.1 — Clôture C-04
 
 - C-04 VALIDÉ (48/48) · progression contrats **3 / 16**.

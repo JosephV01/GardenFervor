@@ -25,7 +25,7 @@ flowchart TB
     c_02["C-02 — Substrat spatial\n[PASS]"]
     c_03["C-03 — Intention → Project\n[IMPLEMENTED]"]
     c_04["C-04 — Tâches / graphe / dépendances\n[PASS]"]
-    c_05["C-05 — WorkSite / SitePrep\n[PARTIAL]"]
+    c_05["C-05 — WorkSite / SitePrep\n[PASS]"]
     c_06["C-06 — Capacités / roster\n[IMPLEMENTED]"]
     c_07["C-07 — Autonomie unité\n[IMPLEMENTED]"]
     c_08["C-08 — Terraformer opérationnel\n[PARTIAL]"]
@@ -133,7 +133,7 @@ flowchart TB
   sys_unit_base -->|OWNS| sys_unit_agent
   sys_spatial -.->|FUTURE:SIGNALS| sys_task
   c_02 -.->|FUTURE:SIGNALS| c_04
-  c_04 -.->|FUTURE:CONSTRAINS| c_05
+  c_04 -->|CONSTRAINS| c_05
   c_04 -.->|FUTURE:CONSTRAINS| c_07
   c_04 -.->|FUTURE:CONSTRAINS| c_08
   c_04 -.->|FUTURE:CONSTRAINS| c_11

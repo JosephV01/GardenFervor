@@ -1,17 +1,17 @@
 {
   "meta": {
-    "version": "1.0.0",
+    "version": "1.0.2",
     "updated": "2026-10-08",
     "title": "GardenFervor — Roadmap globale",
-    "git_head_at_audit": "1e0337b",
-    "notes": "Première génération. Distincte de Plan de production/Roadmap (cohorte S3)."
+    "git_head_at_audit": "d9b8ef8",
+    "notes": "Clôture C-05 · compteur 4/16 · prochain C-07. Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 3/16 (C-01·C-02·C-04 VALIDÉS) · prochain requis = C-05 (non commencé) · C-03 addendum fermé · Case B SUSPENDU",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 4/16 (C-01·C-02·C-04·C-05 VALIDÉS) · prochain requis = C-07 (non commencé) · C-03 et C-06 addenda fermés · Case B SUSPENDU",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
-    "contracts_validated": "3",
+    "contracts_validated": "4",
     "contracts_required": "16",
     "s3_case_a": "VALIDÉ",
     "case_b": "SUSPENDU",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c05",
-    "title": "C-05 — WorkSite / SitePrep",
+    "id": "next-c07",
+    "title": "C-07 — Autonomie unité",
     "status": "À FAIRE",
     "horizon": "Prochain",
-    "note": "Prochain contrat requis après C-04 VALIDÉ. Ne pas démarrer sans ordre explicite. C-03 reste addendum fermé.",
-    "depends": "C-01 VALIDÉ · C-04 VALIDÉ",
-    "unlocks": "C-08 · Case B (plus tard) · chantiers avec préparation"
+    "note": "Prochain contrat requis après C-05 VALIDÉ. Ne pas démarrer sans ordre explicite. C-03 et C-06 restent addenda fermés. Case B suspendu.",
+    "depends": "C-04 VALIDÉ · C-06 addendum fermé (S3)",
+    "unlocks": "C-08 · Case B (plus tard) · exécution unité formalisée"
   },
   "phases": [
     {
@@ -171,13 +171,14 @@
           "id": "P2.J4",
           "phase": "P2",
           "title": "Contrats chantiers / unités / terraform (C-05 · C-07 · C-08)",
-          "status": "À FAIRE",
-          "conception": "À CONCEVOIR",
+          "status": "EN COURS",
+          "conception": "PARTIEL",
           "realisation": "PARTIELLE",
-          "validation": "NON TERMINÉE",
+          "validation": "PARTIEL",
           "depends": "P2.J3",
           "unlocks": "P1.J2,P4,P5,P6",
-          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md",
+          "sources": "CONTRATS/C-05_WORKSITE_SITEPREP.md · CONTRATS/00_REGISTRE_CONTRATS.md",
+          "note": "C-05 VALIDÉ (62/62) ; prochain requis = C-07 ; C-08 encore À FAIRE ; Case B suspendu.",
           "works": []
         },
         {
@@ -519,9 +520,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-08T18:15:01.212Z",
-    "mdHash": "619708910650a6293031c1c66e25e5e09f8407bf01396028e3643c186723788f",
-    "git": "4f9b88c",
+    "generatedAt": "2026-10-08T18:34:36.926Z",
+    "mdHash": "e1684bc0869e833a732ce9807019ebcb522e342f6e853fa3adcb9649b098f5ba",
+    "git": "d9b8ef8",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },
