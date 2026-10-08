@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GardenFervor — Suivi des contrats</title>
+  <style>
+    :root{font-family:Inter,ui-sans-serif,system-ui,"Segoe UI",sans-serif;color:#e9efec;background:#0e1413;line-height:1.5;--bg:#0e1413;--panel:#141d1b;--line:#26332f;--muted:#8fa19b;--text:#e9efec;--accent:#7bd7a8;--amber:#e5c28d;--blue:#8ecdf8;--red:#ea9e9e}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,rgba(83,150,117,.12),transparent 26%),var(--bg);color:var(--text)}
+    a{color:var(--accent)}.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+    .top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+    .back{font-size:12px;font-weight:700;text-decoration:none;border:1px solid var(--line);padding:7px 10px;border-radius:8px;background:#18211f;color:#dce7e2}
+    .eyebrow{font-size:10px;letter-spacing:.16em;font-weight:800;color:#71877f}
+    h1{margin:6px 0 8px;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.03em}
+    .lead{margin:0;color:var(--muted);font-size:14px;max-width:720px}
+    .rule{margin:16px 0;border-left:2px solid var(--accent);padding:8px 0 8px 12px;color:#bac9c3;font-size:13px}
+    .hero{display:grid;grid-template-columns:1.4fr .8fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid var(--line);background:#131b19;border-radius:12px;padding:16px}
+    .progressLabel{display:flex;justify-content:space-between;font-size:12px;color:#81938d}
+    .progressLabel strong{font-size:22px;color:#dbe9e3}
+    .bar{height:9px;background:#1a2421;border-radius:99px;overflow:hidden;margin:12px 0 8px}
+    .fill{height:100%;background:linear-gradient(90deg,#5bb98e,#9fe2bd);width:0%}
+    .meta{font-size:11px;color:#70837c}
+    .active{border-color:#3d6350;background:linear-gradient(135deg,#172822,#121c19)}
+    .active h2{margin:4px 0 6px;font-size:1.15rem}
+    .badges{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+    .badge{display:inline-flex;padding:3px 8px;border-radius:99px;border:1px solid transparent;font-size:9px;font-weight:800}
+    .revue{background:#1a2438;border-color:#3a5278;color:#9ec4f5}
+    .nonval{background:#3a1f1f;border-color:#7a3d3d;color:#f0b4b4}
+    .todo{background:#2b2718;border-color:#4b4330;color:#e6d7a6}
+    .suff{background:#1a2220;border-color:#33403c;color:#9aada5}
+    .block{background:#2b2020;border-color:#4d3636;color:#e6a9a9}
+    .partiel{background:#2a2418;border-color:#53462e;color:#e2c994}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;margin-top:14px}
+    .list{display:flex;flex-direction:column;gap:6px}
+    .row{border:1px solid #202b28;background:#111816;border-radius:10px;padding:10px 12px}
+    .row.active{border-color:#4d7a62;background:#15231e}
+    .rowTop{display:flex;gap:8px;align-items:center;font-size:12px}
+    .id{font-weight:900;color:#8fb3a4;min-width:40px}
+    .name{color:#d5e2dc;font-weight:650}
+    .detail h3{margin:0 0 4px;font-size:1.4rem}
+    .detail .fname{margin:0 0 10px;color:var(--muted);font-size:13px}
+    .dec{font-size:28px;font-weight:850;margin:4px 0 12px}
+    .blockTitle{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:850;color:#7d9189;margin:14px 0 6px}
+    ul{margin:0;padding-left:18px;color:#a7bbb3;font-size:12px}
+    li{margin:4px 0}
+    .gaps{background:#1a1712;border:1px solid #3a3224;border-radius:8px;padding:10px 12px}
+    .gapNote{margin:0 0 6px;font-size:11px;color:var(--amber)}
+    footer{margin-top:24px;color:#5f736a;font-size:11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    @media(max-width:900px){.hero,.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="eyebrow">GARDENFERVOR</div>
+        <h1>Suivi des contrats</h1>
+        <p class="lead">Contracts / Operational Architecture — vue publiée du pilotage documentaire.</p>
+      </div>
+      <a class="back" href="index.html">← Hub documentation</a>
+    </div>
+
+    <div class="rule"><strong>Règle :</strong> Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.</div>
+
+    <div class="hero">
+      <div class="panel active">
+        <div class="eyebrow">Contrat actif</div>
+        <h2>C-01 — Terrain runtime (vérité hauteur / shipping)</h2>
+        <p style="margin:0;color:#a7bbb3;font-size:13px">Contrat rédigé / en attente d’audit et validation</p>
+        <div class="badges">
+          <span class="badge revue">REVUE</span>
+          <span class="badge nonval">NON VALIDÉ</span>
+          <span class="badge block">BLOQUANT</span>
+        </div>
+        <div style="font-size:13px;color:#b7cbc2">Décisions : <strong style="font-size:20px;color:#e9efec">14 / 14</strong></div>
+      </div>
+      <div class="panel">
+        <div class="progressLabel"><span>Contrats autonomes requis validés</span><strong>0 / 16</strong></div>
+        <div class="bar"><div class="fill" style="width:0%"></div></div>
+        <div class="meta">Progression 0% · sync 2026-10-08 · Case B SUSPENDU</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="list" id="list"></section>
+      <aside class="panel detail" id="detail"></aside>
+    </div>
+
+    <footer>
+      <span>Source de vérité : CONTRATS/*.md dans le dépôt</span>
+      <span>Cette page est une vue GitHub Pages — pas une base de décision</span>
+    </footer>
+  </div>
+
+  <script id="data" type="application/json">
+  {
+    "activeId": "C-01",
+    "order": ["C-01","C-02","C-03","C-04","C-05","C-06","C-07","C-08","C-09","C-10","C-11","C-12","C-13","C-14","C-15","C-16","C-17","C-18","C-19","C-20","C-21"],
+    "contracts": [
+      {"id":"C-01","order":"1","name":"Terrain runtime (vérité hauteur / shipping)","status":"REVUE","category":"REQUIS","coverage":"partielle","blocking":true,"note":"Contrat rédigé / en attente d’audit et validation","file":"CONTRATS/C-01_TERRAIN_RUNTIME.md","dependsOn":["C-00"],"providesTo":["C-02","C-05","C-08","C-15","C-16","C-17","C-19"],"detail":{"decisions":"14 / 14","frontiers":["C-02 — spatial / dirty","C-05 — SitePrep","C-07 — agent","C-08 — Terraformer","C-15…17 — écologie","C-19 — sauvegarde","C-23 — affichage M4"],"gaps":["ApplyBrushAt = store || landscape alors que le contrat demande Store seul","GroundUtils lit encore Landscape lorsque l’overlay est désactivé","dirty Soil|Water déclenché depuis le brush","présentation shipping F1 encore INVALIDÉE","persistance désactivée / load ignoré","lexique Raise/Lower/Paint versus Creuser/Remblayer/Aplanir encore à arbitrer"]}},
+      {"id":"C-02","order":"2","name":"Substrat spatial","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-01"],"providesTo":["C-14","C-15","C-16","C-17","C-21"]},
+      {"id":"C-03","order":"3*","name":"Projet / Intention","status":"SUFFISANT","category":"SUFFISANT","coverage":"suffisante","blocking":false,"dependsOn":["C-00"],"providesTo":["C-04"]},
+      {"id":"C-04","order":"4","name":"Tâches / graphe / dépendances","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-03"],"providesTo":["C-05","C-07","C-11"]},
+      {"id":"C-05","order":"5","name":"WorkSite / SitePrep","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-01","C-04"],"providesTo":["C-08","C-13","C-14"]},
+      {"id":"C-06","order":"6*","name":"Capacités / roster","status":"SUFFISANT","category":"SUFFISANT","coverage":"suffisante","blocking":false,"dependsOn":["C-00"],"providesTo":["C-07"]},
+      {"id":"C-07","order":"7","name":"Autonomie unité","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-04","C-06"],"providesTo":["C-08","C-12"]},
+      {"id":"C-08","order":"8","name":"Terraformer opérationnel","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-01","C-05","C-07"],"providesTo":[]},
+      {"id":"C-09","order":"9*","name":"Économie physique","status":"SUFFISANT","category":"SUFFISANT","coverage":"suffisante","blocking":false,"dependsOn":["C-00"],"providesTo":["C-10","C-11"]},
+      {"id":"C-10","order":"10*","name":"Stocks A/B","status":"SUFFISANT","category":"SUFFISANT","coverage":"suffisante","blocking":false,"dependsOn":["C-09"],"providesTo":["C-11","C-12","C-13"]},
+      {"id":"C-11","order":"11","name":"Réservations","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-09","C-10","C-04"],"providesTo":[]},
+      {"id":"C-12","order":"12","name":"Transport / logistique","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-07","C-10"],"providesTo":["C-14"]},
+      {"id":"C-13","order":"13*","name":"Construction / En service","status":"SUFFISANT","category":"SUFFISANT","coverage":"suffisante","blocking":false,"dependsOn":["C-05","C-10"],"providesTo":[]},
+      {"id":"C-14","order":"14","name":"Infrastructures","status":"À FAIRE","category":"REQUIS","coverage":"absente","blocking":true,"dependsOn":["C-02","C-05","C-12"],"providesTo":[]},
+      {"id":"C-15","order":"15","name":"Hydrologie","status":"À FAIRE","category":"REQUIS","coverage":"absente","blocking":true,"dependsOn":["C-02","C-01"],"providesTo":["C-17"]},
+      {"id":"C-16","order":"16","name":"Sol","status":"À FAIRE","category":"REQUIS","coverage":"absente","blocking":true,"dependsOn":["C-02","C-01"],"providesTo":["C-17"]},
+      {"id":"C-17","order":"17","name":"Végétation / écosystèmes","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-15","C-16","C-01"],"providesTo":[]},
+      {"id":"C-18","order":"18","name":"Technologie / progression","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-00","C-03"],"providesTo":[]},
+      {"id":"C-19","order":"19","name":"Persistance / sauvegarde","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-01","C-09","C-03"],"providesTo":[]},
+      {"id":"C-20","order":"20","name":"Observabilité / UX","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":false,"dependsOn":["C-04","C-07","C-09"],"providesTo":[]},
+      {"id":"C-21","order":"21","name":"Simulation / fréquences / perf","status":"À FAIRE","category":"REQUIS","coverage":"partielle","blocking":true,"dependsOn":["C-00","C-02"],"providesTo":[]}
+    ]
+  }
+  </script>
+  <script>
+  (function () {
+    const data = JSON.parse(document.getElementById('data').textContent);
+    const byId = Object.fromEntries(data.contracts.map(c => [c.id, c]));
+    let selected = data.activeId;
+
+    function statusClass(s) {
+      if (s === 'REVUE') return 'revue';
+      if (s === 'SUFFISANT') return 'suff';
+      if (s === 'VALIDÉ') return 'revue';
+      return 'todo';
+    }
+
+    function renderDetail(c) {
+      const el = document.getElementById('detail');
+      const deps = (c.dependsOn || []).join(' · ') || '—';
+      const prov = (c.providesTo || []).map(id => c.id + ' → ' + id).join('<br>') || '—';
+      let html = '<div class="eyebrow">Fiche contrat</div><h3>' + c.id + '</h3><p class="fname">' + c.name + '</p>';
+      html += '<div class="badges"><span class="badge ' + statusClass(c.status) + '">' + c.status + '</span>';
+      if (c.status === 'REVUE') html += '<span class="badge nonval">NON VALIDÉ</span>';
+      if (c.blocking) html += '<span class="badge block">BLOQUANT</span>';
+      if (c.coverage === 'partielle' && c.category === 'REQUIS') html += '<span class="badge partiel">PARTIEL</span>';
+      html += '</div>';
+      if (c.note) html += '<p style="margin:0 0 8px;font-size:13px;border-left:2px solid var(--accent);padding-left:10px">' + c.note + '</p>';
+      if (c.file) html += '<p class="fname">Fichier : ' + c.file + '</p>';
+      if (c.detail) {
+        html += '<div class="blockTitle">Décisions</div><div class="dec">' + c.detail.decisions + '</div>';
+        html += '<div class="blockTitle">Frontières</div><ul>' + c.detail.frontiers.map(f => '<li>' + f + '</li>').join('') + '</ul>';
+        html += '<div class="blockTitle">Écarts constatés</div><div class="gaps"><p class="gapNote">Écarts constatés — pas des corrections automatiques.</p><ul>' +
+          c.detail.gaps.map(g => '<li>' + g + '</li>').join('') + '</ul></div>';
+      }
+      html += '<div class="blockTitle">Dépendances (registre)</div><p style="font-size:12px;color:#b6c7c0;margin:0 0 6px"><strong>Dépend de :</strong> ' + deps + '</p>';
+      html += '<p style="font-size:12px;color:#b6c7c0;margin:0">' + prov + '</p>';
+      el.innerHTML = html;
+    }
+
+    function renderList() {
+      const list = document.getElementById('list');
+      list.innerHTML = data.order.map(id => {
+        const c = byId[id];
+        const active = id === data.activeId ? ' active' : '';
+        const sel = id === selected ? ' style="outline:1px solid #3d5a4c"' : '';
+        return '<button class="row' + active + '" data-id="' + id + '"' + sel + ' type="button">' +
+          '<div class="rowTop"><span class="id">' + c.id + '</span><span class="name">' + c.name + '</span>' +
+          (id === data.activeId ? '<span class="badge revue" style="margin-left:auto">ACTIF</span>' : '') +
+          '</div><div class="badges"><span class="badge ' + statusClass(c.status) + '">' + c.status + '</span>' +
+          (c.status === 'REVUE' ? '<span class="badge nonval">NON VALIDÉ</span>' : '') +
+          (c.blocking ? '<span class="badge block">BLOQUANT</span>' : '') +
+          '</div></button>';
+      }).join('');
+      list.querySelectorAll('.row').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selected = btn.getAttribute('data-id');
+          renderList();
+          renderDetail(byId[selected]);
+        });
+      });
+    }
+
+    renderList();
+    renderDetail(byId[selected]);
+  })();
+  </script>
+</body>
+</html>

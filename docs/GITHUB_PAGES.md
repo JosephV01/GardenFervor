@@ -1,17 +1,63 @@
-# GitHub Pages — Roadmap GardenFervor
+# GitHub Pages — Hub documentation GardenFervor
 
-## Fichier publié
+## URL
 
-`docs/index.html` — page autonome (CSS / JS / données embarqués).
+`https://josephv01.github.io/GardenFervor/`
 
-Généré par :
+## Fichiers publiés (`docs/`)
+
+| Fichier | Rôle |
+| --- | --- |
+| **`index.html`** | **Hub d’accueil** — liens vers tous les documents HTML |
+| `roadmap.html` | Roadmap de production (page autonome) |
+| `design-gate.html` | Design Gate autonome |
+| `contracts.html` | Suivi des contrats (vue publiée) |
+
+## Historique
+
+Jusqu’en 2026-10-08, `docs/index.html` contenait uniquement la Roadmap.  
+Ce contenu a été **dupliqué** vers `docs/roadmap.html` avant que `index.html` ne devienne le hub.
+
+## Synchronisation
+
+### Roadmap
 
 ```bash
 node "Plan de production/Roadmap/scripts/syncRoadmap.mjs"
 ```
 
-Source de vérité d’édition : `Plan de production/Roadmap/src/roadmap.data.js`  
-Ne pas éditer `docs/index.html` à la main.
+Met à jour :
+
+- `Plan de production/Roadmap/index.html`
+- `docs/roadmap.html`
+
+**Ne modifie plus** `docs/index.html`.
+
+Source de vérité : `Plan de production/Roadmap/src/roadmap.data.js`
+
+### Design Gate
+
+```bash
+node GardenFervor_DesignGate_React/scripts/syncStandaloneFromJs.mjs
+```
+
+Met à jour :
+
+- `GardenFervor_DesignGate_React/GardenFervor_DESIGN_GATE_v0.1.html`
+- `docs/design-gate.html`
+
+Source de vérité : `GardenFervor_DesignGate_React/src/data/designGate.js`
+
+### Contrats
+
+Source de vérité : `CONTRATS/*.md`  
+Miroir React : `GardenFervor_DesignGate_React/src/data/contractsSuivi.js`  
+Vue Pages : `docs/contracts.html` (à resynchroniser manuellement si le suivi change).
+
+### Hub
+
+`docs/index.html` est édité pour la navigation Pages.  
+Ne pas le faire écraser par un sync roadmap.
 
 ## Activation manuelle (GitHub)
 
@@ -23,8 +69,4 @@ Dans le dépôt `JosephV01/GardenFervor` :
 4. **Folder** : `/docs`
 5. Enregistrer
 
-URL attendue après activation (délai possible de quelques minutes) :
-
-`https://JosephV01.github.io/GardenFervor/`
-
-Cette activation se fait dans l’interface GitHub ; elle n’est pas réalisée automatiquement par le dépôt seul.
+Délai possible de quelques minutes après push.

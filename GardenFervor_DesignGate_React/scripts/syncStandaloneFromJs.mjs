@@ -78,6 +78,12 @@ const pretty = JSON.stringify(payload, null, 2);
 html = html.slice(0, jsonStart) + '\n' + pretty + '\n' + html.slice(end);
 fs.writeFileSync(htmlPath, html, 'utf8');
 
+// Publish copy for GitHub Pages hub (docs/design-gate.html)
+const pagesHtmlPath = path.resolve(root, '..', 'docs', 'design-gate.html');
+fs.mkdirSync(path.dirname(pagesHtmlPath), { recursive: true });
+fs.writeFileSync(pagesHtmlPath, html, 'utf8');
+console.log('Pages copy:', pagesHtmlPath);
+
 // Validate round-trip
 const html2 = fs.readFileSync(htmlPath, 'utf8');
 const s = html2.indexOf(startMarker) + startMarker.length;

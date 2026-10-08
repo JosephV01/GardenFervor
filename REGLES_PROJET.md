@@ -52,7 +52,8 @@ Objectif : l’humain doit toujours savoir **où on en est** et **ce qui a boug�
 | `Plan de production/PLAN_PRODUCTION_COHORTE_S3.md` | Plan opérationnel (comment produire la preuve S3) |
 | `Saved/ODC_F*_*.txt` | Preuves techniques détaillées (inchangé) |
 
-Roadmap : SoT `Plan de production/Roadmap/src/roadmap.data.js` · sync `node "Plan de production/Roadmap/scripts/syncRoadmap.mjs"` · **publication Pages = `docs/index.html`** (toujours).  
+Roadmap : SoT `Plan de production/Roadmap/src/roadmap.data.js` · sync `node "Plan de production/Roadmap/scripts/syncRoadmap.mjs"` · **publication Pages roadmap = `docs/roadmap.html`**.  
+Hub GitHub Pages : **`docs/index.html`** → liens vers roadmap / Design Gate / contrats (`docs/GITHUB_PAGES.md`).  
 **Code terminé ≠ VALIDÉ** : le statut `VALIDÉ` d’une tranche exige la validation humaine du Plan de production.
 
 `ETAT_PROJET.md` est la **baseline** courte entre deux modifications.  

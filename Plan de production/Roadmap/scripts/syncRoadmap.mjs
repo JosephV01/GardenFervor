@@ -8,7 +8,9 @@
  * Outputs:
  *   - Plan de production/Roadmap/index.html  (working view)
  *   - Plan de production/Roadmap/roadmap.data.json
- *   - docs/index.html                         (GitHub Pages entry — always this path)
+ *   - docs/roadmap.html                       (GitHub Pages — roadmap published page)
+ *
+ * Note: docs/index.html is the documentation hub (not overwritten by this sync).
  */
 import fs from 'fs';
 import path from 'path';
@@ -20,7 +22,7 @@ const repoRoot = path.resolve(roadmapRoot, '..', '..');
 const jsPath = path.join(roadmapRoot, 'src', 'roadmap.data.js');
 const htmlShellPath = path.join(roadmapRoot, 'index.html');
 const jsonPath = path.join(roadmapRoot, 'roadmap.data.json');
-const pagesHtmlPath = path.join(repoRoot, 'docs', 'index.html');
+const pagesHtmlPath = path.join(repoRoot, 'docs', 'roadmap.html');
 
 const mod = await import(pathToFileURL(jsPath).href + `?t=${Date.now()}`);
 const payload = mod.serializeRoadmap();

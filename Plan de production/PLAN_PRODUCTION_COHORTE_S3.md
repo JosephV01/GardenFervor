@@ -7,7 +7,7 @@
 
 **Sources (ne pas inventer de règles) :** Formalisation 01 · 02 · 03 · DG-14.3 / 14.4 · préparation contrats C7→C6
 
-**Pilotage avancement :** `docs/index.html` (GitHub Pages) · travail `Roadmap/index.html`  
+**Pilotage avancement :** `docs/roadmap.html` (GitHub Pages) · hub `docs/index.html` · travail `Roadmap/index.html`  
 (source : `Roadmap/src/roadmap.data.js` — ce Plan = *comment* ; roadmap = *où*)
 
 ---

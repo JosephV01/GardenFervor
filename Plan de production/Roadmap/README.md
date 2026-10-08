@@ -28,10 +28,10 @@ Génère / met à jour :
 
 - `roadmap.data.json`
 - `Plan de production/Roadmap/index.html` (vue de travail)
-- **`docs/index.html`** (entrée GitHub Pages — page autonome)
+- **`docs/roadmap.html`** (publication GitHub Pages — page autonome roadmap)
 
-Ouvrir en local : `docs/index.html` ou `Plan de production/Roadmap/index.html`  
-Publication : voir `docs/GITHUB_PAGES.md`
+Ouvrir en local : `docs/roadmap.html` ou `Plan de production/Roadmap/index.html`  
+Hub Pages : `docs/index.html` — voir `docs/GITHUB_PAGES.md`
 
 ## Quand mettre à jour
 
