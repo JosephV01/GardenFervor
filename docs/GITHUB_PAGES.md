@@ -12,7 +12,7 @@
 | `roadmap.html` | Roadmap de production |
 | `design-gate.html` | Design Gate autonome |
 | `contracts.html` | Suivi des contrats |
-| `presentation-client.html` | Présentation Investor Demo (copie publiée) |
+| `presentation-client.html` | Présentation client GardenFervor (copie publiée ; hors démo) |
 | `syncPages.mjs` | Synchronisation complète des pages |
 
 ## Historique
