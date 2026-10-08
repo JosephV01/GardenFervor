@@ -1,0 +1,407 @@
+/**
+ * Vue de pilotage des contrats GardenFervor.
+ *
+ * SOURCE DE VÉRITÉ (documents) :
+ *   CONTRATS/00_REGISTRE_CONTRATS.md
+ *   CONTRATS/00_SUIVI_CONTRATS.md
+ *   CONTRATS/C-01_TERRAIN_RUNTIME.md (détail C-01)
+ *
+ * Ce fichier est un miroir de synchronisation pour l’UI React.
+ * En cas d’écart, les fichiers Markdown CONTRATS/ priment.
+ * Ne pas inventer de décisions ni marquer VALIDÉ sans le suivi.
+ */
+
+export const CONTRACTS_SUIVI = {
+  title: 'GARDENFERVOR — SUIVI DES CONTRATS',
+  subtitle: 'Contracts / Operational Architecture',
+  lastSync: '2026-10-08',
+  sources: [
+    'CONTRATS/00_REGISTRE_CONTRATS.md',
+    'CONTRATS/00_SUIVI_CONTRATS.md',
+    'CONTRATS/C-01_TERRAIN_RUNTIME.md',
+  ],
+  rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
+  activeContractId: 'C-01',
+  progress: {
+    validated: 0,
+    required: 16,
+    requiredIds: [
+      'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
+      'C-11', 'C-12', 'C-14', 'C-15', 'C-16', 'C-17',
+      'C-18', 'C-19', 'C-20', 'C-21',
+    ],
+  },
+  caseB: {
+    status: 'SUSPENDU',
+    note: 'Case B reste suspendu (registre §9). Aucune reprise sans contrats bloquants.',
+  },
+  /** Ordre officiel de rédaction (registre §5). */
+  displayOrder: [
+    'C-01', 'C-02', 'C-03', 'C-04', 'C-05', 'C-06', 'C-07', 'C-08',
+    'C-09', 'C-10', 'C-11', 'C-12', 'C-13', 'C-14', 'C-15', 'C-16',
+    'C-17', 'C-18', 'C-19', 'C-20', 'C-21',
+  ],
+  contracts: [
+    {
+      id: 'C-00',
+      name: 'Cadre / invariants fondateurs',
+      order: null,
+      category: 'NON REQUIS',
+      coverage: 'suffisante',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: false,
+      dependsOn: [],
+      providesTo: ['C-01'],
+      note: 'Pas de contrat dédié (DG-00).',
+    },
+    {
+      id: 'C-01',
+      name: 'Terrain runtime (vérité hauteur / shipping)',
+      order: 1,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'REVUE',
+      blocking: true,
+      dependsOn: ['C-00'],
+      providesTo: ['C-02', 'C-05', 'C-08', 'C-15', 'C-16', 'C-17', 'C-19'],
+      note: 'Contrat rédigé / en attente d’audit et validation',
+      dedicatedValidated: false,
+      file: 'CONTRATS/C-01_TERRAIN_RUNTIME.md',
+      detail: {
+        decisionsTaken: 14,
+        decisionsTotal: 14,
+        frontiers: [
+          { id: 'C-02', label: 'spatial / dirty' },
+          { id: 'C-05', label: 'SitePrep' },
+          { id: 'C-07', label: 'agent' },
+          { id: 'C-08', label: 'Terraformer' },
+          { id: 'C-15…17', label: 'écologie' },
+          { id: 'C-19', label: 'sauvegarde' },
+          { id: 'C-23', label: 'affichage M4' },
+        ],
+        gaps: [
+          'ApplyBrushAt = store || landscape alors que le contrat demande Store seul',
+          'GroundUtils lit encore Landscape lorsque l’overlay est désactivé',
+          'dirty Soil|Water déclenché depuis le brush',
+          'présentation shipping F1 encore INVALIDÉE',
+          'persistance désactivée / load ignoré',
+          'lexique Raise/Lower/Paint versus Creuser/Remblayer/Aplanir encore à arbitrer',
+        ],
+        gapNote: 'Écarts constatés — pas des corrections de ce jalon.',
+      },
+    },
+    {
+      id: 'C-02',
+      name: 'Substrat spatial (cellules / dirty / queries)',
+      order: 2,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-01'],
+      providesTo: ['C-14', 'C-15', 'C-16', 'C-17', 'C-21'],
+      note: 'Après C-01',
+    },
+    {
+      id: 'C-03',
+      name: 'Projet / Intention→Project',
+      order: '3*',
+      category: 'SUFFISANT',
+      coverage: 'suffisante',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: false,
+      dependsOn: ['C-00'],
+      providesTo: ['C-04'],
+      note: 'S3 suffisant ; pas VALIDÉ dédié ; addendum si hors WorkSite',
+    },
+    {
+      id: 'C-04',
+      name: 'Tâches / graphe / dépendances',
+      order: 4,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-03'],
+      providesTo: ['C-05', 'C-07', 'C-11'],
+      note: '',
+    },
+    {
+      id: 'C-05',
+      name: 'WorkSite / SitePrep (Cas A/B)',
+      order: 5,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-01', 'C-04'],
+      providesTo: ['C-08', 'C-13', 'C-14'],
+      note: 'Lié Case B suspendu',
+    },
+    {
+      id: 'C-06',
+      name: 'Capacités / roster unités',
+      order: '6*',
+      category: 'SUFFISANT',
+      coverage: 'suffisante',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: false,
+      dependsOn: ['C-00'],
+      providesTo: ['C-07'],
+      note: 'S3 suffisant ; pas VALIDÉ dédié',
+    },
+    {
+      id: 'C-07',
+      name: 'Autonomie unité (agent générique)',
+      order: 7,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-04', 'C-06'],
+      providesTo: ['C-08', 'C-12'],
+      note: '',
+    },
+    {
+      id: 'C-08',
+      name: 'Terraformer opérationnel',
+      order: 8,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-01', 'C-05', 'C-07'],
+      providesTo: [],
+      note: 'Bloque Demo Case B',
+    },
+    {
+      id: 'C-09',
+      name: 'Économie physique / ResourceKey',
+      order: '9*',
+      category: 'SUFFISANT',
+      coverage: 'suffisante',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: false,
+      dependsOn: ['C-00'],
+      providesTo: ['C-10', 'C-11'],
+      note: 'S3 Timber ; pas VALIDÉ dédié',
+      groupWith: 'C-10',
+    },
+    {
+      id: 'C-10',
+      name: 'Stocks localisés A/B',
+      order: '10*',
+      category: 'SUFFISANT',
+      coverage: 'suffisante',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: false,
+      dependsOn: ['C-09'],
+      providesTo: ['C-11', 'C-12', 'C-13'],
+      note: 'S3 ; pas VALIDÉ dédié',
+      groupWith: 'C-09',
+    },
+    {
+      id: 'C-11',
+      name: 'Réservations',
+      order: 11,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-09', 'C-10', 'C-04'],
+      providesTo: [],
+      note: 'Avant multi-chantier',
+    },
+    {
+      id: 'C-12',
+      name: 'Transport / logistique',
+      order: 12,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-07', 'C-10'],
+      providesTo: ['C-14'],
+      note: 'Au-delà S3',
+    },
+    {
+      id: 'C-13',
+      name: 'Construction / Achevé / En service',
+      order: '13*',
+      category: 'SUFFISANT',
+      coverage: 'suffisante',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: false,
+      dependsOn: ['C-05', 'C-10'],
+      providesTo: [],
+      note: 'Critère cohorte ; pas VALIDÉ dédié',
+    },
+    {
+      id: 'C-14',
+      name: 'Infrastructures (lifecycle)',
+      order: 14,
+      category: 'REQUIS',
+      coverage: 'absente',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-02', 'C-05', 'C-12'],
+      providesTo: [],
+      note: 'Avant ODC-F9',
+    },
+    {
+      id: 'C-15',
+      name: 'Hydrologie',
+      order: 15,
+      category: 'REQUIS',
+      coverage: 'absente',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-02', 'C-01'],
+      providesTo: ['C-17'],
+      note: '',
+    },
+    {
+      id: 'C-16',
+      name: 'Sol',
+      order: 16,
+      category: 'REQUIS',
+      coverage: 'absente',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-02', 'C-01'],
+      providesTo: ['C-17'],
+      note: '',
+    },
+    {
+      id: 'C-17',
+      name: 'Végétation / écosystèmes',
+      order: 17,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-15', 'C-16', 'C-01'],
+      providesTo: [],
+      note: '',
+    },
+    {
+      id: 'C-18',
+      name: 'Technologie / progression',
+      order: 18,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-00', 'C-03'],
+      providesTo: [],
+      note: '',
+    },
+    {
+      id: 'C-19',
+      name: 'Persistance / sauvegarde',
+      order: 19,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-01', 'C-09', 'C-03'],
+      providesTo: [],
+      note: 'Avant shipping',
+    },
+    {
+      id: 'C-20',
+      name: 'Observabilité / UX lisibilité',
+      order: 20,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: false,
+      dependsOn: ['C-04', 'C-07', 'C-09'],
+      providesTo: [],
+      note: 'Preuve vs produit',
+    },
+    {
+      id: 'C-21',
+      name: 'Simulation / fréquences / perf',
+      order: 21,
+      category: 'REQUIS',
+      coverage: 'partielle',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: true,
+      dependsOn: ['C-00', 'C-02'],
+      providesTo: [],
+      note: 'Avant scale',
+    },
+    {
+      id: 'C-22',
+      name: 'Investor Demo',
+      order: null,
+      category: 'NON REQUIS',
+      coverage: 'suffisante',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: false,
+      dependsOn: [],
+      providesTo: [],
+      note: 'Docs présentation ; pas contrat gameplay',
+      displayInOrder: false,
+    },
+    {
+      id: 'C-23',
+      name: 'Présentation M4 / UDS',
+      order: null,
+      category: 'NON REQUIS',
+      coverage: 'suffisante',
+      productionStatus: 'NON COMMENCÉ',
+      blocking: false,
+      dependsOn: ['C-01'],
+      providesTo: [],
+      note: 'Rendu ; pas contrat gameplay',
+      displayInOrder: false,
+    },
+  ],
+};
+
+/** Statuts de production affichés (suivi). NON COMMENCÉ → À FAIRE pour lecture. */
+export const PRODUCTION_STATUS_META = {
+  'À FAIRE': { className: 'cs-todo', label: 'À FAIRE' },
+  'NON COMMENCÉ': { className: 'cs-todo', label: 'À FAIRE' },
+  'AUDIT PRÉPARATOIRE': { className: 'cs-audit', label: 'AUDIT PRÉPARATOIRE' },
+  'DÉCISIONS EN COURS': { className: 'cs-decisions', label: 'DÉCISIONS EN COURS' },
+  RÉDACTION: { className: 'cs-draft', label: 'RÉDACTION' },
+  REVUE: { className: 'cs-review', label: 'REVUE' },
+  VALIDÉ: { className: 'cs-validated', label: 'VALIDÉ' },
+  BLOQUÉ: { className: 'cs-blocked', label: 'BLOQUÉ' },
+  SUSPENDU: { className: 'cs-suspended', label: 'SUSPENDU' },
+};
+
+/** Catégories registre (nécessité / couverture). Jamais confondues avec VALIDÉ. */
+export const CATEGORY_META = {
+  REQUIS: { className: 'cs-cat-requis', label: 'Contrat autonome requis' },
+  PARTIEL: { className: 'cs-cat-partiel', label: 'PARTIEL' },
+  SUFFISANT: { className: 'cs-cat-suffisant', label: 'SUFFISANT (périmètre actuel)' },
+  'NON REQUIS': { className: 'cs-cat-nonrequis', label: 'NON REQUIS' },
+};
+
+export function getContractById(id) {
+  return CONTRACTS_SUIVI.contracts.find((c) => c.id === id);
+}
+
+export function getOrderedContracts() {
+  const byId = new Map(CONTRACTS_SUIVI.contracts.map((c) => [c.id, c]));
+  return CONTRACTS_SUIVI.displayOrder.map((id) => byId.get(id)).filter(Boolean);
+}
+
+export function getDisplayStatus(contract) {
+  if (contract.productionStatus === 'VALIDÉ' && contract.dedicatedValidated !== false) {
+    return 'VALIDÉ';
+  }
+  if (contract.productionStatus === 'NON COMMENCÉ') {
+    if (contract.category === 'SUFFISANT') return 'SUFFISANT';
+    if (contract.category === 'NON REQUIS') return 'NON REQUIS';
+    if (contract.coverage === 'partielle' && contract.category === 'REQUIS') {
+      return 'À FAIRE';
+    }
+    return 'À FAIRE';
+  }
+  return contract.productionStatus;
+}
