@@ -1,4 +1,194 @@
-<!DOCTYPE html>
+/**
+ * Synchronise toutes les pages GitHub Pages sous docs/.
+ *
+ * Usage (depuis la racine du dépôt) :
+ *   node docs/syncPages.mjs
+ *
+ * - Roadmap  → docs/roadmap.html
+ * - Design Gate → docs/design-gate.html
+ * - Contrats → docs/contracts.html (depuis contractsSuivi.js)
+ * - Hub      → docs/index.html (bandeau d’état + liens)
+ *
+ * Sources de vérité : Markdown CONTRATS/, roadmap.data.js, designGate.js.
+ * Ne pas inventer de VALIDÉ.
+ */
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath, pathToFileURL } from 'url';
+import { spawnSync } from 'child_process';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(__dirname, '..');
+const docsDir = __dirname;
+
+function runNode(scriptRel) {
+  const script = path.join(repoRoot, scriptRel);
+  const r = spawnSync(process.execPath, [script], { cwd: repoRoot, encoding: 'utf8' });
+  if (r.stdout) process.stdout.write(r.stdout);
+  if (r.stderr) process.stderr.write(r.stderr);
+  if (r.status !== 0) {
+    console.error('FAILED:', scriptRel);
+    process.exit(r.status ?? 1);
+  }
+}
+
+console.log('— Sync roadmap —');
+runNode(path.join('Plan de production', 'Roadmap', 'scripts', 'syncRoadmap.mjs'));
+
+console.log('— Sync Design Gate —');
+runNode(path.join('GardenFervor_DesignGate_React', 'scripts', 'syncStandaloneFromJs.mjs'));
+
+console.log('— Sync contrats + hub —');
+const suiviMod = await import(
+  pathToFileURL(
+    path.join(repoRoot, 'GardenFervor_DesignGate_React', 'src', 'data', 'contractsSuivi.js')
+  ).href + `?t=${Date.now()}`
+);
+const roadmapMod = await import(
+  pathToFileURL(
+    path.join(repoRoot, 'Plan de production', 'Roadmap', 'src', 'roadmap.data.js')
+  ).href + `?t=${Date.now()}`
+);
+
+const SUIVI = suiviMod.CONTRACTS_SUIVI;
+const roadmapPayload = roadmapMod.serializeRoadmap();
+const active = SUIVI.contracts.find((c) => c.id === SUIVI.activeContractId);
+const today = new Date().toISOString().slice(0, 10);
+
+const ordered = SUIVI.displayOrder
+  .map((id) => SUIVI.contracts.find((c) => c.id === id))
+  .filter(Boolean);
+
+function displayStatus(c) {
+  if (c.productionStatus === 'VALIDÉ' && c.dedicatedValidated !== false) return 'VALIDÉ';
+  if (c.productionStatus === 'NON COMMENCÉ') {
+    if (c.category === 'SUFFISANT') return 'SUFFISANT';
+    if (c.category === 'NON REQUIS') return 'NON REQUIS';
+    return 'À FAIRE';
+  }
+  return c.productionStatus;
+}
+
+const contractsJson = {
+  activeId: SUIVI.activeContractId,
+  order: SUIVI.displayOrder,
+  progress: SUIVI.progress,
+  lastSync: today,
+  caseB: SUIVI.caseB,
+  contracts: ordered.map((c) => {
+    const out = {
+      id: c.id,
+      order: c.order == null ? '—' : String(c.order),
+      name: c.name,
+      status: displayStatus(c),
+      category: c.category,
+      coverage: c.coverage,
+      blocking: !!c.blocking,
+      note: c.note || '',
+      dependsOn: c.dependsOn || [],
+      providesTo: c.providesTo || [],
+    };
+    if (c.file) out.file = c.file;
+    if (c.detail) {
+      out.detail = {
+        decisions: `${c.detail.decisionsTaken} / ${c.detail.decisionsTotal}`,
+        frontiers: (c.detail.frontiers || []).map((f) => `${f.id} — ${f.label}`),
+        gaps: c.detail.gaps || [],
+      };
+    }
+    return out;
+  }),
+};
+
+const contractsHtml = buildContractsHtml(contractsJson);
+fs.writeFileSync(path.join(docsDir, 'contracts.html'), contractsHtml, 'utf8');
+
+const hubPath = path.join(docsDir, 'index.html');
+let hub = fs.readFileSync(hubPath, 'utf8');
+const statusBlock = buildHubStatus({
+  today,
+  roadmap: roadmapPayload,
+  suivi: SUIVI,
+  active,
+});
+const start = '<!-- SYNC:STATUS:START -->';
+const end = '<!-- SYNC:STATUS:END -->';
+if (!hub.includes(start) || !hub.includes(end)) {
+  console.error('ERROR: hub markers SYNC:STATUS missing in docs/index.html');
+  process.exit(1);
+}
+hub =
+  hub.slice(0, hub.indexOf(start) + start.length) +
+  '\n' +
+  statusBlock +
+  '\n    ' +
+  hub.slice(hub.indexOf(end));
+
+// Keep contracts card blurb current
+hub = hub.replace(
+  /(<a class="card" href="contracts\.html">[\s\S]*?<p>)([\s\S]*?)(<\/p>)/,
+  `$1Pilotage documentaire C-01→C-21 · ${SUIVI.progress.validated}/${SUIVI.progress.required} validés · actif ${SUIVI.activeContractId} (${active ? displayStatus(active) : '—'}).$3`
+);
+hub = hub.replace(
+  /(<a class="card" href="roadmap\.html">[\s\S]*?<p>)([\s\S]*?)(<\/p>)/,
+  `$1${roadmapPayload.meta.globalState} · progression ${roadmapPayload.progress.done}/${roadmapPayload.progress.total} (${roadmapPayload.progress.percent}%).$3`
+);
+
+fs.writeFileSync(hubPath, hub, 'utf8');
+
+console.log(
+  JSON.stringify(
+    {
+      ok: true,
+      hub: 'docs/index.html',
+      roadmap: `${roadmapPayload.progress.done}/${roadmapPayload.progress.total}`,
+      contracts: `${SUIVI.progress.validated}/${SUIVI.progress.required}`,
+      active: SUIVI.activeContractId,
+      activeStatus: active ? displayStatus(active) : null,
+      syncedAt: today,
+    },
+    null,
+    2
+  )
+);
+
+function buildHubStatus({ today, roadmap, suivi, active }) {
+  const aStatus = active ? displayStatus(active) : '—';
+  return `    <section class="statusStrip" aria-label="État projet synchronisé">
+      <div class="statusCard">
+        <span>Roadmap</span>
+        <strong>${escapeHtml(roadmap.meta.globalState)}</strong>
+        <em>${roadmap.progress.done}/${roadmap.progress.total} VALIDÉ (${roadmap.progress.percent}%)</em>
+      </div>
+      <div class="statusCard accent">
+        <span>Contrats</span>
+        <strong>${suivi.activeContractId} · ${escapeHtml(aStatus)}</strong>
+        <em>${suivi.progress.validated}/${suivi.progress.required} dédiés validés · ${escapeHtml(active?.note || '')}</em>
+      </div>
+      <div class="statusCard">
+        <span>Case B</span>
+        <strong>${escapeHtml(suivi.caseB.status)}</strong>
+        <em>${escapeHtml(suivi.caseB.note)}</em>
+      </div>
+      <div class="statusCard">
+        <span>Sync Pages</span>
+        <strong>${today}</strong>
+        <em>node docs/syncPages.mjs</em>
+      </div>
+    </section>`;
+}
+
+function escapeHtml(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function buildContractsHtml(data) {
+  const json = JSON.stringify(data, null, 2);
+  return `<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
@@ -68,442 +258,11 @@
     </div>
     <footer>
       <span>Source : CONTRATS/*.md · miroir contractsSuivi.js</span>
-      <span>Sync : node docs/syncPages.mjs · 2026-10-08</span>
+      <span>Sync : node docs/syncPages.mjs · ${data.lastSync}</span>
     </footer>
   </div>
   <script id="data" type="application/json">
-{
-  "activeId": "C-01",
-  "order": [
-    "C-01",
-    "C-02",
-    "C-03",
-    "C-04",
-    "C-05",
-    "C-06",
-    "C-07",
-    "C-08",
-    "C-09",
-    "C-10",
-    "C-11",
-    "C-12",
-    "C-13",
-    "C-14",
-    "C-15",
-    "C-16",
-    "C-17",
-    "C-18",
-    "C-19",
-    "C-20",
-    "C-21"
-  ],
-  "progress": {
-    "validated": 0,
-    "required": 16,
-    "requiredIds": [
-      "C-01",
-      "C-02",
-      "C-04",
-      "C-05",
-      "C-07",
-      "C-08",
-      "C-11",
-      "C-12",
-      "C-14",
-      "C-15",
-      "C-16",
-      "C-17",
-      "C-18",
-      "C-19",
-      "C-20",
-      "C-21"
-    ]
-  },
-  "lastSync": "2026-10-08",
-  "caseB": {
-    "status": "SUSPENDU",
-    "note": "Case B reste suspendu (registre §9). Aucune reprise sans contrats bloquants."
-  },
-  "contracts": [
-    {
-      "id": "C-01",
-      "order": "1",
-      "name": "Terrain runtime (vérité hauteur / shipping)",
-      "status": "REVUE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "Contrat rédigé / en attente d’audit et validation",
-      "dependsOn": [
-        "C-00"
-      ],
-      "providesTo": [
-        "C-02",
-        "C-05",
-        "C-08",
-        "C-15",
-        "C-16",
-        "C-17",
-        "C-19"
-      ],
-      "file": "CONTRATS/C-01_TERRAIN_RUNTIME.md",
-      "detail": {
-        "decisions": "14 / 14",
-        "frontiers": [
-          "C-02 — spatial / dirty",
-          "C-05 — SitePrep",
-          "C-07 — agent",
-          "C-08 — Terraformer",
-          "C-15…17 — écologie",
-          "C-19 — sauvegarde",
-          "C-23 — affichage M4"
-        ],
-        "gaps": [
-          "ApplyBrushAt = store || landscape alors que le contrat demande Store seul",
-          "GroundUtils lit encore Landscape lorsque l’overlay est désactivé",
-          "dirty Soil|Water déclenché depuis le brush",
-          "présentation shipping F1 encore INVALIDÉE",
-          "persistance désactivée / load ignoré",
-          "lexique Raise/Lower/Paint versus Creuser/Remblayer/Aplanir encore à arbitrer"
-        ]
-      }
-    },
-    {
-      "id": "C-02",
-      "order": "2",
-      "name": "Substrat spatial (cellules / dirty / queries)",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "Après C-01",
-      "dependsOn": [
-        "C-01"
-      ],
-      "providesTo": [
-        "C-14",
-        "C-15",
-        "C-16",
-        "C-17",
-        "C-21"
-      ]
-    },
-    {
-      "id": "C-03",
-      "order": "3*",
-      "name": "Projet / Intention→Project",
-      "status": "SUFFISANT",
-      "category": "SUFFISANT",
-      "coverage": "suffisante",
-      "blocking": false,
-      "note": "S3 suffisant ; pas VALIDÉ dédié ; addendum si hors WorkSite",
-      "dependsOn": [
-        "C-00"
-      ],
-      "providesTo": [
-        "C-04"
-      ]
-    },
-    {
-      "id": "C-04",
-      "order": "4",
-      "name": "Tâches / graphe / dépendances",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "",
-      "dependsOn": [
-        "C-03"
-      ],
-      "providesTo": [
-        "C-05",
-        "C-07",
-        "C-11"
-      ]
-    },
-    {
-      "id": "C-05",
-      "order": "5",
-      "name": "WorkSite / SitePrep (Cas A/B)",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "Lié Case B suspendu",
-      "dependsOn": [
-        "C-01",
-        "C-04"
-      ],
-      "providesTo": [
-        "C-08",
-        "C-13",
-        "C-14"
-      ]
-    },
-    {
-      "id": "C-06",
-      "order": "6*",
-      "name": "Capacités / roster unités",
-      "status": "SUFFISANT",
-      "category": "SUFFISANT",
-      "coverage": "suffisante",
-      "blocking": false,
-      "note": "S3 suffisant ; pas VALIDÉ dédié",
-      "dependsOn": [
-        "C-00"
-      ],
-      "providesTo": [
-        "C-07"
-      ]
-    },
-    {
-      "id": "C-07",
-      "order": "7",
-      "name": "Autonomie unité (agent générique)",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "",
-      "dependsOn": [
-        "C-04",
-        "C-06"
-      ],
-      "providesTo": [
-        "C-08",
-        "C-12"
-      ]
-    },
-    {
-      "id": "C-08",
-      "order": "8",
-      "name": "Terraformer opérationnel",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "Bloque Demo Case B",
-      "dependsOn": [
-        "C-01",
-        "C-05",
-        "C-07"
-      ],
-      "providesTo": []
-    },
-    {
-      "id": "C-09",
-      "order": "9*",
-      "name": "Économie physique / ResourceKey",
-      "status": "SUFFISANT",
-      "category": "SUFFISANT",
-      "coverage": "suffisante",
-      "blocking": false,
-      "note": "S3 Timber ; pas VALIDÉ dédié",
-      "dependsOn": [
-        "C-00"
-      ],
-      "providesTo": [
-        "C-10",
-        "C-11"
-      ]
-    },
-    {
-      "id": "C-10",
-      "order": "10*",
-      "name": "Stocks localisés A/B",
-      "status": "SUFFISANT",
-      "category": "SUFFISANT",
-      "coverage": "suffisante",
-      "blocking": false,
-      "note": "S3 ; pas VALIDÉ dédié",
-      "dependsOn": [
-        "C-09"
-      ],
-      "providesTo": [
-        "C-11",
-        "C-12",
-        "C-13"
-      ]
-    },
-    {
-      "id": "C-11",
-      "order": "11",
-      "name": "Réservations",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "Avant multi-chantier",
-      "dependsOn": [
-        "C-09",
-        "C-10",
-        "C-04"
-      ],
-      "providesTo": []
-    },
-    {
-      "id": "C-12",
-      "order": "12",
-      "name": "Transport / logistique",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "Au-delà S3",
-      "dependsOn": [
-        "C-07",
-        "C-10"
-      ],
-      "providesTo": [
-        "C-14"
-      ]
-    },
-    {
-      "id": "C-13",
-      "order": "13*",
-      "name": "Construction / Achevé / En service",
-      "status": "SUFFISANT",
-      "category": "SUFFISANT",
-      "coverage": "suffisante",
-      "blocking": false,
-      "note": "Critère cohorte ; pas VALIDÉ dédié",
-      "dependsOn": [
-        "C-05",
-        "C-10"
-      ],
-      "providesTo": []
-    },
-    {
-      "id": "C-14",
-      "order": "14",
-      "name": "Infrastructures (lifecycle)",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "absente",
-      "blocking": true,
-      "note": "Avant ODC-F9",
-      "dependsOn": [
-        "C-02",
-        "C-05",
-        "C-12"
-      ],
-      "providesTo": []
-    },
-    {
-      "id": "C-15",
-      "order": "15",
-      "name": "Hydrologie",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "absente",
-      "blocking": true,
-      "note": "",
-      "dependsOn": [
-        "C-02",
-        "C-01"
-      ],
-      "providesTo": [
-        "C-17"
-      ]
-    },
-    {
-      "id": "C-16",
-      "order": "16",
-      "name": "Sol",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "absente",
-      "blocking": true,
-      "note": "",
-      "dependsOn": [
-        "C-02",
-        "C-01"
-      ],
-      "providesTo": [
-        "C-17"
-      ]
-    },
-    {
-      "id": "C-17",
-      "order": "17",
-      "name": "Végétation / écosystèmes",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "",
-      "dependsOn": [
-        "C-15",
-        "C-16",
-        "C-01"
-      ],
-      "providesTo": []
-    },
-    {
-      "id": "C-18",
-      "order": "18",
-      "name": "Technologie / progression",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "",
-      "dependsOn": [
-        "C-00",
-        "C-03"
-      ],
-      "providesTo": []
-    },
-    {
-      "id": "C-19",
-      "order": "19",
-      "name": "Persistance / sauvegarde",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "Avant shipping",
-      "dependsOn": [
-        "C-01",
-        "C-09",
-        "C-03"
-      ],
-      "providesTo": []
-    },
-    {
-      "id": "C-20",
-      "order": "20",
-      "name": "Observabilité / UX lisibilité",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": false,
-      "note": "Preuve vs produit",
-      "dependsOn": [
-        "C-04",
-        "C-07",
-        "C-09"
-      ],
-      "providesTo": []
-    },
-    {
-      "id": "C-21",
-      "order": "21",
-      "name": "Simulation / fréquences / perf",
-      "status": "À FAIRE",
-      "category": "REQUIS",
-      "coverage": "partielle",
-      "blocking": true,
-      "note": "Avant scale",
-      "dependsOn": [
-        "C-00",
-        "C-02"
-      ],
-      "providesTo": []
-    }
-  ]
-}
+${json}
   </script>
   <script>
   (function () {
@@ -579,3 +338,5 @@
   </script>
 </body>
 </html>
+`;
+}

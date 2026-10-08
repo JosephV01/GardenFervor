@@ -143,6 +143,46 @@
       color: #5f736a;
       font-size: 11px;
     }
+    .statusStrip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 22px;
+    }
+    .statusCard {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 12px 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .statusCard.accent { border-color: #3d6350; background: #15231e; }
+    .statusCard span {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 800;
+      color: #6f857c;
+    }
+    .statusCard strong {
+      font-size: 12px;
+      line-height: 1.35;
+      color: #dce7e2;
+    }
+    .statusCard em {
+      font-style: normal;
+      font-size: 10px;
+      color: #7d9189;
+      line-height: 1.4;
+    }
+    @media (max-width: 900px) {
+      .statusStrip { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .statusStrip { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -154,15 +194,40 @@
       publié via GitHub Pages.
     </p>
     <div class="rule">
-      <strong>Pages d’accueil :</strong> cette page remplace l’ancienne entrée Roadmap.
-      La Roadmap est conservée à part et reste accessible ci-dessous.
+      <strong>Mise à jour :</strong> après une modification documentaire du projet, exécuter
+      <code style="color:#c5d4ce">node docs/syncPages.mjs</code> puis pousser — le hub et les pages liées restent alignés.
     </div>
+
+    <!-- SYNC:STATUS:START -->
+    <section class="statusStrip" aria-label="État projet synchronisé">
+      <div class="statusCard">
+        <span>Roadmap</span>
+        <strong>T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9</strong>
+        <em>9/9 VALIDÉ (100%)</em>
+      </div>
+      <div class="statusCard accent">
+        <span>Contrats</span>
+        <strong>C-01 · REVUE</strong>
+        <em>0/16 dédiés validés · Contrat rédigé / en attente d’audit et validation</em>
+      </div>
+      <div class="statusCard">
+        <span>Case B</span>
+        <strong>SUSPENDU</strong>
+        <em>Case B reste suspendu (registre §9). Aucune reprise sans contrats bloquants.</em>
+      </div>
+      <div class="statusCard">
+        <span>Sync Pages</span>
+        <strong>2026-10-08</strong>
+        <em>node docs/syncPages.mjs</em>
+      </div>
+    </section>
+    <!-- SYNC:STATUS:END -->
 
     <div class="grid">
       <a class="card" href="roadmap.html">
         <span class="tag roadmap">Production</span>
         <h2>Roadmap de production</h2>
-        <p>Pilotage des tranches T1→Tn, statuts VALIDÉ / EN COURS / BLOQUÉ, progression réelle.</p>
+        <p>T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9 · progression 9/9 (100%).</p>
         <span class="go">Ouvrir la roadmap →</span>
       </a>
 
@@ -176,7 +241,7 @@
       <a class="card" href="contracts.html">
         <span class="tag contracts">Contrats</span>
         <h2>Suivi des contrats</h2>
-        <p>Pilotancement documentaire C-01→C-21. Décidé → Rédigé → Revue → Validé. C-01 actuellement en revue.</p>
+        <p>Pilotage documentaire C-01→C-21 · 0/16 validés · actif C-01 (REVUE).</p>
         <span class="go">Ouvrir le suivi →</span>
       </a>
     </div>

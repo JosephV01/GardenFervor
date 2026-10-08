@@ -8,65 +8,57 @@
 
 | Fichier | Rôle |
 | --- | --- |
-| **`index.html`** | **Hub d’accueil** — liens vers tous les documents HTML |
-| `roadmap.html` | Roadmap de production (page autonome) |
+| **`index.html`** | **Hub d’accueil** — état projet + liens |
+| `roadmap.html` | Roadmap de production |
 | `design-gate.html` | Design Gate autonome |
-| `contracts.html` | Suivi des contrats (vue publiée) |
+| `contracts.html` | Suivi des contrats |
+| `syncPages.mjs` | Synchronisation complète des pages |
 
 ## Historique
 
 Jusqu’en 2026-10-08, `docs/index.html` contenait uniquement la Roadmap.  
 Ce contenu a été **dupliqué** vers `docs/roadmap.html` avant que `index.html` ne devienne le hub.
 
-## Synchronisation
+## Tenir le hub à jour (obligatoire après modification documentaire)
 
-### Roadmap
+Dès qu’un de ces éléments change :
 
-```bash
-node "Plan de production/Roadmap/scripts/syncRoadmap.mjs"
-```
+- roadmap (`roadmap.data.js` / statut de tranche) ;
+- Design Gate (`designGate.js`) ;
+- contrats (`CONTRATS/*.md` + `contractsSuivi.js`) ;
+- ajout d’un nouveau document HTML à publier ;
 
-Met à jour :
-
-- `Plan de production/Roadmap/index.html`
-- `docs/roadmap.html`
-
-**Ne modifie plus** `docs/index.html`.
-
-Source de vérité : `Plan de production/Roadmap/src/roadmap.data.js`
-
-### Design Gate
+exécuter **depuis la racine du dépôt** :
 
 ```bash
-node GardenFervor_DesignGate_React/scripts/syncStandaloneFromJs.mjs
+node docs/syncPages.mjs
 ```
 
-Met à jour :
+Puis commit + push `main` pour rafraîchir GitHub Pages.
 
-- `GardenFervor_DesignGate_React/GardenFervor_DESIGN_GATE_v0.1.html`
-- `docs/design-gate.html`
+Cette commande :
 
-Source de vérité : `GardenFervor_DesignGate_React/src/data/designGate.js`
+1. synchronise `docs/roadmap.html` ;
+2. synchronise `docs/design-gate.html` ;
+3. régénère `docs/contracts.html` depuis `contractsSuivi.js` ;
+4. met à jour le bandeau d’état et les résumés de cartes dans `docs/index.html`.
 
-### Contrats
+**Ne pas** écraser manuellement le bandeau entre `<!-- SYNC:STATUS:START -->` et `<!-- SYNC:STATUS:END -->` — il est généré.
 
-Source de vérité : `CONTRATS/*.md`  
-Miroir React : `GardenFervor_DesignGate_React/src/data/contractsSuivi.js`  
-Vue Pages : `docs/contracts.html` (à resynchroniser manuellement si le suivi change).
+## Sources de vérité
 
-### Hub
-
-`docs/index.html` est édité pour la navigation Pages.  
-Ne pas le faire écraser par un sync roadmap.
+| Page | Source |
+| --- | --- |
+| Roadmap | `Plan de production/Roadmap/src/roadmap.data.js` |
+| Design Gate | `GardenFervor_DesignGate_React/src/data/designGate.js` |
+| Contrats | `CONTRATS/*.md` (miroir UI : `contractsSuivi.js`) |
+| Hub navigation | `docs/index.html` (structure) + sync pour l’état |
 
 ## Activation manuelle (GitHub)
 
-Dans le dépôt `JosephV01/GardenFervor` :
-
 1. **Settings → Pages**
-2. **Build and deployment → Source** : *Deploy from a branch*
-3. **Branch** : `main`
-4. **Folder** : `/docs`
-5. Enregistrer
+2. **Source** : Deploy from a branch
+3. **Branch** : `main` / folder **`/docs`**
+4. Enregistrer
 
 Délai possible de quelques minutes après push.
