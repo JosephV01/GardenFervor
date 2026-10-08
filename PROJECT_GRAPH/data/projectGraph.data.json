@@ -1,0 +1,2874 @@
+{
+  "metadata": {
+    "title": "GardenFervor Project Graph",
+    "description": "Projection documentaire de l’architecture — pas une source de vérité parallèle",
+    "relationTypes": [
+      "DEPENDS_ON",
+      "OWNS",
+      "PRODUCES",
+      "CONSUMES",
+      "READS",
+      "WRITES",
+      "EXECUTES",
+      "SIGNALS",
+      "INVALIDATES",
+      "PERSISTS",
+      "VALIDATES",
+      "GOVERNS",
+      "CONSTRAINS",
+      "VISUALIZES",
+      "INTEGRATES_WITH"
+    ]
+  },
+  "generationInfo": {
+    "generatedAt": "2026-10-08T17:00:09.105Z",
+    "curatedVersion": "1.0.0",
+    "generator": "PROJECT_GRAPH/scripts/buildProjectGraph.mjs",
+    "git": {
+      "head": "152190cf7ec52f6c15fbfc4c50f029203dd5e187",
+      "short": "152190c",
+      "branch": "main",
+      "dirtyFiles": 71,
+      "workingTree": "dirty"
+    },
+    "sourcesInspected": [
+      "REGLES_PROJET.md",
+      "ETAT_PROJET.md",
+      "HISTORIQUE_MODIFICATIONS.md",
+      "CONTRATS/",
+      "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "Source/GardenFervor/",
+      "Saved/ODC_*Gate.txt",
+      "GardenFervor.uproject",
+      "Content/",
+      "docs/"
+    ],
+    "scan": {
+      "discoveredHeaderCount": 13,
+      "evidenceFileCount": 14,
+      "contractFileCount": 4,
+      "contentDirs": [
+        "Collections",
+        "Developers",
+        "GardenFervor",
+        "M4",
+        "Python",
+        "UltraDynamicSky"
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "gov_regles",
+      "name": "REGLES_PROJET",
+      "category": "GOVERNANCE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "n/a",
+      "validationStatus": "n/a",
+      "responsibility": "Règles opérationnelles permanentes du projet",
+      "sourceDocuments": [
+        "REGLES_PROJET.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "gov_etat",
+      "name": "ETAT_PROJET",
+      "category": "GOVERNANCE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "n/a",
+      "validationStatus": "n/a",
+      "responsibility": "État officiel courant (jalons, preuves, contrats)",
+      "sourceDocuments": [
+        "ETAT_PROJET.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "notes": "Peut diverger du suivi contrats ; le graphe signale les écarts.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "gov_historique",
+      "name": "HISTORIQUE_MODIFICATIONS",
+      "category": "GOVERNANCE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "n/a",
+      "validationStatus": "n/a",
+      "responsibility": "Journal des modifications et preuves",
+      "sourceDocuments": [
+        "HISTORIQUE_MODIFICATIONS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "gov_registre_contrats",
+      "name": "Registre des contrats",
+      "category": "GOVERNANCE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Inventaire, ordre, nécessité des contrats C-00…C-23",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "gov_suivi_contrats",
+      "name": "Suivi production contrats",
+      "category": "GOVERNANCE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "n/a",
+      "validationStatus": "n/a",
+      "responsibility": "Avancement documentaire des contrats (2/16)",
+      "sourceDocuments": [
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_hub",
+      "name": "Design Gate (ensemble)",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Décisions de conception DG-00 → DG-14",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js",
+        "ETAT_PROJET.md"
+      ],
+      "sourceFiles": [
+        "GardenFervor_DesignGate_React/"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "notes": "Sections DG-00…DG-14 clôturées VALIDÉ (ETAT_PROJET).",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_00",
+      "name": "DG-00 Cadre",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Identité RTS, périmètre simulation, lexique",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_04",
+      "name": "DG-04 Autonomie unités",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "Sélection tâche, exécution, replanification unité",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js"
+      ],
+      "sourceFiles": [],
+      "evidence": [
+        "evid_odc_f5"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_05",
+      "name": "DG-05 Ressources / économie",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "Taxonomie ressources, stocks, réservations (conception)",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js"
+      ],
+      "sourceFiles": [],
+      "evidence": [
+        "evid_odc_f6"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_06",
+      "name": "DG-06 Logistique",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "Transport / accès réseaux (conception)",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js"
+      ],
+      "sourceFiles": [],
+      "evidence": [
+        "evid_odc_f7"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_08",
+      "name": "DG-08 Terrain / terraform",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "État terrain, Raise/Lower/Paint, conséquences",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js"
+      ],
+      "sourceFiles": [],
+      "evidence": [
+        "evid_odc_f8"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_09",
+      "name": "DG-09 Environnement / écosystèmes",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "STUB",
+      "validationStatus": "n/a",
+      "responsibility": "Eau, sol, végétation (conception ; stubs spatiaux)",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js"
+      ],
+      "sourceFiles": [],
+      "evidence": [
+        "evid_odc_f3"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_11",
+      "name": "DG-11 Chantiers procéduraux",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "Projet, tâches, réaction 11.6, fin de chantier",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js"
+      ],
+      "sourceFiles": [],
+      "evidence": [
+        "evid_odc_f4",
+        "evid_s3_cohort"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_11_6",
+      "name": "DG-11.6 Réaction chantier",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PLANNED",
+      "validationStatus": "n/a",
+      "responsibility": "Recalcul / suspension / blocage au niveau chantier",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "notes": "Complémentaire au mécanisme tâche (futur C-04) ; pas d’implémentation dédiée observée.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "dg_13",
+      "name": "DG-13 UX / lisibilité",
+      "category": "DESIGN_GATE",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Lisibilité unités / blocages / progression",
+      "sourceDocuments": [
+        "GardenFervor_DesignGate_React/src/data/designGate.js"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_00",
+      "name": "C-00 — Cadre / invariants",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-00",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "NON REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": false,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_01",
+      "name": "C-01 — Terrain runtime",
+      "category": "CONTRACTS",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "Contrat opérationnel C-01",
+      "sourceDocuments": [
+        "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [
+        "CONTRATS/C-01_TERRAIN_RUNTIME.md"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "REQUIS",
+      "documentStatus": "VALIDÉ",
+      "inValidationCounter": true,
+      "notes": "Contrat VALIDÉ ; dettes d’implémentation documentées (F1, persist, dirty Soil/Water…).",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_02",
+      "name": "C-02 — Substrat spatial",
+      "category": "CONTRACTS",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "Contrat opérationnel C-02",
+      "sourceDocuments": [
+        "CONTRATS/C-02_SUBSTRAT_SPATIAL.md",
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [
+        "CONTRATS/C-02_SUBSTRAT_SPATIAL.md"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "REQUIS",
+      "documentStatus": "VALIDÉ",
+      "inValidationCounter": true,
+      "notes": "31 décisions A1–F3 ; contrat VALIDÉ.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_03",
+      "name": "C-03 — Intention → Project",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-03",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "SUFFISANT*",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": false,
+      "notes": "Addendum fermé pour S3 ; hors compteur 16 tant que non ouvert.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_04",
+      "name": "C-04 — Tâches / graphe / dépendances",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-04",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "PARTIEL",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "notes": "Prochain contrat obligatoire du compteur 16 après C-02 ; proposition 48 décisions non inscrite.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_05",
+      "name": "C-05 — WorkSite / SitePrep",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-05",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "PARTIEL→REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "notes": "Cas A validé cohorte ; Case B suspendu.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_06",
+      "name": "C-06 — Capacités / roster",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-06",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "SUFFISANT*",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": false,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_07",
+      "name": "C-07 — Autonomie unité",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-07",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "PARTIEL",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_08",
+      "name": "C-08 — Terraformer opérationnel",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-08",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "notes": "Bloque Demo Case B.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_09",
+      "name": "C-09 — Économie physique",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-09",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "SUFFISANT*",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": false,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_10",
+      "name": "C-10 — Stocks localisés A/B",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-10",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "SUFFISANT*",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": false,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_11",
+      "name": "C-11 — Réservations",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-11",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "PARTIEL",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_12",
+      "name": "C-12 — Transport / logistique",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-12",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "PARTIEL",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_13",
+      "name": "C-13 — Construction / En service",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-13",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "SUFFISANT*",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": false,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_14",
+      "name": "C-14 — Infrastructures",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PLANNED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-14",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_15",
+      "name": "C-15 — Hydrologie",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-15",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_16",
+      "name": "C-16 — Sol",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-16",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_17",
+      "name": "C-17 — Végétation / écosystèmes",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PLANNED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-17",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "PARTIEL→REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_18",
+      "name": "C-18 — Technologie / progression",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-18",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "PARTIEL",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_19",
+      "name": "C-19 — Persistance / sauvegarde",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-19",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_20",
+      "name": "C-20 — Observabilité / UX",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-20",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "PARTIEL",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_21",
+      "name": "C-21 — Simulation / fréquences",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-21",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "PARTIEL",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": true,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_22",
+      "name": "C-22 — Investor Demo",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-22",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "NON REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": false,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "c_23",
+      "name": "C-23 — Présentation M4 / UDS",
+      "category": "CONTRACTS",
+      "designStatus": "PLANNED",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Contrat opérationnel C-23",
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "contractNeed": "NON REQUIS",
+      "documentStatus": "NON COMMENCÉ",
+      "inValidationCounter": false,
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_landscape_terraform",
+      "name": "LandscapeTerraformSubsystem",
+      "category": "WORLD_TERRAIN",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PARTIAL",
+      "responsibility": "Brushes runtime LandscapeEdit ; pont Spatial dirty",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Terraform/GardenFervorLandscapeTerraformSubsystem.h",
+        "Source/GardenFervor/RTS/Terraform/GardenFervorLandscapeTerraformSubsystem.cpp"
+      ],
+      "sourceDocuments": [
+        "CONTRATS/C-01_TERRAIN_RUNTIME.md"
+      ],
+      "evidence": [
+        "evid_odc_f8"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_runtime_store",
+      "name": "RuntimeTerraformStore",
+      "category": "WORLD_TERRAIN",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "INVALIDÉ",
+      "responsibility": "Store hauteur CPU / extents Spatial ; overlay PMC inactif",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Terraform/GardenFervorRuntimeTerraformStore.h",
+        "Source/GardenFervor/RTS/Terraform/GardenFervorRuntimeTerraformStore.cpp"
+      ],
+      "sourceDocuments": [
+        "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+        "Saved/ODC_F1_RuntimeTerrainGate.txt"
+      ],
+      "evidence": [
+        "evid_odc_f1"
+      ],
+      "confidence": "HIGH",
+      "notes": "ODC-F1 INVALIDÉ ; shipping Base+Delta À REFAIRE.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_base_height",
+      "name": "IslandBaseHeightData",
+      "category": "WORLD_TERRAIN",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PARTIAL",
+      "responsibility": "Données hauteur de base île",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Terraform/GardenFervorIslandBaseHeightData.h",
+        "Source/GardenFervor/RTS/Terraform/GardenFervorIslandBaseHeightData.cpp"
+      ],
+      "sourceDocuments": [
+        "CONTRATS/C-01_TERRAIN_RUNTIME.md"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_terraform_visualizer",
+      "name": "RuntimeTerraformVisualizer",
+      "category": "WORLD_TERRAIN",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "LEGACY",
+      "validationStatus": "n/a",
+      "responsibility": "Overlay PMC (inactif — bUseRuntimeTerraformOverlay=False)",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Terraform/GardenFervorRuntimeTerraformVisualizer.h",
+        "Source/GardenFervor/RTS/Terraform/GardenFervorRuntimeTerraformVisualizer.cpp"
+      ],
+      "sourceDocuments": [
+        "Saved/ODC_F1_RuntimeTerrainGate.txt"
+      ],
+      "evidence": [
+        "evid_odc_f1"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_terraform_collision",
+      "name": "RuntimeTerraformCollision",
+      "category": "WORLD_TERRAIN",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "LEGACY",
+      "validationStatus": "n/a",
+      "responsibility": "Collision overlay (inactif avec PMC)",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Terraform/GardenFervorRuntimeTerraformCollision.h",
+        "Source/GardenFervor/RTS/Terraform/GardenFervorRuntimeTerraformCollision.cpp"
+      ],
+      "sourceDocuments": [
+        "Saved/ODC_F1_RuntimeTerrainGate.txt"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_terraform_save",
+      "name": "TerraformSaveGame",
+      "category": "WORLD_TERRAIN",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "SUSPENDED",
+      "validationStatus": "n/a",
+      "responsibility": "Persistance terraform (bEnableRuntimeTerraformPersistence=False)",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Terraform/GardenFervorTerraformSaveGame.h",
+        "Source/GardenFervor/RTS/Terraform/GardenFervorTerraformSaveGame.cpp"
+      ],
+      "sourceDocuments": [
+        "Saved/ODC_F1_RuntimeTerrainGate.txt"
+      ],
+      "evidence": [
+        "evid_odc_f1"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_spatial",
+      "name": "SpatialSubsystem",
+      "category": "SPATIAL",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "Grille cellules, dirty, queries Terrain/Soil/Water",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Spatial/GardenFervorSpatialSubsystem.h",
+        "Source/GardenFervor/RTS/Spatial/GardenFervorSpatialSubsystem.cpp",
+        "Source/GardenFervor/RTS/Spatial/GardenFervorSpatialTypes.h"
+      ],
+      "sourceDocuments": [
+        "CONTRATS/C-02_SUBSTRAT_SPATIAL.md"
+      ],
+      "evidence": [
+        "evid_odc_f3"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_project",
+      "name": "ProjectSubsystem",
+      "category": "PROJECTS_TASKS",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Projects, Expand*, SitePrep helpers, cohorte S3",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Projects/GardenFervorProjectSubsystem.h",
+        "Source/GardenFervor/RTS/Projects/GardenFervorProjectSubsystem.cpp",
+        "Source/GardenFervor/RTS/Projects/GardenFervorProjectTypes.h"
+      ],
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md"
+      ],
+      "evidence": [
+        "evid_odc_f4",
+        "evid_s3_cohort"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_siteprep",
+      "name": "SitePrep helpers / types",
+      "category": "PROJECTS_TASKS",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "bSiteReady, ApplySitePreparation, Cas A/B (B suspendu)",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Projects/GardenFervorSitePrepTypes.h",
+        "Source/GardenFervor/RTS/Projects/GardenFervorSitePrepHelpers.h",
+        "Source/GardenFervor/RTS/Projects/GardenFervorSitePrepHelpers.cpp"
+      ],
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md"
+      ],
+      "evidence": [
+        "evid_s3_cohort"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_task",
+      "name": "TaskSubsystem",
+      "category": "PROJECTS_TASKS",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Graphe tâches, readiness, claim, progress, réservations tâche",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Tasks/GardenFervorTaskSubsystem.h",
+        "Source/GardenFervor/RTS/Tasks/GardenFervorTaskSubsystem.cpp",
+        "Source/GardenFervor/RTS/Tasks/GardenFervorTaskTypes.h"
+      ],
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "Saved/ODC_F4_TaskGraphGate.txt"
+      ],
+      "evidence": [
+        "evid_odc_f4"
+      ],
+      "confidence": "HIGH",
+      "notes": "Contrat C-04 non rédigé ; runtime S3 opérationnel.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_unit_base",
+      "name": "UnitBase",
+      "category": "UNITS_EXECUTION",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Acteur unité RTS",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Units/GardenFervorUnitBase.h",
+        "Source/GardenFervor/RTS/Units/GardenFervorUnitBase.cpp"
+      ],
+      "sourceDocuments": [],
+      "evidence": [
+        "evid_s3_cohort"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_unit_agent",
+      "name": "UnitTaskAgent",
+      "category": "UNITS_EXECUTION",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Seek→Claim→Execute→Verify→Complete ; InstantMode",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Units/GardenFervorUnitTaskAgent.h",
+        "Source/GardenFervor/RTS/Units/GardenFervorUnitTaskAgent.cpp"
+      ],
+      "sourceDocuments": [
+        "REGLES_PROJET.md"
+      ],
+      "evidence": [
+        "evid_odc_f5",
+        "evid_s3_cohort"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_terraform_tool",
+      "name": "TerraformToolComponent",
+      "category": "UNITS_EXECUTION",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "PASS",
+      "responsibility": "Outil terraform unité → brushes",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Units/GardenFervorTerraformToolComponent.h",
+        "Source/GardenFervor/RTS/Units/GardenFervorTerraformToolComponent.cpp"
+      ],
+      "sourceDocuments": [],
+      "evidence": [
+        "evid_odc_f8"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_harvest",
+      "name": "HarvestComponent",
+      "category": "UNITS_EXECUTION",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Récolte / extract matière",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Units/GardenFervorHarvestComponent.h",
+        "Source/GardenFervor/RTS/Units/GardenFervorHarvestComponent.cpp"
+      ],
+      "sourceDocuments": [],
+      "evidence": [
+        "evid_s3_cohort"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_physical_economy",
+      "name": "PhysicalEconomySubsystem",
+      "category": "ECONOMY_RESOURCES",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Stocks physiques, Deposit/Withdraw, ResourceKey",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Economy/GardenFervorPhysicalEconomySubsystem.h",
+        "Source/GardenFervor/RTS/Economy/GardenFervorPhysicalEconomySubsystem.cpp",
+        "Source/GardenFervor/RTS/Economy/GardenFervorPhysicalResourceTypes.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [
+        "evid_odc_f6",
+        "evid_s3_cohort"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_economy_component",
+      "name": "EconomyComponent",
+      "category": "ECONOMY_RESOURCES",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "LEGACY",
+      "validationStatus": "n/a",
+      "responsibility": "Économie abstraite / placement (legacy FWSG parallèle PE)",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Economy/GardenFervorEconomyComponent.h",
+        "Source/GardenFervor/RTS/Economy/GardenFervorEconomyComponent.cpp"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "notes": "Présent ; cohorte S3 privilégie PhysicalEconomy.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_buildings_placement",
+      "name": "BuildingPlacementComponent",
+      "category": "BUILDINGS_INFRA",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Placement bâtiments",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Buildings/GardenFervorBuildingPlacementComponent.h",
+        "Source/GardenFervor/RTS/Buildings/GardenFervorBuildingPlacementComponent.cpp"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_production_queue",
+      "name": "ProductionQueueComponent",
+      "category": "BUILDINGS_INFRA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "File de production",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Production/GardenFervorProductionQueueComponent.h",
+        "Source/GardenFervor/RTS/Production/GardenFervorProductionQueueComponent.cpp"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_tech",
+      "name": "TechComponent",
+      "category": "BUILDINGS_INFRA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "Progression / ages (legacy catalogue)",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Tech/GardenFervorTechComponent.h",
+        "Source/GardenFervor/RTS/Tech/GardenFervorTechComponent.cpp"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_rts_catalog",
+      "name": "RTSCatalog / Definitions",
+      "category": "DATA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "DataAssets unités, bâtiments, ressources, tech ages",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Data/GardenFervorRTSCatalog.h",
+        "Source/GardenFervor/RTS/Data/GardenFervorUnitDefinition.h",
+        "Source/GardenFervor/RTS/Data/GardenFervorBuildingDefinition.h",
+        "Source/GardenFervor/RTS/Data/GardenFervorResourceDefinition.h",
+        "Source/GardenFervor/RTS/Data/GardenFervorTechAgeDefinition.h",
+        "Source/GardenFervor/RTS/Data/GardenFervorUnitCapabilityTypes.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_selection",
+      "name": "SelectionComponent",
+      "category": "UI_INPUT",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Sélection unités",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Selection/GardenFervorSelectionComponent.h",
+        "Source/GardenFervor/RTS/Selection/GardenFervorSelectionComponent.cpp"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_input",
+      "name": "Input (Enhanced + Player)",
+      "category": "UI_INPUT",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Entrées joueur Enhanced Input",
+      "sourceFiles": [
+        "Source/GardenFervor/Input/GardenFervorPlayerInputComponent.h",
+        "Source/GardenFervor/Input/GardenFervorEnhancedInputService.h",
+        "Source/GardenFervor/Input/GardenFervorDeveloperSettings.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_rts_hud",
+      "name": "RTSHUDWidget",
+      "category": "UI_INPUT",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "PARTIAL",
+      "validationStatus": "n/a",
+      "responsibility": "HUD RTS",
+      "sourceFiles": [
+        "Source/GardenFervor/UI/GardenFervorRTSHUDWidget.h",
+        "Source/GardenFervor/UI/GardenFervorRTSHUDWidget.cpp"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_visual_runtime_gate",
+      "name": "VisualRuntimeGate",
+      "category": "CONTENT_EXTERNAL",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Gate présentation M4/RVT/UDS",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Environment/GardenFervorVisualRuntimeGate.h",
+        "Source/GardenFervor/RTS/Environment/GardenFervorVisualRuntimeGate.cpp"
+      ],
+      "sourceDocuments": [
+        "Saved/ODC_F2_VisualTerrainGate.txt"
+      ],
+      "evidence": [
+        "evid_odc_f2"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_game_framework",
+      "name": "GameMode / GameState / PC / PS",
+      "category": "GAME_DEMO",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Framework jeu de base",
+      "sourceFiles": [
+        "Source/GardenFervor/Game/GardenFervorGameMode.h",
+        "Source/GardenFervor/Game/GardenFervorGameState.h",
+        "Source/GardenFervor/Game/GardenFervorPlayerController.h",
+        "Source/GardenFervor/Game/GardenFervorPlayerState.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_investor_demo",
+      "name": "Investor Demo S3",
+      "category": "GAME_DEMO",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Présentation investisseur ; consomme Project/Task/Units/PE",
+      "sourceFiles": [
+        "Source/GardenFervor/Game/GardenFervorInvestorDemoS3Director.h",
+        "Source/GardenFervor/Game/GardenFervorInvestorDemoS3Director.cpp",
+        "Source/GardenFervor/Game/GardenFervorInvestorDemoGameMode.h",
+        "Source/GardenFervor/Game/GardenFervorInvestorDemoPlayerController.h"
+      ],
+      "sourceDocuments": [
+        "ETAT_PROJET.md"
+      ],
+      "evidence": [
+        "evid_s3_cohort"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "sys_case_b",
+      "name": "Case B RequiresTerraform",
+      "category": "PROJECTS_TASKS",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "SUSPENDED",
+      "validationStatus": "n/a",
+      "responsibility": "Préparation terrain obligatoire avant WorkSite (suspendu)",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Projects/GardenFervorProjectSubsystem.cpp",
+        "Source/GardenFervor/RTS/Projects/GardenFervorSitePrepHelpers.cpp"
+      ],
+      "sourceDocuments": [
+        "CONTRATS/00_REGISTRE_CONTRATS.md",
+        "CONTRATS/00_SUIVI_CONTRATS.md"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "notes": "Code partiel présent ; évolution gameplay suspendue.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "data_project_record",
+      "name": "ProjectRecord",
+      "category": "DATA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Enregistrement projet runtime",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Projects/GardenFervorProjectTypes.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "data_task_record",
+      "name": "TaskRecord",
+      "category": "DATA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Enregistrement tâche (états, prereqs, claim, progress)",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Tasks/GardenFervorTaskTypes.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "data_spatial_cell",
+      "name": "SpatialCell / queries",
+      "category": "DATA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Cellules + QueryTerrain/Soil/Water",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Spatial/GardenFervorSpatialTypes.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "data_height_store",
+      "name": "Height Store (Base/Delta)",
+      "category": "DATA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Vérité hauteur runtime (cible shipping)",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Terraform/GardenFervorRuntimeTerraformStore.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "data_stock",
+      "name": "Physical Stock",
+      "category": "DATA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Stock localisé + ResourceKey",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Economy/GardenFervorPhysicalEconomySubsystem.h",
+        "Source/GardenFervor/RTS/Economy/GardenFervorPhysicalResourceTypes.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "data_reservation",
+      "name": "Task Reservation",
+      "category": "DATA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Réservation liée à une tâche",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Tasks/GardenFervorTaskTypes.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "data_capabilities",
+      "name": "Unit Capabilities",
+      "category": "DATA",
+      "designStatus": "PARTIAL",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Capacités abstraites d’unité",
+      "sourceFiles": [
+        "Source/GardenFervor/RTS/Data/GardenFervorUnitCapabilityTypes.h"
+      ],
+      "sourceDocuments": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "evid_odc_f1",
+      "name": "ODC-F1 Runtime terrain",
+      "category": "VALIDATION",
+      "designStatus": "n/a",
+      "implementationStatus": "n/a",
+      "validationStatus": "INVALIDÉ",
+      "responsibility": "Preuve ODC-F1 Runtime terrain",
+      "sourceDocuments": [
+        "Saved/ODC_F1_RuntimeTerrainGate.txt"
+      ],
+      "sourceFiles": [
+        "Saved/ODC_F1_RuntimeTerrainGate.txt"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "evid_odc_f2",
+      "name": "ODC-F2 Visual terrain (M4/UDS)",
+      "category": "VALIDATION",
+      "designStatus": "n/a",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Preuve ODC-F2 Visual terrain (M4/UDS)",
+      "sourceDocuments": [
+        "Saved/ODC_F2_VisualTerrainGate.txt"
+      ],
+      "sourceFiles": [
+        "Saved/ODC_F2_VisualTerrainGate.txt"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "evid_odc_f3",
+      "name": "ODC-F3 Spatial substrate",
+      "category": "VALIDATION",
+      "designStatus": "n/a",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Preuve ODC-F3 Spatial substrate",
+      "sourceDocuments": [
+        "Saved/ODC_F3_SimulationSubstrateGate.txt"
+      ],
+      "sourceFiles": [
+        "Saved/ODC_F3_SimulationSubstrateGate.txt"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "evid_odc_f4",
+      "name": "ODC-F4 Task graph",
+      "category": "VALIDATION",
+      "designStatus": "n/a",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Preuve ODC-F4 Task graph",
+      "sourceDocuments": [
+        "Saved/ODC_F4_TaskGraphGate.txt"
+      ],
+      "sourceFiles": [
+        "Saved/ODC_F4_TaskGraphGate.txt"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "evid_odc_f5",
+      "name": "ODC-F5 Autonomy",
+      "category": "VALIDATION",
+      "designStatus": "n/a",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Preuve ODC-F5 Autonomy",
+      "sourceDocuments": [
+        "Saved/ODC_F5_AutonomyGate.txt"
+      ],
+      "sourceFiles": [
+        "Saved/ODC_F5_AutonomyGate.txt"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "evid_odc_f6",
+      "name": "ODC-F6 Physical economy",
+      "category": "VALIDATION",
+      "designStatus": "n/a",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Preuve ODC-F6 Physical economy",
+      "sourceDocuments": [
+        "Saved/ODC_F6_EconomyGate.txt"
+      ],
+      "sourceFiles": [
+        "Saved/ODC_F6_EconomyGate.txt"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "evid_odc_f7",
+      "name": "ODC-F7 Logistics",
+      "category": "VALIDATION",
+      "designStatus": "n/a",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Preuve ODC-F7 Logistics",
+      "sourceDocuments": [
+        "Saved/ODC_F7_LogisticsGate.txt"
+      ],
+      "sourceFiles": [
+        "Saved/ODC_F7_LogisticsGate.txt"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "evid_odc_f8",
+      "name": "ODC-F8 Terraform operation",
+      "category": "VALIDATION",
+      "designStatus": "n/a",
+      "implementationStatus": "n/a",
+      "validationStatus": "PASS",
+      "responsibility": "Preuve ODC-F8 Terraform operation",
+      "sourceDocuments": [
+        "Saved/ODC_F8_TerraformOperationGate.txt"
+      ],
+      "sourceFiles": [
+        "Saved/ODC_F8_TerraformOperationGate.txt"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "evid_s3_cohort",
+      "name": "Cohorte S3 Cas A (T1–T9)",
+      "category": "VALIDATION",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Validation humaine end-to-end Cas A WorkSite",
+      "sourceDocuments": [
+        "ETAT_PROJET.md",
+        "HISTORIQUE_MODIFICATIONS.md"
+      ],
+      "sourceFiles": [],
+      "evidence": [],
+      "confidence": "HIGH",
+      "notes": "9/9 tranches VALIDÉ ; Case B hors périmètre.",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "ext_m4",
+      "name": "MagicMapMaterial (M4)",
+      "category": "CONTENT_EXTERNAL",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Présentation terrain / RVT (non vérité gameplay)",
+      "sourceDocuments": [
+        "Saved/ODC_F2_VisualTerrainGate.txt"
+      ],
+      "sourceFiles": [
+        "Content/M4/"
+      ],
+      "evidence": [
+        "evid_odc_f2"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "ext_uds",
+      "name": "Ultra Dynamic Sky",
+      "category": "CONTENT_EXTERNAL",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "PASS",
+      "responsibility": "Ciel / environnement présentation",
+      "sourceDocuments": [
+        "Saved/ODC_F2_VisualTerrainGate.txt"
+      ],
+      "sourceFiles": [
+        "Content/UltraDynamicSky/"
+      ],
+      "evidence": [
+        "evid_odc_f2"
+      ],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "ext_ue_plugins",
+      "name": "Plugins UE (EnhancedInput, Landmass, VHM, PMC…)",
+      "category": "CONTENT_EXTERNAL",
+      "designStatus": "n/a",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Plugins activés dans GardenFervor.uproject",
+      "sourceDocuments": [
+        "GardenFervor.uproject"
+      ],
+      "sourceFiles": [
+        "GardenFervor.uproject"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "tool_docs_pages",
+      "name": "docs / GitHub Pages sync",
+      "category": "TOOLING",
+      "designStatus": "n/a",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Hub docs, presentation, syncPages",
+      "sourceDocuments": [
+        "docs/GITHUB_PAGES.md"
+      ],
+      "sourceFiles": [
+        "docs/syncPages.mjs",
+        "docs/index.html"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "tool_designgate_react",
+      "name": "Design Gate React app",
+      "category": "TOOLING",
+      "designStatus": "VALIDÉ",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "UI interactive Design Gate",
+      "sourceDocuments": [],
+      "sourceFiles": [
+        "GardenFervor_DesignGate_React/"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    },
+    {
+      "id": "tool_project_graph",
+      "name": "PROJECT_GRAPH (cette cartographie)",
+      "category": "TOOLING",
+      "designStatus": "n/a",
+      "implementationStatus": "IMPLEMENTED",
+      "validationStatus": "n/a",
+      "responsibility": "Projection documentaire de l’architecture",
+      "sourceDocuments": [
+        "PROJECT_GRAPH/README.md"
+      ],
+      "sourceFiles": [
+        "PROJECT_GRAPH/"
+      ],
+      "evidence": [],
+      "confidence": "HIGH",
+      "lastVerified": "2026-10-08T17:00:09.105Z"
+    }
+  ],
+  "edges": [
+    {
+      "id": "gov_regles__GOVERNS__dg_hub",
+      "from": "gov_regles",
+      "to": "dg_hub",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "REGLES_PROJET.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "gov_etat__READS__gov_registre_contrats",
+      "from": "gov_etat",
+      "to": "gov_registre_contrats",
+      "type": "READS",
+      "confidence": "HIGH",
+      "source": "ETAT_PROJET.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "gov_suivi_contrats__DEPENDS_ON__gov_registre_contrats",
+      "from": "gov_suivi_contrats",
+      "to": "gov_registre_contrats",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_SUIVI_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "gov_registre_contrats__GOVERNS__c_01",
+      "from": "gov_registre_contrats",
+      "to": "c_01",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "gov_registre_contrats__GOVERNS__c_02",
+      "from": "gov_registre_contrats",
+      "to": "c_02",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "gov_registre_contrats__GOVERNS__c_04",
+      "from": "gov_registre_contrats",
+      "to": "c_04",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_hub__OWNS__dg_00",
+      "from": "dg_hub",
+      "to": "dg_00",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_hub__OWNS__dg_04",
+      "from": "dg_hub",
+      "to": "dg_04",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_hub__OWNS__dg_05",
+      "from": "dg_hub",
+      "to": "dg_05",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_hub__OWNS__dg_06",
+      "from": "dg_hub",
+      "to": "dg_06",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_hub__OWNS__dg_08",
+      "from": "dg_hub",
+      "to": "dg_08",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_hub__OWNS__dg_09",
+      "from": "dg_hub",
+      "to": "dg_09",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_hub__OWNS__dg_11",
+      "from": "dg_hub",
+      "to": "dg_11",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_hub__OWNS__dg_11_6",
+      "from": "dg_hub",
+      "to": "dg_11_6",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_hub__OWNS__dg_13",
+      "from": "dg_hub",
+      "to": "dg_13",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_00__GOVERNS__c_00",
+      "from": "dg_00",
+      "to": "c_00",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_08__GOVERNS__c_01",
+      "from": "dg_08",
+      "to": "c_01",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_08__GOVERNS__c_02",
+      "from": "dg_08",
+      "to": "c_02",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-02_SUBSTRAT_SPATIAL.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_08__GOVERNS__c_08",
+      "from": "dg_08",
+      "to": "c_08",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_11__GOVERNS__c_04",
+      "from": "dg_11",
+      "to": "c_04",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_11__GOVERNS__c_05",
+      "from": "dg_11",
+      "to": "c_05",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_04__GOVERNS__c_07",
+      "from": "dg_04",
+      "to": "c_07",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_05__GOVERNS__c_09",
+      "from": "dg_05",
+      "to": "c_09",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_05__GOVERNS__c_11",
+      "from": "dg_05",
+      "to": "c_11",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_06__GOVERNS__c_12",
+      "from": "dg_06",
+      "to": "c_12",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_09__GOVERNS__c_15",
+      "from": "dg_09",
+      "to": "c_15",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_09__GOVERNS__c_16",
+      "from": "dg_09",
+      "to": "c_16",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_09__GOVERNS__c_17",
+      "from": "dg_09",
+      "to": "c_17",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "dg_11_6__CONSTRAINS__c_04__FUTURE",
+      "from": "dg_11_6",
+      "to": "c_04",
+      "type": "CONSTRAINS",
+      "confidence": "MEDIUM",
+      "source": "GardenFervor_DesignGate_React/src/data/designGate.js",
+      "relationKind": "FUTURE",
+      "notes": "DG-11.6 = chantier ; C-04 = mécanisme tâche — complémentaire, pas encore câblé runtime."
+    },
+    {
+      "id": "c_01__GOVERNS__sys_runtime_store",
+      "from": "c_01",
+      "to": "sys_runtime_store",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_01__CONSTRAINS__sys_landscape_terraform",
+      "from": "c_01",
+      "to": "sys_landscape_terraform",
+      "type": "CONSTRAINS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_01__GOVERNS__sys_base_height",
+      "from": "c_01",
+      "to": "sys_base_height",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_01__CONSTRAINS__sys_terraform_visualizer",
+      "from": "c_01",
+      "to": "sys_terraform_visualizer",
+      "type": "CONSTRAINS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_01__CONSTRAINS__sys_terraform_save",
+      "from": "c_01",
+      "to": "sys_terraform_save",
+      "type": "CONSTRAINS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_02__GOVERNS__sys_spatial",
+      "from": "c_02",
+      "to": "sys_spatial",
+      "type": "GOVERNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-02_SUBSTRAT_SPATIAL.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_02__OWNS__data_spatial_cell",
+      "from": "c_02",
+      "to": "data_spatial_cell",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "CONTRATS/C-02_SUBSTRAT_SPATIAL.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_05__GOVERNS__sys_siteprep",
+      "from": "c_05",
+      "to": "sys_siteprep",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_04__GOVERNS__sys_task",
+      "from": "c_04",
+      "to": "sys_task",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": "Gouvernance cible ; contrat C-04 pas encore VALIDÉ."
+    },
+    {
+      "id": "c_07__GOVERNS__sys_unit_agent",
+      "from": "c_07",
+      "to": "sys_unit_agent",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_08__GOVERNS__sys_terraform_tool",
+      "from": "c_08",
+      "to": "sys_terraform_tool",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_09__GOVERNS__sys_physical_economy",
+      "from": "c_09",
+      "to": "sys_physical_economy",
+      "type": "GOVERNS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_23__CONSTRAINS__ext_m4",
+      "from": "c_23",
+      "to": "ext_m4",
+      "type": "CONSTRAINS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": "M4 = rendu ; gameplay terrain reste C-01."
+    },
+    {
+      "id": "c_02__DEPENDS_ON__c_01",
+      "from": "c_02",
+      "to": "c_01",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_04__DEPENDS_ON__c_03",
+      "from": "c_04",
+      "to": "c_03",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": "Amont officiel ; C-03 addendum fermé (S3 suffit)."
+    },
+    {
+      "id": "c_05__DEPENDS_ON__c_01",
+      "from": "c_05",
+      "to": "c_01",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_05__DEPENDS_ON__c_04",
+      "from": "c_05",
+      "to": "c_04",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_07__DEPENDS_ON__c_04",
+      "from": "c_07",
+      "to": "c_04",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_07__DEPENDS_ON__c_06",
+      "from": "c_07",
+      "to": "c_06",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_08__DEPENDS_ON__c_01",
+      "from": "c_08",
+      "to": "c_01",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_08__DEPENDS_ON__c_05",
+      "from": "c_08",
+      "to": "c_05",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_08__DEPENDS_ON__c_07",
+      "from": "c_08",
+      "to": "c_07",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_11__DEPENDS_ON__c_04",
+      "from": "c_11",
+      "to": "c_04",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_11__DEPENDS_ON__c_09",
+      "from": "c_11",
+      "to": "c_09",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_11__DEPENDS_ON__c_10",
+      "from": "c_11",
+      "to": "c_10",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_12__DEPENDS_ON__c_07",
+      "from": "c_12",
+      "to": "c_07",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "c_12__DEPENDS_ON__c_10",
+      "from": "c_12",
+      "to": "c_10",
+      "type": "DEPENDS_ON",
+      "confidence": "HIGH",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_landscape_terraform__WRITES__data_height_store",
+      "from": "sys_landscape_terraform",
+      "to": "data_height_store",
+      "type": "WRITES",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Terraform/GardenFervorLandscapeTerraformSubsystem.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_landscape_terraform__SIGNALS__sys_spatial",
+      "from": "sys_landscape_terraform",
+      "to": "sys_spatial",
+      "type": "SIGNALS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Terraform/GardenFervorLandscapeTerraformSubsystem.cpp",
+      "relationKind": "ACTIVE",
+      "notes": "MarkDirtyLandscapeRect après brush (ODC-F3)."
+    },
+    {
+      "id": "sys_spatial__OWNS__data_spatial_cell",
+      "from": "sys_spatial",
+      "to": "data_spatial_cell",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Spatial/GardenFervorSpatialSubsystem.h",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_spatial__READS__sys_runtime_store",
+      "from": "sys_spatial",
+      "to": "sys_runtime_store",
+      "type": "READS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Spatial/GardenFervorSpatialSubsystem.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_project__OWNS__data_project_record",
+      "from": "sys_project",
+      "to": "data_project_record",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Projects/GardenFervorProjectTypes.h",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_project__PRODUCES__sys_task",
+      "from": "sys_project",
+      "to": "sys_task",
+      "type": "PRODUCES",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Projects/GardenFervorProjectSubsystem.cpp",
+      "relationKind": "ACTIVE",
+      "notes": "ExpandProjectToTasks / ExpandWorkSite / ExpandLevelPad."
+    },
+    {
+      "id": "sys_project__EXECUTES__sys_siteprep",
+      "from": "sys_project",
+      "to": "sys_siteprep",
+      "type": "EXECUTES",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Projects/GardenFervorSitePrepHelpers.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_siteprep__CONSTRAINS__sys_case_b",
+      "from": "sys_siteprep",
+      "to": "sys_case_b",
+      "type": "CONSTRAINS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Projects/GardenFervorSitePrepHelpers.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_task__OWNS__data_task_record",
+      "from": "sys_task",
+      "to": "data_task_record",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Tasks/GardenFervorTaskTypes.h",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_task__OWNS__data_reservation",
+      "from": "sys_task",
+      "to": "data_reservation",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Tasks/GardenFervorTaskTypes.h",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_unit_agent__CONSUMES__sys_task",
+      "from": "sys_unit_agent",
+      "to": "sys_task",
+      "type": "CONSUMES",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Units/GardenFervorUnitTaskAgent.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_unit_agent__EXECUTES__sys_task",
+      "from": "sys_unit_agent",
+      "to": "sys_task",
+      "type": "EXECUTES",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Units/GardenFervorUnitTaskAgent.cpp",
+      "relationKind": "ACTIVE",
+      "notes": "TryClaimTask, SetTaskProgress, CompleteTask."
+    },
+    {
+      "id": "sys_unit_agent__WRITES__sys_physical_economy",
+      "from": "sys_unit_agent",
+      "to": "sys_physical_economy",
+      "type": "WRITES",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Units/GardenFervorUnitTaskAgent.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_unit_agent__EXECUTES__sys_terraform_tool",
+      "from": "sys_unit_agent",
+      "to": "sys_terraform_tool",
+      "type": "EXECUTES",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Units/GardenFervorUnitTaskAgent.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_unit_agent__READS__data_capabilities",
+      "from": "sys_unit_agent",
+      "to": "data_capabilities",
+      "type": "READS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Units/GardenFervorUnitTaskAgent.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_terraform_tool__WRITES__sys_landscape_terraform",
+      "from": "sys_terraform_tool",
+      "to": "sys_landscape_terraform",
+      "type": "WRITES",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Units/GardenFervorTerraformToolComponent.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_harvest__WRITES__sys_physical_economy",
+      "from": "sys_harvest",
+      "to": "sys_physical_economy",
+      "type": "WRITES",
+      "confidence": "MEDIUM",
+      "source": "Source/GardenFervor/RTS/Units/GardenFervorHarvestComponent.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_physical_economy__OWNS__data_stock",
+      "from": "sys_physical_economy",
+      "to": "data_stock",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Economy/GardenFervorPhysicalEconomySubsystem.h",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_unit_base__OWNS__sys_unit_agent",
+      "from": "sys_unit_base",
+      "to": "sys_unit_agent",
+      "type": "OWNS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/RTS/Units/GardenFervorUnitBase.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_investor_demo__CONSUMES__sys_project",
+      "from": "sys_investor_demo",
+      "to": "sys_project",
+      "type": "CONSUMES",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/Game/GardenFervorInvestorDemoS3Director.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_investor_demo__READS__sys_task",
+      "from": "sys_investor_demo",
+      "to": "sys_task",
+      "type": "READS",
+      "confidence": "HIGH",
+      "source": "Source/GardenFervor/Game/GardenFervorInvestorDemoS3Director.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_investor_demo__READS__sys_physical_economy",
+      "from": "sys_investor_demo",
+      "to": "sys_physical_economy",
+      "type": "READS",
+      "confidence": "MEDIUM",
+      "source": "Source/GardenFervor/Game/GardenFervorInvestorDemoS3Director.cpp",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "sys_spatial__SIGNALS__sys_task__FUTURE",
+      "from": "sys_spatial",
+      "to": "sys_task",
+      "type": "SIGNALS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/C-02_SUBSTRAT_SPATIAL.md",
+      "relationKind": "FUTURE",
+      "notes": "C-02 localise Dirty ; consommation tâche non câblée (futur C-04 G4)."
+    },
+    {
+      "id": "c_02__SIGNALS__c_04__FUTURE",
+      "from": "c_02",
+      "to": "c_04",
+      "type": "SIGNALS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/C-02_SUBSTRAT_SPATIAL.md",
+      "relationKind": "FUTURE",
+      "notes": "Frontière contractuelle cible ; C-04 non VALIDÉ."
+    },
+    {
+      "id": "c_04__CONSTRAINS__c_05__FUTURE",
+      "from": "c_04",
+      "to": "c_05",
+      "type": "CONSTRAINS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "FUTURE",
+      "notes": "C-05 décide SitePrep ; C-04 orchestre tâches résultantes."
+    },
+    {
+      "id": "c_04__CONSTRAINS__c_07__FUTURE",
+      "from": "c_04",
+      "to": "c_07",
+      "type": "CONSTRAINS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "FUTURE",
+      "notes": "C-07 exécute ; ne définit pas le graphe."
+    },
+    {
+      "id": "c_04__CONSTRAINS__c_08__FUTURE",
+      "from": "c_04",
+      "to": "c_08",
+      "type": "CONSTRAINS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "FUTURE",
+      "notes": "C-08 métier Terraform ; C-04 tâche générique."
+    },
+    {
+      "id": "c_04__CONSTRAINS__c_11__FUTURE",
+      "from": "c_04",
+      "to": "c_11",
+      "type": "CONSTRAINS",
+      "confidence": "MEDIUM",
+      "source": "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "relationKind": "FUTURE",
+      "notes": "C-04 mécanisme réservation tâche ; C-11 concurrence détaillée."
+    },
+    {
+      "id": "evid_odc_f1__VALIDATES__sys_runtime_store",
+      "from": "evid_odc_f1",
+      "to": "sys_runtime_store",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F1_RuntimeTerrainGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": "Résultat INVALIDÉ."
+    },
+    {
+      "id": "evid_odc_f2__VALIDATES__ext_m4",
+      "from": "evid_odc_f2",
+      "to": "ext_m4",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F2_VisualTerrainGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_odc_f2__VALIDATES__ext_uds",
+      "from": "evid_odc_f2",
+      "to": "ext_uds",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F2_VisualTerrainGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_odc_f2__VALIDATES__sys_visual_runtime_gate",
+      "from": "evid_odc_f2",
+      "to": "sys_visual_runtime_gate",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F2_VisualTerrainGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_odc_f3__VALIDATES__sys_spatial",
+      "from": "evid_odc_f3",
+      "to": "sys_spatial",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F3_SimulationSubstrateGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_odc_f4__VALIDATES__sys_task",
+      "from": "evid_odc_f4",
+      "to": "sys_task",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F4_TaskGraphGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_odc_f4__VALIDATES__sys_project",
+      "from": "evid_odc_f4",
+      "to": "sys_project",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F4_TaskGraphGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_odc_f5__VALIDATES__sys_unit_agent",
+      "from": "evid_odc_f5",
+      "to": "sys_unit_agent",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F5_AutonomyGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_odc_f6__VALIDATES__sys_physical_economy",
+      "from": "evid_odc_f6",
+      "to": "sys_physical_economy",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F6_EconomyGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_odc_f7__VALIDATES__sys_unit_agent",
+      "from": "evid_odc_f7",
+      "to": "sys_unit_agent",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F7_LogisticsGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": "Haul A→B via agent + PE."
+    },
+    {
+      "id": "evid_odc_f8__VALIDATES__sys_landscape_terraform",
+      "from": "evid_odc_f8",
+      "to": "sys_landscape_terraform",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F8_TerraformOperationGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_odc_f8__VALIDATES__sys_terraform_tool",
+      "from": "evid_odc_f8",
+      "to": "sys_terraform_tool",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F8_TerraformOperationGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_s3_cohort__VALIDATES__sys_project",
+      "from": "evid_s3_cohort",
+      "to": "sys_project",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "ETAT_PROJET.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_s3_cohort__VALIDATES__sys_siteprep",
+      "from": "evid_s3_cohort",
+      "to": "sys_siteprep",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "ETAT_PROJET.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "evid_s3_cohort__VALIDATES__sys_investor_demo",
+      "from": "evid_s3_cohort",
+      "to": "sys_investor_demo",
+      "type": "VALIDATES",
+      "confidence": "HIGH",
+      "source": "ETAT_PROJET.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "ext_m4__VISUALIZES__sys_landscape_terraform",
+      "from": "ext_m4",
+      "to": "sys_landscape_terraform",
+      "type": "VISUALIZES",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F2_VisualTerrainGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": "M4 présente Landscape ; ne remplace pas C-01."
+    },
+    {
+      "id": "ext_uds__INTEGRATES_WITH__sys_visual_runtime_gate",
+      "from": "ext_uds",
+      "to": "sys_visual_runtime_gate",
+      "type": "INTEGRATES_WITH",
+      "confidence": "HIGH",
+      "source": "Saved/ODC_F2_VisualTerrainGate.txt",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "ext_ue_plugins__INTEGRATES_WITH__sys_input",
+      "from": "ext_ue_plugins",
+      "to": "sys_input",
+      "type": "INTEGRATES_WITH",
+      "confidence": "HIGH",
+      "source": "GardenFervor.uproject",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "tool_designgate_react__VISUALIZES__dg_hub",
+      "from": "tool_designgate_react",
+      "to": "dg_hub",
+      "type": "VISUALIZES",
+      "confidence": "HIGH",
+      "source": "GardenFervor_DesignGate_React/",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "tool_docs_pages__VISUALIZES__sys_investor_demo",
+      "from": "tool_docs_pages",
+      "to": "sys_investor_demo",
+      "type": "VISUALIZES",
+      "confidence": "MEDIUM",
+      "source": "docs/presentation-client.html",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    },
+    {
+      "id": "tool_project_graph__READS__gov_registre_contrats",
+      "from": "tool_project_graph",
+      "to": "gov_registre_contrats",
+      "type": "READS",
+      "confidence": "HIGH",
+      "source": "PROJECT_GRAPH/README.md",
+      "relationKind": "ACTIVE",
+      "notes": ""
+    }
+  ],
+  "sources": {
+    "contractFiles": [
+      "CONTRATS/00_REGISTRE_CONTRATS.md",
+      "CONTRATS/00_SUIVI_CONTRATS.md",
+      "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+      "CONTRATS/C-02_SUBSTRAT_SPATIAL.md"
+    ],
+    "evidenceFiles": [
+      "Saved/AutonomyRuntimeGate.txt",
+      "Saved/EconomyRuntimeGate.txt",
+      "Saved/GardenFervor_ODC_v1.0_extracted.txt",
+      "Saved/LogisticsRuntimeGate.txt",
+      "Saved/ODC_AUDIT_PRE_F5.txt",
+      "Saved/ODC_F1_RuntimeTerrainGate.txt",
+      "Saved/ODC_F2_VisualTerrainGate.txt",
+      "Saved/ODC_F3_SimulationSubstrateGate.txt",
+      "Saved/ODC_F4_TaskGraphGate.txt",
+      "Saved/ODC_F5_AutonomyGate.txt",
+      "Saved/ODC_F6_EconomyGate.txt",
+      "Saved/ODC_F7_LogisticsGate.txt",
+      "Saved/ODC_F8_TerraformOperationGate.txt",
+      "Saved/TerraformOperationGate.txt"
+    ],
+    "discoveredHeaders": [
+      "Source/GardenFervor/Input/GardenFervorPlayerInputComponent.h",
+      "Source/GardenFervor/RTS/Buildings/GardenFervorBuildingPlacementComponent.h",
+      "Source/GardenFervor/RTS/Economy/GardenFervorEconomyComponent.h",
+      "Source/GardenFervor/RTS/Economy/GardenFervorPhysicalEconomySubsystem.h",
+      "Source/GardenFervor/RTS/Production/GardenFervorProductionQueueComponent.h",
+      "Source/GardenFervor/RTS/Projects/GardenFervorProjectSubsystem.h",
+      "Source/GardenFervor/RTS/Selection/GardenFervorSelectionComponent.h",
+      "Source/GardenFervor/RTS/Spatial/GardenFervorSpatialSubsystem.h",
+      "Source/GardenFervor/RTS/Tasks/GardenFervorTaskSubsystem.h",
+      "Source/GardenFervor/RTS/Tech/GardenFervorTechComponent.h",
+      "Source/GardenFervor/RTS/Terraform/GardenFervorLandscapeTerraformSubsystem.h",
+      "Source/GardenFervor/RTS/Units/GardenFervorHarvestComponent.h",
+      "Source/GardenFervor/RTS/Units/GardenFervorTerraformToolComponent.h"
+    ]
+  },
+  "statuses": {
+    "document": [
+      "VALIDÉ",
+      "NON COMMENCÉ",
+      "REVUE",
+      "RÉDACTION",
+      "SUSPENDU",
+      "BLOQUÉ"
+    ],
+    "implementation": [
+      "IMPLEMENTED",
+      "PARTIAL",
+      "STUB",
+      "LEGACY",
+      "SUSPENDED",
+      "PLANNED",
+      "UNKNOWN",
+      "n/a"
+    ],
+    "validation": [
+      "PASS",
+      "INVALIDÉ",
+      "PARTIAL",
+      "n/a"
+    ],
+    "confidence": [
+      "HIGH",
+      "MEDIUM",
+      "LOW"
+    ],
+    "relationKind": [
+      "ACTIVE",
+      "FUTURE",
+      "UNVERIFIED"
+    ]
+  },
+  "anomalies": [],
+  "warnings": [
+    {
+      "type": "DOC_DIVERGENCE",
+      "msg": "ETAT_PROJET et suivi indiquent C-03 comme prochain, mais C-03 est addendum SUFFISANT* fermé ; prochain obligatoire compteur = C-04 (registre ordre 4)."
+    }
+  ]
+}

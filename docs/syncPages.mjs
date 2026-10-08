@@ -9,9 +9,11 @@
  * - Contrats → docs/contracts.html (depuis contractsSuivi.js)
  * - Hub      → docs/index.html (bandeau d’état + liens)
  * - Présentation Investor Demo → docs/presentation-client.html
+ * - Project Graph → docs/project-graph.html (depuis PROJECT_GRAPH/)
  *
  * Sources de vérité : Markdown CONTRATS/, roadmap.data.js, designGate.js,
- * Investor Demo/PrésentationClientHtml/PrésentationClient.html.
+ * Investor Demo/PrésentationClientHtml/PrésentationClient.html,
+ * PROJECT_GRAPH/GardenFervor_ProjectGraph.html.
  * Ne pas inventer de VALIDÉ.
  */
 import fs from 'fs';
@@ -165,6 +167,20 @@ if (fs.existsSync(presentationImagesSrc)) {
   console.log('Copied → docs/images/ (incl. lot1 gallery)');
 }
 
+console.log('— Sync Project Graph —');
+const projectGraphSrc = path.join(
+  repoRoot,
+  'PROJECT_GRAPH',
+  'GardenFervor_ProjectGraph.html'
+);
+const projectGraphDst = path.join(docsDir, 'project-graph.html');
+if (!fs.existsSync(projectGraphSrc)) {
+  console.error('ERROR: missing Project Graph source:', projectGraphSrc);
+  process.exit(1);
+}
+fs.copyFileSync(projectGraphSrc, projectGraphDst);
+console.log('Copied → docs/project-graph.html');
+
 console.log(
   JSON.stringify(
     {
@@ -176,6 +192,7 @@ console.log(
       activeStatus: active ? displayStatus(active) : null,
       presentation: 'docs/presentation-client.html',
       presentationImages: 'docs/images/',
+      projectGraph: 'docs/project-graph.html',
       syncedAt: today,
     },
     null,
