@@ -10,10 +10,12 @@
  * - Hub      → docs/index.html (bandeau d’état + liens)
  * - Présentation Investor Demo → docs/presentation-client.html
  * - Project Graph → docs/project-graph.html (depuis PROJECT_GRAPH/)
+ * - Roadmap globale → docs/roadmap-globale.html (depuis ROADMAP/)
  *
  * Sources de vérité : Markdown CONTRATS/, roadmap.data.js, designGate.js,
  * Investor Demo/PrésentationClientHtml/PrésentationClient.html,
- * PROJECT_GRAPH/GardenFervor_ProjectGraph.html.
+ * PROJECT_GRAPH/GardenFervor_ProjectGraph.html,
+ * ROADMAP/GardenFervor_ROADMAP.md (via HTML généré).
  * Ne pas inventer de VALIDÉ.
  */
 import fs from 'fs';
@@ -181,6 +183,20 @@ if (!fs.existsSync(projectGraphSrc)) {
 fs.copyFileSync(projectGraphSrc, projectGraphDst);
 console.log('Copied → docs/project-graph.html');
 
+console.log('— Sync Roadmap globale —');
+const roadmapGlobaleSrc = path.join(
+  repoRoot,
+  'ROADMAP',
+  'GardenFervor_ROADMAP.html'
+);
+const roadmapGlobaleDst = path.join(docsDir, 'roadmap-globale.html');
+if (!fs.existsSync(roadmapGlobaleSrc)) {
+  console.error('ERROR: missing Roadmap globale HTML (build first):', roadmapGlobaleSrc);
+  process.exit(1);
+}
+fs.copyFileSync(roadmapGlobaleSrc, roadmapGlobaleDst);
+console.log('Copied → docs/roadmap-globale.html');
+
 console.log(
   JSON.stringify(
     {
@@ -193,6 +209,7 @@ console.log(
       presentation: 'docs/presentation-client.html',
       presentationImages: 'docs/images/',
       projectGraph: 'docs/project-graph.html',
+      roadmapGlobale: 'docs/roadmap-globale.html',
       syncedAt: today,
     },
     null,

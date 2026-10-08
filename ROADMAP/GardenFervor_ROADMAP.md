@@ -1,0 +1,956 @@
+<!--
+GardenFervor — ROADMAP GLOBALE — SOURCE DE VÉRITÉ ABSOLUE
+Modifier uniquement ce fichier, puis build + validate.
+Balises machine : RM:META, RM:NOW, RM:NEXT, RM:PHASE, RM:JALON, RM:WORK
+(ne pas imbriquer d'exemples de balises HTML dans ce bandeau)
+-->
+
+<!--RM:META
+version: 1.0.0
+updated: 2026-10-08
+title: GardenFervor — Roadmap globale
+git_head_at_audit: 1e0337b
+notes: Première génération. Distincte de Plan de production/Roadmap (cohorte S3).
+-->
+
+# GardenFervor — Roadmap globale
+
+> **Où allons-nous, dans quel ordre, et pourquoi ?**  
+> Ce document est la **source de vérité** de la Roadmap.  
+> La page HTML est une présentation dérivée — jamais l’inverse.
+
+## Comment lire ce document
+
+| Outil | Question à laquelle il répond |
+| --- | --- |
+| **Cette Roadmap** | Où en est le projet, que faire ensuite, jusqu’au jeu final ? |
+| **Design Gate** | Quelles décisions de conception sont validées ? |
+| **Contrats** | Quelles règles précises gouvernent chaque système ? |
+| **Project Graph** | Comment les systèmes, règles et preuves sont-ils reliés ? |
+| **Roadmap S3** (`Plan de production/Roadmap`) | Suivi des tranches T1–T9 de la cohorte forestière (preuve contrôlée) |
+
+---
+
+## Où en est GardenFervor ?
+
+<!--RM:NOW
+summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 2/16 · prochain travail = C-04 (conception) · Case B SUSPENDU
+conception: VALIDÉ
+realisation: PARTIELLE
+validation: PARTIELLE
+contracts_validated: 2
+contracts_required: 16
+s3_case_a: VALIDÉ
+case_b: SUSPENDU
+design_gate: VALIDÉ (DG-00→DG-14)
+odc_f1: À REFAIRE
+-->
+
+**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; la suite consiste à écrire les règles opérationnelles manquantes, puis à élargir le jeu jusqu’au produit final.
+
+### Acquis confirmés
+
+- **Design Gate DG-00 → DG-14** : sections clôturées VALIDÉ (source : `ETAT_PROJET.md`).
+- **Cohorte S3 Cas A** : tranches T1–T9 **VALIDÉ** — chantier forestier sur terrain déjà prêt, jusqu’à « En service » (source : `ETAT_PROJET.md`, suivi production).
+- **Contrats opérationnels VALIDÉS :**
+  - **C-01** — vérité du terrain (hauteur runtime) ;
+  - **C-02** — grille spatiale / zones modifiées / consultations.
+- **Preuves techniques majeures (ODC) :** F2 présentation · F3 spatial · F4 tâches · F5 autonomie · F6 économie physique · F7 logistique · F8 opérations terrain — **PASS** (F5/F7 avec validation humaine).
+- **Investor Demo** : présentation et démonstration S3 présentes.
+- **Cartographie** : `PROJECT_GRAPH/` disponible (projection, pas SoT).
+
+### En construction / partiel
+
+- Runtime terrain **shipping** (ODC-F1 **À REFAIRE** — preuve précédente INVALIDÉE).
+- Chaîne chantiers / tâches / préparation : code S3 opérationnel, **contrats C-04+ non rédigés**.
+- Eau / sol spatiaux : **stubs**.
+- Persistance terrain : **désactivée**.
+
+### Suspendu
+
+- **Case B** — chantier qui exige d’abord de préparer / transformer le terrain : **SUSPENDU** jusqu’aux contrats bloquants (notamment C-04, C-05, C-07, C-08).
+
+### Divergence documentaire signalée (non corrigée ici)
+
+- `ETAT_PROJET.md` et le suivi contrats indiquent parfois « prochain = C-03 ».
+- C-03 est un **addendum fermé** (suffisant pour S3) : **ne pas l’ouvrir** sans besoin réel.
+- **Prochain contrat obligatoire du compteur 16 = C-04** (ordre registre 4).  
+  Source de ce signal : `PROJECT_GRAPH/CURRENT_STATE.md`, registre, cadrage C-04.
+
+---
+
+## Prochain travail autorisé
+
+<!--RM:NEXT
+id: next-c04
+title: C-04 — Tâches, graphe et progression
+status: À CONCEVOIR
+horizon: Prochain
+note: Proposition de 48 décisions rédigée en discussion ; pas encore validée ni inscrite dans CONTRATS/. Aucun code tant que le contrat n’est pas VALIDÉ.
+depends: C-01 VALIDÉ · C-02 VALIDÉ · Project existant (S3 / C-03 fermé)
+unlocks: C-05 · C-07 · chantiers plus riches · reprise Case B (plus tard)
+-->
+
+### Prochain — C-04 : organiser le travail des chantiers
+
+**Statut :** À CONCEVOIR (proposition en attente de validation humaine)  
+**Horizon :** Prochain  
+**En langage simple :** définir comment le jeu découpe un chantier en étapes, suit leur avancement, gère les blocages, et réagit quand le monde change — sans confondre cela avec le travail des unités ni les règles de terrassement.
+
+| | |
+| --- | --- |
+| Prérequis | C-01 et C-02 VALIDÉS · un Project peut déjà exister (S3) |
+| Débloque | préparation de site (C-05), autonomie détaillée (C-07), puis Case B |
+| Ne pas faire maintenant | ouvrir C-03 · reprendre Case B · inventer le métier Terraform (C-08) |
+
+### Travaux ultérieurs (non autorisés comme « en cours »)
+
+1. **Après validation C-04** → C-05 (préparer une zone avant construction).
+2. **Puis** C-07 (comment une unité choisit et exécute une tâche).
+3. **Puis** C-08 (terrassement réellement progressif) — condition de reprise **Case B**.
+4. **En parallèle / ensuite** : dettes terrain shipping (F1), réservations (C-11), logistique élargie (C-12), infrastructures (C-14), écosystèmes (C-15…), UX joueur (C-20), sauvegarde (C-19).
+
+---
+
+## Vision produit (destination)
+
+GardenFervor est un **RTS de gestion de territoire** où le joueur donne des intentions, et où des **unités autonomes** transforment réellement le monde : relief, ressources, infrastructures, écosystèmes.
+
+Le joueur doit comprendre :
+
+- ce qui est possible ;
+- ce qui se passe ;
+- ce qui bloque ;
+- ce qui demande son attention ;
+
+…sans micro-gérer chaque action.
+
+La Roadmap mène de la **preuve contrôlée actuelle** jusqu’à un **jeu jouable, lisible, stable et abouti** — pas seulement jusqu’à la fin des contrats.
+
+---
+
+# Phases
+
+Les horizons utilisés : `Acquis` · `Actuel` · `Prochain` · `Après validation` · `À planifier` · `Phase ultérieure`.  
+Pas de dates calendaires inventées.
+
+---
+
+<!--RM:PHASE
+id: P0
+title: Fondations et gouvernance
+status: TERMINÉ
+horizon: Acquis
+depends:
+unlocks: P1,P2
+sources: REGLES_PROJET.md | ETAT_PROJET.md | GardenFervor_DesignGate_React/src/data/designGate.js
+-->
+
+## Phase P0 — Fondations et gouvernance
+
+**Statut :** TERMINÉ · **Horizon :** Acquis  
+
+Décider ce qu’est GardenFervor, comment on décide, et comment on prouve. Sans cette base, aucune production contrôlée n’est légitime.
+
+### Pourquoi c’est nécessaire
+
+Éviter de coder des mécaniques inventées, et garder une mémoire claire des règles du projet.
+
+<!--RM:JALON
+id: P0.J1
+phase: P0
+title: Design Gate clôturé
+status: VALIDÉ
+conception: VALIDÉE
+realisation: n/a
+validation: PASS
+depends:
+unlocks: P1
+sources: ETAT_PROJET.md · designGate.js
+-->
+
+### Jalon P0.J1 — Design Gate clôturé
+
+**Statut :** VALIDÉ  
+
+DG-00 → DG-14 validés. La conception fondatrice du jeu est en place.
+
+<!--RM:WORK
+id: P0.W1
+jalon: P0.J1
+title: Cadre RTS et boucle joueur
+status: VALIDÉ
+sources: DG-00 · DG-01
+-->
+
+#### Travail P0.W1 — Cadre RTS et boucle joueur
+
+Identité du jeu, intention → monde, autonomie, lisibilité. **VALIDÉ.**
+
+<!--RM:JALON
+id: P0.J2
+phase: P0
+title: Readiness pré-implémentation
+status: VALIDÉ
+conception: VALIDÉE
+realisation: n/a
+validation: PASS
+depends: P0.J1
+unlocks: P1
+sources: Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md
+-->
+
+### Jalon P0.J2 — Readiness pré-implémentation
+
+**Statut :** VALIDÉ  
+
+Contrôle final **PASS** — prêt pour une implémentation contrôlée (cohorte), pas pour un développement libre.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P1
+title: Première preuve jouable (cohorte S3)
+status: TERMINÉ
+horizon: Acquis
+depends: P0
+unlocks: P2,P3
+sources: ETAT_PROJET.md · Plan de production/PLAN_PRODUCTION_COHORTE_S3.md · Plan de production/Roadmap
+-->
+
+## Phase P1 — Première preuve jouable (cohorte S3)
+
+**Statut :** TERMINÉ · **Horizon :** Acquis  
+
+Montrer une chaîne complète, simple et honnête : intention → chantier → unités → matière → construction → mise en service — **sur un terrain déjà prêt (Cas A)**.
+
+<!--RM:JALON
+id: P1.J1
+phase: P1
+title: Cohorte S3 Cas A (T1–T9)
+status: VALIDÉ
+conception: VALIDÉE
+realisation: TERMINÉE
+validation: PASS
+depends: P0
+unlocks: P2
+sources: ETAT_PROJET.md · HISTORIQUE_MODIFICATIONS.md
+-->
+
+### Jalon P1.J1 — Cohorte S3 Cas A
+
+**Statut :** VALIDÉ (9/9)  
+
+Preuve contrôlée forestière : bois, stocks, transport, construction, critère « En service ».
+
+<!--RM:WORK
+id: P1.W1
+jalon: P1.J1
+title: Chaîne units + stocks + chantier Cas A
+status: VALIDÉ
+sources: smokes cohorte · Investor Demo S3
+-->
+
+#### Travail P1.W1 — Chaîne Cas A
+
+Roster exploitation / transport / construction · Timber · stocks A/B · pas de terrassement obligatoire.
+
+<!--RM:JALON
+id: P1.J2
+phase: P1
+title: Case B (terrain à préparer d’abord)
+status: SUSPENDU
+conception: PARTIELLE
+realisation: PARTIELLE
+validation: NON TERMINÉE
+depends: P4,P5,P6
+unlocks: Demo Case B
+sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/00_SUIVI_CONTRATS.md
+-->
+
+### Jalon P1.J2 — Case B (préparation de terrain obligatoire)
+
+**Statut :** SUSPENDU  
+
+Existe partiellement en code, mais **volontairement gelé** jusqu’aux contrats de chantier / tâches / terrassement.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P2
+title: Contrats opérationnels (règles d’exécution)
+status: EN COURS
+horizon: Actuel
+depends: P0,P1
+unlocks: P3,P4,P5,P6,P7
+sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/00_SUIVI_CONTRATS.md
+-->
+
+## Phase P2 — Contrats opérationnels
+
+**Statut :** EN COURS · **Horizon :** Actuel · Progression documentaire **2 / 16**
+
+Transformer les décisions de conception en **règles d’exécution** assez précises pour construire la suite sans inventer.
+
+<!--RM:JALON
+id: P2.J1
+phase: P2
+title: C-01 Terrain runtime
+status: VALIDÉ
+conception: VALIDÉE
+realisation: PARTIELLE
+validation: PASS
+depends: P0
+unlocks: P2.J2,P3
+sources: CONTRATS/C-01_TERRAIN_RUNTIME.md
+-->
+
+### Jalon P2.J1 — C-01 Terrain runtime
+
+**Statut :** VALIDÉ (contrat) · réalisation encore **partielle** (dettes F1, persistance, dirty eau/sol…).
+
+<!--RM:JALON
+id: P2.J2
+phase: P2
+title: C-02 Substrat spatial
+status: VALIDÉ
+conception: VALIDÉE
+realisation: PARTIELLE
+validation: PASS
+depends: P2.J1
+unlocks: P2.J3
+sources: CONTRATS/C-02_SUBSTRAT_SPATIAL.md
+-->
+
+### Jalon P2.J2 — C-02 Substrat spatial
+
+**Statut :** VALIDÉ · 31 décisions. Grille, zones modifiées, consultations.
+
+<!--RM:JALON
+id: P2.J3
+phase: P2
+title: C-04 Tâches / graphe / dépendances
+status: À CONCEVOIR
+conception: EN COURS
+realisation: PARTIELLE
+validation: NON TERMINÉE
+depends: P2.J2
+unlocks: P2.J4,P4,P5
+sources: CONTRATS/00_REGISTRE_CONTRATS.md · cadrage C-04 (discussion)
+note: C-03 addendum fermé — ne pas ouvrir. Proposition 48 décisions en attente de validation humaine.
+-->
+
+### Jalon P2.J3 — C-04 Tâches / graphe / dépendances
+
+**Statut :** À CONCEVOIR · **Horizon :** Prochain  
+
+Organiser le travail : étapes, dépendances, progression, blocages, réévaluation.  
+**Code partiel déjà présent** (TaskSubsystem, preuves F4) — le contrat dédié manque.
+
+<!--RM:JALON
+id: P2.J4
+phase: P2
+title: Contrats chantiers / unités / terraform (C-05 · C-07 · C-08)
+status: À FAIRE
+conception: À CONCEVOIR
+realisation: PARTIELLE
+validation: NON TERMINÉE
+depends: P2.J3
+unlocks: P1.J2,P4,P5,P6
+sources: CONTRATS/00_REGISTRE_CONTRATS.md
+-->
+
+### Jalon P2.J4 — C-05 · C-07 · C-08
+
+**Statut :** À FAIRE (après C-04)  
+
+- **C-05** — savoir si / quand préparer un site ;  
+- **C-07** — autonomie générique des unités ;  
+- **C-08** — terrassement opérationnel progressif.  
+
+Nécessaires avant une reprise saine de **Case B**.
+
+<!--RM:JALON
+id: P2.J5
+phase: P2
+title: Contrats reste du compteur (C-11…C-21)
+status: À FAIRE
+conception: À CONCEVOIR
+realisation: PARTIELLE
+validation: NON TERMINÉE
+depends: P2.J3,P2.J4
+unlocks: P7,P8,P9,P10,P11,P13
+sources: CONTRATS/00_REGISTRE_CONTRATS.md
+-->
+
+### Jalon P2.J5 — Autres contrats obligatoires
+
+Réservations, transport élargi, infrastructures, eau/sol/végétation, tech, sauvegarde, UX, simulation/perf — **dans l’ordre du registre**, sans précipiter.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P3
+title: Monde et terrain (vérité + présentation)
+status: EN COURS
+horizon: Actuel
+depends: P2.J1,P1
+unlocks: P6,P9,P13
+sources: CONTRATS/C-01_TERRAIN_RUNTIME.md · Saved/ODC_F1_RuntimeTerrainGate.txt · Saved/ODC_F2_VisualTerrainGate.txt · Saved/ODC_F8_TerraformOperationGate.txt
+-->
+
+## Phase P3 — Monde et terrain
+
+**Statut :** EN COURS · **Horizon :** Actuel  
+
+Le relief doit être une **vérité de jeu** fiable, présentée joliment (M4 / ciel), sans que le rendu décide du gameplay.
+
+<!--RM:JALON
+id: P3.J1
+phase: P3
+title: Présentation terrain (M4 / ciel)
+status: VALIDÉ
+conception: VALIDÉE
+realisation: TERMINÉE
+validation: PASS
+depends: P0
+sources: ODC-F2
+-->
+
+### Jalon P3.J1 — Présentation (M4 / UDS)
+
+**Statut :** VALIDÉ (preuve F2). Le rendu n’est pas la vérité hauteur.
+
+<!--RM:JALON
+id: P3.J2
+phase: P3
+title: Terrain shipping Base+Delta (F1)
+status: À FAIRE
+conception: VALIDÉE
+realisation: À FAIRE
+validation: INVALIDÉ (ancienne preuve)
+depends: P2.J1
+unlocks: P13
+sources: ODC-F1 INVALIDÉ · C-01
+-->
+
+### Jalon P3.J2 — Terrain emballé (shipping)
+
+**Statut :** À FAIRE · ODC-F1 **À REFAIRE**  
+
+Aujourd’hui : brushes Landscape en session ; store CPU pour l’espace. La cible shipping Base+Delta n’est pas revalidée.
+
+<!--RM:JALON
+id: P3.J3
+phase: P3
+title: Grille spatiale opérationnelle
+status: PARTIEL
+conception: VALIDÉE
+realisation: PARTIELLE
+validation: PASS
+depends: P2.J2
+sources: C-02 · ODC-F3
+-->
+
+### Jalon P3.J3 — Grille spatiale
+
+**Statut :** preuve F3 PASS · contrat C-02 VALIDÉ · stubs eau/sol · invalidation tâches **pas encore branchée**.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P4
+title: Chantiers et transformation du monde
+status: À CONCEVOIR
+horizon: Prochain
+depends: P2.J3,P2.J4,P3
+unlocks: P1.J2,P8
+sources: DG-11 · registre C-04 C-05 C-08
+-->
+
+## Phase P4 — Chantiers et transformation du monde
+
+**Statut :** À CONCEVOIR · **Horizon :** Prochain  
+
+Le joueur pose une intention ; le monde se transforme par étapes visibles et compréhensibles (préparer, terrasser, construire) — pas en un « flash » opaque.
+
+<!--RM:JALON
+id: P4.J1
+phase: P4
+title: Graphe de travail des chantiers
+status: À CONCEVOIR
+depends: P2.J3
+unlocks: P4.J2
+sources: C-04
+-->
+
+### Jalon P4.J1 — Graphe de travail
+
+Étapes, sous-étapes, progression, blocages, reprise après changement du monde.
+
+<!--RM:JALON
+id: P4.J2
+phase: P4
+title: Préparation de site
+status: À FAIRE
+depends: P4.J1,P2.J4
+unlocks: P4.J3
+sources: C-05
+-->
+
+### Jalon P4.J2 — Préparation de site
+
+Savoir si une zone est prête ; sinon, quelles étapes de préparation lancer.
+
+<!--RM:JALON
+id: P4.J3
+phase: P4
+title: Terrassement progressif réel
+status: À FAIRE
+depends: P4.J2,P5,P6
+unlocks: P1.J2
+sources: C-08 · DG-08
+-->
+
+### Jalon P4.J3 — Terrassement progressif
+
+Passes, zones, matière déplacée, critères de fin — **métier** hors simple « tâche terminée ».
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P5
+title: Unités et autonomie
+status: PARTIEL
+horizon: Après validation
+depends: P2.J3,P1
+unlocks: P4.J3,P7
+sources: DG-04 · ODC-F5 · registre C-07
+-->
+
+## Phase P5 — Unités et autonomie
+
+**Statut :** PARTIEL · **Horizon :** Après validation (après C-04)  
+
+Des unités capables de choisir un travail compatible, s’y rendre, l’exécuter, signaler un blocage — une seule tâche active à la fois.
+
+<!--RM:JALON
+id: P5.J1
+phase: P5
+title: Agent générique d’exécution
+status: PARTIEL
+depends: P2.J3
+sources: UnitTaskAgent · ODC-F5 · futur C-07
+-->
+
+### Jalon P5.J1 — Agent générique
+
+**Preuve F5 PASS** · contrat C-07 encore à écrire pour figer les règles (effets, reprise, InstantMode, etc.).
+
+<!--RM:JALON
+id: P5.J2
+phase: P5
+title: Capacités et roster élargis
+status: PARTIEL
+depends: P5.J1
+sources: C-06 addendum* · DG-03
+-->
+
+### Jalon P5.J2 — Capacités / roster
+
+Suffisant pour S3 ; à élargir quand le jeu sort du kit forestier minimal.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P6
+title: Ressources, logistique et économie
+status: PARTIEL
+horizon: Après validation
+depends: P1,P5
+unlocks: P8,P10
+sources: DG-05 · DG-06 · ODC-F6 · ODC-F7 · C-09…C-12
+-->
+
+## Phase P6 — Ressources, logistique et économie
+
+**Statut :** PARTIEL · **Horizon :** Après validation  
+
+Matières localisées, transport réel, réservations claires — au-delà du mini-scénario Timber A→B.
+
+<!--RM:JALON
+id: P6.J1
+phase: P6
+title: Économie physique minimale
+status: VALIDÉ
+validation: PASS
+sources: ODC-F6 · S3 Timber
+-->
+
+### Jalon P6.J1 — Économie physique minimale
+
+**PASS** pour le périmètre Timber / stocks. Addendum C-09/C-10 fermés tant que S3 suffit.
+
+<!--RM:JALON
+id: P6.J2
+phase: P6
+title: Réservations et multi-chantier
+status: À FAIRE
+depends: P2.J3
+sources: C-11
+-->
+
+### Jalon P6.J2 — Réservations
+
+Avant plusieurs chantiers concurrents sans chaos.
+
+<!--RM:JALON
+id: P6.J3
+phase: P6
+title: Logistique au-delà du haul A→B
+status: À FAIRE
+depends: P5,P6.J1
+sources: C-12 · DG-06
+-->
+
+### Jalon P6.J3 — Logistique élargie
+
+Réseaux, accès, replanification de transport — conception DG-06 VALIDÉE ; contrat opérationnel encore à faire.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P7
+title: Infrastructures et territoire
+status: À FAIRE
+horizon: À planifier
+depends: P4,P6
+unlocks: P9,P10
+sources: DG-10 · registre C-14 · ODC-F9 (non démarré)
+-->
+
+## Phase P7 — Infrastructures et territoire
+
+**Statut :** À FAIRE · **Horizon :** À planifier  
+
+Routes, supports, infrastructures temporaires/permanentes qui changent l’accès et le possible — **après** chantiers et logistique suffisamment solides.
+
+<!--RM:JALON
+id: P7.J1
+phase: P7
+title: Cycle de vie des infrastructures
+status: À FAIRE
+depends: P2.J5,P4
+sources: C-14 · ODC-F9
+-->
+
+### Jalon P7.J1 — Cycle de vie infrastructures
+
+Contrat C-14 + preuve ODC-F9 — **non démarrés**.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P8
+title: Écosystèmes et simulations du vivant
+status: À FAIRE
+horizon: À planifier
+depends: P3,P7
+unlocks: P10,P11
+sources: DG-09 · C-15 · C-16 · C-17 · Spatial stubs
+-->
+
+## Phase P8 — Écosystèmes et simulations du vivant
+
+**Statut :** À FAIRE · **Horizon :** À planifier  
+
+Eau, sol, végétation : états de jeu réels (pas seulement décor), mis à jour localement quand le terrain ou les ouvrages changent.
+
+<!--RM:JALON
+id: P8.J1
+phase: P8
+title: Hydrologie et sol
+status: À FAIRE
+sources: C-15 · C-16 · stubs spatiaux
+-->
+
+### Jalon P8.J1 — Eau et sol
+
+Conception DG-09 VALIDÉE · runtime encore stub.
+
+<!--RM:JALON
+id: P8.J2
+phase: P8
+title: Végétation et écosystèmes
+status: À FAIRE
+depends: P8.J1
+sources: C-17 · DG-09
+-->
+
+### Jalon P8.J2 — Végétation / écosystèmes
+
+Transitions, impacts humains, objectifs écologiques — après eau/sol.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P9
+title: Progression, recherche et déblocages
+status: À FAIRE
+horizon: À planifier
+depends: P2,P6
+unlocks: P10
+sources: DG-07 · C-18
+-->
+
+## Phase P9 — Progression et déblocages
+
+**Statut :** À FAIRE · **Horizon :** À planifier  
+
+Le joueur élargit ses possibilités (schémas, technologies, horizontal) sans casser la lisibilité ni inventer une économie d’entretien trop tôt.
+
+<!--RM:JALON
+id: P9.J1
+phase: P9
+title: Système de progression jouable
+status: À FAIRE
+sources: C-18 · TechComponent legacy
+-->
+
+### Jalon P9.J1 — Progression jouable
+
+Conception VALIDÉE · implémentation legacy partielle · contrat C-18 à faire avant vrais déblocages.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P10
+title: Expérience joueur, lisibilité et pédagogie
+status: PARTIEL
+horizon: À planifier
+depends: P4,P5,P8
+unlocks: P11,P12
+sources: DG-13 · C-20 · Investor Demo
+-->
+
+## Phase P10 — Expérience joueur, lisibilité et pédagogie
+
+**Statut :** PARTIEL · **Horizon :** À planifier  
+
+Le joueur comprend l’état du territoire et des unités. Dimension éducative / encyclopédie : expliquer le monde sans feuille de calcul.
+
+<!--RM:JALON
+id: P10.J1
+phase: P10
+title: Lisibilité produit
+status: À FAIRE
+sources: C-20 · DG-13
+-->
+
+### Jalon P10.J1 — Lisibilité produit
+
+Au-delà des smokes : HUD et signaux utiles (disponibilité, blocage, progression).
+
+<!--RM:JALON
+id: P10.J2
+phase: P10
+title: Encyclopédie et pédagogie
+status: À CONCEVOIR
+sources: vision produit DG · présentation client
+-->
+
+### Jalon P10.J2 — Encyclopédie / pédagogie
+
+Contenu explicatif du monde (écosystèmes, chaînes, ouvrages) — **à concevoir** ; pas de backlog détaillé inventé ici.
+
+<!--RM:JALON
+id: P10.J3
+phase: P10
+title: Présentation et démonstration
+status: PARTIEL
+sources: Investor Demo · docs/presentation-client.html
+-->
+
+### Jalon P10.J3 — Présentation
+
+Démo S3 et pitch client existants ; à enrichir quand Case B et systèmes suivants seront prêts.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P11
+title: Contenu, équilibrage et polish
+status: À FAIRE
+horizon: Phase ultérieure
+depends: P7,P8,P9,P10
+unlocks: P12
+sources: DG-02 catalogue · vision produit
+-->
+
+## Phase P11 — Contenu, équilibrage et polish
+
+**Statut :** À FAIRE · **Horizon :** Phase ultérieure  
+
+Élargir le catalogue (bâtiments, unités, biomes), équilibrer durées et coûts **quand les valeurs seront décidées**, polir l’expérience.
+
+<!--RM:JALON
+id: P11.J1
+phase: P11
+title: Catalogue de contenu jouable
+status: À FAIRE
+sources: DG-02 · DataAssets RTS
+-->
+
+### Jalon P11.J1 — Catalogue
+
+Au-delà du kit forestier minimal.
+
+<!--RM:JALON
+id: P11.J2
+phase: P11
+title: Équilibrage et ressenti
+status: NON DÉFINI
+sources: valeurs chiffrées encore À DÉFINIR (DG)
+-->
+
+### Jalon P11.J2 — Équilibrage
+
+Pas de chiffres inventés dans cette Roadmap.
+
+<!--/RM:PHASE-->
+
+---
+
+<!--RM:PHASE
+id: P12
+title: Stabilité, performance, sauvegarde, release
+status: À FAIRE
+horizon: Phase ultérieure
+depends: P3.J2,P2.J5,P11
+unlocks:
+sources: C-19 · C-21 · ODC-F1 · REGLES_PROJET.md
+-->
+
+## Phase P12 — Stabilité, performance, sauvegarde, release
+
+**Statut :** À FAIRE · **Horizon :** Phase ultérieure  
+
+Le jeu doit pouvoir être sauvegardé, tenu en performance, et livré sans tricher sur la vérité terrain.
+
+<!--RM:JALON
+id: P12.J1
+phase: P12
+title: Persistance / sauvegarde
+status: À FAIRE
+depends: P3.J2
+sources: C-19 · TerraformSave désactivé
+-->
+
+### Jalon P12.J1 — Sauvegarde
+
+Persistance terrain actuellement off — contrat C-19 avant shipping.
+
+<!--RM:JALON
+id: P12.J2
+phase: P12
+title: Simulation / fréquences / perf
+status: À FAIRE
+sources: C-21 · DG-00.5
+-->
+
+### Jalon P12.J2 — Performance de simulation
+
+Avant montée en échelle du territoire.
+
+<!--RM:JALON
+id: P12.J3
+phase: P12
+title: Validation finale et release
+status: À FAIRE
+depends: P12.J1,P12.J2,P11
+sources: DG-14 principes de validation
+-->
+
+### Jalon P12.J3 — Release
+
+Validation humaine des boucles critiques, stabilité, build shipping — **sans date inventée**.
+
+<!--/RM:PHASE-->
+
+---
+
+## Chaîne de dépendances (vue synthétique)
+
+```text
+P0 Fondations (TERMINÉ)
+ └─► P1 Preuve S3 Cas A (TERMINÉ) · Case B (SUSPENDU)
+      └─► P2 Contrats (EN COURS : C-01·C-02 VALIDÉS → C-04 prochain)
+           ├─► P3 Monde / terrain (F1 À REFAIRE)
+           ├─► P4 Chantiers (après C-04…)
+           ├─► P5 Unités (après C-04 / C-07)
+           └─► P6 Ressources / logistique
+                └─► P7 Infrastructures
+                     └─► P8 Écosystèmes
+                          └─► P9 Progression
+                               └─► P10 UX / pédagogie
+                                    └─► P11 Contenu / polish
+                                         └─► P12 Stabilité / release
+```
+
+---
+
+## Blocages et suspensions (tableau)
+
+| Sujet | Statut | Pourquoi | Débloqué par |
+| --- | --- | --- | --- |
+| Case B | SUSPENDU | Contrat opérationnel terrassement/chantier insuffisant | C-04 · C-05 · C-07 · C-08 (+ C-01 dettes utiles) |
+| C-03 | Fermé (addendum) | S3 suffit | Ouverture humaine seulement si besoin |
+| ODC-F1 | À REFAIRE | Preuve shipping INVALIDÉE | Travaux terrain shipping |
+| C-04 | À CONCEVOIR | Prochain obligatoire | Validation humaine des décisions |
+
+---
+
+## Liens utiles
+
+| Ressource | Emplacement |
+| --- | --- |
+| État projet | `ETAT_PROJET.md` |
+| Règles | `REGLES_PROJET.md` |
+| Registre contrats | `CONTRATS/00_REGISTRE_CONTRATS.md` |
+| Suivi contrats | `CONTRATS/00_SUIVI_CONTRATS.md` |
+| Design Gate | `GardenFervor_DesignGate_React/` |
+| Project Graph | `PROJECT_GRAPH/` |
+| Roadmap cohorte S3 | `Plan de production/Roadmap/` |
+| Hub Pages | `docs/index.html` |
+
+---
+
+## Historique de cette Roadmap
+
+| Date | Version | Changement |
+| --- | --- | --- |
+| 2026-10-08 | 1.0.0 | Création initiale après audit dépôt |
+
+*Les mises à jour détaillées : `ROADMAP/CHANGELOG.md`.*
