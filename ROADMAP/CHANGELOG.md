@@ -1,5 +1,11 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-08 — 1.0.1 — Clôture C-04
+
+- C-04 VALIDÉ (48/48) · progression contrats **3 / 16**.
+- Prochain requis = **C-05** (non commencé) · C-03 addendum fermé.
+- Régénération HTML depuis le Markdown.
+
 ## 2026-10-08 — 1.0.0 — Création
 
 - Création de `ROADMAP/` (absent auparavant).

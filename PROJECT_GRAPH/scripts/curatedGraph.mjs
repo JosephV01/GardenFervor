@@ -228,8 +228,8 @@ export const curatedNodes = [
   mkContract('c_03', 'C-03', 'Intention → Project', 'SUFFISANT*', 'NON COMMENCÉ', 'I', false, null, {
     notes: 'Addendum fermé pour S3 ; hors compteur 16 tant que non ouvert.',
   }),
-  mkContract('c_04', 'C-04', 'Tâches / graphe / dépendances', 'PARTIEL', 'NON COMMENCÉ', 'I', true, null, {
-    notes: 'Prochain contrat obligatoire du compteur 16 après C-02 ; proposition 48 décisions non inscrite.',
+  mkContract('c_04', 'C-04', 'Tâches / graphe / dépendances', 'PARTIEL', 'VALIDÉ', 'I', true, 'CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md', {
+    notes: 'VALIDÉ — 48/48 A1–K6 ; audit PASS ; dettes d’implémentation conservées.',
   }),
   mkContract('c_05', 'C-05', 'WorkSite / SitePrep', 'PARTIEL→REQUIS', 'NON COMMENCÉ', 'P', true, null, {
     notes: 'Cas A validé cohorte ; Case B suspendu.',
@@ -887,8 +887,8 @@ export const curatedEdges = [
   e('c_02', 'sys_spatial', 'GOVERNS', 'HIGH', 'CONTRATS/C-02_SUBSTRAT_SPATIAL.md'),
   e('c_02', 'data_spatial_cell', 'OWNS', 'HIGH', 'CONTRATS/C-02_SUBSTRAT_SPATIAL.md'),
   e('c_05', 'sys_siteprep', 'GOVERNS', 'MEDIUM', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
-  e('c_04', 'sys_task', 'GOVERNS', 'MEDIUM', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
-    notes: 'Gouvernance cible ; contrat C-04 pas encore VALIDÉ.',
+  e('c_04', 'sys_task', 'GOVERNS', 'HIGH', 'CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md', {
+    notes: 'Contrat C-04 VALIDÉ — autorité graphe / cycle de vie.',
   }),
   e('c_07', 'sys_unit_agent', 'GOVERNS', 'MEDIUM', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
   e('c_08', 'sys_terraform_tool', 'GOVERNS', 'MEDIUM', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
@@ -950,9 +950,9 @@ export const curatedEdges = [
     relationKind: 'FUTURE',
     notes: 'C-02 localise Dirty ; consommation tâche non câblée (futur C-04 G4).',
   }),
-  e('c_02', 'c_04', 'SIGNALS', 'MEDIUM', 'CONTRATS/C-02_SUBSTRAT_SPATIAL.md', {
+  e('c_02', 'c_04', 'SIGNALS', 'MEDIUM', 'CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md', {
     relationKind: 'FUTURE',
-    notes: 'Frontière contractuelle cible ; C-04 non VALIDÉ.',
+    notes: 'Frontière contractuelle VALIDÉE (G4) ; câblage runtime Dirty→tâches encore dette.',
   }),
   e('c_04', 'c_05', 'CONSTRAINS', 'MEDIUM', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
     relationKind: 'FUTURE',

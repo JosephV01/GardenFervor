@@ -1,5 +1,12 @@
 # PROJECT_GRAPH — CHANGELOG
 
+## 2026-10-08 — 1.0.1 — Clôture C-04
+
+- Nœud `c_04` : documentStatus **VALIDÉ** · fichier contrat référencé.
+- Relation `c_04 → sys_task` : confiance HIGH (contrat VALIDÉ).
+- Relation FUTURE `c_02 → c_04` : frontière G4 contractuelle ; runtime encore dette.
+- Régénération JSON / vues / HTML / CURRENT_STATE.
+
 ## 2026-10-08 — 1.0.0 — Création initiale
 
 - Création du dossier `PROJECT_GRAPH/` (absent auparavant).

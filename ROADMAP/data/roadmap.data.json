@@ -7,11 +7,11 @@
     "notes": "Première génération. Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 2/16 · prochain travail = C-04 (conception) · Case B SUSPENDU",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 3/16 (C-01·C-02·C-04 VALIDÉS) · prochain requis = C-05 (non commencé) · C-03 addendum fermé · Case B SUSPENDU",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
-    "contracts_validated": "2",
+    "contracts_validated": "3",
     "contracts_required": "16",
     "s3_case_a": "VALIDÉ",
     "case_b": "SUSPENDU",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c04",
-    "title": "C-04 — Tâches, graphe et progression",
-    "status": "À CONCEVOIR",
+    "id": "next-c05",
+    "title": "C-05 — WorkSite / SitePrep",
+    "status": "À FAIRE",
     "horizon": "Prochain",
-    "note": "Proposition de 48 décisions rédigée en discussion ; pas encore validée ni inscrite dans CONTRATS/. Aucun code tant que le contrat n’est pas VALIDÉ.",
-    "depends": "C-01 VALIDÉ · C-02 VALIDÉ · Project existant (S3 / C-03 fermé)",
-    "unlocks": "C-05 · C-07 · chantiers plus riches · reprise Case B (plus tard)"
+    "note": "Prochain contrat requis après C-04 VALIDÉ. Ne pas démarrer sans ordre explicite. C-03 reste addendum fermé.",
+    "depends": "C-01 VALIDÉ · C-04 VALIDÉ",
+    "unlocks": "C-08 · Case B (plus tard) · chantiers avec préparation"
   },
   "phases": [
     {
@@ -157,14 +157,14 @@
           "id": "P2.J3",
           "phase": "P2",
           "title": "C-04 Tâches / graphe / dépendances",
-          "status": "À CONCEVOIR",
-          "conception": "EN COURS",
+          "status": "VALIDÉ",
+          "conception": "VALIDÉE",
           "realisation": "PARTIELLE",
-          "validation": "NON TERMINÉE",
+          "validation": "PASS",
           "depends": "P2.J2",
           "unlocks": "P2.J4,P4,P5",
-          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · cadrage C-04 (discussion)",
-          "note": "C-03 addendum fermé — ne pas ouvrir. Proposition 48 décisions en attente de validation humaine.",
+          "sources": "CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md",
+          "note": "48/48 A1–K6 ; audit PASS ; C-03 addendum fermé ; dettes d’implémentation conservées.",
           "works": []
         },
         {
@@ -519,9 +519,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-08T17:48:03.956Z",
-    "mdHash": "41bb9de00ba5d03a1a53d88da24b797fa6a5c437ab31c4b9e662d5118dbed360",
-    "git": "1e0337b",
+    "generatedAt": "2026-10-08T18:15:01.212Z",
+    "mdHash": "619708910650a6293031c1c66e25e5e09f8407bf01396028e3643c186723788f",
+    "git": "4f9b88c",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },

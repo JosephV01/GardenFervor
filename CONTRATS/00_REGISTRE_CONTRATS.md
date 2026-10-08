@@ -73,7 +73,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-01 | Terrain runtime (vérité hauteur / shipping) | REQUIS | fondamentale | DG-08 · ODC-F1 À REFAIRE | P | C-00 | **oui** | 1 |
 | C-02 | Substrat spatial (cellules / dirty / queries) | PARTIEL→REQUIS | détaillée | DG-08/09 · ODC-F3 PASS stubs | P | C-01 | **oui** | 2 |
 | C-03 | Projet / Intention→Project | SUFFISANT* | secondaire | DG-01/11 · C4 · T6 | I (S3) | C-00 | non* | 3* |
-| C-04 | Tâches / graphe / dépendances | PARTIEL | détaillée | DG-11 · ODC-F4 · TaskTypes | I (S3) | C-03 | **oui** | 4 |
+| C-04 | Tâches / graphe / dépendances | PARTIEL | détaillée | DG-11 · ODC-F4 · **C-04 VALIDÉ** | I (S3) | C-03 | **oui** | 4 |
 | C-05 | WorkSite / SitePrep (Cas A/B) | PARTIEL→REQUIS | détaillée | DG-11 · SitePrepTypes · T5 | P | C-01 · C-04 | **oui** | 5 |
 | C-06 | Capacités / roster unités | SUFFISANT* | secondaire | DG-03 · UnitCapabilityTypes · T3 | I (S3) | C-00 | non* | 6* |
 | C-07 | Autonomie unité (agent générique) | PARTIEL | détaillée | DG-04 · UnitTaskAgent · ODC-F5 | I | C-04 · C-06 | **oui** | 7 |
@@ -144,10 +144,10 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 - **Sous-systèmes :** `TaskSubsystem` · TaskTypes · claim · readiness · progress.
 - **État :** I pour chaînes S3 / LevelPad.
-- **Manque :** sémantique générique Progress vs effets matériels ; tâches multi-pulse ; invalidation quand monde change (lien DG-11.6).
-- **Contrat :** **partiel → requis détaillé** avant chantiers procéduraux riches.
+- **Contrat dédié :** **VALIDÉ** — `CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md` · **48/48** décisions A1–K6 · audit PASS.
+- **Dettes d’implémentation (hors décision) :** Progress vs effets runtime ; invalidation monde non câblée ; multi-pulse ; mélange ExpandWorkSite ; LevelPad/WorkSite ; pool legacy ; Ecology.
 - **Amont :** C-03 · **Aval :** C-05 · C-07 · C-08 · C-11 · C-12.
-- **Bloquant :** **oui**.
+- **Bloquant :** **oui** (toujours pour chantiers riches / Case B — contrat opérationnel désormais disponible).
 - **Ordre 4.**
 
 ### C-05 — WorkSite / SitePrep

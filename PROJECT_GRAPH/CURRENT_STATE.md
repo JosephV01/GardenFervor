@@ -1,7 +1,7 @@
 # PROJECT_GRAPH — CURRENT_STATE
 
-Généré : **2026-10-08T17:00:09.105Z**
-HEAD : `152190cf7ec52f6c15fbfc4c50f029203dd5e187` (dirty, 71 fichiers dirty)
+Généré : **2026-10-08T18:15:01.408Z**
+HEAD : `4f9b88c15bd2ae534bb3894953b3ae30876bf760` (dirty, 83 fichiers dirty)
 Curated schema : `1.0.0`
 
 ## Inventaire
@@ -10,14 +10,14 @@ Curated schema : `1.0.0`
 | --- | ---: |
 | Nœuds | 88 |
 | Relations | 105 |
-| Relations HIGH | 79 |
-| Relations MEDIUM | 26 |
+| Relations HIGH | 80 |
+| Relations MEDIUM | 25 |
 | Relations LOW | 0 |
 | Relations ACTIVE | 98 |
 | Relations FUTURE | 7 |
 | Relations UNVERIFIED | 0 |
 | Contrats (registre) | 24 |
-| Contrats fichiers présents | 2 |
+| Contrats fichiers présents | 3 |
 | Preuves inventoriées | 9 |
 | Gates Saved détectés | 14 |
 | Headers systèmes scannés | 13 |
@@ -55,6 +55,7 @@ Curated schema : `1.0.0`
 
 - C-01 — Terrain runtime
 - C-02 — Substrat spatial
+- C-04 — Tâches / graphe / dépendances
 
 ## Systèmes SUSPENDED / LEGACY / STUB
 
@@ -71,7 +72,7 @@ Curated schema : `1.0.0`
 
 ## Avertissements architecturaux
 
-- `DOC_DIVERGENCE` — ETAT_PROJET et suivi indiquent C-03 comme prochain, mais C-03 est addendum SUFFISANT* fermé ; prochain obligatoire compteur = C-04 (registre ordre 4).
+- Aucun.
 
 ## Systèmes potentiellement absents du graphe (scan)
 

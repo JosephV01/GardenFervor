@@ -34,11 +34,11 @@ notes: Première génération. Distincte de Plan de production/Roadmap (cohorte 
 ## Où en est GardenFervor ?
 
 <!--RM:NOW
-summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 2/16 · prochain travail = C-04 (conception) · Case B SUSPENDU
+summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 3/16 (C-01·C-02·C-04 VALIDÉS) · prochain requis = C-05 (non commencé) · C-03 addendum fermé · Case B SUSPENDU
 conception: VALIDÉ
 realisation: PARTIELLE
 validation: PARTIELLE
-contracts_validated: 2
+contracts_validated: 3
 contracts_required: 16
 s3_case_a: VALIDÉ
 case_b: SUSPENDU
@@ -46,7 +46,7 @@ design_gate: VALIDÉ (DG-00→DG-14)
 odc_f1: À REFAIRE
 -->
 
-**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; la suite consiste à écrire les règles opérationnelles manquantes, puis à élargir le jeu jusqu’au produit final.
+**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; le graphe de tâches a son contrat opérationnel ; la suite consiste à écrire les règles de préparation de site et d’exécution, puis à élargir le jeu jusqu’au produit final.
 
 ### Acquis confirmés
 
@@ -54,7 +54,8 @@ odc_f1: À REFAIRE
 - **Cohorte S3 Cas A** : tranches T1–T9 **VALIDÉ** — chantier forestier sur terrain déjà prêt, jusqu’à « En service » (source : `ETAT_PROJET.md`, suivi production).
 - **Contrats opérationnels VALIDÉS :**
   - **C-01** — vérité du terrain (hauteur runtime) ;
-  - **C-02** — grille spatiale / zones modifiées / consultations.
+  - **C-02** — grille spatiale / zones modifiées / consultations ;
+  - **C-04** — tâches / graphe / dépendances (**48/48** décisions).
 - **Preuves techniques majeures (ODC) :** F2 présentation · F3 spatial · F4 tâches · F5 autonomie · F6 économie physique · F7 logistique · F8 opérations terrain — **PASS** (F5/F7 avec validation humaine).
 - **Investor Demo** : présentation et démonstration S3 présentes.
 - **Cartographie** : `PROJECT_GRAPH/` disponible (projection, pas SoT).
@@ -62,50 +63,48 @@ odc_f1: À REFAIRE
 ### En construction / partiel
 
 - Runtime terrain **shipping** (ODC-F1 **À REFAIRE** — preuve précédente INVALIDÉE).
-- Chaîne chantiers / tâches / préparation : code S3 opérationnel, **contrats C-04+ non rédigés**.
+- Chaîne chantiers / préparation : code S3 opérationnel ; **C-04 VALIDÉ** ; contrats C-05+ non rédigés ; dettes runtime tâches documentées.
 - Eau / sol spatiaux : **stubs**.
 - Persistance terrain : **désactivée**.
 
 ### Suspendu
 
-- **Case B** — chantier qui exige d’abord de préparer / transformer le terrain : **SUSPENDU** jusqu’aux contrats bloquants (notamment C-04, C-05, C-07, C-08).
+- **Case B** — chantier qui exige d’abord de préparer / transformer le terrain : **SUSPENDU** jusqu’aux contrats bloquants restants (notamment C-05, C-07, C-08).
 
-### Divergence documentaire signalée (non corrigée ici)
+### Notes d’ordre
 
-- `ETAT_PROJET.md` et le suivi contrats indiquent parfois « prochain = C-03 ».
-- C-03 est un **addendum fermé** (suffisant pour S3) : **ne pas l’ouvrir** sans besoin réel.
-- **Prochain contrat obligatoire du compteur 16 = C-04** (ordre registre 4).  
-  Source de ce signal : `PROJECT_GRAPH/CURRENT_STATE.md`, registre, cadrage C-04.
+- **C-03** reste un **addendum fermé** (suffisant pour S3) : **ne pas l’ouvrir** sans besoin réel.
+- **Prochain contrat requis du compteur 16 = C-05** (ordre registre 5) — **non commencé**.
 
 ---
 
 ## Prochain travail autorisé
 
 <!--RM:NEXT
-id: next-c04
-title: C-04 — Tâches, graphe et progression
-status: À CONCEVOIR
+id: next-c05
+title: C-05 — WorkSite / SitePrep
+status: À FAIRE
 horizon: Prochain
-note: Proposition de 48 décisions rédigée en discussion ; pas encore validée ni inscrite dans CONTRATS/. Aucun code tant que le contrat n’est pas VALIDÉ.
-depends: C-01 VALIDÉ · C-02 VALIDÉ · Project existant (S3 / C-03 fermé)
-unlocks: C-05 · C-07 · chantiers plus riches · reprise Case B (plus tard)
+note: Prochain contrat requis après C-04 VALIDÉ. Ne pas démarrer sans ordre explicite. C-03 reste addendum fermé.
+depends: C-01 VALIDÉ · C-04 VALIDÉ
+unlocks: C-08 · Case B (plus tard) · chantiers avec préparation
 -->
 
-### Prochain — C-04 : organiser le travail des chantiers
+### Prochain — C-05 : préparer une zone avant construction
 
-**Statut :** À CONCEVOIR (proposition en attente de validation humaine)  
+**Statut :** À FAIRE (non commencé)  
 **Horizon :** Prochain  
-**En langage simple :** définir comment le jeu découpe un chantier en étapes, suit leur avancement, gère les blocages, et réagit quand le monde change — sans confondre cela avec le travail des unités ni les règles de terrassement.
+**En langage simple :** décider si et quand un chantier doit d’abord préparer / transformer le terrain, et quelles tâches en découlent — sans reprendre Case B ni inventer le métier Terraform.
 
 | | |
 | --- | --- |
-| Prérequis | C-01 et C-02 VALIDÉS · un Project peut déjà exister (S3) |
-| Débloque | préparation de site (C-05), autonomie détaillée (C-07), puis Case B |
-| Ne pas faire maintenant | ouvrir C-03 · reprendre Case B · inventer le métier Terraform (C-08) |
+| Prérequis | C-01 et C-04 VALIDÉS |
+| Débloque | enchaînement vers C-07 / C-08 et, plus tard, Case B |
+| Ne pas faire maintenant | ouvrir C-03 · reprendre Case B · démarrer l’implémentation sans contrat |
 
 ### Travaux ultérieurs (non autorisés comme « en cours »)
 
-1. **Après validation C-04** → C-05 (préparer une zone avant construction).
+1. **C-05** (prochain requis) — préparation de site.
 2. **Puis** C-07 (comment une unité choisit et exécute une tâche).
 3. **Puis** C-08 (terrassement réellement progressif) — condition de reprise **Case B**.
 4. **En parallèle / ensuite** : dettes terrain shipping (F1), réservations (C-11), logistique élargie (C-12), infrastructures (C-14), écosystèmes (C-15…), UX joueur (C-20), sauvegarde (C-19).
@@ -292,7 +291,7 @@ sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/00_SUIVI_CONTRATS.md
 
 ## Phase P2 — Contrats opérationnels
 
-**Statut :** EN COURS · **Horizon :** Actuel · Progression documentaire **2 / 16**
+**Statut :** EN COURS · **Horizon :** Actuel · Progression documentaire **3 / 16**
 
 Transformer les décisions de conception en **règles d’exécution** assez précises pour construire la suite sans inventer.
 
@@ -334,22 +333,22 @@ sources: CONTRATS/C-02_SUBSTRAT_SPATIAL.md
 id: P2.J3
 phase: P2
 title: C-04 Tâches / graphe / dépendances
-status: À CONCEVOIR
-conception: EN COURS
+status: VALIDÉ
+conception: VALIDÉE
 realisation: PARTIELLE
-validation: NON TERMINÉE
+validation: PASS
 depends: P2.J2
 unlocks: P2.J4,P4,P5
-sources: CONTRATS/00_REGISTRE_CONTRATS.md · cadrage C-04 (discussion)
-note: C-03 addendum fermé — ne pas ouvrir. Proposition 48 décisions en attente de validation humaine.
+sources: CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md
+note: 48/48 A1–K6 ; audit PASS ; C-03 addendum fermé ; dettes d’implémentation conservées.
 -->
 
 ### Jalon P2.J3 — C-04 Tâches / graphe / dépendances
 
-**Statut :** À CONCEVOIR · **Horizon :** Prochain  
+**Statut :** VALIDÉ (contrat) · réalisation encore **partielle** (dettes Progress/effets, invalidation monde, etc.).
 
-Organiser le travail : étapes, dépendances, progression, blocages, réévaluation.  
-**Code partiel déjà présent** (TaskSubsystem, preuves F4) — le contrat dédié manque.
+Organiser le travail : étapes, dépendances, progression, blocages, réévaluation, hiérarchie.  
+Contrat dédié : `CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md`.
 
 <!--RM:JALON
 id: P2.J4
@@ -366,7 +365,7 @@ sources: CONTRATS/00_REGISTRE_CONTRATS.md
 
 ### Jalon P2.J4 — C-05 · C-07 · C-08
 
-**Statut :** À FAIRE (après C-04)  
+**Statut :** À FAIRE (C-05 = prochain requis ; non commencé)  
 
 - **C-05** — savoir si / quand préparer un site ;  
 - **C-07** — autonomie générique des unités ;  
@@ -906,10 +905,10 @@ Validation humaine des boucles critiques, stabilité, build shipping — **sans 
 ```text
 P0 Fondations (TERMINÉ)
  └─► P1 Preuve S3 Cas A (TERMINÉ) · Case B (SUSPENDU)
-      └─► P2 Contrats (EN COURS : C-01·C-02 VALIDÉS → C-04 prochain)
+      └─► P2 Contrats (EN COURS : C-01·C-02·C-04 VALIDÉS → C-05 prochain)
            ├─► P3 Monde / terrain (F1 À REFAIRE)
-           ├─► P4 Chantiers (après C-04…)
-           ├─► P5 Unités (après C-04 / C-07)
+           ├─► P4 Chantiers (après C-05…)
+           ├─► P5 Unités (après C-07)
            └─► P6 Ressources / logistique
                 └─► P7 Infrastructures
                      └─► P8 Écosystèmes
@@ -925,10 +924,10 @@ P0 Fondations (TERMINÉ)
 
 | Sujet | Statut | Pourquoi | Débloqué par |
 | --- | --- | --- | --- |
-| Case B | SUSPENDU | Contrat opérationnel terrassement/chantier insuffisant | C-04 · C-05 · C-07 · C-08 (+ C-01 dettes utiles) |
+| Case B | SUSPENDU | Contrats SitePrep / autonomie / Terraform encore à faire | C-05 · C-07 · C-08 (+ C-01 dettes utiles) |
 | C-03 | Fermé (addendum) | S3 suffit | Ouverture humaine seulement si besoin |
 | ODC-F1 | À REFAIRE | Preuve shipping INVALIDÉE | Travaux terrain shipping |
-| C-04 | À CONCEVOIR | Prochain obligatoire | Validation humaine des décisions |
+| C-05 | À FAIRE | Prochain requis (non commencé) | Ordre explicite de rédaction |
 
 ---
 
@@ -951,6 +950,7 @@ P0 Fondations (TERMINÉ)
 
 | Date | Version | Changement |
 | --- | --- | --- |
+| 2026-10-08 | 1.0.1 | Clôture C-04 VALIDÉ · compteur 3/16 · prochain = C-05 |
 | 2026-10-08 | 1.0.0 | Création initiale après audit dépôt |
 
 *Les mises à jour détaillées : `ROADMAP/CHANGELOG.md`.*

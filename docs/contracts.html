@@ -73,7 +73,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-02",
+  "activeId": "C-04",
   "order": [
     "C-01",
     "C-02",
@@ -98,7 +98,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 2,
+    "validated": 3,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -222,11 +222,11 @@
       "id": "C-04",
       "order": "4",
       "name": "Tâches / graphe / dépendances",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "",
+      "note": "VALIDÉ humainement — 48/48 décisions A1–K6 ; audit final PASS ; dettes d’implémentation conservées",
       "dependsOn": [
         "C-03"
       ],
@@ -234,7 +234,27 @@
         "C-05",
         "C-07",
         "C-11"
-      ]
+      ],
+      "file": "CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md",
+      "detail": {
+        "decisions": "48 / 48",
+        "frontiers": [
+          "C-01 — autorité terrain",
+          "C-02 — Dirty spatial / signal",
+          "C-03 — Project existant (fermé)",
+          "C-05 — SitePrep",
+          "C-07 — exécution unité",
+          "C-08 — métier Terraform",
+          "C-11 — réservations concurrentielles",
+          "DG-11.6 — réaction chantier"
+        ],
+        "gaps": [
+          "Progress vs effets runtime encore divergents",
+          "Invalidation monde Dirty→tâches non câblée",
+          "Mélange ExpandWorkSite (dette H4)",
+          "LevelPad / WorkSite coexistants"
+        ]
+      }
     },
     {
       "id": "C-05",

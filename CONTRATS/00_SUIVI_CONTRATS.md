@@ -70,8 +70,8 @@ Périmètre compté = contrats pour lesquels le registre exige un **contrat auto
 | ID concernés | C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 |
 | --- | --- |
 | Total à créer/valider | **16** |
-| Contrats dédiés VALIDÉS | **2** |
-| Progression validation | **2 / 16** |
+| Contrats dédiés VALIDÉS | **3** |
+| Progression validation | **3 / 16** |
 
 *(Les `SUFFISANT*` et `NON REQUIS` sont suivis dans le tableau mais exclus du dénominateur tant qu’aucun addendum / contrat dédié n’est ouvert.)*
 
@@ -85,7 +85,7 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 | C-01 | Terrain runtime | 1 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil\|Water, lexique) |
 | C-02 | Substrat spatial | 2 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 31/31 décisions A1–F3 ; `C-02_SUBSTRAT_SPATIAL.md` ; audit final PASS |
 | C-03 | Projet / Intention | 3* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | S3 suffisant ; pas VALIDÉ dédié |
-| C-04 | Tâches / graphe / dépendances | 4 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
+| C-04 | Tâches / graphe / dépendances | 4 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 48/48 A1–K6 ; audit final PASS ; dettes d’implémentation conservées |
 | C-05 | WorkSite / SitePrep | 5 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Lié Case B suspendu |
 | C-06 | Capacités / roster | 6* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | S3 suffisant ; pas VALIDÉ dédié |
 | C-07 | Autonomie unité | 7 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
@@ -114,21 +114,22 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 
 ```text
 Contrat actuel : aucun
-Dernier validé : C-02
+Dernier validé : C-04
 ```
 
-**C-02 — VALIDÉ** (clôture formelle)
+**C-04 — VALIDÉ** (clôture formelle)
 
 | Étape | État |
 | --- | --- |
 | Audit préparatoire / inspection code | **terminé** |
-| Décisions | **prises** — **31/31** (A1–F3) |
-| Rédaction | **terminée** — `CONTRATS/C-02_SUBSTRAT_SPATIAL.md` |
-| Revue / audit contrat | **terminé** (AUDIT FINAL — PASS) |
+| Décisions | **prises** — **48/48** (A1–K6) |
+| Rédaction | **terminée** — `CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md` |
+| Revue / audit contrat | **terminé** (AUDIT FINAL — PASS ; correction §4.2) |
 | Validation | **acquise** — validation humaine explicite |
 
-**C-01** reste **VALIDÉ**.  
-C-03 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B reste **suspendu**.
+**C-01** et **C-02** restent **VALIDÉ**.  
+**C-03** reste addendum fermé (NON COMMENCÉ / hors compteur).  
+C-05 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B reste **suspendu**.
 
 ---
 
@@ -136,12 +137,12 @@ C-03 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B rest
 
 ```text
 Prochain contrat autorisé :
-C-03
+C-05
 ```
 
-Prochain élément de l’**ordre officiel** du registre.  
-C-03 est un addendum `SUFFISANT*` pour le périmètre S3 : **ne pas commencer** sa rédaction tant que le besoin S3 n’est pas dépassé (registre §5), sauf ordre humain explicite.  
-Les autres addenda `*` restent fermés dans les mêmes conditions. Case B reste **suspendu**.
+Prochain élément **requis** du compteur 16 / ordre officiel après C-04.  
+**Ne pas démarrer** C-05 sans ordre explicite.  
+C-03 reste un addendum `SUFFISANT*` fermé (registre §5). Les autres addenda `*` restent fermés dans les mêmes conditions. Case B reste **suspendu**.
 
 ---
 
@@ -165,7 +166,9 @@ Les autres addenda `*` restent fermés dans les mêmes conditions. Case B reste 
 | 2026-10-08 | C-01 | REVUE | **VALIDÉ** | Validation humaine explicite ; audit contrat PASS ; écarts d’implémentation conservés comme dettes |
 | 2026-10-08 | C-02 | NON COMMENCÉ | **REVUE** | Contrat `C-02_SUBSTRAT_SPATIAL.md` rédigé ; en attente d’audit et validation ; compteur reste 1/16 |
 | 2026-10-08 | C-02 | REVUE | **VALIDÉ** | Validation humaine explicite ; 31/31 A1–F3 ; audit final PASS ; compteur **2 / 16** |
+| 2026-10-08 | C-04 | NON COMMENCÉ | **REVUE** | Contrat `C-04_TACHES_GRAPHE_DEPENDANCES.md` rédigé ; audit 48/48 PASS ; compteur reste 2/16 |
+| 2026-10-08 | C-04 | REVUE | **VALIDÉ** | Validation humaine explicite ; 48/48 A1–K6 ; audit final PASS ; compteur **3 / 16** |
 
 ---
 
-*Fin du suivi — C-01 VALIDÉ ; C-02 VALIDÉ ; compteur 2/16 ; Case B suspendu ; C-03 non commencé.*
+*Fin du suivi — C-01·C-02·C-04 VALIDÉS ; compteur 3/16 ; Case B suspendu ; C-03 addendum fermé ; C-05 non commencé.*
