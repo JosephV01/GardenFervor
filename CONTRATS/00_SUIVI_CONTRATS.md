@@ -70,8 +70,8 @@ Périmètre compté = contrats pour lesquels le registre exige un **contrat auto
 | ID concernés | C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 |
 | --- | --- |
 | Total à créer/valider | **16** |
-| Contrats dédiés VALIDÉS | **1** |
-| Progression validation | **1 / 16** |
+| Contrats dédiés VALIDÉS | **2** |
+| Progression validation | **2 / 16** |
 
 *(Les `SUFFISANT*` et `NON REQUIS` sont suivis dans le tableau mais exclus du dénominateur tant qu’aucun addendum / contrat dédié n’est ouvert.)*
 
@@ -83,7 +83,7 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 | -- | --- | ----: | -------------- | -------------------- | ----- | --------- | --------- | ----- | ---------- | ------ | -------- | ----- |
 | C-00 | Cadre / invariants fondateurs | — | non | suffisante | n/a | n/a | n/a | n/a | n/a | NON COMMENCÉ | non | Pas de contrat dédié (DG-00) |
 | C-01 | Terrain runtime | 1 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil\|Water, lexique) |
-| C-02 | Substrat spatial | 2 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Prochain autorisé — **pas commencé** |
+| C-02 | Substrat spatial | 2 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 31/31 décisions A1–F3 ; `C-02_SUBSTRAT_SPATIAL.md` ; audit final PASS |
 | C-03 | Projet / Intention | 3* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | S3 suffisant ; pas VALIDÉ dédié |
 | C-04 | Tâches / graphe / dépendances | 4 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
 | C-05 | WorkSite / SitePrep | 5 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Lié Case B suspendu |
@@ -114,22 +114,21 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 
 ```text
 Contrat actuel : aucun
-Dernier validé : C-01
+Dernier validé : C-02
 ```
 
-**C-01 — VALIDÉ** (clôture formelle)
+**C-02 — VALIDÉ** (clôture formelle)
 
 | Étape | État |
 | --- | --- |
-| Audit préparatoire | **terminé** |
-| Décisions | **prises** (14/14) |
-| Rédaction | **terminée** — `CONTRATS/C-01_TERRAIN_RUNTIME.md` |
-| Revue / audit contrat | **terminé** (AUDIT C-01 — PASS) |
+| Audit préparatoire / inspection code | **terminé** |
+| Décisions | **prises** — **31/31** (A1–F3) |
+| Rédaction | **terminée** — `CONTRATS/C-02_SUBSTRAT_SPATIAL.md` |
+| Revue / audit contrat | **terminé** (AUDIT FINAL — PASS) |
 | Validation | **acquise** — validation humaine explicite |
 
-Écarts d’implémentation constatés à l’audit : **dettes / sujets ultérieurs** (non corrigés ; ne constituent pas une fausse conformité code).
-
-C-02 et suivants restent **NON COMMENCÉS**. Aucune rédaction de C-02 engagée.
+**C-01** reste **VALIDÉ**.  
+C-03 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B reste **suspendu**.
 
 ---
 
@@ -137,11 +136,12 @@ C-02 et suivants restent **NON COMMENCÉS**. Aucune rédaction de C-02 engagée.
 
 ```text
 Prochain contrat autorisé :
-C-02
+C-03
 ```
 
-C-02 n’est **pas commencé**. Aucun audit / décisions / rédaction C-02 engagé dans cette clôture.  
-Les addenda `*` restent fermés tant que le besoin S3 n’est pas dépassé (registre).
+Prochain élément de l’**ordre officiel** du registre.  
+C-03 est un addendum `SUFFISANT*` pour le périmètre S3 : **ne pas commencer** sa rédaction tant que le besoin S3 n’est pas dépassé (registre §5), sauf ordre humain explicite.  
+Les autres addenda `*` restent fermés dans les mêmes conditions. Case B reste **suspendu**.
 
 ---
 
@@ -163,7 +163,9 @@ Les addenda `*` restent fermés tant que le besoin S3 n’est pas dépassé (reg
 | 2026-10-08 | C-01 | NON COMMENCÉ | AUDIT PRÉPARATOIRE → **DÉCISIONS EN COURS** | Audit préparatoire terminé ; décisions humaines requises ; rédaction non ouverte |
 | 2026-10-08 | C-01 | DÉCISIONS EN COURS | **REVUE** | Contrat `C-01_TERRAIN_RUNTIME.md` rédigé ; en attente d’audit et validation ; pas VALIDÉ |
 | 2026-10-08 | C-01 | REVUE | **VALIDÉ** | Validation humaine explicite ; audit contrat PASS ; écarts d’implémentation conservés comme dettes |
+| 2026-10-08 | C-02 | NON COMMENCÉ | **REVUE** | Contrat `C-02_SUBSTRAT_SPATIAL.md` rédigé ; en attente d’audit et validation ; compteur reste 1/16 |
+| 2026-10-08 | C-02 | REVUE | **VALIDÉ** | Validation humaine explicite ; 31/31 A1–F3 ; audit final PASS ; compteur **2 / 16** |
 
 ---
 
-*Fin du suivi — C-01 VALIDÉ ; C-02 autorisé mais non commencé ; Case B suspendu.*
+*Fin du suivi — C-01 VALIDÉ ; C-02 VALIDÉ ; compteur 2/16 ; Case B suspendu ; C-03 non commencé.*

@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-07 — T9-CLOSE**.
+Dernière entrée historique : **2026-10-08 — C-02-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-08 — C-02-CLOSE — Substrat spatial VALIDÉ (clôture documentaire)
+
+- **Intention :** clôturer formellement le contrat opérationnel C-02 après validation humaine et audit final PASS.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay** · **C-03 non commencé** · Case B reste **suspendu**
+- **Décisions :** **31/31** (A1–F3) — cellules, Dirty, queries, sync, perf, frontières
+- **Fichiers :** `CONTRATS/C-02_SUBSTRAT_SPATIAL.md` · `CONTRATS/00_SUIVI_CONTRATS.md` → compteur **2 / 16**
+- **Design Gate :** aucune modification
+- **Suite :** prochain ordre officiel = C-03 (addendum* — ne pas démarrer sans ordre explicite)
 
 ### 2026-10-07 — T9-CLOSE — Preuve S3 Cas A VALIDÉ (clôture documentaire)
 

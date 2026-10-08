@@ -73,7 +73,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-01",
+  "activeId": "C-02",
   "order": [
     "C-01",
     "C-02",
@@ -98,7 +98,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 1,
+    "validated": 2,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -172,11 +172,11 @@
       "id": "C-02",
       "order": "2",
       "name": "Substrat spatial (cellules / dirty / queries)",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "Après C-01",
+      "note": "VALIDÉ humainement — 31/31 décisions A1–F3 ; audit final PASS",
       "dependsOn": [
         "C-01"
       ],
@@ -186,7 +186,21 @@
         "C-16",
         "C-17",
         "C-21"
-      ]
+      ],
+      "file": "CONTRATS/C-02_SUBSTRAT_SPATIAL.md",
+      "detail": {
+        "decisions": "31 / 31",
+        "frontiers": [
+          "C-01 — autorité hauteur",
+          "C-04 — invalidation tâches",
+          "C-05 — SitePrep",
+          "C-07 — agent",
+          "C-08 — Terraformer",
+          "C-15…17 — écologie",
+          "C-19 — sauvegarde (Dirty hors save)"
+        ],
+        "gaps": []
+      }
     },
     {
       "id": "C-03",
