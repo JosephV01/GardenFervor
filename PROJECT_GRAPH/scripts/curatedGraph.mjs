@@ -238,8 +238,8 @@ export const curatedNodes = [
   mkContract('c_07', 'C-07', 'Autonomie unité', 'PARTIEL', 'VALIDÉ', 'I', true, 'CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md', {
     notes: 'VALIDÉ — 47/47 A1–J4 ; audit PASS ; Case B produit suspendu ; dettes d’implémentation conservées.',
   }),
-  mkContract('c_08', 'C-08', 'Terraformer opérationnel', 'REQUIS', 'NON COMMENCÉ', 'P', true, null, {
-    notes: 'Bloque Demo Case B.',
+  mkContract('c_08', 'C-08', 'Terraformer opérationnel', 'REQUIS', 'VALIDÉ', 'P', true, 'CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md', {
+    notes: 'VALIDÉ — 58/58 A1–L4 ; audit PASS ; Case B produit suspendu ; dettes d’implémentation conservées.',
   }),
   mkContract('c_09', 'C-09', 'Économie physique', 'SUFFISANT*', 'NON COMMENCÉ', 'I', false, null),
   mkContract('c_10', 'C-10', 'Stocks localisés A/B', 'SUFFISANT*', 'NON COMMENCÉ', 'I', false, null),

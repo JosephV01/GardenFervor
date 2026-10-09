@@ -70,8 +70,8 @@ Périmètre compté = contrats pour lesquels le registre exige un **contrat auto
 | ID concernés | C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 |
 | --- | --- |
 | Total à créer/valider | **16** |
-| Contrats dédiés VALIDÉS | **5** |
-| Progression validation | **5 / 16** |
+| Contrats dédiés VALIDÉS | **6** |
+| Progression validation | **6 / 16** |
 
 *(Les `SUFFISANT*` et `NON REQUIS` sont suivis dans le tableau mais exclus du dénominateur tant qu’aucun addendum / contrat dédié n’est ouvert.)*
 
@@ -89,7 +89,7 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 | C-05 | WorkSite / SitePrep | 5 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 62/62 A1–N3 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées |
 | C-06 | Capacités / roster | 6* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | S3 suffisant ; pas VALIDÉ dédié |
 | C-07 | Autonomie unité | 7 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 47/47 A1–J4 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées |
-| C-08 | Terraformer opérationnel | 8 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Bloque Demo Case B |
+| C-08 | Terraformer opérationnel | 8 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 58/58 A1–L4 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées |
 | C-09 | Économie physique | 9* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | S3 Timber ; pas VALIDÉ dédié |
 | C-10 | Stocks A/B | 10* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | S3 ; pas VALIDÉ dédié |
 | C-11 | Réservations | 11 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Avant multi-chantier |
@@ -114,23 +114,23 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 
 ```text
 Contrat actuel : aucun
-Dernier validé : C-07
+Dernier validé : C-08
 ```
 
-**C-07 — VALIDÉ** (clôture formelle)
+**C-08 — VALIDÉ** (clôture formelle)
 
 | Étape | État |
 | --- | --- |
 | Audit préparatoire / inspection code | **terminé** |
-| Décisions | **prises** — **47/47** (A1–J4) |
-| Rédaction | **terminée** — `CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md` |
-| Revue / audit contrat | **terminé** (AUDIT FINAL — PASS ; 47/47) |
+| Décisions | **prises** — **58/58** (A1–L4) |
+| Rédaction | **terminée** — `CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md` |
+| Revue / audit contrat | **terminé** (AUDIT FINAL — PASS ; 58/58) |
 | Validation | **acquise** — validation humaine explicite |
 
-**C-01**, **C-02**, **C-04** et **C-05** restent **VALIDÉ**.  
+**C-01**, **C-02**, **C-04**, **C-05** et **C-07** restent **VALIDÉ**.  
 **C-03** reste addendum fermé (NON COMMENCÉ / hors compteur).  
-**C-06\*** reste addendum fermé (SUFFISANT\* / hors compteur).  
-C-08 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B reste **suspendu**.
+**C-06\***, **C-09\*** et **C-10\*** restent addenda fermés (SUFFISANT\* / hors compteur).  
+C-11 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B reste **suspendu**.
 
 ---
 
@@ -138,12 +138,12 @@ C-08 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B rest
 
 ```text
 Prochain contrat autorisé :
-C-08
+C-11
 ```
 
-Prochain élément **requis** du compteur 16 / ordre officiel après C-07.  
-**Ne pas démarrer** C-08 sans ordre explicite.  
-C-03 et C-06 restent des addenda `SUFFISANT*` fermés (registre §5). Les autres addenda `*` restent fermés dans les mêmes conditions. Case B reste **suspendu**.
+Prochain élément **requis** du compteur 16 / ordre officiel après C-08.  
+**Ne pas démarrer** C-11 sans ordre explicite.  
+C-03, C-06, C-09 et C-10 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte).
 
 ---
 
@@ -151,8 +151,7 @@ C-03 et C-06 restent des addenda `SUFFISANT*` fermés (registre §5). Les autres
 
 | Sujet | Statut suivi | Motif |
 | --- | --- | --- |
-| **Case B** (gameplay / Demo) | **SUSPENDU** | Registre §9 — signal audit Terraformer ; pas de reprise sans contrats bloquants restants (notamment C-08) |
-| C-08 (lié Case B) | NON COMMENCÉ | Non suspendu en tant que production documentaire ; Case B reste suspendu côté implémentation |
+| **Case B** (gameplay / Demo) | **SUSPENDU** | Contrats documentaires C-05·C-07·C-08 VALIDÉS ; réactivation / implémentation / validation produit **interdites** sans autorisation explicite distincte ; dettes runtime conservées |
 | Aucun contrat documentaire | BLOQUÉ | — |
 
 ---
@@ -173,7 +172,9 @@ C-03 et C-06 restent des addenda `SUFFISANT*` fermés (registre §5). Les autres
 | 2026-10-08 | C-05 | REVUE | **VALIDÉ** | Validation humaine explicite ; 62/62 A1–N3 ; audit final PASS ; compteur **4 / 16** |
 | 2026-10-09 | C-07 | NON COMMENCÉ | **REVUE** | Contrat `C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md` rédigé ; audit 47/47 PASS ; compteur reste 4/16 |
 | 2026-10-09 | C-07 | REVUE | **VALIDÉ** | Validation humaine explicite ; 47/47 A1–J4 ; audit final PASS ; compteur **5 / 16** |
+| 2026-10-09 | C-08 | NON COMMENCÉ | **REVUE** | Contrat `C-08_TERRAFORMER_OPERATIONNEL.md` rédigé ; audit 58/58 PASS ; compteur reste 5/16 |
+| 2026-10-09 | C-08 | REVUE | **VALIDÉ** | Validation humaine explicite ; 58/58 A1–L4 ; audit final PASS ; compteur **6 / 16** |
 
 ---
 
-*Fin du suivi — C-01·C-02·C-04·C-05·C-07 VALIDÉS ; compteur 5/16 ; Case B suspendu ; C-03 et C-06 addenda fermés ; prochain requis = C-08.*
+*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08 VALIDÉS ; compteur 6/16 ; Case B suspendu ; C-03·C-06·C-09·C-10 addenda fermés ; prochain requis = C-11.*

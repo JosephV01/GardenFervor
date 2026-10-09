@@ -1,5 +1,12 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-09 — 1.0.4 — Clôture C-08
+
+- C-08 VALIDÉ (58/58) · progression contrats **6 / 16**.
+- Prochain requis = **C-11** (non commencé) · addenda C-09/C-10 fermés · Case B suspendu.
+- Métier Terraform formalisé ≠ implémentation / validation produit Creuser·Remblayer·Aplanir.
+- Régénération HTML depuis le Markdown.
+
 ## 2026-10-09 — 1.0.3 — Clôture C-07
 
 - C-07 VALIDÉ (47/47) · progression contrats **5 / 16**.

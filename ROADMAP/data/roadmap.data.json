@@ -1,17 +1,17 @@
 {
   "meta": {
-    "version": "1.0.3",
+    "version": "1.0.4",
     "updated": "2026-10-09",
     "title": "GardenFervor — Roadmap globale",
-    "git_head_at_audit": "bedf8a7",
-    "notes": "Clôture C-07 · compteur 5/16 · prochain C-08. Distincte de Plan de production/Roadmap (cohorte S3)."
+    "git_head_at_audit": "20f3e18",
+    "notes": "Clôture C-08 · compteur 6/16 · prochain C-11. Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 5/16 (C-01·C-02·C-04·C-05·C-07 VALIDÉS) · prochain requis = C-08 (non commencé) · C-03 et C-06 addenda fermés · Case B SUSPENDU",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 6/16 (C-01·C-02·C-04·C-05·C-07·C-08 VALIDÉS) · prochain requis = C-11 (non commencé) · C-03·C-06·C-09·C-10 addenda fermés · Case B SUSPENDU",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
-    "contracts_validated": "5",
+    "contracts_validated": "6",
     "contracts_required": "16",
     "s3_case_a": "VALIDÉ",
     "case_b": "SUSPENDU",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c08",
-    "title": "C-08 — Terraformer opérationnel",
+    "id": "next-c11",
+    "title": "C-11 — Réservations",
     "status": "À FAIRE",
     "horizon": "Prochain",
-    "note": "Prochain contrat requis après C-07 VALIDÉ. Ne pas démarrer sans ordre explicite. C-03 et C-06 restent addenda fermés. Case B suspendu.",
-    "depends": "C-01 VALIDÉ · C-05 VALIDÉ · C-07 VALIDÉ",
-    "unlocks": "Case B (plus tard) · métier Terraform formalisé"
+    "note": "Prochain contrat requis après C-08 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10 restent fermés. Case B suspendu.",
+    "depends": "C-04 VALIDÉ · C-08 VALIDÉ (besoins matière)",
+    "unlocks": "concurrence matière formalisée · C-12"
   },
   "phases": [
     {
@@ -171,14 +171,14 @@
           "id": "P2.J4",
           "phase": "P2",
           "title": "Contrats chantiers / unités / terraform (C-05 · C-07 · C-08)",
-          "status": "EN COURS",
-          "conception": "PARTIEL",
+          "status": "VALIDÉ",
+          "conception": "VALIDÉ",
           "realisation": "PARTIELLE",
-          "validation": "PARTIEL",
+          "validation": "VALIDÉ",
           "depends": "P2.J3",
           "unlocks": "P1.J2,P4,P5,P6",
-          "sources": "CONTRATS/C-05_WORKSITE_SITEPREP.md · CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md · CONTRATS/00_REGISTRE_CONTRATS.md",
-          "note": "C-05 VALIDÉ (62/62) · C-07 VALIDÉ (47/47) ; prochain requis = C-08 ; Case B suspendu.",
+          "sources": "CONTRATS/C-05_WORKSITE_SITEPREP.md · CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md · CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md · CONTRATS/00_REGISTRE_CONTRATS.md",
+          "note": "C-05·C-07·C-08 VALIDÉS documentairement ; métier Terraform formalisé ≠ implémenté en jeu ; Case B suspendu.",
           "works": []
         },
         {
@@ -520,9 +520,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-09T10:42:51.743Z",
-    "mdHash": "8ab081fbf87a821afddd5c7b377a19776068cb4d0c645d168ab285b2f0b0445e",
-    "git": "bedf8a7",
+    "generatedAt": "2026-10-09T13:55:36.289Z",
+    "mdHash": "39804172e4c6db1d9fec21d96e31ab017a54071c258e70d181934a4cd5766c21",
+    "git": "20f3e18",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },

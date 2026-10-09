@@ -24,11 +24,11 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-05_WORKSITE_SITEPREP.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
-  /** Dernier contrat VALIDÉ ; C-08 = prochain requis ; C-03 et C-06 addenda* fermés. */
-  activeContractId: 'C-07',
-  nextAuthorizedId: 'C-08',
+  /** Dernier contrat VALIDÉ ; C-11 = prochain requis ; C-03·C-06·C-09·C-10 addenda* fermés. */
+  activeContractId: 'C-08',
+  nextAuthorizedId: 'C-11',
   progress: {
-    validated: 5,
+    validated: 6,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -258,11 +258,35 @@ export const CONTRACTS_SUIVI = {
       order: 8,
       category: 'REQUIS',
       coverage: 'partielle',
-      productionStatus: 'NON COMMENCÉ',
+      productionStatus: 'VALIDÉ',
       blocking: true,
       dependsOn: ['C-01', 'C-05', 'C-07'],
       providesTo: [],
-      note: 'Bloque Demo Case B',
+      note: 'VALIDÉ humainement — 58/58 décisions A1–L4 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées',
+      dedicatedValidated: true,
+      file: 'CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md',
+      detail: {
+        decisionsTaken: 58,
+        decisionsTotal: 58,
+        frontiers: [
+          { id: 'C-01', label: 'autorité relief' },
+          { id: 'C-02', label: 'référence spatiale' },
+          { id: 'C-04', label: 'graphe / tâches' },
+          { id: 'C-05', label: 'SitePrep / SiteReady' },
+          { id: 'C-07', label: 'exécution unité' },
+          { id: 'C-11', label: 'réservations' },
+          { id: 'C-12', label: 'transport avancé' },
+          { id: 'DG-08', label: 'cadre matières' },
+        ],
+        gaps: [
+          'Effets Terraform à Verify (pas au fil de Execute)',
+          '3 pulses au même point / DisplayName Raise-Lower-Compact',
+          'Matière↔relief découplés (ExtractSpoil / FillDirt)',
+          'Aplanir absent ; CompactSite = petit Lower',
+          'SiteReady ≈ Terraform Completed (runtime)',
+        ],
+        gapNote: 'Écarts d’implémentation — pas des corrections de cette clôture. Case B non réactivé.',
+      },
     },
     {
       id: 'C-09',

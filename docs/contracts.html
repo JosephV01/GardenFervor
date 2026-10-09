@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-07",
+  "activeId": "C-08",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 5,
+    "validated": 6,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -354,17 +354,38 @@
       "id": "C-08",
       "order": "8",
       "name": "Terraformer opérationnel",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "Bloque Demo Case B",
+      "note": "VALIDÉ humainement — 58/58 décisions A1–L4 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées",
       "dependsOn": [
         "C-01",
         "C-05",
         "C-07"
       ],
-      "providesTo": []
+      "providesTo": [],
+      "file": "CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md",
+      "detail": {
+        "decisions": "58 / 58",
+        "frontiers": [
+          "C-01 — autorité relief",
+          "C-02 — référence spatiale",
+          "C-04 — graphe / tâches",
+          "C-05 — SitePrep / SiteReady",
+          "C-07 — exécution unité",
+          "C-11 — réservations",
+          "C-12 — transport avancé",
+          "DG-08 — cadre matières"
+        ],
+        "gaps": [
+          "Effets Terraform à Verify (pas au fil de Execute)",
+          "3 pulses au même point / DisplayName Raise-Lower-Compact",
+          "Matière↔relief découplés (ExtractSpoil / FillDirt)",
+          "Aplanir absent ; CompactSite = petit Lower",
+          "SiteReady ≈ Terraform Completed (runtime)"
+        ]
+      }
     },
     {
       "id": "C-09",

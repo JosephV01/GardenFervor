@@ -77,7 +77,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-05 | WorkSite / SitePrep (Cas A/B) | PARTIEL→REQUIS | détaillée | DG-11 · SitePrepTypes · T5 · **C-05 VALIDÉ** | P | C-01 · C-04 | **oui** | 5 |
 | C-06 | Capacités / roster unités | SUFFISANT* | secondaire | DG-03 · UnitCapabilityTypes · T3 | I (S3) | C-00 | non* | 6* |
 | C-07 | Autonomie unité (agent générique) | PARTIEL | détaillée | DG-04 · UnitTaskAgent · ODC-F5 · **C-07 VALIDÉ** | I | C-04 · C-06 | **oui** | 7 |
-| C-08 | Terraformer opérationnel | REQUIS | détaillée | DG-08 · F8 · agent Terraform | P | C-01 · C-05 · C-07 | **oui** | 8 |
+| C-08 | Terraformer opérationnel | REQUIS | détaillée | DG-08 · F8 · agent Terraform · **C-08 VALIDÉ** | P | C-01 · C-05 · C-07 | **oui** | 8 |
 | C-09 | Économie physique / ResourceKey | SUFFISANT* | secondaire | DG-05 · C7 · T1/T2 | I (Timber) | C-00 | non* | 9* |
 | C-10 | Stocks localisés A/B | SUFFISANT* | secondaire | DG-05 · C3 · T4 | I (S3) | C-09 | non* | 10* |
 | C-11 | Réservations | PARTIEL | détaillée | DG-05.3 | P | C-09 · C-10 · C-04 | oui (avant multi-chantier) | 11 |
@@ -180,10 +180,11 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 ### C-08 — Terraformer opérationnel *(signal Case B)*
 
 - **Sous-systèmes :** tâche `Terraform` · cap `Terraform` · `UnitId=Terraformer` · `ApplyBrushAt` ×N même point · TerraformToolComponent (joueur).
-- **État :** brush réel ODC-F8 ; agent LevelPad/Cas B smoke ; **perception progressive absente**.
-- **Manque (checklist audit) :** décomposition spatiale du travail ; progression pendant Execute ; relation tâche↔brushes ; coopération ; interruption ; échec (Landscape manquant) ; reprise ; invalidation ; replanification ; critères de fin (au-delà de CompleteTask) ; observabilité ; interaction terrain (C-01).
-- **Contrat :** **requis détaillé** — **bloquant** avant Case B Investor Demo ou prep « réelle » attendue.
-- **Amont :** C-01 · C-05 · C-07 · **Aval :** Case B · infra travaux.
+- **État :** brush réel ODC-F8 ; agent LevelPad/Cas B smoke ; **perception progressive absente** (dettes).
+- **Contrat dédié :** **VALIDÉ** — `CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md` · **58/58** décisions A1–L4 · audit PASS.
+- **Dettes d’implémentation (hors décision) :** effets Verify ; 3 pulses ; DisplayName Raise/Lower/Compact ; matière↔relief découplés ; Aplanir absent ; SiteReady≈Terraform Completed ; dettes C-01.
+- **Amont :** C-01 · C-05 · C-07 · **Aval :** Case B (si autorisé) · infra travaux.
+- **Bloquant :** **oui** pour Case B (contrat opérationnel désormais disponible ; Case B reste suspendu sans autorisation explicite distincte).
 - **Ordre 8.**
 
 ### C-09 / C-10 — Économie physique · Stocks A/B

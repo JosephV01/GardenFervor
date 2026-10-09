@@ -1,7 +1,7 @@
 # PROJECT_GRAPH — CURRENT_STATE
 
-Généré : **2026-10-09T10:42:51.964Z**
-HEAD : `bedf8a7b62a266eca32c07fb77ee5c69e9cebf6d` (dirty, 85 fichiers dirty)
+Généré : **2026-10-09T13:55:36.482Z**
+HEAD : `20f3e18815e2e528458495e266683159390ac2c9` (dirty, 84 fichiers dirty)
 Curated schema : `1.0.0`
 
 ## Inventaire
@@ -17,7 +17,7 @@ Curated schema : `1.0.0`
 | Relations FUTURE | 6 |
 | Relations UNVERIFIED | 0 |
 | Contrats (registre) | 24 |
-| Contrats fichiers présents | 5 |
+| Contrats fichiers présents | 6 |
 | Preuves inventoriées | 9 |
 | Gates Saved détectés | 14 |
 | Headers systèmes scannés | 13 |
@@ -58,6 +58,7 @@ Curated schema : `1.0.0`
 - C-04 — Tâches / graphe / dépendances
 - C-05 — WorkSite / SitePrep
 - C-07 — Autonomie unité
+- C-08 — Terraformer opérationnel
 
 ## Systèmes SUSPENDED / LEGACY / STUB
 
@@ -101,7 +102,8 @@ Curated schema : `1.0.0`
 - C-04 = graphe tâches (contrat VALIDÉ ; runtime TaskSubsystem présent)
 - C-05 = SitePrep (contrat VALIDÉ ; helpers présents ; Case B SUSPENDED)
 - C-07 = autonomie unité (contrat VALIDÉ ; runtime UnitTaskAgent présent ; dettes documentées)
-- C-08 / C-11 = frontières FUTURE marquées tant que contrats non VALIDÉS
+- C-08 = Terraformer opérationnel (contrat VALIDÉ ; métier formalisé ; runtime partiel ; Case B SUSPENDED)
+- C-11 = frontières FUTURE marquées tant que contrat non VALIDÉ
 
 ## Règle
 

@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-09 — C-07-CLOSE**.
+Dernière entrée historique : **2026-10-09 — C-08-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-09 — C-08-CLOSE — Terraformer opérationnel VALIDÉ (clôture documentaire)
+
+- **Intention :** clôturer formellement le contrat opérationnel C-08 après validation humaine et audit final PASS (58/58).
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay** · **C-11 non commencé** · C-03·C-06·C-09·C-10 addenda **fermés** · Case B reste **suspendu**
+- **Décisions :** **58/58** (A1–L4) — métier Creuser/Remblayer/Aplanir ≠ Raise/Lower/Paint ; décomposition ; matière↔relief ; SiteReady via preuve métier ; Case B non réactivé
+- **Fichiers :** `CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md` · suivi / registre / ETAT / HISTORIQUE / ROADMAP / PROJECT_GRAPH → compteur **6 / 16**
+- **Design Gate :** aucune modification
+- **Suite :** prochain contrat requis = C-11 (ne pas démarrer sans ordre explicite) · addenda C-09/C-10 non ouverts automatiquement
 
 ### 2026-10-09 — C-07-CLOSE — Autonomie unité (agent générique) VALIDÉ (clôture documentaire)
 
