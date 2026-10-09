@@ -10,6 +10,7 @@
 | --- | --- |
 | **`index.html`** | **Hub d’accueil** — état projet + liens |
 | `etat-global.html` | État global du projet (systèmes, maturité, preuves, priorités) |
+| `historique.html` | Historique des modifications (miroir de `HISTORIQUE_MODIFICATIONS.md` §4) |
 | `roadmap.html` | Roadmap de production |
 | `design-gate.html` | Design Gate autonome |
 | `contracts.html` | Suivi des contrats |
@@ -47,9 +48,12 @@ Cette commande :
 5. copie `Investor Demo/PrésentationClientHtml/PrésentationClient.html` → `docs/presentation-client.html` ;
 6. copie `Investor Demo/PrésentationClientHtml/images/` → `docs/images/` (galerie lot1) ;
 7. copie Project Graph et Roadmap globale ;
-8. régénère `docs/etat-global.html` depuis `docs/etat-global/etatGlobal.data.js` + `contractsSuivi.js`.
+8. régénère `docs/etat-global.html` depuis `docs/etat-global/etatGlobal.data.js` + `contractsSuivi.js` ;
+9. régénère `docs/historique.html` depuis `HISTORIQUE_MODIFICATIONS.md` (§4).
 
 **Ne pas** écraser manuellement le bandeau entre `<!-- SYNC:STATUS:START -->` et `<!-- SYNC:STATUS:END -->` — il est généré.
+
+Inventaire des documents à maintenir : **`REGISTRE_MAINTENANCE_DOCUMENTAIRE.md`** (racine).
 
 ## Sources de vérité
 
@@ -59,6 +63,7 @@ Cette commande :
 | Design Gate | `GardenFervor_DesignGate_React/src/data/designGate.js` |
 | Contrats | `CONTRATS/*.md` (miroir UI : `contractsSuivi.js`) |
 | État global | `docs/etat-global/etatGlobal.data.js` (éditorial) + compteurs via `contractsSuivi.js` — voir `docs/etat-global/README.md` |
+| Historique | `HISTORIQUE_MODIFICATIONS.md` (§4) — build `docs/historique/buildHistorique.mjs` |
 | Présentation client | `Investor Demo/PrésentationClientHtml/PrésentationClient.html` |
 | Hub navigation | `docs/index.html` (structure) + sync pour l’état |
 

@@ -12,12 +12,14 @@
  * - Project Graph → docs/project-graph.html (depuis PROJECT_GRAPH/)
  * - Roadmap globale → docs/roadmap-globale.html (depuis ROADMAP/)
  * - État global → docs/etat-global.html (depuis docs/etat-global/)
+ * - Historique → docs/historique.html (depuis HISTORIQUE_MODIFICATIONS.md §4)
  *
  * Sources de vérité : Markdown CONTRATS/, roadmap.data.js, designGate.js,
  * Investor Demo/PrésentationClientHtml/PrésentationClient.html,
  * PROJECT_GRAPH/GardenFervor_ProjectGraph.html,
  * ROADMAP/GardenFervor_ROADMAP.md (via HTML généré),
- * docs/etat-global/etatGlobal.data.js (+ compteurs depuis contractsSuivi.js).
+ * docs/etat-global/etatGlobal.data.js (+ compteurs depuis contractsSuivi.js),
+ * HISTORIQUE_MODIFICATIONS.md (§4 → docs/historique.html).
  * Ne pas inventer de VALIDÉ.
  */
 import fs from 'fs';
@@ -202,6 +204,9 @@ console.log('Copied → docs/roadmap-globale.html');
 console.log('— Sync État global —');
 runNode(path.join('docs', 'etat-global', 'buildEtatGlobal.mjs'));
 
+console.log('— Sync Historique —');
+runNode(path.join('docs', 'historique', 'buildHistorique.mjs'));
+
 console.log(
   JSON.stringify(
     {
@@ -216,6 +221,7 @@ console.log(
       projectGraph: 'docs/project-graph.html',
       roadmapGlobale: 'docs/roadmap-globale.html',
       etatGlobal: 'docs/etat-global.html',
+      historique: 'docs/historique.html',
       syncedAt: today,
     },
     null,

@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-09 — C-14-CLOSE**.
+Dernière entrée historique : **2026-10-09 — DOC-MAINT-REGISTRE**.
 
 ---
 
@@ -198,6 +198,16 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-09 — DOC-MAINT-REGISTRE — Registre de maintenance documentaire + miroir Hub historique
+
+- **Intention :** inventaire durable des documents à maintenir et chronologie Hub générée depuis HISTORIQUE §4, sans gameplay ni nouveau contrat.
+- **Statut :** VALIDÉ (documentaire) — **pas de code gameplay** · **C-15 non commencé** · compteurs contrats **inchangés** (9/16)
+- **Avant → Après :** pas de registre central ni page Hub historique → `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` + `docs/historique.html` (build depuis §4) + carte Hub
+- **Changements (fichiers / systèmes) :** `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` · `docs/historique/*` · `docs/historique.html` · `docs/syncPages.mjs` · `docs/index.html` · `docs/GITHUB_PAGES.md` · `REGLES_PROJET.md` (pointeur)
+- **Preuves :** `node docs/historique/buildHistorique.mjs` · `node docs/syncPages.mjs` (ok)
+- **Pièges / leçons :** ne pas maintenir un second historique parallèle ; HTML = miroir uniquement
+- **Suite :** commit/push séparés sur autorisation ; C-15 non démarré
 
 ### 2026-10-09 — C-14-CLOSE — Infrastructures (lifecycle) VALIDÉ (clôture documentaire)
 

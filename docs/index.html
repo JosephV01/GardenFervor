@@ -266,7 +266,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 12px;
     }
     .grid.one { grid-template-columns: 1fr; }
@@ -471,6 +471,12 @@
             <p>Vision jusqu’au jeu final : acquis, prochain travail officiel, suspensions, phases.</p>
             <span class="go">Ouvrir la Roadmap →</span>
           </a>
+          <a class="card" href="historique.html">
+            <span class="tag pilot">Mémoire</span>
+            <h3>Historique des modifications</h3>
+            <p>Chronologie des évolutions validées — miroir de HISTORIQUE_MODIFICATIONS.md, filtrable par catégorie.</p>
+            <span class="go">Ouvrir l’historique →</span>
+          </a>
         </div>
       </section>
 
@@ -534,7 +540,8 @@
       <section class="howto">
         <h2>Mettre à jour le portail</h2>
         <ol>
-          <li>Modifier les sources dans le dépôt (Markdown, Design Gate, contrats, Roadmap, <code>docs/etat-global/etatGlobal.data.js</code>…)</li>
+          <li>Modifier les sources dans le dépôt (Markdown, Design Gate, contrats, Roadmap, <code>HISTORIQUE_MODIFICATIONS.md</code>, <code>docs/etat-global/etatGlobal.data.js</code>…)</li>
+          <li>Consulter / mettre à jour <code>REGISTRE_MAINTENANCE_DOCUMENTAIRE.md</code> si le périmètre documentaire change</li>
           <li>Exécuter <code>node docs/syncPages.mjs</code> depuis la racine</li>
           <li>Commit + push <code>main</code> pour rafraîchir GitHub Pages</li>
         </ol>

@@ -47,14 +47,16 @@ Objectif : l’humain doit toujours savoir **où on en est** et **ce qui a boug�
 | --- | --- |
 | `ETAT_PROJET.md` (racine) | Snapshot courant du projet : phase ODC, derniers gates, risques connus, prochain pas |
 | `HISTORIQUE_MODIFICATIONS.md` (racine) | Mémoire longue agent : inventaire + historique détaillé validé |
+| `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (racine) | Inventaire des docs à maintenir, déclencheurs, procédures de sync |
 | `GardenFervor_DesignGate_React/src/data/designGate.js` | **Source de vérité conception** (document vivant) |
 | `Plan de production/Roadmap/src/roadmap.data.js` | **Source de vérité roadmap de production** (pilotage T1–Tn) |
 | `Plan de production/PLAN_PRODUCTION_COHORTE_S3.md` | Plan opérationnel (comment produire la preuve S3) |
 | `Saved/ODC_F*_*.txt` | Preuves techniques détaillées (inchangé) |
 
 Roadmap : SoT `Plan de production/Roadmap/src/roadmap.data.js` · sync `node "Plan de production/Roadmap/scripts/syncRoadmap.mjs"` · **publication Pages roadmap = `docs/roadmap.html`**.  
-Hub GitHub Pages : **`docs/index.html`** → liens vers roadmap / Design Gate / contrats (`docs/GITHUB_PAGES.md`).  
+Hub GitHub Pages : **`docs/index.html`** → liens vers roadmap / Design Gate / contrats / historique (`docs/GITHUB_PAGES.md`).  
 **Après toute modification documentaire publiée :** `node docs/syncPages.mjs` puis push — tient hub + pages `docs/` à jour.  
+Lors d’une opération documentaire (clôture, nouvelle page Hub, nouveau script de sync) : **consulter et, si le périmètre change, mettre à jour** `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md`.  
 **Code terminé ≠ VALIDÉ** : le statut `VALIDÉ` d’une tranche exige la validation humaine du Plan de production.
 
 `ETAT_PROJET.md` est la **baseline** courte entre deux modifications.  
