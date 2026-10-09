@@ -243,7 +243,9 @@ export const curatedNodes = [
   }),
   mkContract('c_09', 'C-09', 'Économie physique', 'SUFFISANT*', 'NON COMMENCÉ', 'I', false, null),
   mkContract('c_10', 'C-10', 'Stocks localisés A/B', 'SUFFISANT*', 'NON COMMENCÉ', 'I', false, null),
-  mkContract('c_11', 'C-11', 'Réservations', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
+  mkContract('c_11', 'C-11', 'Réservations', 'PARTIEL', 'VALIDÉ', 'P', true, 'CONTRATS/C-11_RESERVATIONS.md', {
+    notes: 'VALIDÉ — 23/23 A1–G1 ; audit PASS ; C-09/C-10 addenda fermés ; dettes runtime / preuves manquantes conservées.',
+  }),
   mkContract('c_12', 'C-12', 'Transport / logistique', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
   mkContract('c_13', 'C-13', 'Construction / En service', 'SUFFISANT*', 'NON COMMENCÉ', 'I', false, null),
   mkContract('c_14', 'C-14', 'Infrastructures', 'REQUIS', 'NON COMMENCÉ', 'N', true, null),
@@ -969,9 +971,9 @@ export const curatedEdges = [
     relationKind: 'FUTURE',
     notes: 'C-08 métier Terraform ; C-04 tâche générique.',
   }),
-  e('c_04', 'c_11', 'CONSTRAINS', 'MEDIUM', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
+  e('c_04', 'c_11', 'CONSTRAINS', 'MEDIUM', 'CONTRATS/C-11_RESERVATIONS.md', {
     relationKind: 'FUTURE',
-    notes: 'C-04 mécanisme réservation tâche ; C-11 concurrence détaillée.',
+    notes: 'Frontière VALIDÉE (C-11) — C-04 mécanisme ; C-11 concurrence ; runtime multi-chantier encore dette.',
   }),
 
   // Validation

@@ -1,17 +1,17 @@
 {
   "meta": {
-    "version": "1.0.4",
+    "version": "1.0.5",
     "updated": "2026-10-09",
     "title": "GardenFervor — Roadmap globale",
-    "git_head_at_audit": "20f3e18",
-    "notes": "Clôture C-08 · compteur 6/16 · prochain C-11. Distincte de Plan de production/Roadmap (cohorte S3)."
+    "git_head_at_audit": "6998abc",
+    "notes": "Clôture C-11 · compteur 7/16 · prochain C-12. Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 6/16 (C-01·C-02·C-04·C-05·C-07·C-08 VALIDÉS) · prochain requis = C-11 (non commencé) · C-03·C-06·C-09·C-10 addenda fermés · Case B SUSPENDU",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 7/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11 VALIDÉS) · prochain requis = C-12 (non commencé) · C-03·C-06·C-09·C-10 addenda fermés · Case B SUSPENDU",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
-    "contracts_validated": "6",
+    "contracts_validated": "7",
     "contracts_required": "16",
     "s3_case_a": "VALIDÉ",
     "case_b": "SUSPENDU",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c11",
-    "title": "C-11 — Réservations",
+    "id": "next-c12",
+    "title": "C-12 — Transport / logistique",
     "status": "À FAIRE",
     "horizon": "Prochain",
-    "note": "Prochain contrat requis après C-08 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10 restent fermés. Case B suspendu.",
-    "depends": "C-04 VALIDÉ · C-08 VALIDÉ (besoins matière)",
-    "unlocks": "concurrence matière formalisée · C-12"
+    "note": "Prochain contrat requis après C-11 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10 restent fermés. Case B suspendu.",
+    "depends": "C-07 VALIDÉ · C-11 VALIDÉ (réservations / transit)",
+    "unlocks": "logistique avancée · C-14"
   },
   "phases": [
     {
@@ -184,14 +184,15 @@
         {
           "id": "P2.J5",
           "phase": "P2",
-          "title": "Contrats reste du compteur (C-11…C-21)",
+          "title": "Contrats reste du compteur (C-12…C-21)",
           "status": "À FAIRE",
           "conception": "À CONCEVOIR",
           "realisation": "PARTIELLE",
           "validation": "NON TERMINÉE",
           "depends": "P2.J3,P2.J4",
           "unlocks": "P7,P8,P9,P10,P11,P13",
-          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md",
+          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-11_RESERVATIONS.md",
+          "note": "C-11 VALIDÉ (23/23) ; prochain requis = C-12.",
           "works": []
         }
       ]
@@ -520,9 +521,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-09T13:55:36.289Z",
-    "mdHash": "39804172e4c6db1d9fec21d96e31ab017a54071c258e70d181934a4cd5766c21",
-    "git": "20f3e18",
+    "generatedAt": "2026-10-09T14:29:10.375Z",
+    "mdHash": "653c589d35b744f85af7e985f342dab6350eba7da18149d35f15ca2affdfc699",
+    "git": "6998abc",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },

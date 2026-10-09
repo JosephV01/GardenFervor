@@ -605,7 +605,7 @@ function writeCurrentState(data, scan) {
     '- C-05 = SitePrep (contrat VALIDÉ ; helpers présents ; Case B SUSPENDED)',
     '- C-07 = autonomie unité (contrat VALIDÉ ; runtime UnitTaskAgent présent ; dettes documentées)',
     '- C-08 = Terraformer opérationnel (contrat VALIDÉ ; métier formalisé ; runtime partiel ; Case B SUSPENDED)',
-    '- C-11 = frontières FUTURE marquées tant que contrat non VALIDÉ',
+    '- C-11 = Réservations (contrat VALIDÉ ; concurrence formalisée ; runtime / preuves multi-chantier partielles)',
     '',
     '## Règle',
     '',

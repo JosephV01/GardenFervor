@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-09 — C-08-CLOSE**.
+Dernière entrée historique : **2026-10-09 — C-11-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-09 — C-11-CLOSE — Réservations VALIDÉ (clôture documentaire)
+
+- **Intention :** clôturer formellement le contrat opérationnel C-11 après validation humaine et audit final PASS (23/23).
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay** · **C-12 non commencé** · C-03·C-06·C-09·C-10 addenda **fermés** · Case B reste **suspendu**
+- **Décisions :** **23/23** (A1–G1) — allocation concurrente stocks ; claim ≠ réservation ; priorités ; non-préemption ; réconciliation E2 ; frontiers C-04/C-05/C-07/C-08/C-12/C-19
+- **Fichiers :** `CONTRATS/C-11_RESERVATIONS.md` · suivi / registre / ETAT / HISTORIQUE / ROADMAP / PROJECT_GRAPH → compteur **7 / 16**
+- **Design Gate :** aucune modification
+- **Suite :** prochain contrat requis = C-12 (ne pas démarrer sans ordre explicite) · addenda C-09/C-10 non ouverts automatiquement
 
 ### 2026-10-09 — C-08-CLOSE — Terraformer opérationnel VALIDÉ (clôture documentaire)
 

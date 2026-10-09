@@ -14,7 +14,7 @@
 export const CONTRACTS_SUIVI = {
   title: 'GARDENFERVOR — SUIVI DES CONTRATS',
   subtitle: 'Contracts / Operational Architecture',
-  lastSync: '2026-10-08',
+  lastSync: '2026-10-09',
   sources: [
     'CONTRATS/00_REGISTRE_CONTRATS.md',
     'CONTRATS/00_SUIVI_CONTRATS.md',
@@ -22,13 +22,16 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-02_SUBSTRAT_SPATIAL.md',
     'CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md',
     'CONTRATS/C-05_WORKSITE_SITEPREP.md',
+    'CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md',
+    'CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md',
+    'CONTRATS/C-11_RESERVATIONS.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
-  /** Dernier contrat VALIDÉ ; C-11 = prochain requis ; C-03·C-06·C-09·C-10 addenda* fermés. */
-  activeContractId: 'C-08',
-  nextAuthorizedId: 'C-11',
+  /** Dernier contrat VALIDÉ ; C-12 = prochain requis ; C-03·C-06·C-09·C-10 addenda* fermés. */
+  activeContractId: 'C-11',
+  nextAuthorizedId: 'C-12',
   progress: {
-    validated: 6,
+    validated: 7,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -38,7 +41,7 @@ export const CONTRACTS_SUIVI = {
   },
   caseB: {
     status: 'SUSPENDU',
-    note: 'Case B reste suspendu (registre §9). Aucune reprise sans contrats bloquants.',
+    note: 'Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11 VALIDÉS documentairement ; aucune reprise sans autorisation explicite.',
   },
   /** Ordre officiel de rédaction (registre §5). */
   displayOrder: [
@@ -318,13 +321,35 @@ export const CONTRACTS_SUIVI = {
       id: 'C-11',
       name: 'Réservations',
       order: 11,
-      category: 'REQUIS',
+      category: 'PARTIEL',
       coverage: 'partielle',
-      productionStatus: 'NON COMMENCÉ',
+      productionStatus: 'VALIDÉ',
       blocking: true,
       dependsOn: ['C-09', 'C-10', 'C-04'],
-      providesTo: [],
-      note: 'Avant multi-chantier',
+      providesTo: ['C-12'],
+      note: 'VALIDÉ humainement — 23/23 décisions A1–G1 ; audit final PASS ; C-09·C-10 addenda fermés ; Case B reste suspendu ; dettes d’implémentation / preuves manquantes conservées',
+      dedicatedValidated: true,
+      file: 'CONTRATS/C-11_RESERVATIONS.md',
+      detail: {
+        decisionsTaken: 23,
+        decisionsTotal: 23,
+        frontiers: [
+          { id: 'C-04', label: 'graphe / claim / mécanisme' },
+          { id: 'C-05', label: 'WorkSite / SitePrep' },
+          { id: 'C-07', label: 'exécution unité / API' },
+          { id: 'C-08', label: 'besoins matière Terraform' },
+          { id: 'C-12', label: 'transport avancé' },
+          { id: 'C-19', label: 'persistance' },
+          { id: 'DG-05.3', label: 'stocks / réservations' },
+        ],
+        gaps: [
+          'Multi-chantier / priorités joueur / urgence / proximité non démontrés produit',
+          'Atomicité multi-ressources et E2 sous diminution concurrente à démontrer',
+          'Reprise save/load (F1) — mécanisme C-19',
+          'Preuves F4/F6/F7 partielles S3 seulement',
+        ],
+        gapNote: 'Écarts d’implémentation / preuves manquantes — pas des corrections de cette clôture. Case B non réactivé.',
+      },
     },
     {
       id: 'C-12',

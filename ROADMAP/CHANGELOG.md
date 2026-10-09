@@ -1,5 +1,12 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-09 — 1.0.5 — Clôture C-11
+
+- C-11 VALIDÉ (23/23) · progression contrats **7 / 16**.
+- Prochain requis = **C-12** (non commencé) · addenda C-09/C-10 fermés · Case B suspendu.
+- Concurrence / réservations formalisées ≠ validation runtime multi-chantier.
+- Régénération HTML depuis le Markdown.
+
 ## 2026-10-09 — 1.0.4 — Clôture C-08
 
 - C-08 VALIDÉ (58/58) · progression contrats **6 / 16**.

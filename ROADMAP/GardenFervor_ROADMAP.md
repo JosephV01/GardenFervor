@@ -6,11 +6,11 @@ Balises machine : RM:META, RM:NOW, RM:NEXT, RM:PHASE, RM:JALON, RM:WORK
 -->
 
 <!--RM:META
-version: 1.0.4
+version: 1.0.5
 updated: 2026-10-09
 title: GardenFervor — Roadmap globale
-git_head_at_audit: 20f3e18
-notes: Clôture C-08 · compteur 6/16 · prochain C-11. Distincte de Plan de production/Roadmap (cohorte S3).
+git_head_at_audit: 6998abc
+notes: Clôture C-11 · compteur 7/16 · prochain C-12. Distincte de Plan de production/Roadmap (cohorte S3).
 -->
 
 # GardenFervor — Roadmap globale
@@ -34,11 +34,11 @@ notes: Clôture C-08 · compteur 6/16 · prochain C-11. Distincte de Plan de pro
 ## Où en est GardenFervor ?
 
 <!--RM:NOW
-summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 6/16 (C-01·C-02·C-04·C-05·C-07·C-08 VALIDÉS) · prochain requis = C-11 (non commencé) · C-03·C-06·C-09·C-10 addenda fermés · Case B SUSPENDU
+summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 7/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11 VALIDÉS) · prochain requis = C-12 (non commencé) · C-03·C-06·C-09·C-10 addenda fermés · Case B SUSPENDU
 conception: VALIDÉ
 realisation: PARTIELLE
 validation: PARTIELLE
-contracts_validated: 6
+contracts_validated: 7
 contracts_required: 16
 s3_case_a: VALIDÉ
 case_b: SUSPENDU
@@ -46,7 +46,7 @@ design_gate: VALIDÉ (DG-00→DG-14)
 odc_f1: À REFAIRE
 -->
 
-**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; graphe, SitePrep, autonomie et métier Terraform ont leurs contrats opérationnels ; la suite élargit le jeu (réservations, logistique…) sans réactiver Case B ni implémenter Creuser/Remblayer/Aplanir hors ordre.
+**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; graphe, SitePrep, autonomie, métier Terraform et réservations ont leurs contrats opérationnels ; la suite élargit le jeu (logistique…) sans réactiver Case B ni implémenter Creuser/Remblayer/Aplanir hors ordre.
 
 ### Acquis confirmés
 
@@ -58,7 +58,8 @@ odc_f1: À REFAIRE
   - **C-04** — tâches / graphe / dépendances (**48/48** décisions) ;
   - **C-05** — WorkSite / SitePrep (**62/62** décisions) ;
   - **C-07** — autonomie unité / agent générique (**47/47** décisions) ;
-  - **C-08** — Terraformer opérationnel (**58/58** décisions) — métier formalisé ; **pas** encore implémenté en jeu.
+  - **C-08** — Terraformer opérationnel (**58/58** décisions) — métier formalisé ; **pas** encore implémenté en jeu ;
+  - **C-11** — Réservations (**23/23** décisions) — concurrence formalisée ; **pas** validation runtime multi-chantier.
 - **Preuves techniques majeures (ODC) :** F2 présentation · F3 spatial · F4 tâches · F5 autonomie · F6 économie physique · F7 logistique · F8 opérations terrain — **PASS** (F5/F7 avec validation humaine).
 - **Investor Demo** : présentation et démonstration S3 présentes.
 - **Cartographie** : `PROJECT_GRAPH/` disponible (projection, pas SoT).
@@ -66,49 +67,49 @@ odc_f1: À REFAIRE
 ### En construction / partiel
 
 - Runtime terrain **shipping** (ODC-F1 **À REFAIRE** — preuve précédente INVALIDÉE).
-- Chaîne chantiers / préparation : code S3 opérationnel ; **C-04**, **C-05**, **C-07** et **C-08 VALIDÉS** (règles métier) ; dettes runtime SitePrep / tâches / agent / Terraform documentées — **Creuser / Remblayer / Aplanir non validés en jeu**.
+- Chaîne chantiers / préparation : code S3 opérationnel ; **C-04**, **C-05**, **C-07**, **C-08** et **C-11 VALIDÉS** (règles métier) ; dettes runtime SitePrep / tâches / agent / Terraform / réservations documentées — **Creuser / Remblayer / Aplanir non validés en jeu**.
 - Eau / sol spatiaux : **stubs**.
 - Persistance terrain : **désactivée**.
 
 ### Suspendu
 
-- **Case B** — chantier qui exige d’abord de préparer / transformer le terrain : **SUSPENDU** malgré C-05·C-07·C-08 VALIDÉS documentairement ; réactivation = autorisation explicite distincte.
+- **Case B** — chantier qui exige d’abord de préparer / transformer le terrain : **SUSPENDU** malgré C-05·C-07·C-08·C-11 VALIDÉS documentairement ; réactivation = autorisation explicite distincte.
 
 ### Notes d’ordre
 
 - **C-03**, **C-06**, **C-09** et **C-10** restent des **addenda fermés** (suffisants pour S3) : **ne pas les ouvrir** sans besoin réel.
-- **Prochain contrat requis du compteur 16 = C-11** (ordre registre 11) — **non commencé**.
+- **Prochain contrat requis du compteur 16 = C-12** (ordre registre 12) — **non commencé**.
 
 ---
 
 ## Prochain travail autorisé
 
 <!--RM:NEXT
-id: next-c11
-title: C-11 — Réservations
+id: next-c12
+title: C-12 — Transport / logistique
 status: À FAIRE
 horizon: Prochain
-note: Prochain contrat requis après C-08 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10 restent fermés. Case B suspendu.
-depends: C-04 VALIDÉ · C-08 VALIDÉ (besoins matière)
-unlocks: concurrence matière formalisée · C-12
+note: Prochain contrat requis après C-11 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10 restent fermés. Case B suspendu.
+depends: C-07 VALIDÉ · C-11 VALIDÉ (réservations / transit)
+unlocks: logistique avancée · C-14
 -->
 
-### Prochain — C-11 : réservations et concurrence matière
+### Prochain — C-12 : transport et logistique avancés
 
 **Statut :** À FAIRE (non commencé)  
 **Horizon :** Prochain  
-**En langage simple :** formaliser les règles détaillées de réservation et d’arbitrage concurrentiel, sans ouvrir C-09/C-10 ni réactiver Case B.
+**En langage simple :** formaliser le transport et la logistique au-delà du haul S3, sans ouvrir C-09/C-10 ni réactiver Case B.
 
 | | |
 | --- | --- |
-| Prérequis | C-04 VALIDÉ · C-08 VALIDÉ (besoins matériels métier) · addenda C-09/C-10 fermés (S3) |
-| Débloque | enchaînement vers C-12 et raffinement matière |
+| Prérequis | C-07 VALIDÉ · C-11 VALIDÉ (réservations / transit non libre) · addenda C-09/C-10 fermés (S3) |
+| Débloque | enchaînement vers C-14 et raffinement logistique |
 | Ne pas faire maintenant | ouvrir C-09/C-10 · reprendre Case B · implémenter Creuser/Remblayer/Aplanir hors ordre |
 
 ### Travaux ultérieurs (non autorisés comme « en cours »)
 
-1. **C-11** (prochain requis) — réservations / concurrence.
-2. **En parallèle / ensuite** : dettes terrain shipping (F1), logistique élargie (C-12), infrastructures (C-14), écosystèmes (C-15…), UX joueur (C-20), sauvegarde (C-19) — et **seulement sur ordre** éventuelle reprise Case B ou implémentation métier Terraform.
+1. **C-12** (prochain requis) — transport / logistique.
+2. **En parallèle / ensuite** : dettes terrain shipping (F1), infrastructures (C-14), écosystèmes (C-15…), UX joueur (C-20), sauvegarde (C-19) — et **seulement sur ordre** éventuelle reprise Case B ou implémentation métier Terraform / réservations runtime.
 
 ---
 
@@ -378,19 +379,22 @@ note: C-05·C-07·C-08 VALIDÉS documentairement ; métier Terraform formalisé 
 <!--RM:JALON
 id: P2.J5
 phase: P2
-title: Contrats reste du compteur (C-11…C-21)
+title: Contrats reste du compteur (C-12…C-21)
 status: À FAIRE
 conception: À CONCEVOIR
 realisation: PARTIELLE
 validation: NON TERMINÉE
 depends: P2.J3,P2.J4
 unlocks: P7,P8,P9,P10,P11,P13
-sources: CONTRATS/00_REGISTRE_CONTRATS.md
+sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-11_RESERVATIONS.md
+note: C-11 VALIDÉ (23/23) ; prochain requis = C-12.
 -->
 
 ### Jalon P2.J5 — Autres contrats obligatoires
 
-Réservations, transport élargi, infrastructures, eau/sol/végétation, tech, sauvegarde, UX, simulation/perf — **dans l’ordre du registre**, sans précipiter.
+**C-11** — **VALIDÉ** — réservations / concurrence (`CONTRATS/C-11_RESERVATIONS.md`).  
+
+Transport élargi, infrastructures, eau/sol/végétation, tech, sauvegarde, UX, simulation/perf — **dans l’ordre du registre**, sans précipiter.
 
 <!--/RM:PHASE-->
 
@@ -908,11 +912,11 @@ Validation humaine des boucles critiques, stabilité, build shipping — **sans 
 ```text
 P0 Fondations (TERMINÉ)
  └─► P1 Preuve S3 Cas A (TERMINÉ) · Case B (SUSPENDU)
-      └─► P2 Contrats (EN COURS : C-01·C-02·C-04·C-05·C-07·C-08 VALIDÉS → C-11 prochain)
+      └─► P2 Contrats (EN COURS : C-01·C-02·C-04·C-05·C-07·C-08·C-11 VALIDÉS → C-12 prochain)
            ├─► P3 Monde / terrain (F1 À REFAIRE)
            ├─► P4 Chantiers (C-05·C-07·C-08 VALIDÉS doc · implémentation métier À FAIRE)
            ├─► P5 Unités (C-07 VALIDÉ)
-           └─► P6 Ressources / logistique
+           └─► P6 Ressources / logistique (C-11 VALIDÉ doc · C-12 prochain)
                 └─► P7 Infrastructures
                      └─► P8 Écosystèmes
                           └─► P9 Progression
@@ -927,7 +931,7 @@ P0 Fondations (TERMINÉ)
 
 | Sujet | Statut | Pourquoi | Débloqué par |
 | --- | --- | --- | --- |
-| Case B | SUSPENDU | Contrats C-05·C-07·C-08 VALIDÉS ; réactivation ≠ automatique | Autorisation explicite distincte (+ dettes C-01 utiles) |
+| Case B | SUSPENDU | Contrats C-05·C-07·C-08·C-11 VALIDÉS ; réactivation ≠ automatique | Autorisation explicite distincte (+ dettes C-01 utiles) |
 | C-03 | Fermé (addendum) | S3 suffit | Ouverture humaine seulement si besoin |
 | C-06 | Fermé (addendum) | S3 suffit | Ouverture humaine seulement si besoin |
 | C-09 / C-10 | Fermés (addenda) | S3 suffit | Ouverture humaine seulement si besoin |
@@ -935,7 +939,8 @@ P0 Fondations (TERMINÉ)
 | C-05 | VALIDÉ | Contrat opérationnel 62/62 | — |
 | C-07 | VALIDÉ | Contrat opérationnel 47/47 | — |
 | C-08 | VALIDÉ | Contrat opérationnel 58/58 (métier formalisé ≠ produit) | — |
-| C-11 | À FAIRE | Prochain requis (non commencé) | Ordre explicite de rédaction |
+| C-11 | VALIDÉ | Contrat opérationnel 23/23 (concurrence formalisée ≠ runtime complet) | — |
+| C-12 | À FAIRE | Prochain requis (non commencé) | Ordre explicite de rédaction |
 
 ---
 
@@ -958,6 +963,7 @@ P0 Fondations (TERMINÉ)
 
 | Date | Version | Changement |
 | --- | --- | --- |
+| 2026-10-09 | 1.0.5 | Clôture C-11 VALIDÉ · compteur 7/16 · prochain = C-12 · Case B reste suspendu |
 | 2026-10-09 | 1.0.4 | Clôture C-08 VALIDÉ · compteur 6/16 · prochain = C-11 · Case B reste suspendu |
 | 2026-10-09 | 1.0.3 | Clôture C-07 VALIDÉ · compteur 5/16 · prochain = C-08 |
 | 2026-10-08 | 1.0.2 | Clôture C-05 VALIDÉ · compteur 4/16 · prochain = C-07 |

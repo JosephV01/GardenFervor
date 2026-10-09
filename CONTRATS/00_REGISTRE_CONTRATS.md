@@ -80,7 +80,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-08 | Terraformer opérationnel | REQUIS | détaillée | DG-08 · F8 · agent Terraform · **C-08 VALIDÉ** | P | C-01 · C-05 · C-07 | **oui** | 8 |
 | C-09 | Économie physique / ResourceKey | SUFFISANT* | secondaire | DG-05 · C7 · T1/T2 | I (Timber) | C-00 | non* | 9* |
 | C-10 | Stocks localisés A/B | SUFFISANT* | secondaire | DG-05 · C3 · T4 | I (S3) | C-09 | non* | 10* |
-| C-11 | Réservations | PARTIEL | détaillée | DG-05.3 | P | C-09 · C-10 · C-04 | oui (avant multi-chantier) | 11 |
+| C-11 | Réservations | PARTIEL | détaillée | DG-05.3 · **C-11 VALIDÉ** | P | C-09 · C-10 · C-04 | oui (avant multi-chantier) | 11 |
 | C-12 | Transport / logistique | PARTIEL | détaillée | DG-06 · ODC-F7 · haul A→B | P | C-07 · C-10 | oui (au-delà S3) | 12 |
 | C-13 | Construction / Achevé / En service | SUFFISANT* | secondaire | DG-02/11 · C5 · T7 | I (critère cohorte) | C-05 · C-10 | non* | 13* |
 | C-14 | Infrastructures (lifecycle) | REQUIS | fondamentale | DG-10 · ODC-F9 non démarré | N | C-02 · C-05 · C-12 | **oui** (avant F9+) | 14 |
@@ -196,9 +196,9 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 ### C-11 — Réservations
 
-- **État :** champ `Reservation` sur tâches (LevelPad FillDirt) ; cohorte Timber sans réservation complexe.
+- **État :** champ `Reservation` sur tâches (LevelPad FillDirt) ; cohorte Timber sans réservation complexe ; preuves multi-chantier / priorités / E2 concurrent **manquantes**.
 - **Doc :** DG-05.3 concept ; opérationnel mince.
-- **Contrat :** **partiel → requis** avant concurrence multi-unités / multi-chantiers sur stocks.
+- **Contrat dédié :** **VALIDÉ** — `CONTRATS/C-11_RESERVATIONS.md` · **23/23** décisions A1–G1 · audit PASS · C-09/C-10 addenda fermés (A1).
 - **Ordre 11.**
 
 ### C-12 — Transport / logistique
