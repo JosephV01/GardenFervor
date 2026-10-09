@@ -5,6 +5,9 @@
  *   node docs/syncPages.mjs
  *   node docs/syncPages.mjs --contracts-only
  *     → écrit uniquement docs/contracts.html (pas d’autres vues)
+ *   node docs/syncPages.mjs --project-graph-only
+ *     → copie uniquement PROJECT_GRAPH/GardenFervor_ProjectGraph.html
+ *       vers docs/project-graph.html (pas d’autres vues)
  *
  * - Roadmap  → docs/roadmap.html
  * - Design Gate → docs/design-gate.html
@@ -33,6 +36,40 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
 const docsDir = __dirname;
 const contractsOnly = process.argv.includes('--contracts-only');
+const projectGraphOnly = process.argv.includes('--project-graph-only');
+
+if (contractsOnly && projectGraphOnly) {
+  console.error('ERROR: --contracts-only and --project-graph-only are mutually exclusive');
+  process.exit(1);
+}
+
+if (projectGraphOnly) {
+  const projectGraphSrc = path.join(
+    repoRoot,
+    'PROJECT_GRAPH',
+    'GardenFervor_ProjectGraph.html'
+  );
+  const projectGraphDst = path.join(docsDir, 'project-graph.html');
+  if (!fs.existsSync(projectGraphSrc)) {
+    console.error('ERROR: missing Project Graph source:', projectGraphSrc);
+    process.exit(1);
+  }
+  fs.copyFileSync(projectGraphSrc, projectGraphDst);
+  console.log('Copied → docs/project-graph.html');
+  console.log(
+    JSON.stringify(
+      {
+        ok: true,
+        mode: 'project-graph-only',
+        projectGraph: 'docs/project-graph.html',
+        source: 'PROJECT_GRAPH/GardenFervor_ProjectGraph.html',
+      },
+      null,
+      2
+    )
+  );
+  process.exit(0);
+}
 
 function runNode(scriptRel) {
   const script = path.join(repoRoot, scriptRel);

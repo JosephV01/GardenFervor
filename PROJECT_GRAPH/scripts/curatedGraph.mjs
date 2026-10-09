@@ -73,7 +73,7 @@ export const curatedNodes = [
     designStatus: 'VALIDÉ',
     implementationStatus: 'n/a',
     validationStatus: 'n/a',
-    responsibility: 'Avancement documentaire des contrats (2/16)',
+    responsibility: 'Suivi de l’avancement documentaire des contrats',
     sourceDocuments: ['CONTRATS/00_SUIVI_CONTRATS.md'],
     sourceFiles: [],
     evidence: [],

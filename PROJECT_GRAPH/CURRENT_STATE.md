@@ -1,7 +1,7 @@
 # PROJECT_GRAPH — CURRENT_STATE
 
-Généré : **2026-10-09T18:31:15.699Z**
-HEAD : `91723da19c09b97c763135d6760dbebb1328f1d7` (dirty, 85 fichiers dirty)
+Généré : **2026-10-09T20:37:53.418Z**
+HEAD : `244bf8349abf9cc0491d15f0151675b37576a260` (dirty, 78 fichiers dirty)
 Curated schema : `1.0.0`
 
 ## Inventaire

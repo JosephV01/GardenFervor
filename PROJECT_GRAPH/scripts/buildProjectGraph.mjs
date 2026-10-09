@@ -329,7 +329,7 @@ function buildHtml(data) {
     Drag = pan · Molette = zoom · Clic = détail<br/>
     Trait plein = ACTIVE · pointillé = FUTURE/faible confiance
   </div>
-  <div id="detail"><em>Sélectionnez un nœud</em></div>
+  <div id="detail"><em>Sélectionnez ou survolez un nœud</em></div>
 </aside>
 <div id="canvasWrap"><canvas id="c"></canvas></div>
 <script>
@@ -466,7 +466,7 @@ function showDetail(n) {
     <div><strong>\${n.name}</strong> <span class="badge">\${n.category}</span>
     \${n.implementationStatus==='SUSPENDED'?'<span class="badge SUSPENDED">SUSPENDED</span>':''}
     \${n.validationStatus==='INVALIDÉ'?'<span class="badge INVALIDÉ">INVALIDÉ</span>':''}</div>
-    <div>\${n.responsibility || ''}</div>
+    <div style="margin-top:6px"><b>Responsabilité</b><br/>\${n.responsibility || '—'}</div>
     <div>design: <code>\${n.designStatus}</code> · impl: <code>\${n.implementationStatus}</code> · valid: <code>\${n.validationStatus}</code></div>
     <div>confidence: <code>\${n.confidence}</code></div>
     <div style="margin-top:6px"><b>Sources</b><br/>\${[...(n.sourceDocuments||[]),...(n.sourceFiles||[])].map(s=>'<code>'+s+'</code>').join('<br/>') || '—'}</div>
@@ -488,10 +488,16 @@ canvas.addEventListener('mousedown', ev => {
 });
 window.addEventListener('mouseup', () => drag = null);
 canvas.addEventListener('mousemove', ev => {
-  if (!drag) return;
-  transform.x = drag.tx + (ev.clientX - drag.x);
-  transform.y = drag.ty + (ev.clientY - drag.y);
-  draw();
+  if (drag) {
+    transform.x = drag.tx + (ev.clientX - drag.x);
+    transform.y = drag.ty + (ev.clientY - drag.y);
+    draw();
+    return;
+  }
+  const p = worldFromEvent(ev);
+  const hit = [...nodes].reverse().find(n => p.x >= n._x && p.x <= n._x+160 && p.y >= n._y && p.y <= n._y+40);
+  canvas.style.cursor = hit ? 'pointer' : 'grab';
+  if (hit && selected?.id !== hit.id) showDetail(hit);
 });
 canvas.addEventListener('wheel', ev => {
   ev.preventDefault();
