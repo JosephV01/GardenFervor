@@ -3,439 +3,323 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#101210" media="(prefers-color-scheme: dark)" />
   <meta name="description" content="GardenFervor — portail de production et documentation" />
   <title>GardenFervor — Production</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+    @view-transition { navigation: auto; }
+
     :root {
-      --bg: #f3f5f2;
-      --bg-elev: #ffffff;
-      --ink: #13201a;
-      --ink-soft: #3d4f46;
-      --muted: #5c6e64;
-      --line: color-mix(in oklab, #13201a 12%, transparent);
-      --line-strong: color-mix(in oklab, #13201a 22%, transparent);
-      --forest: #1f6b4a;
-      --forest-deep: #145238;
-      --mist: #e4ebe5;
-      --sand: #eef1ea;
-      --alert: #8a4b1a;
-      --alert-bg: #f7efe4;
-      --radius: 12px;
-      --shadow: 0 1px 0 color-mix(in oklab, #13201a 6%, transparent);
-      --font-display: "Fraunces", ui-serif, Georgia, serif;
-      --font-body: "Figtree", ui-sans-serif, system-ui, sans-serif;
-      --max: 72rem;
-      --pad: clamp(1.25rem, 3vw, 2rem);
+      color-scheme: light dark;
+      --bg: light-dark(#f7f6f2, #101210);
+      --surface: light-dark(#ffffff, #181b18);
+      --ink: light-dark(#121412, #f3f4f1);
+      --muted: light-dark(#4d534c, #a8aea6);
+      --line: light-dark(#d8dbd4, #2c322c);
+      --accent: light-dark(#0b6b45, #5dcc8e);
+      --accent-ink: light-dark(#ffffff, #08140e);
+      --warn: light-dark(#8a4a12, #e0b07a);
+      --warn-bg: light-dark(#f6eee4, #2a2218);
+      --radius: 10px;
+      --font: "Outfit", ui-sans-serif, system-ui, sans-serif;
+      --pad: clamp(1rem, 3vw, 1.75rem);
+      interpolate-size: allow-keywords;
     }
 
-    @layer reset, base, layout, components, motion;
-
-    @layer reset {
-      *, *::before, *::after { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body { margin: 0; }
-      img, svg { display: block; max-width: 100%; }
-      a { color: inherit; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+    ::selection {
+      background: color-mix(in oklab, var(--accent) 28%, transparent);
     }
 
-    @layer base {
-      body {
-        min-height: 100vh;
-        font-family: var(--font-body);
-        color: var(--ink);
-        background:
-          radial-gradient(120% 80% at 100% -10%, color-mix(in oklab, var(--forest) 10%, transparent), transparent 50%),
-          radial-gradient(90% 60% at -10% 20%, color-mix(in oklab, #7a9e88 14%, transparent), transparent 45%),
-          var(--bg);
-        line-height: 1.55;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-      }
-      :focus-visible {
-        outline: 3px solid color-mix(in oklab, var(--forest) 55%, white);
-        outline-offset: 3px;
-      }
-      ::selection {
-        background: color-mix(in oklab, var(--forest) 28%, white);
-        color: var(--ink);
-      }
+    .skip {
+      position: absolute;
+      inset-inline-start: -999px;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 0.5rem 0.8rem;
+    }
+    .skip:focus { inset-inline-start: var(--pad); top: 0.6rem; z-index: 30; }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px) saturate(1.2);
+      background: color-mix(in oklab, var(--bg) 82%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .top-inner {
+      width: min(100% - 2 * var(--pad), 72rem);
+      margin-inline: auto;
+      min-height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .logo span { color: var(--accent); }
+    .jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.15rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .jump a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .jump a:hover { color: var(--ink); }
+
+    .page {
+      width: min(100% - 2 * var(--pad), 72rem);
+      margin-inline: auto;
+      padding-block: clamp(1.75rem, 4vw, 3rem) 4rem;
     }
 
-    @layer layout {
-      .skip {
-        position: absolute;
-        left: -999px;
-        top: 0;
-        background: var(--ink);
-        color: white;
-        padding: 0.6rem 1rem;
-        z-index: 20;
-      }
-      .skip:focus { left: var(--pad); top: 0.75rem; }
-
-      .shell {
-        width: min(100% - 2 * var(--pad), var(--max));
-        margin-inline: auto;
-        padding-block: clamp(1.5rem, 4vw, 2.75rem) 4rem;
-      }
-
-      .hero {
-        display: grid;
-        gap: 1.25rem;
-        padding-block: clamp(1rem, 3vw, 2rem) clamp(1.75rem, 4vw, 2.75rem);
-        border-bottom: 1px solid var(--line);
-        margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
-      }
-      @supports (grid-template-rows: subgrid) {
-        /* progressive enhancement reserved */
-      }
-
-      .hero-brand {
-        margin: 0;
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: clamp(2.4rem, 7vw, 4.25rem);
-        letter-spacing: -0.04em;
-        line-height: 0.95;
-        text-wrap: balance;
-        color: var(--ink);
-      }
-      .hero-brand em {
-        font-style: normal;
-        color: var(--forest);
-      }
-
-      .hero-title {
-        margin: 0;
-        max-width: 28ch;
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: clamp(1.25rem, 2.4vw, 1.65rem);
-        letter-spacing: -0.02em;
-        line-height: 1.25;
-        text-wrap: pretty;
-        color: var(--ink-soft);
-      }
-
-      .hero-lead {
-        margin: 0;
-        max-width: 42rem;
-        font-size: 1.05rem;
-        color: var(--muted);
-        text-wrap: pretty;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.65rem;
-        margin-top: 0.25rem;
-      }
-
-      .board {
-        margin-bottom: clamp(2rem, 4vw, 3rem);
-      }
-      .board > .label {
-        margin: 0 0 0.75rem;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-
-      .directory {
-        display: grid;
-        gap: clamp(1.75rem, 3vw, 2.5rem);
-      }
-
-      .zone {
-        display: grid;
-        gap: 0.85rem;
-      }
-      .zone-head {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 0.5rem 1rem;
-      }
-      .zone-head h2 {
-        margin: 0;
-        font-family: var(--font-display);
-        font-size: 1.35rem;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        color: var(--ink);
-      }
-      .zone-head p {
-        margin: 0;
-        font-size: 0.95rem;
-        color: var(--muted);
-      }
-
-      .links {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        gap: 0.55rem;
-      }
-
-      footer.site-foot {
-        margin-top: clamp(2.5rem, 5vw, 3.5rem);
-        padding-top: 1.25rem;
-        border-top: 1px solid var(--line);
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 0.75rem;
-        font-size: 0.85rem;
-        color: var(--muted);
-      }
-      footer.site-foot a {
-        color: var(--forest-deep);
-        text-decoration: underline;
-        text-underline-offset: 0.15em;
-      }
+    .intro {
+      display: grid;
+      gap: 0.65rem;
+      max-width: 40rem;
+      margin-bottom: 1.75rem;
+    }
+    .intro h1 {
+      margin: 0;
+      font-size: clamp(1.85rem, 4.2vw, 2.6rem);
+      font-weight: 650;
+      letter-spacing: -0.045em;
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+    .intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      text-wrap: pretty;
     }
 
-    @layer components {
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.4rem;
-        min-height: 2.75rem;
-        padding: 0.65rem 1.15rem;
-        border-radius: 8px;
-        border: 1px solid transparent;
-        font-family: var(--font-body);
-        font-weight: 600;
-        font-size: 0.95rem;
-        text-decoration: none;
-        transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
-      }
-      .btn-primary {
-        background: var(--forest);
-        color: #f7faf7;
-      }
-      .btn-primary:hover {
-        background: var(--forest-deep);
-        transform: translateY(-1px);
-      }
-      .btn-ghost {
-        background: var(--bg-elev);
-        border-color: var(--line-strong);
-        color: var(--ink);
-        box-shadow: var(--shadow);
-      }
-      .btn-ghost:hover {
-        border-color: var(--forest);
-        color: var(--forest-deep);
-      }
-
-      /* Synced block — class names required by docs/syncPages.mjs */
-      .statusStrip {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.65rem;
-      }
-      .statusCard {
-        background: var(--bg-elev);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 1rem 1.05rem;
-        box-shadow: var(--shadow);
-        display: grid;
-        gap: 0.35rem;
-        min-height: 6.5rem;
-        content-visibility: auto;
-        contain-intrinsic-size: auto 110px;
-      }
-      .statusCard.accent {
-        border-color: color-mix(in oklab, var(--forest) 40%, var(--line));
-        background: linear-gradient(180deg, #f7fbf8, var(--bg-elev));
-      }
-      .statusCard.warn {
-        border-color: color-mix(in oklab, var(--alert) 35%, var(--line));
-        background: var(--alert-bg);
-      }
-      .statusCard span {
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-      .statusCard strong {
-        font-size: 0.95rem;
-        font-weight: 700;
-        line-height: 1.35;
-        color: var(--ink);
-        text-wrap: pretty;
-      }
-      .statusCard em {
-        font-style: normal;
-        font-size: 0.82rem;
-        color: var(--muted);
-        line-height: 1.4;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      a.doc {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 0.35rem 1rem;
-        align-items: center;
-        padding: 1rem 1.15rem;
-        background: var(--bg-elev);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        text-decoration: none;
-        box-shadow: var(--shadow);
-        transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
-      }
-      a.doc:hover {
-        border-color: color-mix(in oklab, var(--forest) 45%, var(--line));
-        background: #fbfdfa;
-        transform: translateY(-2px);
-      }
-      a.doc.featured {
-        border-color: color-mix(in oklab, var(--forest) 35%, var(--line));
-        background: linear-gradient(135deg, #f5faf6, var(--bg-elev) 55%);
-      }
-      a.doc .kicker {
-        grid-column: 1 / -1;
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        color: var(--forest);
-      }
-      a.doc h3 {
-        margin: 0;
-        grid-column: 1;
-        font-family: var(--font-display);
-        font-size: 1.2rem;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        color: var(--ink);
-      }
-      a.doc p {
-        margin: 0;
-        grid-column: 1;
-        font-size: 0.92rem;
-        color: var(--muted);
-        text-wrap: pretty;
-      }
-      a.doc .go {
-        grid-column: 2;
-        grid-row: 2 / span 2;
-        align-self: center;
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--forest-deep);
-        white-space: nowrap;
-      }
-
-      .howto details {
-        background: var(--sand);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 0.85rem 1.1rem;
-      }
-      .howto summary {
-        cursor: pointer;
-        font-weight: 700;
-        color: var(--ink);
-        list-style-position: outside;
-      }
-      .howto summary::-webkit-details-marker { color: var(--forest); }
-      .howto ol {
-        margin: 0.85rem 0 0.25rem;
-        padding-left: 1.2rem;
-        color: var(--ink-soft);
-        font-size: 0.92rem;
-      }
-      .howto li { margin: 0.4rem 0; }
-      .howto code {
-        font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
-        font-size: 0.84em;
-        background: var(--bg-elev);
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        padding: 0.1em 0.35em;
-      }
+    .board { margin-bottom: 2.25rem; }
+    .board .label {
+      margin: 0 0 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    @layer motion {
-      @media (prefers-reduced-motion: no-preference) {
-        .hero {
-          animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        .board {
-          animation: rise 0.75s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        .directory {
-          animation: rise 0.8s 0.14s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        @keyframes rise {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: none; }
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .btn, a.doc { transition: none; }
-      }
+    /* Classes required by docs/syncPages.mjs */
+    .statusStrip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+    .statusCard {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.85rem 0.95rem;
+      display: grid;
+      gap: 0.2rem;
+      min-height: 5.4rem;
+      content-visibility: auto;
+    }
+    .statusCard.accent { border-color: color-mix(in oklab, var(--accent) 45%, var(--line)); }
+    .statusCard.warn { background: var(--warn-bg); border-color: color-mix(in oklab, var(--warn) 40%, var(--line)); }
+    .statusCard span {
+      font-size: 0.68rem;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .statusCard strong {
+      font-size: 0.95rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      text-wrap: pretty;
+    }
+    .statusCard em {
+      font-style: normal;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    @media (max-width: 900px) {
+    .catalog {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      overflow: hidden;
+    }
+    .group {
+      display: grid;
+      grid-template-columns: 9.5rem 1fr;
+    }
+    .group + .group { border-top: 1px solid var(--line); }
+    .group h2 {
+      margin: 0;
+      padding: 1.1rem 1.15rem;
+      font-size: 0.78rem;
+      font-weight: 650;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: color-mix(in oklab, var(--bg) 70%, var(--surface));
+      border-right: 1px solid var(--line);
+    }
+    .rows { display: grid; }
+    a.row {
+      display: grid;
+      grid-template-columns: minmax(10rem, 15rem) 1fr auto;
+      gap: 0.75rem 1rem;
+      align-items: center;
+      padding: 0.95rem 1.15rem;
+      text-decoration: none;
+      color: inherit;
+      border-bottom: 1px solid var(--line);
+      transition: background 140ms ease;
+    }
+    a.row:last-child { border-bottom: 0; }
+    a.row:hover { background: color-mix(in oklab, var(--accent) 7%, var(--surface)); }
+    a.row h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+    a.row p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-wrap: pretty;
+    }
+    a.row .go {
+      font-size: 0.8rem;
+      font-weight: 650;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .howto {
+      margin-top: 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 0.35rem 1rem;
+    }
+    .howto details { padding-block: 0.55rem; }
+    .howto summary {
+      cursor: pointer;
+      font-weight: 650;
+    }
+    .howto ol {
+      margin: 0.7rem 0 0.2rem;
+      padding-left: 1.2rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .howto li { margin: 0.35rem 0; }
+    .howto code {
+      font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+      font-size: 0.84em;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0.08em 0.32em;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--accent); }
+
+    @media (max-width: 860px) {
       .statusStrip { grid-template-columns: 1fr 1fr; }
+      .group { grid-template-columns: 1fr; }
+      .group h2 {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding-block: 0.7rem;
+      }
+      a.row { grid-template-columns: 1fr auto; }
+      a.row p { grid-column: 1 / -1; }
+      .jump { display: none; }
     }
-    @media (max-width: 560px) {
+    @media (max-width: 540px) {
       .statusStrip { grid-template-columns: 1fr; }
-      a.doc {
-        grid-template-columns: 1fr;
-      }
-      a.doc .go {
-        grid-column: 1;
-        grid-row: auto;
-        margin-top: 0.25rem;
-      }
-      .btn { width: 100%; }
     }
-
-    @container (min-width: 40rem) {
-      /* reserved for future containerized zones */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      a.row { transition: none; }
     }
   </style>
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
 
-  <div class="shell">
-    <header class="hero" aria-label="GardenFervor">
-      <p class="hero-brand">Garden<em>Fervor</em></p>
-      <h1 class="hero-title">Portail de production du projet</h1>
-      <p class="hero-lead">
-        Une entrée claire vers l’état du jeu, les décisions validées et les documents à ouvrir ensuite.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="etat-global.html">Voir l’état global</a>
-        <a class="btn btn-ghost" href="roadmap-globale.html">Ouvrir la roadmap</a>
-      </div>
+  <header class="top">
+    <div class="top-inner">
+      <a class="logo" href="index.html">Garden<span>Fervor</span></a>
+      <nav class="jump" aria-label="Pages">
+        <a href="etat-global.html">État</a>
+        <a href="roadmap-globale.html">Roadmap</a>
+        <a href="historique.html">Historique</a>
+        <a href="design-gate.html">Design Gate</a>
+        <a href="contracts.html">Contrats</a>
+        <a href="project-graph.html">Graphe</a>
+        <a href="presentation-client.html">Présentation</a>
+        <a href="roadmap.html">S3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <header class="intro">
+      <h1>Documentation de production</h1>
+      <p>Où en est le projet, quelles règles gouvernent le jeu, et quel document ouvrir ensuite.</p>
     </header>
 
-    <div class="board" aria-labelledby="board-label">
-      <p class="label" id="board-label">État synchronisé</p>
+    <div class="board">
+      <p class="label">État synchronisé</p>
       <!-- SYNC:STATUS:START -->
     <section class="statusStrip" aria-label="État projet synchronisé">
       <div class="statusCard accent">
@@ -462,123 +346,87 @@
     <!-- SYNC:STATUS:END -->
     </div>
 
-    <main id="contenu" class="directory">
-      <section class="zone" aria-labelledby="sec-pilot">
-        <div class="zone-head">
-          <h2 id="sec-pilot">Pilotage</h2>
-          <p>Situation, trajectoire et mémoire du projet</p>
+    <main id="contenu" class="catalog">
+      <section class="group" aria-labelledby="sec-pilot">
+        <h2 id="sec-pilot">Pilotage</h2>
+        <div class="rows">
+          <a class="row" href="etat-global.html">
+            <h3>État global</h3>
+            <p>Systèmes, maturité, preuves et priorités.</p>
+            <span class="go">Ouvrir</span>
+          </a>
+          <a class="row" href="roadmap-globale.html">
+            <h3>Roadmap</h3>
+            <p>Acquis, prochain travail officiel, suspensions.</p>
+            <span class="go">Ouvrir</span>
+          </a>
+          <a class="row" href="historique.html">
+            <h3>Historique</h3>
+            <p>Chronologie des évolutions validées.</p>
+            <span class="go">Ouvrir</span>
+          </a>
         </div>
-        <ul class="links">
-          <li>
-            <a class="doc featured" href="etat-global.html">
-              <span class="kicker">Prioritaire</span>
-              <h3>État global du projet</h3>
-              <p>Systèmes, maturité, preuves et priorités — pour faire le point sans relancer un audit.</p>
-              <span class="go">Ouvrir →</span>
-            </a>
-          </li>
-          <li>
-            <a class="doc" href="roadmap-globale.html">
-              <span class="kicker">Trajectoire</span>
-              <h3>Roadmap GardenFervor</h3>
-              <p>Acquis, prochain travail officiel, suspensions et phases jusqu’au jeu final.</p>
-              <span class="go">Ouvrir →</span>
-            </a>
-          </li>
-          <li>
-            <a class="doc" href="historique.html">
-              <span class="kicker">Mémoire</span>
-              <h3>Historique des modifications</h3>
-              <p>Chronologie des évolutions validées, filtrable par catégorie.</p>
-              <span class="go">Ouvrir →</span>
-            </a>
-          </li>
-        </ul>
       </section>
 
-      <section class="zone" aria-labelledby="sec-rules">
-        <div class="zone-head">
-          <h2 id="sec-rules">Décisions et règles</h2>
-          <p>Ce qui est tranché, et ce qui gouverne l’exécution</p>
+      <section class="group" aria-labelledby="sec-rules">
+        <h2 id="sec-rules">Règles</h2>
+        <div class="rows">
+          <a class="row" href="design-gate.html">
+            <h3>Design Gate</h3>
+            <p>Décisions de gameplay validées (DG-00 → DG-14).</p>
+            <span class="go">Ouvrir</span>
+          </a>
+          <a class="row" href="contracts.html" data-sync="contracts-card">
+            <h3>Contrats</h3>
+            <p data-sync="contracts-blurb">Pilotage documentaire · 9/16 validés · dernier C-14 (VALIDÉ).</p>
+            <span class="go">Ouvrir</span>
+          </a>
         </div>
-        <ul class="links">
-          <li>
-            <a class="doc" href="design-gate.html">
-              <span class="kicker">Conception</span>
-              <h3>Design Gate</h3>
-              <p>Décisions de gameplay validées (DG-00 → DG-14). Source de vérité de conception.</p>
-              <span class="go">Ouvrir →</span>
-            </a>
-          </li>
-          <li>
-            <a class="doc" href="contracts.html" data-sync="contracts-card">
-              <span class="kicker">Contrats</span>
-              <h3>Suivi des contrats</h3>
-              <p data-sync="contracts-blurb">Pilotage documentaire · 9/16 validés · dernier C-14 (VALIDÉ).</p>
-              <span class="go">Ouvrir →</span>
-            </a>
-          </li>
-        </ul>
       </section>
 
-      <section class="zone" aria-labelledby="sec-map">
-        <div class="zone-head">
-          <h2 id="sec-map">Système et vision</h2>
-          <p>Architecture, liens entre systèmes, présentation</p>
+      <section class="group" aria-labelledby="sec-map">
+        <h2 id="sec-map">Vision</h2>
+        <div class="rows">
+          <a class="row" href="project-graph.html">
+            <h3>Project Graph</h3>
+            <p>Systèmes, contrats, données et preuves reliés.</p>
+            <span class="go">Ouvrir</span>
+          </a>
+          <a class="row" href="presentation-client.html">
+            <h3>Présentation client</h3>
+            <p>Pitch vision et galerie concept.</p>
+            <span class="go">Ouvrir</span>
+          </a>
         </div>
-        <ul class="links">
-          <li>
-            <a class="doc" href="project-graph.html">
-              <span class="kicker">Architecture</span>
-              <h3>Project Graph</h3>
-              <p>Cartographie des systèmes, contrats, données et preuves.</p>
-              <span class="go">Ouvrir →</span>
-            </a>
-          </li>
-          <li>
-            <a class="doc" href="presentation-client.html">
-              <span class="kicker">Présentation</span>
-              <h3>Présentation client</h3>
-              <p>Pitch vision et état réel du projet, avec galerie concept.</p>
-              <span class="go">Ouvrir →</span>
-            </a>
-          </li>
-        </ul>
       </section>
 
-      <section class="zone" aria-labelledby="sec-s3">
-        <div class="zone-head">
-          <h2 id="sec-s3">Preuve contrôlée S3</h2>
-          <p>Cohorte forestière T1–T9 — distincte de la roadmap globale</p>
+      <section class="group" aria-labelledby="sec-s3">
+        <h2 id="sec-s3">Preuve S3</h2>
+        <div class="rows">
+          <a class="row" href="roadmap.html" data-sync="s3-card">
+            <h3>Roadmap de production S3</h3>
+            <p data-sync="s3-blurb">T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9 · 9/9 (100%).</p>
+            <span class="go">Ouvrir</span>
+          </a>
         </div>
-        <ul class="links">
-          <li>
-            <a class="doc" href="roadmap.html" data-sync="s3-card">
-              <span class="kicker">Cohorte S3</span>
-              <h3>Roadmap de production S3</h3>
-              <p data-sync="s3-blurb">T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9 · 9/9 (100%).</p>
-              <span class="go">Ouvrir →</span>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <section class="howto" aria-label="Maintenance du portail">
-        <details>
-          <summary>Comment mettre à jour ce portail</summary>
-          <ol>
-            <li>Modifier les sources dans le dépôt (Markdown, Design Gate, contrats, Roadmap, <code>HISTORIQUE_MODIFICATIONS.md</code>, <code>docs/etat-global/etatGlobal.data.js</code>…)</li>
-            <li>Consulter / mettre à jour <code>REGISTRE_MAINTENANCE_DOCUMENTAIRE.md</code> si le périmètre documentaire change</li>
-            <li>Exécuter <code>node docs/syncPages.mjs</code> depuis la racine</li>
-            <li>Commit + push <code>main</code> pour rafraîchir GitHub Pages</li>
-          </ol>
-        </details>
       </section>
     </main>
 
-    <footer class="site-foot">
+    <section class="howto" aria-label="Maintenance du portail">
+      <details>
+        <summary>Mettre à jour ce portail</summary>
+        <ol>
+          <li>Modifier les sources dans le dépôt (Markdown, Design Gate, contrats, Roadmap, <code>HISTORIQUE_MODIFICATIONS.md</code>, <code>docs/etat-global/etatGlobal.data.js</code>…)</li>
+          <li>Consulter / mettre à jour <code>REGISTRE_MAINTENANCE_DOCUMENTAIRE.md</code> si le périmètre documentaire change</li>
+          <li>Exécuter <code>node docs/syncPages.mjs</code> depuis la racine</li>
+          <li>Commit + push <code>main</code> pour rafraîchir GitHub Pages</li>
+        </ol>
+      </details>
+    </section>
+
+    <footer>
       <a href="https://josephv01.github.io/GardenFervor/">josephv01.github.io/GardenFervor</a>
-      <span>Sources de vérité dans le dépôt · vues publiées sous /docs</span>
+      <span>Sources de vérité dans le dépôt · vues sous /docs</span>
     </footer>
   </div>
 </body>
