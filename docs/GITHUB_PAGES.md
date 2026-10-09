@@ -9,6 +9,7 @@
 | Fichier | Rôle |
 | --- | --- |
 | **`index.html`** | **Hub d’accueil** — état projet + liens |
+| `etat-global.html` | État global du projet (systèmes, maturité, preuves, priorités) |
 | `roadmap.html` | Roadmap de production |
 | `design-gate.html` | Design Gate autonome |
 | `contracts.html` | Suivi des contrats |
@@ -44,7 +45,9 @@ Cette commande :
 3. régénère `docs/contracts.html` depuis `contractsSuivi.js` ;
 4. met à jour le bandeau d’état et les résumés de cartes dans `docs/index.html` ;
 5. copie `Investor Demo/PrésentationClientHtml/PrésentationClient.html` → `docs/presentation-client.html` ;
-6. copie `Investor Demo/PrésentationClientHtml/images/` → `docs/images/` (galerie lot1).
+6. copie `Investor Demo/PrésentationClientHtml/images/` → `docs/images/` (galerie lot1) ;
+7. copie Project Graph et Roadmap globale ;
+8. régénère `docs/etat-global.html` depuis `docs/etat-global/etatGlobal.data.js` + `contractsSuivi.js`.
 
 **Ne pas** écraser manuellement le bandeau entre `<!-- SYNC:STATUS:START -->` et `<!-- SYNC:STATUS:END -->` — il est généré.
 
@@ -55,6 +58,7 @@ Cette commande :
 | Roadmap | `Plan de production/Roadmap/src/roadmap.data.js` |
 | Design Gate | `GardenFervor_DesignGate_React/src/data/designGate.js` |
 | Contrats | `CONTRATS/*.md` (miroir UI : `contractsSuivi.js`) |
+| État global | `docs/etat-global/etatGlobal.data.js` (éditorial) + compteurs via `contractsSuivi.js` — voir `docs/etat-global/README.md` |
 | Présentation client | `Investor Demo/PrésentationClientHtml/PrésentationClient.html` |
 | Hub navigation | `docs/index.html` (structure) + sync pour l’état |
 

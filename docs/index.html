@@ -268,11 +268,17 @@
         <h2 id="sec-pilot">1 · Pilotage</h2>
         <p>Où en est le projet, et que faire ensuite</p>
       </div>
-      <div class="grid one">
-        <a class="card primary" href="roadmap-globale.html">
-          <span class="tag pilot">Commencer ici</span>
+      <div class="grid">
+        <a class="card primary" href="etat-global.html">
+          <span class="tag pilot">Vue d’ensemble</span>
+          <h3>État global du projet</h3>
+          <p>Systèmes, maturité, preuves, scénarios et priorités — bilan détaillé pour faire le point sans relancer un audit.</p>
+          <span class="go">Ouvrir l’état global →</span>
+        </a>
+        <a class="card" href="roadmap-globale.html">
+          <span class="tag pilot">Feuille de route</span>
           <h3>Roadmap GardenFervor</h3>
-          <p>Vision globale jusqu’au jeu final : acquis, prochain travail (C-04), suspensions, phases.</p>
+          <p>Vision globale jusqu’au jeu final : acquis, prochain travail officiel, suspensions, phases.</p>
           <span class="go">Ouvrir la Roadmap →</span>
         </a>
       </div>
@@ -338,7 +344,7 @@
     <section class="howto">
       <h2>Mettre à jour les pages</h2>
       <ol>
-        <li>Modifier les sources dans le dépôt (Markdown, Design Gate, contrats, Roadmap…)</li>
+        <li>Modifier les sources dans le dépôt (Markdown, Design Gate, contrats, Roadmap, <code>docs/etat-global/etatGlobal.data.js</code>…)</li>
         <li>Exécuter <code>node docs/syncPages.mjs</code> depuis la racine</li>
         <li>Commit + push <code>main</code> pour rafraîchir GitHub Pages</li>
       </ol>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="GardenFervor — état global du projet : systèmes, maturité, preuves, priorités" />
+  <title>GardenFervor — État global du projet</title>
+  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <style>
+    :root{
+      --bg:#0e1413;--panel:#141d1b;--line:#26332f;--muted:#8fa19b;--text:#e9efec;
+      --accent:#7bd7a8;--amber:#e5c28d;--blue:#8ecdf8;--danger:#e89a9a;
+      --font:Inter,ui-sans-serif,system-ui,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:var(--font);color:var(--text);background:radial-gradient(circle at 80% -10%,rgba(83,150,117,.12),transparent 28%),var(--bg);line-height:1.5}
+    a{color:var(--accent)}
+    .shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+    .nav{position:sticky;top:0;height:100vh;overflow:auto;border-right:1px solid var(--line);background:#101816;padding:18px 14px}
+    .nav .eyebrow{font-size:10px;letter-spacing:.16em;font-weight:800;color:#71877f}
+    .nav a{display:block;color:#b7cbc2;text-decoration:none;font-size:12px;padding:6px 8px;border-radius:8px;margin:2px 0}
+    .nav a:hover,.nav a:focus{background:#1a2622;outline:none}
+    .main{padding:28px 22px 72px;max-width:1080px}
+    .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;margin-bottom:16px}
+    .back{font-size:12px;font-weight:700;text-decoration:none;border:1px solid var(--line);padding:7px 10px;border-radius:8px;background:#18211f;color:#dce7e2}
+    h1{margin:6px 0 8px;font-size:clamp(1.55rem,3vw,2.2rem);letter-spacing:-.03em}
+    .lead{margin:0;color:var(--muted);font-size:14px;max-width:760px}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+    .stat{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:12px}
+    .stat span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#6f857c;font-weight:800}
+    .stat strong{display:block;margin-top:6px;font-size:18px;color:#dce7e2}
+    .callout{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0;background:#131b19}
+    .callout.warn{border-color:#5a4229;background:#1c1812}
+    .callout.ok{border-color:#3d6350;background:#15231e}
+    .callout.bad{border-color:#5a3030;background:#1c1414}
+    .callout h3{margin:0 0 6px;font-size:13px}
+    .callout p{margin:0;font-size:13px;color:#b7cbc2}
+    section{margin:28px 0}
+    section>h2{margin:0 0 10px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#86a399;border-bottom:1px solid var(--line);padding-bottom:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px;align-items:center}
+    input[type=search],select{background:#101715;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:8px 10px;font:inherit;font-size:13px}
+    input[type=search]{min-width:220px;flex:1}
+    .chip{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.04em;border:1px solid transparent}
+    .chip.ok{background:#145c38;border-color:#5dffb0;color:#e8fff3}
+    .chip.warn{background:#5a4218;border-color:#ffc86a;color:#fff6e6}
+    .chip.bad{background:#6a1f1f;border-color:#ff8f8f;color:#fff5f5}
+    .chip.muted{background:#2a3834;border-color:#9ec4b6;color:#e8f5f0}
+    .chip.blue{background:#1a3a6e;border-color:#8ec5ff;color:#f0f7ff}
+    table{width:100%;border-collapse:collapse;font-size:12px}
+    th,td{border-bottom:1px solid #1f2a27;padding:8px 8px;text-align:left;vertical-align:top}
+    th{color:#7d9189;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+    details.card{border:1px solid var(--line);background:#111816;border-radius:12px;margin:8px 0;padding:0}
+    details.card>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+    details.card>summary::-webkit-details-marker{display:none}
+    details.card[open]>summary{border-bottom:1px solid var(--line)}
+    .body{padding:12px 14px 14px;font-size:13px;color:#b7cbc2}
+    .body p{margin:0 0 8px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .panel{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:12px 14px}
+    .panel h3{margin:0 0 6px;font-size:14px}
+    .steps{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .step{font-size:11px;padding:4px 8px;border-radius:8px;background:#18211f;border:1px solid #2a3834}
+    .step.demontre{border-color:#3d6350;color:#9fe2bd}
+    .step.partiel{border-color:#8a6828;color:#ffc86a}
+    .step.concu{border-color:#3a5270;color:#8ecdf8}
+    .step.absent{border-color:#6a1f1f;color:#ff8f8f}
+    footer{margin-top:28px;color:#5f736a;font-size:11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .rec{font-size:12px;color:var(--amber)}
+    @media(max-width:900px){.shell{grid-template-columns:1fr}.nav{position:relative;height:auto}.stats,.grid2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script id="payload" type="application/json">{"builtAt":"2026-10-09","live":{"validated":8,"required":16,"activeId":"C-12","nextId":"C-14","caseB":{"status":"SUSPENDU","note":"Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11·C-12 VALIDÉS documentairement ; aucune reprise sans autorisation explicite."}},"editorial":{"meta":{"title":"GardenFervor — État global du projet","subtitle":"Systèmes, maturité, preuves, priorités","verifiedAt":"2026-10-09","gitHeadAtAudit":"da9130e","gitMessageAtAudit":"docs(contracts): validate C-12 transport logistics","originNote":"Contenu initial dérivé du Canvas d’audit global (post C-12). Maintenu ici, pas dans Cursor Canvas.","sources":["CONTRATS/00_SUIVI_CONTRATS.md","CONTRATS/00_REGISTRE_CONTRATS.md","ETAT_PROJET.md","HISTORIQUE_MODIFICATIONS.md","ROADMAP/GardenFervor_ROADMAP.md","GardenFervor_DesignGate_React/src/data/contractsSuivi.js","Saved/ODC_F*.txt","Source/GardenFervor/RTS/"]},"legend":[{"id":"decide","label":"Décidé","meaning":"Règle de conception approuvée (Design Gate)."},{"id":"contrat","label":"Contrat VALIDÉ","meaning":"Responsabilités formalisées — ≠ implémentation complète."},{"id":"demontre","label":"Démontré","meaning":"Comportement soutenu par une preuve identifiable."},{"id":"partiel","label":"Partiel","meaning":"Une partie fonctionne ; la capacité complète ne l’est pas."},{"id":"concu","label":"Conçu seulement","meaning":"Documenté sans preuve opérationnelle suffisante."},{"id":"absent","label":"Absent / non commencé","meaning":"Pas encore présent ou pas démarré officiellement."},{"id":"verifier","label":"À vérifier","meaning":"Informations insuffisantes ou contradictoires."}],"identity":{"what":"RTS d’intentions : le joueur oriente des projets ; des unités autonomes transforment réellement le territoire (relief, ressources, chantiers).","notWhat":"Pas un city-builder de placement manuel permanent. Pas encore un RTS produit distribuable.","playerRole":"Orienter priorités et projets ; lire disponibilités et causes de blocage (DG-13). La microgestion n’est pas le cœur du design.","unitsRole":"Sélectionner une tâche, se déplacer, exécuter, vérifier le résultat, livrer (C-07) sur un graphe de tâches (C-04).","maturityOneLiner":"Prototype avancé + conception complète + 8/16 contrats opérationnels + preuve contrôlée S3 Cas A. Boucle écologique produit non démontrée.","acquis":["Design Gate DG-00 → DG-14 VALIDÉ","Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12 VALIDÉS","Cohorte S3 Cas A T1–T9 VALIDÉE","Gates techniques F2–F8 PASS (F1 INVALIDÉ)","Haul A→B et PE Timber démontrés"],"obstacles":["Pas de runtime écologique (C-15…C-17)","Case B suspendu","Creuser / Remblayer / Aplanir non validés en jeu (C-08 = règles)","Terrain shipping F1 INVALIDÉ","UX produit / save monde incomplets","Logistique réseaux / N4 non opérationnelle"]},"executiveQa":[{"q":"Quel jeu construit-on ?","a":"RTS intention → unités autonomes → transformation réelle du monde."},{"q":"Objectif gameplay fondamental ?","a":"Donner des intentions ; le monde évolue via chaînes de travail."},{"q":"Rôle du joueur ?","a":"Orienter ; comprendre ce qui avance ou bloque — sans microgestion permanente."},{"q":"Rôle des unités ?","a":"Exécuter le graphe de tâches avec déplacement, effets et vérification."},{"q":"Maturité réelle ?","a":"Fondations + règles métier + preuve S3 ; pas un jeu shipping complet."},{"q":"Déjà observable ?","a":"PIE / gates : LevelPad, haul, PE Timber, RaiseGrade (store), smokes cohort, Investor Demo S3."},{"q":"Blocage boucle complète ?","a":"Écosystèmes absents ; métier terrain produit ; F1 ; UX/save ; Case B."},{"q":"Risque principal ?","a":"Confondre VALIDÉ contractuel ou gate technique avec capacité produit."},{"q":"Priorité justifiée ?","a":"Décision humaine : cadrage C-14 (ordre officiel) OU consolidation F1 / F8 humain — sans démarrer C-14 automatiquement.","recommendation":true}],"maturityLayers":[{"id":"conception","label":"Conception","state":"VALIDÉ","meaning":"Le « quoi » du jeu est tranché (DG-00→14).","evidence":"GardenFervor_DesignGate_React/src/data/designGate.js · ETAT_PROJET.md"},{"id":"contrats","label":"Contrats / règles métier","state":"PARTIEL (8/16)","meaning":"Fondations chantier / logistique formalisées ; infra/éco/save encore ouvertes.","evidence":"CONTRATS/00_SUIVI_CONTRATS.md"},{"id":"technique","label":"Systèmes techniques","state":"PARTIEL","meaning":"Sous-systèmes RTS présents ; stubs eau/sol ; flags persist OFF.","evidence":"Source/GardenFervor/RTS/"},{"id":"runtime","label":"Exécution runtime","state":"PARTIEL","meaning":"Chaînes S3 / LevelPad exécutables ; InstantMode fréquent dans gates.","evidence":"UnitTaskAgent · ProjectSubsystem · gates gf.*"},{"id":"preuves","label":"Preuves de validation","state":"PARTIEL","meaning":"F2–F8 PASS · F1 INVALIDÉ · S3 9/9. Tension mineure : ETAT § Risques peut encore parler d’« absence d’implémentation » (héritage readiness) alors que T1–T9 / S3 Cas A sont VALIDÉS — la preuve cohorte existe, pas une boucle écologique produit.","evidence":"Saved/ODC_F*.txt · Plan de production"},{"id":"jouable","label":"Expérience jouable","state":"PARTIEL","meaning":"Démo / preuves contrôlées, pas boucle écologique produit.","evidence":"Investor Demo · smokes PIE"},{"id":"shipping","label":"Produit distribuable","state":"NON","meaning":"F1 shipping à refaire ; persist terrain OFF par défaut.","evidence":"ODC-F1 INVALIDÉ · DeveloperSettings"}],"systems":[{"id":"ue-cpp","domain":"Socle","name":"Socle Unreal / module C++","docState":"DG VALIDÉ","codeState":"Implémenté","function":"Module GardenFervor, GameMode / PlayerController / PlayerState.","playerValue":"Exécuter le jeu et les sous-systèmes RTS.","proof":"GardenFervor.uproject · Source/GardenFervor/","limits":"Nombreux assets encore non suivis dans le dépôt local.","depends":"—","next":"Hygiène de dépôt (hors gameplay).","refs":["Source/GardenFervor/GardenFervor.Build.cs","Source/GardenFervor/Game/"],"tags":["socle","implémenté"]},{"id":"map-m4","domain":"Présentation","name":"Carte / M4 / UDS / UDW","docState":"DG-08 · F2","codeState":"Partiel","function":"GardenFervorIsland + rendu MagicMapMaterial / ciel / eau visuelle.","playerValue":"Voir et ressentir le territoire.","proof":"ODC-F2 PASS · Content/GardenFervor/Maps/","limits":"Overlay runtime OFF ; shipping Base+Delta visuel = F1 redo.","depends":"C-01","next":"F1 redo (technique).","refs":["Saved/ODC_F2_VisualTerrainGate.txt","Content/GardenFervor/Maps/GardenFervorIsland.umap"],"tags":["présentation","partiel"]},{"id":"terrain","domain":"Terrain","name":"Terrain runtime","docState":"C-01 VALIDÉ","codeState":"Partiel","function":"RuntimeTerraformStore + ApplyBrushAt ; LandscapeEdit en PIE (session-only).","playerValue":"Le relief peut changer vraiment (données / PIE).","proof":"F8 PASS (store) · F1 INVALIDÉ","limits":"bEnableRuntimeTerraformPersistence=false ; visu packaged ≠ Landscape shipping.","depends":"DG-08","next":"F1 / persistance terrain.","refs":["Source/GardenFervor/RTS/Terraform/GardenFervorLandscapeTerraformSubsystem.cpp","Source/GardenFervor/Input/GardenFervorDeveloperSettings.h"],"tags":["terrain","partiel","c-01"]},{"id":"spatial","domain":"Spatial","name":"Substrat spatial","docState":"C-02 VALIDÉ","codeState":"Partiel","function":"Grille, dirty après brush, QueryTerrain / Soil / Water.","playerValue":"Savoir où le monde a changé pour les systèmes suivants.","proof":"gf.Spatial.RuntimeGate · ODC-F3 PASS","limits":"Soil / Water = stubs gameplay.","depends":"C-01","next":"C-15 / C-16.","refs":["Source/GardenFervor/RTS/Spatial/GardenFervorSpatialSubsystem.cpp"],"tags":["spatial","partiel","c-02"]},{"id":"tasks","domain":"Chantiers","name":"Projets / tâches / graphe","docState":"C-04 VALIDÉ","codeState":"Implémenté (S3)","function":"Graphe, readiness, claims, ExpandLevelPad / ExpandWorkSite.","playerValue":"Chantiers structurés avec dépendances.","proof":"ODC-F4 PASS · gf.Project.SmokeCohortS3","limits":"Dettes expand ; InstantMode dans plusieurs gates.","depends":"C-03* (fermé, S3 suffit)","next":"Durcir chemins hors InstantMode.","refs":["Source/GardenFervor/RTS/Tasks/GardenFervorTaskSubsystem.cpp","CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md"],"tags":["chantiers","implémenté","c-04"]},{"id":"siteprep","domain":"Chantiers","name":"WorkSite / SitePrep / SiteReady","docState":"C-05 VALIDÉ","codeState":"Partiel","function":"Cas A → SiteReady ; Cas B planifie terraform avant suite.","playerValue":"Une zone doit être prête avant la suite du travail.","proof":"GardenFervorSitePrepHelpers · ExpandWorkSite","limits":"Case B produit SUSPENDU.","depends":"C-01 · C-04","next":"Ne pas rouvrir Case B sans ordre.","refs":["Source/GardenFervor/RTS/Projects/GardenFervorSitePrepHelpers.cpp","CONTRATS/C-05_WORKSITE_SITEPREP.md"],"tags":["chantiers","partiel","c-05"]},{"id":"agent","domain":"Unités","name":"Agent générique / autonomie","docState":"C-07 VALIDÉ","codeState":"Implémenté","function":"Seek→Reserve→Travel→Execute→Verify→Deliver ; haul ; terraform brushes.","playerValue":"Les unités travaillent seules sur les tâches.","proof":"ODC-F5 PASS (humain)","limits":"InstantMode dans gates ; dettes Progress (E5).","depends":"C-04","next":"Validation exécution temps réel.","refs":["Source/GardenFervor/RTS/Units/GardenFervorUnitTaskAgent.cpp","CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md"],"tags":["unités","implémenté","c-07"]},{"id":"terraform-metier","domain":"Terrain","name":"Terraformer opérationnel (métier)","docState":"C-08 VALIDÉ","codeState":"Partiel","function":"Règles Creuser/Remblayer/Aplanir ; runtime Raise/Lower/Compact → store.","playerValue":"Préparer / modeler le sol pour les chantiers.","proof":"ODC-F8 PASS (données store)","limits":"Creuser/Remblayer/Aplanir non validés produit.","depends":"C-01 · C-05 · C-07","next":"Validation produit (humain / PIE).","refs":["CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md","Saved/ODC_F8_TerraformOperationGate.txt"],"tags":["terrain","partiel","c-08"]},{"id":"pe","domain":"Économie","name":"Ressources / stocks PE","docState":"C-09* · C-10* fermés","codeState":"Implémenté (Timber)","function":"Stocks A/B, Deposit/Withdraw, Transform.","playerValue":"Matière localisée et traçable.","proof":"ODC-F6 PASS · S3 Timber","limits":"Pas de contrat dédié multi-ressources (addenda fermés).","depends":"DG-05","next":"Ouvrir addenda seulement si besoin réel.","refs":["Source/GardenFervor/RTS/Economy/GardenFervorPhysicalEconomySubsystem.cpp"],"tags":["économie","implémenté"]},{"id":"reservations","domain":"Économie","name":"Réservations","docState":"C-11 VALIDÉ","codeState":"Partiel","function":"TryReserve / claim tâche distinct ; atomicité ciblée.","playerValue":"Éviter double-attribution de stocks.","proof":"API PE + TaskSubsystem","limits":"Preuves multi-chantier / priorités manquantes.","depends":"C-04","next":"Preuves concurrence.","refs":["CONTRATS/C-11_RESERVATIONS.md"],"tags":["économie","partiel","c-11"]},{"id":"logistics","domain":"Logistique","name":"Transport / logistique","docState":"C-12 VALIDÉ","codeState":"Partiel","function":"Haul Travel→Withdraw→Travel→Deposit ; cargo unité.","playerValue":"Acheminer la matière de la source à la destination.","proof":"ODC-F7 PASS LevelPad · S3 A→B","limits":"Pas de réseaux / N4 / arbitre multi-projets.","depends":"C-07 · C-11","next":"Runtime vs règles cibles (dettes §17 C-12).","refs":["CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md","Saved/ODC_F7_LogisticsGate.txt"],"tags":["logistique","partiel","c-12"]},{"id":"infra","domain":"Infrastructures","name":"Infrastructures (lifecycle)","docState":"C-14 NON COMMENCÉ","codeState":"Absent (contrat)","function":"Cycle de vie des infrastructures (cible).","playerValue":"Accès / réseaux durables pour les flux.","proof":"DG-10 conception seulement","limits":"ODC-F9 non démarré.","depends":"C-02 · C-05 · C-12","next":"C-14 puis F9 — sur ordre explicite.","refs":["CONTRATS/00_REGISTRE_CONTRATS.md","ROADMAP/GardenFervor_ROADMAP.md"],"tags":["infrastructures","absent","c-14"]},{"id":"persist","domain":"Persistance","name":"Sauvegarde / persistance","docState":"C-19 NON COMMENCÉ","codeState":"Partiel (API off)","function":"Save/Load terrain slot si flag ON.","playerValue":"Reprendre une session.","proof":"GardenFervorTerraformSaveGame · flag false","limits":"Projets / PE / tâches non sauvés.","depends":"C-01","next":"Contrat C-19.","refs":["Source/GardenFervor/RTS/Terraform/GardenFervorTerraformSaveGame.h"],"tags":["persistance","partiel","c-19"]},{"id":"eco","domain":"Écologie","name":"Eau / sol / végétation / écosystèmes","docState":"C-15…C-17 NON COMMENCÉ","codeState":"Absent / stubs","function":"Comportements environnementaux gameplay (cible).","playerValue":"Résultat écologique mesurable.","proof":"DG-09 VALIDÉ concept","limits":"Aucun runtime écologique.","depends":"C-02 · C-01","next":"Après fondations infra / terrain.","refs":["GardenFervor_DesignGate_React/src/data/designGate.js"],"tags":["écologie","absent"]},{"id":"ux","domain":"UX","name":"Observabilité / UX joueur","docState":"C-20 NON COMMENCÉ","codeState":"Partiel","function":"Selection, status strings, smokes, Investor Demo.","playerValue":"Comprendre ce qui avance ou bloque.","proof":"DG-13 · Investor Demo","limits":"Pas de HUD DG-13 produit.","depends":"C-04 · C-07","next":"C-20.","refs":["Source/GardenFervor/RTS/Selection/","Source/GardenFervor/Game/"],"tags":["ux","partiel","c-20"]}],"scenarios":[{"id":"A","title":"Modifier réellement le relief","verdict":"Partiellement opérationnel","works":"ApplyBrushAt met à jour le store (F8) ; LandscapeEdit visible en PIE (session-only).","missing":"F1 shipping INVALIDÉ ; persistence OFF ; visu packaged ≠ Landscape.","steps":[{"label":"Intention / tâche Terraform","state":"partiel"},{"label":"ApplyBrushAt → store","state":"demontre"},{"label":"Landscape visible PIE","state":"partiel"},{"label":"Shipping Base+Delta + collision","state":"absent"},{"label":"Save / Load terrain","state":"concu"}]},{"id":"B","title":"Préparer une zone de travail","verdict":"Partiellement opérationnel","works":"SitePrep Cas A → SiteReady ; Cas B planifie terraform (code).","missing":"Case B produit SUSPENDU ; validation humaine F8 LevelPad encore demandée (ETAT).","steps":[{"label":"SitePrep représenté","state":"demontre"},{"label":"SiteReady Cas A","state":"demontre"},{"label":"Cas B terraform préalable","state":"concu"},{"label":"Blocage suite si non prêt","state":"partiel"}]},{"id":"C","title":"Faire exécuter une tâche par une unité autonome","verdict":"Démontré (sous InstantMode gates)","works":"Agent + F5 PASS ; Travel / Execute / Verify.","missing":"Durée réelle / non-Instant ; dettes Progress C-07.","steps":[{"label":"Obtenir / claim tâche","state":"demontre"},{"label":"Déplacement","state":"partiel"},{"label":"Exécution + vérification","state":"demontre"},{"label":"Blocage / interruption produit","state":"partiel"}]},{"id":"D","title":"Acheminer une ressource vers un chantier","verdict":"Démontré (flux élémentaire)","works":"F7 haul pit→pad ; S3 Timber A→B ; cargo unité.","missing":"Multi-projets ; routes/accès ; N4 ; réservations concurrentes prouvées.","steps":[{"label":"Réservation C-11","state":"partiel"},{"label":"Chargement Withdraw","state":"demontre"},{"label":"Transit cargo","state":"demontre"},{"label":"Dépôt + confirmation","state":"demontre"},{"label":"Réseaux / multi-chantiers","state":"absent"}]},{"id":"E","title":"Développer un projet écologique complet","verdict":"Non disponible","works":"S3 « En service » Timber (critère cohorte, pas écologique).","missing":"C-15…17 runtime ; impacts DG-09 ; boucle restauration.","steps":[{"label":"Intention / projet","state":"partiel"},{"label":"Préparation terrain","state":"partiel"},{"label":"Flux matières","state":"partiel"},{"label":"Résultat écologique mesurable","state":"absent"}]}],"contractsNotes":{"C-01":{"runtime":"Partiel (F1 INVALIDÉ)","debt":"Overlay/persist OFF"},"C-02":{"runtime":"F3 PASS · stubs eau/sol","debt":"Sim eco absente"},"C-03":{"runtime":"Suffisant S3","debt":"Addendum fermé"},"C-04":{"runtime":"F4 PASS","debt":"Dettes expand"},"C-05":{"runtime":"Cas A OK","debt":"Case B suspendu"},"C-06":{"runtime":"Suffisant S3","debt":"Addendum fermé"},"C-07":{"runtime":"F5 PASS","debt":"InstantMode gates"},"C-08":{"runtime":"Raise/Lower store","debt":"Pas validé produit Creuser/Remblayer/Aplanir"},"C-09":{"runtime":"PE Timber OK","debt":"Addendum fermé"},"C-10":{"runtime":"Cohort stocks OK","debt":"Fermé — ne pas rouvrir"},"C-11":{"runtime":"API partielle","debt":"Multi-chantier non prouvé"},"C-12":{"runtime":"F7 partiel","debt":"Réseaux/N4 absents"},"C-13":{"runtime":"Critère S3","debt":"Addendum fermé"},"C-14":{"runtime":"Absent","debt":"Avant ODC-F9"},"C-15":{"runtime":"Stub","debt":"Bloquant eco"},"C-16":{"runtime":"Stub","debt":"Bloquant eco"},"C-17":{"runtime":"Absent","debt":"Boucle éco"},"C-18":{"runtime":"Legacy Ages","debt":"Tension DG-07"},"C-19":{"runtime":"Flags OFF","debt":"Avant shipping"},"C-20":{"runtime":"Smokes/strings","debt":"Preuve vs produit"},"C-21":{"runtime":"Partiel","debt":"Avant scale"},"C-22":{"runtime":"Présent","debt":"Hors compteur"},"C-23":{"runtime":"F2 PASS","debt":"Hors compteur"}},"gates":[{"id":"F1","title":"ODC-F1 Runtime terrain","result":"INVALIDÉ","date":"2026-10-05","env":"Packaged (ancienne preuve annulée)","tested":"Ancien overlay PMC raise/paint/save/load/sample","shows":"L’ancien chemin overlay n’est plus valide.","doesNotShow":"Que le relief shipping est OK aujourd’hui.","file":"Saved/ODC_F1_RuntimeTerrainGate.txt"},{"id":"F2","title":"ODC-F2 Visuel M4/UDS/UDW","result":"PASS","date":"2026-10-05","env":"Packaged","tested":"Présentation terrain / ciel / eau visuelle","shows":"Présentation OK.","doesNotShow":"Gameplay terrain shipping.","file":"Saved/ODC_F2_VisualTerrainGate.txt"},{"id":"F3","title":"ODC-F3 Spatial","result":"PASS","date":"2026-10-05","env":"Gate","tested":"Grille dirty / queries","shows":"Substrat spatial fonctionnel.","doesNotShow":"Eau/sol gameplay réels.","file":"Saved/ODC_F3_SimulationSubstrateGate.txt"},{"id":"F4","title":"ODC-F4 Tâches","result":"PASS","date":"2026-10-05","env":"Gate","tested":"Graphe LevelPad","shows":"Tâches / dépendances.","doesNotShow":"Tous types de projets.","file":"Saved/ODC_F4_TaskGraphGate.txt"},{"id":"F5","title":"ODC-F5 Autonomie","result":"PASS (humain)","date":"2026-10-05","env":"PIE / gate","tested":"Agent InstantMode","shows":"Chaîne agent complète sous Instant.","doesNotShow":"Temps réel produit.","file":"Saved/ODC_F5_AutonomyGate.txt"},{"id":"F6","title":"ODC-F6 Économie physique","result":"PASS","date":"2026-10-05","env":"Gate","tested":"Extract / Transform PE","shows":"Stocks physiques.","doesNotShow":"Multi-ressources générales.","file":"Saved/ODC_F6_EconomyGate.txt"},{"id":"F7","title":"ODC-F7 Logistique","result":"PASS (humain)","date":"2026-10-05","env":"Packaged NullRHI","tested":"HaulSpoil LevelPad 7 tâches","shows":"A→B + dépendance haul.","doesNotShow":"Réseaux / multi-projets / N4 / blocking routes.","file":"Saved/ODC_F7_LogisticsGate.txt"},{"id":"F8","title":"ODC-F8 Terraform ops","result":"PASS","date":"2026-10-05","env":"Packaged (data plane)","tested":"Raise/Lower store + RaiseGrade","shows":"Données hauteur mesurables.","doesNotShow":"Visuel shipping F1.","file":"Saved/ODC_F8_TerraformOperationGate.txt"},{"id":"S3","title":"Cohorte S3 Cas A","result":"VALIDÉ 9/9","date":"voir Plan de production","env":"PIE gf.Project.SmokeCohortS3","tested":"Intention → En service Timber","shows":"Preuve contrôlée Cas A.","doesNotShow":"Écosystème / Case B.","file":"ETAT_PROJET.md · Plan de production/"},{"id":"DOCS","title":"Roadmap / Project Graph (validate)","result":"0 errors (post C-12)","date":"2026-10-09","env":"Node scripts","tested":"build + validateRoadmap / Project Graph","shows":"Cohérence documentaire synchronisable.","doesNotShow":"Gameplay runtime.","file":"ROADMAP/scripts/validateRoadmap.mjs · PROJECT_GRAPH/"}],"remainingWork":[{"domain":"Socle technique","problem":"F1 shipping Base+Delta à refaire","benefit":"Relief fiable en build distribuable","prereq":"C-01","success":"Nouveau ODC-F1 PASS","blocking":true,"source":"roadmap","jalon":"ODC-F1"},{"domain":"Raccordements","problem":"Dettes réservations multi-demandes","benefit":"Multi-chantier sans chaos","prereq":"C-11 VALIDÉ","success":"Preuves concurrence","blocking":true,"source":"editorial","jalon":"C-11 dettes"},{"domain":"Transport","problem":"Réseaux / accès / N4 non opérationnels","benefit":"Logistique multi-flux crédible","prereq":"C-12 VALIDÉ · C-14","success":"Preuves au-delà F7","blocking":false,"source":"editorial","jalon":"C-12 §17"},{"domain":"Métier terrain","problem":"Creuser/Remblayer/Aplanir non validés produit","benefit":"Préparation terrain jouable","prereq":"C-08 VALIDÉ","success":"Validation humaine PIE","blocking":true,"source":"roadmap","jalon":"C-08 dettes"},{"domain":"Infrastructures","problem":"C-14 / ODC-F9 absents","benefit":"Lifecycle infra avant F9","prereq":"C-12 VALIDÉ","success":"C-14 VALIDÉ puis gate F9","blocking":true,"source":"roadmap","jalon":"C-14"},{"domain":"Persistance","problem":"Save monde / projets absente","benefit":"Reprise de session","prereq":"C-01 · C-19","success":"C-19 + preuves","blocking":true,"source":"roadmap","jalon":"C-19"},{"domain":"Écologie","problem":"C-15…17 non commencés","benefit":"Boucle écologique","prereq":"C-02 · C-01","success":"Comportements eco démontrés","blocking":true,"source":"roadmap","jalon":"C-15…C-17"},{"domain":"UX","problem":"HUD DG-13 non produit","benefit":"Lisibilité stratégique","prereq":"C-04 · C-07","success":"C-20 + UI utile","blocking":false,"source":"roadmap","jalon":"C-20"}],"priorities":{"P0":{"title":"Intégrité et blocages immédiats","items":[{"work":"Préserver dirty SitePrep / untracked (pas de clean destructif)","why":"Évite perte de travail local","unlocks":"Continuité chantier SitePrep","costOfDelay":"Perte de code","proof":"git status inchangé hors décision"},{"work":"Ne pas assimiler VALIDÉ contrat = runtime complet","why":"Évite fausse base technique","unlocks":"Décisions saines","costOfDelay":"Dettes cachées","proof":"Dettes § contrats toujours listées"}]},"P1":{"title":"Fondations nécessaires","items":[{"work":"C-14 Infrastructures (prochain officiel registre)","why":"Ordre compteur 16 · prérequis ODC-F9","unlocks":"Lifecycle infra","costOfDelay":"F9 bloqué contractuellement","proof":"C-14 VALIDÉ","type":"officiel"},{"work":"ODC-F1 Base+Delta shipping redo","why":"Shipping relief","unlocks":"Build distribuable crédible","costOfDelay":"Pas de vérité terrain packaged","proof":"Nouveau F1 PASS","type":"technique"},{"work":"Validation humaine F8 LevelPad visible","why":"Confiance joueur / ETAT","unlocks":"Confirmer raise visible","costOfDelay":"Doute sur le ressenti PIE","proof":"Observation humaine PIE","type":"technique"}]},"P2":{"title":"Première boucle gameplay complète","items":[{"work":"Boucle S3 Cas A déjà prouvée (intention→En service)","why":"Preuve contrôlée existante","unlocks":"Démo forestière","costOfDelay":"—","proof":"SmokeCohortS3"},{"work":"Boucle écologique (restauration / impacts)","why":"Cœur produit GardenFervor","unlocks":"Identité écologique","costOfDelay":"Jeu sans résultat environnemental","proof":"C-15…17 + raccord"}]},"P3":{"title":"Consolidation","items":[{"work":"Agent non-Instant · C-20 UX · C-19 save projets/PE","why":"Qualité et reprise","unlocks":"Session joueur crédible","costOfDelay":"Dettes d’expérience","proof":"Gates + UI + save"}]},"P4":{"title":"Extensions futures","items":[{"work":"Case B · addenda C-09/C-10 · hubs logistiques","why":"Élargissement hors chemin critique immédiat","unlocks":"Variantes / richesse","costOfDelay":"Acceptable","proof":"Ordre humain explicite"}]}},"roadmapCompare":{"officialNext":"Roadmap officielle : prochain = C-14 Infrastructures (NON COMMENCÉ). Ne pas démarrer sans ordre explicite.","alternative":"Recommandation non officielle : si l’objectif immédiat est le shipping jouable, prioriser F1 + validation visuelle F8 avant d’élargir aux infrastructures."},"milestones":[{"id":"J0","title":"Décision humaine","objective":"Choisir axe C-14 doc OU dettes runtime","prereq":"Audit / cette page","validation":"Ordre explicite","doNotStart":"Tout travail suivant"},{"id":"J1a","title":"C-14 (officiel)","objective":"Contracter lifecycle infra","prereq":"C-12 VALIDÉ","validation":"Audit + VALIDÉ C-14","doNotStart":"ODC-F9"},{"id":"J1b","title":"F1 redo (alternatif)","objective":"Terrain shipping vrai","prereq":"C-01","validation":"Nouveau ODC-F1 PASS","doNotStart":"Affirmer shipping OK"},{"id":"J2","title":"ODC-F9","objective":"Infra runtime minimale","prereq":"C-14","validation":"Gate F9","doNotStart":"Éco dépendante d’accès non prêts"},{"id":"J3","title":"Dettes C-11 / C-12 runtime","objective":"Concurrence + accès","prereq":"Contrats VALIDÉS","validation":"Preuves multi-flux","doNotStart":"Multi-chantier produit"},{"id":"J4","title":"C-15 → C-17","objective":"Eau / sol / végétation","prereq":"C-02 · C-01","validation":"Comportements eco","doNotStart":"Boucle écologique déclarée"},{"id":"J5","title":"C-19 · C-20","objective":"Save + lisibilité","prereq":"Fondations","validation":"Reprise + HUD utile","doNotStart":"Shipping joueur"},{"id":"J6","title":"Case B (si ordre)","objective":"Chantier sur terrain à préparer","prereq":"C-05…C-08 + autorisation","validation":"Demo Case B","doNotStart":"Sans autorisation explicite"}],"risks":[{"risk":"VALIDÉ documentaire ≠ runtime","impact":"Fausse confiance","mitigation":"Lire dettes C-08 / C-11 / C-12"},{"risk":"F1 INVALIDÉ","impact":"Pas de shipping relief fiable","mitigation":"Redo Base+Delta ; persist OFF aujourd’hui"},{"risk":"InstantMode dans gates","impact":"Autonomie « magique »","mitigation":"Valider chemins non-Instant"},{"risk":"Case B / C-10","impact":"Réouverture silencieuse","mitigation":"Interdit sans ordre ; addenda fermés"},{"risk":"Dirty SitePrep local","impact":"Perte si clean/reset","mitigation":"Ne pas toucher hors autorisation"},{"risk":"Logistique partielle","impact":"Multi-chantiers chaotiques","mitigation":"C-12 règles + preuves F7 limitées"}],"conclusion":{"acquired":"Conception fondatrice · 8 contrats opérationnels · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-12 formalise la logistique cible.","missing":"Boucle écologique · Case B · métier terrain produit · F1 shipping · UX/save · réseaux/N4.","decision":"Si l’ordre administratif prime → autoriser cadrage C-14. Si le shipping jouable prime → F1 + validation F8 humaine, sans ouvrir C-14 automatiquement."}},"contracts":[{"id":"C-01","name":"Terrain runtime (vérité hauteur / shipping)","status":"VALIDÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-00"],"providesTo":["C-02","C-05","C-08","C-15","C-16","C-17","C-19"],"file":"CONTRATS/C-01_TERRAIN_RUNTIME.md","officialNote":"VALIDÉ humainement — écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil|Water, lexique)","runtime":"Partiel (F1 INVALIDÉ)","debt":"Overlay/persist OFF"},{"id":"C-02","name":"Substrat spatial (cellules / dirty / queries)","status":"VALIDÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-01"],"providesTo":["C-14","C-15","C-16","C-17","C-21"],"file":"CONTRATS/C-02_SUBSTRAT_SPATIAL.md","officialNote":"VALIDÉ humainement — 31/31 décisions A1–F3 ; audit final PASS","runtime":"F3 PASS · stubs eau/sol","debt":"Sim eco absente"},{"id":"C-03","name":"Projet / Intention→Project","status":"SUFFISANT*","category":"SUFFISANT","inCounter":false,"blocking":false,"dependsOn":["C-00"],"providesTo":["C-04"],"file":null,"officialNote":"S3 suffisant ; pas VALIDÉ dédié ; addendum si hors WorkSite","runtime":"Suffisant S3","debt":"Addendum fermé"},{"id":"C-04","name":"Tâches / graphe / dépendances","status":"VALIDÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-03"],"providesTo":["C-05","C-07","C-11"],"file":"CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md","officialNote":"VALIDÉ humainement — 48/48 décisions A1–K6 ; audit final PASS ; dettes d’implémentation conservées","runtime":"F4 PASS","debt":"Dettes expand"},{"id":"C-05","name":"WorkSite / SitePrep (Cas A/B)","status":"VALIDÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-01","C-04"],"providesTo":["C-08","C-13","C-14"],"file":"CONTRATS/C-05_WORKSITE_SITEPREP.md","officialNote":"VALIDÉ humainement — 62/62 décisions A1–N3 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées","runtime":"Cas A OK","debt":"Case B suspendu"},{"id":"C-06","name":"Capacités / roster unités","status":"SUFFISANT*","category":"SUFFISANT","inCounter":false,"blocking":false,"dependsOn":["C-00"],"providesTo":["C-07"],"file":null,"officialNote":"S3 suffisant ; pas VALIDÉ dédié","runtime":"Suffisant S3","debt":"Addendum fermé"},{"id":"C-07","name":"Autonomie unité (agent générique)","status":"VALIDÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-04","C-06"],"providesTo":["C-08","C-12"],"file":"CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md","officialNote":"VALIDÉ humainement — 47/47 décisions A1–J4 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées","runtime":"F5 PASS","debt":"InstantMode gates"},{"id":"C-08","name":"Terraformer opérationnel","status":"VALIDÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-01","C-05","C-07"],"providesTo":[],"file":"CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md","officialNote":"VALIDÉ humainement — 58/58 décisions A1–L4 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées","runtime":"Raise/Lower store","debt":"Pas validé produit Creuser/Remblayer/Aplanir"},{"id":"C-09","name":"Économie physique / ResourceKey","status":"SUFFISANT*","category":"SUFFISANT","inCounter":false,"blocking":false,"dependsOn":["C-00"],"providesTo":["C-10","C-11"],"file":null,"officialNote":"S3 Timber ; pas VALIDÉ dédié","runtime":"PE Timber OK","debt":"Addendum fermé"},{"id":"C-10","name":"Stocks localisés A/B","status":"SUFFISANT*","category":"SUFFISANT","inCounter":false,"blocking":false,"dependsOn":["C-09"],"providesTo":["C-11","C-12","C-13"],"file":null,"officialNote":"S3 ; pas VALIDÉ dédié","runtime":"Cohort stocks OK","debt":"Fermé — ne pas rouvrir"},{"id":"C-11","name":"Réservations","status":"VALIDÉ","category":"PARTIEL","inCounter":true,"blocking":true,"dependsOn":["C-09","C-10","C-04"],"providesTo":["C-12"],"file":"CONTRATS/C-11_RESERVATIONS.md","officialNote":"VALIDÉ humainement — 23/23 décisions A1–G1 ; audit final PASS ; C-09·C-10 addenda fermés ; Case B reste suspendu ; dettes d’implémentation / preuves manquantes conservées","runtime":"API partielle","debt":"Multi-chantier non prouvé"},{"id":"C-12","name":"Transport / logistique","status":"VALIDÉ","category":"PARTIEL","inCounter":true,"blocking":true,"dependsOn":["C-07","C-10"],"providesTo":["C-14"],"file":"CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md","officialNote":"VALIDÉ humainement — 25/25 décisions A1–G3 ; audit final PASS ; C-10 addendum fermé ; Case B reste suspendu ; dettes d’implémentation / preuves partielles conservées","runtime":"F7 partiel","debt":"Réseaux/N4 absents"},{"id":"C-13","name":"Construction / Achevé / En service","status":"SUFFISANT*","category":"SUFFISANT","inCounter":false,"blocking":false,"dependsOn":["C-05","C-10"],"providesTo":[],"file":null,"officialNote":"Critère cohorte ; pas VALIDÉ dédié","runtime":"Critère S3","debt":"Addendum fermé"},{"id":"C-14","name":"Infrastructures (lifecycle)","status":"NON COMMENCÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-02","C-05","C-12"],"providesTo":[],"file":null,"officialNote":"Avant ODC-F9","runtime":"Absent","debt":"Avant ODC-F9"},{"id":"C-15","name":"Hydrologie","status":"NON COMMENCÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-02","C-01"],"providesTo":["C-17"],"file":null,"officialNote":"","runtime":"Stub","debt":"Bloquant eco"},{"id":"C-16","name":"Sol","status":"NON COMMENCÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-02","C-01"],"providesTo":["C-17"],"file":null,"officialNote":"","runtime":"Stub","debt":"Bloquant eco"},{"id":"C-17","name":"Végétation / écosystèmes","status":"NON COMMENCÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-15","C-16","C-01"],"providesTo":[],"file":null,"officialNote":"","runtime":"Absent","debt":"Boucle éco"},{"id":"C-18","name":"Technologie / progression","status":"NON COMMENCÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-00","C-03"],"providesTo":[],"file":null,"officialNote":"","runtime":"Legacy Ages","debt":"Tension DG-07"},{"id":"C-19","name":"Persistance / sauvegarde","status":"NON COMMENCÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-01","C-09","C-03"],"providesTo":[],"file":null,"officialNote":"Avant shipping","runtime":"Flags OFF","debt":"Avant shipping"},{"id":"C-20","name":"Observabilité / UX lisibilité","status":"NON COMMENCÉ","category":"REQUIS","inCounter":true,"blocking":false,"dependsOn":["C-04","C-07","C-09"],"providesTo":[],"file":null,"officialNote":"Preuve vs produit","runtime":"Smokes/strings","debt":"Preuve vs produit"},{"id":"C-21","name":"Simulation / fréquences / perf","status":"NON COMMENCÉ","category":"REQUIS","inCounter":true,"blocking":true,"dependsOn":["C-00","C-02"],"providesTo":[],"file":null,"officialNote":"Avant scale","runtime":"Partiel","debt":"Avant scale"}]}</script>
+  <script>
+  (function () {
+    const h = React.createElement;
+    const data = JSON.parse(document.getElementById('payload').textContent);
+    const E = data.editorial;
+    const live = data.live;
+
+    const VERDICT_CLASS = {
+      'Démontré': 'ok',
+      'Démontré (sous InstantMode gates)': 'ok',
+      'Partiellement opérationnel': 'warn',
+      'Non disponible': 'bad',
+      'À vérifier': 'blue',
+      'Conçu seulement': 'blue',
+    };
+    const CODE_CLASS = {
+      'Implémenté': 'ok',
+      'Implémenté (S3)': 'ok',
+      'Implémenté (Timber)': 'ok',
+      'Partiel': 'warn',
+      'Partiel (API off)': 'warn',
+      'Absent / stubs': 'bad',
+      'Absent (contrat)': 'bad',
+    };
+
+    function Chip({ children, kind }) {
+      return h('span', { className: 'chip ' + (kind || 'muted') }, children);
+    }
+
+    function Callout({ title, children, kind }) {
+      return h('div', { className: 'callout ' + (kind || '') },
+        h('h3', null, title),
+        h('p', null, children)
+      );
+    }
+
+    function Nav() {
+      const links = [
+        ['#vue', 'Vue générale'],
+        ['#maturite', 'Maturité'],
+        ['#systemes', 'Systèmes'],
+        ['#scenarios', 'Scénarios'],
+        ['#contrats', 'Contrats'],
+        ['#preuves', 'Preuves'],
+        ['#travaux', 'Travaux restants'],
+        ['#priorites', 'Priorités'],
+        ['#feuille', 'Feuille de route'],
+        ['#risques', 'Risques'],
+        ['#refs', 'Références'],
+      ];
+      return h('aside', { className: 'nav', 'aria-label': 'Sommaire' },
+        h('div', { className: 'eyebrow' }, 'GARDENFERVOR'),
+        h('div', { style: { fontWeight: 800, margin: '8px 0 12px', fontSize: 14 } }, 'État global'),
+        h('a', { className: 'back', href: 'index.html', style: { display: 'inline-block', marginBottom: 12 } }, '← Hub'),
+        ...links.map(([href, label]) => h('a', { href, key: href }, label))
+      );
+    }
+
+    function SystemsSection() {
+      const [q, setQ] = React.useState('');
+      const [domain, setDomain] = React.useState('Tous');
+      const [code, setCode] = React.useState('Tous');
+      const domains = ['Tous', ...Array.from(new Set(E.systems.map((s) => s.domain)))];
+      const codes = ['Tous', ...Array.from(new Set(E.systems.map((s) => s.codeState)))];
+      const filtered = E.systems.filter((s) => {
+        const hay = [s.name, s.function, s.playerValue, s.limits, s.proof, ...(s.refs || [])].join(' ').toLowerCase();
+        if (q && !hay.includes(q.toLowerCase())) return false;
+        if (domain !== 'Tous' && s.domain !== domain) return false;
+        if (code !== 'Tous' && s.codeState !== code) return false;
+        return true;
+      });
+      return h('section', { id: 'systemes' },
+        h('h2', null, 'C · Inventaire des systèmes'),
+        h('p', { style: { color: 'var(--muted)', fontSize: 13, marginTop: 0 } },
+          'Chaque fiche distingue conception, code réel, preuves et limites. Un contrat VALIDÉ n’implique pas une capacité complète.'),
+        h('div', { className: 'toolbar' },
+          h('input', { type: 'search', placeholder: 'Rechercher un système, fichier, preuve…', value: q, onChange: (e) => setQ(e.target.value), 'aria-label': 'Recherche systèmes' }),
+          h('select', { value: domain, onChange: (e) => setDomain(e.target.value), 'aria-label': 'Filtrer domaine' },
+            domains.map((d) => h('option', { key: d, value: d }, d))),
+          h('select', { value: code, onChange: (e) => setCode(e.target.value), 'aria-label': 'Filtrer état code' },
+            codes.map((d) => h('option', { key: d, value: d }, d))),
+          h(Chip, { kind: 'muted' }, filtered.length + ' / ' + E.systems.length)
+        ),
+        filtered.map((s) =>
+          h('details', { className: 'card', key: s.id },
+            h('summary', null,
+              h('strong', { style: { minWidth: 180 } }, s.name),
+              h(Chip, { kind: 'muted' }, s.domain),
+              h(Chip, { kind: CODE_CLASS[s.codeState] || 'warn' }, s.codeState),
+              h(Chip, { kind: 'blue' }, s.docState)
+            ),
+            h('div', { className: 'body' },
+              h('p', null, h('strong', null, 'Fonction : '), s.function),
+              h('p', null, h('strong', null, 'Pour le joueur : '), s.playerValue),
+              h('p', null, h('strong', null, 'Preuve : '), s.proof),
+              h('p', null, h('strong', null, 'Limites : '), s.limits),
+              h('p', null, h('strong', null, 'Dépendances : '), s.depends),
+              h('p', null, h('strong', null, 'Suite justifiée : '), s.next),
+              h('p', null, h('strong', null, 'Références : '), (s.refs || []).join(' · '))
+            )
+          )
+        )
+      );
+    }
+
+    function App() {
+      return h('div', { className: 'shell' },
+        h(Nav),
+        h('main', { className: 'main' },
+          h('div', { className: 'top' },
+            h('div', null,
+              h('div', { className: 'eyebrow', style: { fontSize: 10, letterSpacing: '.16em', fontWeight: 800, color: '#71877f' } }, 'DOCUMENTATION'),
+              h('h1', null, E.meta.title),
+              h('p', { className: 'lead' }, E.meta.subtitle + ' — ' + E.identity.maturityOneLiner)
+            ),
+            h('a', { className: 'back', href: 'index.html' }, '← Hub documentation')
+          ),
+
+          h('div', { className: 'stats', 'aria-label': 'Compteurs synchronisés' },
+            h('div', { className: 'stat' }, h('span', null, 'Contrats'), h('strong', null, live.validated + ' / ' + live.required)),
+            h('div', { className: 'stat' }, h('span', null, 'Dernier VALIDÉ'), h('strong', null, live.activeId)),
+            h('div', { className: 'stat' }, h('span', null, 'Prochain officiel'), h('strong', null, live.nextId)),
+            h('div', { className: 'stat' }, h('span', null, 'Case B'), h('strong', null, live.caseB.status))
+          ),
+          h('p', { style: { fontSize: 12, color: 'var(--muted)', marginTop: -6 } },
+            'Compteurs issus de contractsSuivi.js (miroir du suivi officiel) · sync build ' + data.builtAt +
+            ' · audit de référence git ' + E.meta.gitHeadAtAudit),
+
+          h('section', { id: 'vue' },
+            h('h2', null, 'A · Vue générale'),
+            h(Callout, { title: 'Ce n’est pas encore un RTS jouable complet', kind: 'warn' },
+              E.identity.what + ' ' + E.identity.notWhat),
+            h('div', { className: 'grid2' },
+              h('div', { className: 'panel' },
+                h('h3', null, 'Rôle du joueur'),
+                h('p', null, E.identity.playerRole)
+              ),
+              h('div', { className: 'panel' },
+                h('h3', null, 'Rôle des unités'),
+                h('p', null, E.identity.unitsRole)
+              )
+            ),
+            h('div', { className: 'grid2', style: { marginTop: 10 } },
+              h('div', { className: 'panel' },
+                h('h3', null, 'Acquis'),
+                h('ul', null, E.identity.acquis.map((x, i) => h('li', { key: i }, x)))
+              ),
+              h('div', { className: 'panel' },
+                h('h3', null, 'Obstacles à une boucle complète'),
+                h('ul', null, E.identity.obstacles.map((x, i) => h('li', { key: i }, x)))
+              )
+            ),
+            h('table', { style: { marginTop: 14 } },
+              h('thead', null, h('tr', null, h('th', null, 'Question'), h('th', null, 'Réponse'))),
+              h('tbody', null, E.executiveQa.map((row, i) =>
+                h('tr', { key: i },
+                  h('td', null, row.q),
+                  h('td', null, row.a, row.recommendation ? h('div', { className: 'rec' }, 'Recommandation (non officielle)') : null)
+                )
+              ))
+            )
+          ),
+
+          h('section', { id: 'maturite' },
+            h('h2', null, 'B · État de maturité'),
+            h('p', { style: { color: 'var(--muted)', fontSize: 13 } },
+              'Chaque couche répond à une question différente. Conception VALIDÉE ≠ produit shipping.'),
+            h('div', { className: 'grid2' },
+              E.maturityLayers.map((m) =>
+                h('div', { className: 'panel', key: m.id },
+                  h('h3', null, m.label, ' ', h(Chip, { kind: m.state.startsWith('VALID') ? 'ok' : m.state === 'NON' ? 'bad' : 'warn' }, m.state)),
+                  h('p', null, m.meaning),
+                  h('p', { style: { fontSize: 11, color: '#7d9189' } }, m.evidence)
+                )
+              )
+            ),
+            h(Callout, { title: 'Légende des états', kind: '' },
+              E.legend.map((l) => l.label + ' — ' + l.meaning).join(' · '))
+          ),
+
+          h(SystemsSection),
+
+          h('section', { id: 'scenarios' },
+            h('h2', null, 'D · Scénarios de gameplay'),
+            E.scenarios.map((sc) =>
+              h('details', { className: 'card', key: sc.id, open: sc.id === 'D' || sc.id === 'E' },
+                h('summary', null,
+                  h('strong', null, sc.id + ' — ' + sc.title),
+                  h(Chip, { kind: VERDICT_CLASS[sc.verdict] || 'warn' }, sc.verdict)
+                ),
+                h('div', { className: 'body' },
+                  h('p', null, h('strong', null, 'Ce qui marche : '), sc.works),
+                  h('p', null, h('strong', null, 'Ce qui manque : '), sc.missing),
+                  h('div', { className: 'steps' },
+                    sc.steps.map((st, i) => h('span', { className: 'step ' + st.state, key: i }, st.label + ' · ' + st.state))
+                  )
+                )
+              )
+            )
+          ),
+
+          h('section', { id: 'contrats' },
+            h('h2', null, 'E · Contrats et décisions'),
+            h('p', { style: { color: 'var(--muted)', fontSize: 13 } },
+              'Statuts officiels synchronisés depuis contractsSuivi.js. Notes runtime = éditorial (etatGlobal.data.js).'),
+            h('div', { className: 'toolbar' },
+              h(Chip, { kind: 'ok' }, live.validated + ' VALIDÉS'),
+              h(Chip, { kind: 'muted' }, 'Addenda* hors compteur'),
+              h(Chip, { kind: 'warn' }, 'Case B ' + live.caseB.status),
+              h(Chip, { kind: 'blue' }, 'Prochain ' + live.nextId)
+            ),
+            h('table', null,
+              h('thead', null, h('tr', null,
+                h('th', null, 'ID'), h('th', null, 'Intitulé'), h('th', null, 'Statut'),
+                h('th', null, 'Compteur'), h('th', null, 'Runtime'), h('th', null, 'Dette / blocage')
+              )),
+              h('tbody', null, data.contracts.map((c) =>
+                h('tr', { key: c.id },
+                  h('td', null, c.id),
+                  h('td', null, c.name),
+                  h('td', null, h(Chip, { kind: c.status.startsWith('VALID') ? 'ok' : c.status.includes('SUFF') ? 'muted' : c.status === 'NON REQUIS' ? 'muted' : 'warn' }, c.status)),
+                  h('td', null, c.inCounter ? 'Oui' : 'Non*'),
+                  h('td', null, c.runtime),
+                  h('td', null, c.debt)
+                )
+              ))
+            ),
+            h('p', { style: { fontSize: 12, color: 'var(--muted)' } }, live.caseB.note)
+          ),
+
+          h('section', { id: 'preuves' },
+            h('h2', null, 'F · Gates et preuves techniques'),
+            E.gates.map((g) =>
+              h('details', { className: 'card', key: g.id },
+                h('summary', null,
+                  h('strong', null, g.id + ' — ' + g.title),
+                  h(Chip, { kind: String(g.result).includes('INVALID') ? 'bad' : String(g.result).includes('PASS') || String(g.result).includes('VALID') ? 'ok' : 'warn' }, g.result)
+                ),
+                h('div', { className: 'body' },
+                  h('p', null, h('strong', null, 'Date / env. : '), g.date + ' · ' + g.env),
+                  h('p', null, h('strong', null, 'Testé : '), g.tested),
+                  h('p', null, h('strong', null, 'Permet de conclure : '), g.shows),
+                  h('p', null, h('strong', null, 'Ne permet pas : '), g.doesNotShow),
+                  h('p', null, h('strong', null, 'Fichier : '), g.file)
+                )
+              )
+            )
+          ),
+
+          h('section', { id: 'travaux' },
+            h('h2', null, 'G · Travaux restants'),
+            h('table', null,
+              h('thead', null, h('tr', null,
+                h('th', null, 'Domaine'), h('th', null, 'Problème'), h('th', null, 'Bénéfice'),
+                h('th', null, 'Prérequis'), h('th', null, 'Succès'), h('th', null, 'Source'), h('th', null, 'Bloquant')
+              )),
+              h('tbody', null, E.remainingWork.map((w, i) =>
+                h('tr', { key: i },
+                  h('td', null, w.domain),
+                  h('td', null, w.problem),
+                  h('td', null, w.benefit),
+                  h('td', null, w.prereq),
+                  h('td', null, w.success),
+                  h('td', null, w.source === 'roadmap' ? 'Roadmap' : 'Éditorial'),
+                  h('td', null, w.blocking ? 'Oui' : 'Non')
+                )
+              ))
+            )
+          ),
+
+          h('section', { id: 'priorites' },
+            h('h2', null, 'H · Priorités P0–P4'),
+            Object.entries(E.priorities).map(([key, block]) =>
+              h('div', { key, style: { marginBottom: 14 } },
+                h('h3', { style: { fontSize: 14, margin: '0 0 8px' } }, key + ' — ' + block.title),
+                h('table', null,
+                  h('thead', null, h('tr', null,
+                    h('th', null, 'Travail'), h('th', null, 'Pourquoi'), h('th', null, 'Débloque'),
+                    h('th', null, 'Coût du report'), h('th', null, 'Preuve')
+                  )),
+                  h('tbody', null, block.items.map((it, i) =>
+                    h('tr', { key: i },
+                      h('td', null, it.work, it.type ? h('div', { className: 'rec' }, it.type) : null),
+                      h('td', null, it.why),
+                      h('td', null, it.unlocks),
+                      h('td', null, it.costOfDelay),
+                      h('td', null, it.proof)
+                    )
+                  ))
+                )
+              )
+            ),
+            h(Callout, { title: 'Roadmap officielle vs recommandation', kind: 'warn' },
+              E.roadmapCompare.officialNext + ' ' + E.roadmapCompare.alternative)
+          ),
+
+          h('section', { id: 'feuille' },
+            h('h2', null, 'I · Feuille de route'),
+            h('table', null,
+              h('thead', null, h('tr', null,
+                h('th', null, 'Jalon'), h('th', null, 'Objectif'), h('th', null, 'Prérequis'),
+                h('th', null, 'Validation'), h('th', null, 'Ne pas commencer avant')
+              )),
+              h('tbody', null, E.milestones.map((m) =>
+                h('tr', { key: m.id },
+                  h('td', null, m.id + ' ' + m.title),
+                  h('td', null, m.objective),
+                  h('td', null, m.prereq),
+                  h('td', null, m.validation),
+                  h('td', null, m.doNotStart)
+                )
+              ))
+            ),
+            h(Callout, { title: 'Garde-fou', kind: 'ok' },
+              'Cette page n’ouvre pas C-14, ne modifie aucun statut et ne démarre aucun gameplay. Prochain officiel affiché : ' + live.nextId + '.')
+          ),
+
+          h('section', { id: 'risques' },
+            h('h2', null, 'J · Risques, dettes et garde-fous'),
+            h('table', null,
+              h('thead', null, h('tr', null, h('th', null, 'Risque'), h('th', null, 'Impact'), h('th', null, 'Mitigation'))),
+              h('tbody', null, E.risks.map((r, i) =>
+                h('tr', { key: i }, h('td', null, r.risk), h('td', null, r.impact), h('td', null, r.mitigation))
+              ))
+            ),
+            h(Callout, { title: 'Acquis', kind: 'ok' }, E.conclusion.acquired),
+            h(Callout, { title: 'Manque pour un jeu jouable (produit)', kind: 'bad' }, E.conclusion.missing),
+            h(Callout, { title: 'Décision à prendre (recommandation)', kind: 'warn' }, E.conclusion.decision)
+          ),
+
+          h('section', { id: 'refs' },
+            h('h2', null, 'K · Références et maintenance'),
+            h('p', { style: { fontSize: 13, color: 'var(--muted)' } }, E.meta.originNote),
+            h('p', { style: { fontSize: 13 } },
+              h('strong', null, 'Vérifié le '), E.meta.verifiedAt,
+              ' · git audit ', E.meta.gitHeadAtAudit, ' — ', E.meta.gitMessageAtAudit),
+            h('ul', null, E.meta.sources.map((s, i) => h('li', { key: i }, s))),
+            h('p', { style: { fontSize: 13 } },
+              'Mise à jour : éditer ', h('code', null, 'docs/etat-global/etatGlobal.data.js'),
+              ' et/ou le suivi des contrats, puis ', h('code', null, 'node docs/syncPages.mjs'),
+              '. Voir ', h('code', null, 'docs/etat-global/README.md'), '.')
+          ),
+
+          h('footer', null,
+            h('span', null, 'https://josephv01.github.io/GardenFervor/etat-global.html'),
+            h('span', null, 'Source éditoriale versionnée · compteurs live depuis contractsSuivi.js')
+          )
+        )
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+  })();
+  </script>
+</body>
+</html>

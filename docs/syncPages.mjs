@@ -11,11 +11,13 @@
  * - Présentation Investor Demo → docs/presentation-client.html
  * - Project Graph → docs/project-graph.html (depuis PROJECT_GRAPH/)
  * - Roadmap globale → docs/roadmap-globale.html (depuis ROADMAP/)
+ * - État global → docs/etat-global.html (depuis docs/etat-global/)
  *
  * Sources de vérité : Markdown CONTRATS/, roadmap.data.js, designGate.js,
  * Investor Demo/PrésentationClientHtml/PrésentationClient.html,
  * PROJECT_GRAPH/GardenFervor_ProjectGraph.html,
- * ROADMAP/GardenFervor_ROADMAP.md (via HTML généré).
+ * ROADMAP/GardenFervor_ROADMAP.md (via HTML généré),
+ * docs/etat-global/etatGlobal.data.js (+ compteurs depuis contractsSuivi.js).
  * Ne pas inventer de VALIDÉ.
  */
 import fs from 'fs';
@@ -197,6 +199,9 @@ if (!fs.existsSync(roadmapGlobaleSrc)) {
 fs.copyFileSync(roadmapGlobaleSrc, roadmapGlobaleDst);
 console.log('Copied → docs/roadmap-globale.html');
 
+console.log('— Sync État global —');
+runNode(path.join('docs', 'etat-global', 'buildEtatGlobal.mjs'));
+
 console.log(
   JSON.stringify(
     {
@@ -210,6 +215,7 @@ console.log(
       presentationImages: 'docs/images/',
       projectGraph: 'docs/project-graph.html',
       roadmapGlobale: 'docs/roadmap-globale.html',
+      etatGlobal: 'docs/etat-global.html',
       syncedAt: today,
     },
     null,
