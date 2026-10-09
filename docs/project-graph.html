@@ -60,8 +60,8 @@
     <option>n/a</option>
   </select>
   <div class="legend">
-    Drag = pan · Molette = zoom · Clic = détail<br/>
-    Trait plein = ACTIVE · pointillé = FUTURE/faible confiance
+    Drag = pan · Molette = zoom · Survol / clic = détail<br/>
+    Ports : entrée ← · sortie → · Survol = flux le long des relations
   </div>
   <div id="detail"><em>Sélectionnez ou survolez un nœud</em></div>
 </aside>
@@ -88,6 +88,8 @@ const ctx = canvas.getContext('2d');
 let nodes = [], edges = [], selected = null;
 let transform = { x: 40, y: 40, s: 1 };
 let drag = null;
+let flowT = 0;
+let flowRaf = 0;
 
 document.getElementById('meta').textContent =
   (DATA.generationInfo?.generatedAt || '') + ' · HEAD ' + (DATA.generationInfo?.git?.short || '?') +
@@ -116,19 +118,105 @@ function activeNodes() {
   });
 }
 
+const TITLE_FONT = '600 12px "Segoe UI", system-ui, sans-serif';
+const STATUS_FONT = '10px "Segoe UI", system-ui, sans-serif';
+const LABEL_FONT = '9px "Segoe UI", system-ui, sans-serif';
+const CAT_FONT = '700 10px "Segoe UI", system-ui, sans-serif';
+const PAD_X = 16;
+const PAD_Y = 12;
+const PORT_R = 5;
+const PORT_INSET = 0;
+const MIN_W = 176;
+const PREFERRED_MAX = 228;
+const LINE_H = 16;
+const COL_GAP = 56;
+const ROW_GAP = 30;
+
+function wrapLines(text, maxInner) {
+  const raw = String(text || '');
+  const words = raw.split(/\s+/).filter(Boolean);
+  if (!words.length) return [''];
+  const lines = [];
+  let current = '';
+  const widerThan = (s) => ctx.measureText(s).width > maxInner;
+  const flushChars = (word) => {
+    let chunk = '';
+    for (const ch of word) {
+      const trial = chunk + ch;
+      if (chunk && widerThan(trial)) {
+        lines.push(chunk);
+        chunk = ch;
+      } else {
+        chunk = trial;
+      }
+    }
+    return chunk;
+  };
+  for (const word of words) {
+    const trial = current ? current + ' ' + word : word;
+    if (!widerThan(trial)) {
+      current = trial;
+      continue;
+    }
+    if (current) lines.push(current);
+    if (widerThan(word)) current = flushChars(word);
+    else current = word;
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+function measureNode(n) {
+  ctx.font = TITLE_FONT;
+  const words = String(n.name || '').split(/\s+/).filter(Boolean);
+  const longestWord = words.reduce((m, w) => Math.max(m, ctx.measureText(w).width), 0);
+  const full = ctx.measureText(n.name || '').width;
+  const innerPreferred = Math.min(Math.max(full, MIN_W - PAD_X * 2 - 12), PREFERRED_MAX - PAD_X * 2 - 12);
+  const wrapAt = Math.max(innerPreferred, longestWord);
+  const lines = wrapLines(n.name || '', wrapAt);
+  let maxLine = 0;
+  for (const line of lines) maxLine = Math.max(maxLine, ctx.measureText(line).width);
+  n._lines = lines;
+  n._status = n.implementationStatus && n.implementationStatus !== 'n/a'
+    ? n.implementationStatus
+    : (n.designStatus || '');
+  n._w = Math.max(MIN_W, maxLine + PAD_X * 2 + 12);
+  n._h = PAD_Y + lines.length * LINE_H + 4 + 12 + PAD_Y;
+}
+
+function portIn(n) {
+  return { x: n._x + PORT_INSET, y: n._y + n._h / 2 };
+}
+function portOut(n) {
+  return { x: n._x + n._w - PORT_INSET, y: n._y + n._h / 2 };
+}
+
+function hitNode(p) {
+  return [...nodes].reverse().find(n =>
+    p.x >= n._x && p.x <= n._x + n._w && p.y >= n._y && p.y <= n._y + n._h
+  );
+}
+
 function layout() {
   nodes = activeNodes();
   const ids = new Set(nodes.map(n => n.id));
   edges = DATA.edges.filter(e => ids.has(e.from) && ids.has(e.to));
+  nodes.forEach(measureNode);
   const byCat = {};
   nodes.forEach(n => { (byCat[n.category] ||= []).push(n); });
-  let col = 0;
+  let colX = 28;
   Object.keys(byCat).sort().forEach(cat => {
-    byCat[cat].forEach((n, i) => {
-      n._x = col * 220;
-      n._y = i * 54;
+    const list = byCat[cat];
+    const colW = Math.max(...list.map(n => n._w), MIN_W);
+    let y = 40;
+    list.forEach(n => {
+      n._x = colX;
+      n._y = y;
+      n._colLabel = cat;
+      n._colX = colX;
+      y += n._h + ROW_GAP;
     });
-    col++;
+    colX += colW + COL_GAP;
   });
 }
 
@@ -148,6 +236,47 @@ function worldFromEvent(ev) {
   };
 }
 
+function drawPort(p, accent, hot) {
+  const r = hot ? PORT_R + 1.2 : PORT_R;
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, r + 2.2, 0, Math.PI * 2);
+  ctx.fillStyle = '#0f1410';
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+  ctx.fillStyle = hot ? '#f4f7f2' : '#d7e3d4';
+  ctx.strokeStyle = accent;
+  ctx.lineWidth = 1.6;
+  ctx.fill();
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, Math.max(1.6, r * 0.32), 0, Math.PI * 2);
+  ctx.fillStyle = accent;
+  ctx.fill();
+}
+
+function bezierPoint(p0, c1x, c1y, c2x, c2y, p1, t) {
+  const u = 1 - t, tt = t * t, uu = u * u;
+  return {
+    x: uu * u * p0.x + 3 * uu * t * c1x + 3 * u * tt * c2x + tt * t * p1.x,
+    y: uu * u * p0.y + 3 * uu * t * c1y + 3 * u * tt * c2y + tt * t * p1.y,
+  };
+}
+
+function drawArrow(x, y, ang, color) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(ang);
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(-8, -3.4);
+  ctx.lineTo(-8, 3.4);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.restore();
+}
+
 function draw() {
   const w = canvas.clientWidth, h = canvas.clientHeight;
   ctx.clearRect(0, 0, w, h);
@@ -155,34 +284,88 @@ function draw() {
   ctx.translate(transform.x, transform.y);
   ctx.scale(transform.s, transform.s);
   const pos = Object.fromEntries(nodes.map(n => [n.id, n]));
+
+  const drawnCats = new Set();
+  for (const n of nodes) {
+    if (drawnCats.has(n._colLabel)) continue;
+    drawnCats.add(n._colLabel);
+    ctx.font = CAT_FONT;
+    ctx.fillStyle = CAT_COLOR[n.category] || '#9aab9c';
+    ctx.fillText(n._colLabel, n._colX, n._y - 14);
+  }
+
   for (const e of edges) {
     const a = pos[e.from], b = pos[e.to];
     if (!a || !b) continue;
+    const p0 = portOut(a);
+    const p1 = portIn(b);
+    const dx = Math.max(48, Math.abs(p1.x - p0.x) * 0.45);
+    const c1x = p0.x + dx, c1y = p0.y;
+    const c2x = p1.x - dx, c2y = p1.y;
+    const lit = selected && (selected.id === e.from || selected.id === e.to);
+    const color = e.relationKind === 'FUTURE' ? '#6a8cbf' : (e.confidence === 'HIGH' ? (lit ? '#8fb58d' : '#5f7461') : '#a8904e');
     ctx.beginPath();
-    ctx.strokeStyle = e.relationKind === 'FUTURE' ? '#6a8cbf' : (e.confidence === 'HIGH' ? '#5a6e5c' : '#8a7a4a');
-    ctx.lineWidth = selected && (selected.id === e.from || selected.id === e.to) ? 2 : 1;
-    if (e.relationKind === 'FUTURE' || e.confidence === 'LOW') ctx.setLineDash([4, 4]); else ctx.setLineDash([]);
-    ctx.moveTo(a._x + 80, a._y + 16);
-    ctx.lineTo(b._x + 80, b._y + 16);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lit ? 2.2 : 1.25;
+    if (lit) {
+      ctx.setLineDash([7, 8]);
+      ctx.lineDashOffset = -flowT * 28;
+    } else if (e.relationKind === 'FUTURE' || e.confidence === 'LOW') {
+      ctx.setLineDash([5, 4]);
+    } else {
+      ctx.setLineDash([]);
+    }
+    ctx.moveTo(p0.x, p0.y);
+    ctx.bezierCurveTo(c1x, c1y, c2x, c2y, p1.x, p1.y);
     ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = '#9aab9c';
-    ctx.font = '9px sans-serif';
-    ctx.fillText(e.type, (a._x + b._x) / 2 + 40, (a._y + b._y) / 2 + 12);
+    ctx.lineDashOffset = 0;
+    if (lit) {
+      for (let i = 0; i < 3; i++) {
+        const t = (flowT * 0.55 + i / 3) % 1;
+        const pt = bezierPoint(p0, c1x, c1y, c2x, c2y, p1, t);
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, i === 0 ? 3.1 : 2.3, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.globalAlpha = 0.35 + t * 0.55;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+    const ang = Math.atan2(p1.y - c2y, p1.x - c2x);
+    drawArrow(p1.x, p1.y, ang, color);
+    const mx = 0.125 * p0.x + 0.375 * c1x + 0.375 * c2x + 0.125 * p1.x;
+    const my = 0.125 * p0.y + 0.375 * c1y + 0.375 * c2y + 0.125 * p1.y;
+    ctx.font = LABEL_FONT;
+    ctx.fillStyle = lit ? '#d5e2d3' : '#8a9b8c';
+    ctx.fillText(e.type, mx + 6, my - 4);
   }
+
   for (const n of nodes) {
     const col = CAT_COLOR[n.category] || '#aaa';
-    ctx.fillStyle = '#1a221c';
-    ctx.strokeStyle = selected?.id === n.id ? '#fff' : col;
-    ctx.lineWidth = selected?.id === n.id ? 2 : 1;
-    roundRect(n._x, n._y, 160, 40, 6);
-    ctx.fill(); ctx.stroke();
+    const hot = selected?.id === n.id;
+    ctx.fillStyle = hot ? '#222c24' : '#171f1a';
+    ctx.strokeStyle = hot ? '#f2f6f1' : col;
+    ctx.lineWidth = hot ? 2 : 1.15;
+    ctx.shadowColor = 'rgba(0,0,0,0.28)';
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetY = 2;
+    roundRect(n._x, n._y, n._w, n._h, 8);
+    ctx.fill();
+    ctx.shadowColor = 'transparent';
+    ctx.stroke();
     ctx.fillStyle = col;
-    ctx.font = 'bold 11px sans-serif';
-    ctx.fillText(n.name.slice(0, 28), n._x + 8, n._y + 16);
-    ctx.fillStyle = '#9aab9c';
-    ctx.font = '9px sans-serif';
-    ctx.fillText((n.implementationStatus || n.designStatus || ''), n._x + 8, n._y + 30);
+    ctx.fillRect(n._x, n._y + 8, 3, n._h - 16);
+    ctx.font = TITLE_FONT;
+    ctx.fillStyle = '#eef3ec';
+    n._lines.forEach((line, i) => {
+      ctx.fillText(line, n._x + PAD_X, n._y + PAD_Y + 11 + i * LINE_H);
+    });
+    ctx.font = STATUS_FONT;
+    ctx.fillStyle = '#93a494';
+    ctx.fillText(n._status, n._x + PAD_X, n._y + PAD_Y + n._lines.length * LINE_H + 14);
+    drawPort(portIn(n), col, hot);
+    drawPort(portOut(n), col, hot);
   }
   ctx.restore();
 }
@@ -216,7 +399,7 @@ function showDetail(n) {
 
 canvas.addEventListener('mousedown', ev => {
   const p = worldFromEvent(ev);
-  const hit = [...nodes].reverse().find(n => p.x >= n._x && p.x <= n._x+160 && p.y >= n._y && p.y <= n._y+40);
+  const hit = hitNode(p);
   if (hit) showDetail(hit);
   drag = { x: ev.clientX, y: ev.clientY, tx: transform.x, ty: transform.y };
 });
@@ -229,7 +412,7 @@ canvas.addEventListener('mousemove', ev => {
     return;
   }
   const p = worldFromEvent(ev);
-  const hit = [...nodes].reverse().find(n => p.x >= n._x && p.x <= n._x+160 && p.y >= n._y && p.y <= n._y+40);
+  const hit = hitNode(p);
   canvas.style.cursor = hit ? 'pointer' : 'grab';
   if (hit && selected?.id !== hit.id) showDetail(hit);
 });
@@ -245,7 +428,13 @@ canvas.addEventListener('wheel', ev => {
   document.getElementById(id).addEventListener('change', () => { layout(); draw(); });
 });
 window.addEventListener('resize', resize);
+function tickFlow(now) {
+  flowT = (now / 1000);
+  if (selected) draw();
+  flowRaf = requestAnimationFrame(tickFlow);
+}
 layout(); resize();
+flowRaf = requestAnimationFrame(tickFlow);
 </script>
 </body>
 </html>
