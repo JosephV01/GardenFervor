@@ -64,8 +64,8 @@ Légende **Nature** : voir §1.1.
 | Constat | Nombre | Qualification |
 | --- | --- | --- |
 | Canvas d’audit (vue filtrée) | 104 | Hors 38 JPEG et 4 doublons `Saved/` ; **ne pas** citer comme total disque |
-| JPEG source `lot1/` | 19 | Chemins réels §2.8 |
-| Copies `docs/images/lot1/` | 19 | Une copie par source, même basename |
+| JPEG source `lot1/` | 0 | Galerie lot1 **retirée** (2026-10-10) ; remplacée par 8 WebP nommés §2.8 |
+| Copies `docs/images/lot1/` | 0 | Dossier lot1 publié **supprimé** |
 | Doublons Saved `*RuntimeGate.txt` | 4 | Autorité **non tranchée** §2.9 / §8 |
 | Entrées nominatives de ce registre | voir bas de §2 | Recalculées à cette révision |
 | `node_modules/` | non inventorié | Exclusion justifiée |
@@ -219,61 +219,28 @@ Chaîne distincte de la Roadmap globale. Ne pas synchroniser l’une depuis l’
 
 **Procédure de copie images (script réel `docs/syncPages.mjs`) :**  
 `fs.cpSync('Investor Demo/PrésentationClientHtml/images', 'docs/images', { recursive: true })`.  
-Déclencheur : ajout, remplacement ou suppression d’un JPEG source, ou publication Hub autorisée.  
-Contrôle : le basename existe des deux côtés. Risque : image 404 dans la galerie publiée.
+Déclencheur : ajout, remplacement ou suppression d’un WebP source, ou publication Hub autorisée.  
+Contrôle : le basename existe des deux côtés. Risque : image 404 sur la page publiée.
 
-#### 2.8.1 Sources (19) — CANONIQUE asset
+#### 2.8.1 Sources (8 WebP) — CANONIQUE asset
 
-Dossier : `Investor Demo/PrésentationClientHtml/images/lot1/`
+Dossier : `Investor Demo/PrésentationClientHtml/images/`  
+Galerie `lot1/` retirée le 2026-10-10 (collages, doublons, JPEG opaques). HTML statique, plus de Base64.
 
-| ID | Chemin exact | Nature | Copie correspondante | Déclencheur | Procédure | Contrôle | Risque |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| IMG-SRC-01 | `Investor Demo/PrésentationClientHtml/images/lot1/1f61da5e-a7bd-4f25-a82b-b00db2d08a87.jpg` | CANONIQUE | IMG-CPY-01 | ajout / remplacement / suppression de ce fichier | syncPages `cpSync` images | basename présent sous `docs/images/lot1/` | galerie cassée / copie obsolète |
-| IMG-SRC-02 | `Investor Demo/PrésentationClientHtml/images/lot1/444f732c-66cc-46c7-b580-6d85625ea516.jpg` | CANONIQUE | IMG-CPY-02 | idem | idem | idem | idem |
-| IMG-SRC-03 | `Investor Demo/PrésentationClientHtml/images/lot1/5a7209c1-564a-454f-ad35-0fe53fadb9de.jpg` | CANONIQUE | IMG-CPY-03 | idem | idem | idem | idem |
-| IMG-SRC-04 | `Investor Demo/PrésentationClientHtml/images/lot1/97503b71-20cb-4d94-a8d5-b05dd2cf98de.jpg` | CANONIQUE | IMG-CPY-04 | idem | idem | idem | idem |
-| IMG-SRC-05 | `Investor Demo/PrésentationClientHtml/images/lot1/c39ff236-9ce0-4489-b2a2-fa7bdd76f736.jpg` | CANONIQUE | IMG-CPY-05 | idem | idem | idem | idem |
-| IMG-SRC-06 | `Investor Demo/PrésentationClientHtml/images/lot1/db1357eb-1d29-4f13-8b77-d8af5c2ac064.jpg` | CANONIQUE | IMG-CPY-06 | idem | idem | idem | idem |
-| IMG-SRC-07 | `Investor Demo/PrésentationClientHtml/images/lot1/dd64cdfb-f980-4e22-bba6-c4e94b9c6c34.jpg` | CANONIQUE | IMG-CPY-07 | idem | idem | idem | idem |
-| IMG-SRC-08 | `Investor Demo/PrésentationClientHtml/images/lot1/f481be6d-4d30-4639-a87a-74dea70a260b.jpg` | CANONIQUE | IMG-CPY-08 | idem | idem | idem | idem |
-| IMG-SRC-09 | `Investor Demo/PrésentationClientHtml/images/lot1/Gemini_Generated_Image_69jdlz69jdlz69jd.jpg` | CANONIQUE | IMG-CPY-09 | idem | idem | idem | idem |
-| IMG-SRC-10 | `Investor Demo/PrésentationClientHtml/images/lot1/Green_Forestry_Robot_Concept-direction-artistique-pour-les-machines-les-robot-m.jpg` | CANONIQUE | IMG-CPY-10 | idem | idem | idem | idem |
-| IMG-SRC-11 | `Investor Demo/PrésentationClientHtml/images/lot1/Green_Forestry_Robot_Concept-direction-artistique-pour-les-machines-les-robot-m-2.jpg` | CANONIQUE | IMG-CPY-11 | idem | idem | idem | idem |
-| IMG-SRC-12 | `Investor Demo/PrésentationClientHtml/images/lot1/Green_Forestry_Robot_Concept-direction-artistique-pour-les-machines-les-robot-m-3.jpg` | CANONIQUE | IMG-CPY-12 | idem | idem | idem | idem |
-| IMG-SRC-13 | `Investor Demo/PrésentationClientHtml/images/lot1/Green_Forestry_Robot_Concept-direction-artistique-pour-les-machines-les-robot-m-4.jpg` | CANONIQUE | IMG-CPY-13 | idem | idem | idem | idem |
-| IMG-SRC-14 | `Investor Demo/PrésentationClientHtml/images/lot1/image_20261007_025842.jpg` | CANONIQUE | IMG-CPY-14 | idem | idem | idem | idem |
-| IMG-SRC-15 | `Investor Demo/PrésentationClientHtml/images/lot1/image_20261007_025842-create-an-ultra-detailed-8k-cinematic-wallpaper-fo.jpg` | CANONIQUE | IMG-CPY-15 | idem | idem | idem | idem |
-| IMG-SRC-16 | `Investor Demo/PrésentationClientHtml/images/lot1/image_20261007_025934.jpg` | CANONIQUE | IMG-CPY-16 | idem | idem | idem | idem |
-| IMG-SRC-17 | `Investor Demo/PrésentationClientHtml/images/lot1/image_20261007_025934-create-an-ultra-detailed-8k-cinematic-wallpaper-fo.jpg` | CANONIQUE | IMG-CPY-17 | idem | idem | idem | idem |
-| IMG-SRC-18 | `Investor Demo/PrésentationClientHtml/images/lot1/image_20261007_030139.jpg` | CANONIQUE | IMG-CPY-18 | idem | idem | idem | idem |
-| IMG-SRC-19 | `Investor Demo/PrésentationClientHtml/images/lot1/image_20261007_030251.jpg` | CANONIQUE | IMG-CPY-19 | idem | idem | idem | idem |
+| ID | Chemin exact | Nature | Copie | Rôle |
+| --- | --- | --- | --- | --- |
+| IMG-SRC-HERO | `…/images/hero-territoire.webp` | CANONIQUE | IMG-CPY-HERO | Hero — vision territoire |
+| IMG-SRC-S3 | `…/images/gameplay-s3-overview.webp` | CANONIQUE | IMG-CPY-S3 | Prototype S3 — placeholders 192×192 |
+| IMG-SRC-U | `…/images/vision-unites-chantier.webp` | CANONIQUE | IMG-CPY-U | Vision unités / chantier |
+| IMG-SRC-L | `…/images/vision-logistique-bois.webp` | CANONIQUE | IMG-CPY-L | Vision logistique bois |
+| IMG-SRC-H | `…/images/vision-hydrologie.webp` | CANONIQUE | IMG-CPY-H | Vision hydrologie |
+| IMG-SRC-E | `…/images/vision-ecosysteme-zone-humide.webp` | CANONIQUE | IMG-CPY-E | Vision zone humide |
+| IMG-SRC-SO | `…/images/vision-sol.webp` | CANONIQUE | IMG-CPY-SO | Vision sol |
+| IMG-SRC-C | `…/images/vision-construction-riviere.webp` | CANONIQUE | IMG-CPY-C | Vision construction / rivière |
 
-#### 2.8.2 Copies Hub (19) — GÉNÉRÉ
+#### 2.8.2 Copies Hub (8) — GÉNÉRÉ
 
-Dossier : `docs/images/lot1/`  
-Ne pas éditer ces fichiers à la main : les reconstruire par `syncPages` depuis la source.
-
-| ID | Chemin exact | Nature | Source | Déclencheur | Procédure | Contrôle | Risque |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| IMG-CPY-01 | `docs/images/lot1/1f61da5e-a7bd-4f25-a82b-b00db2d08a87.jpg` | GÉNÉRÉ | IMG-SRC-01 | sync / changement source | `fs.cpSync` via `docs/syncPages.mjs` | identique à la source (basename) | copie manquante ou stale |
-| IMG-CPY-02 | `docs/images/lot1/444f732c-66cc-46c7-b580-6d85625ea516.jpg` | GÉNÉRÉ | IMG-SRC-02 | idem | idem | idem | idem |
-| IMG-CPY-03 | `docs/images/lot1/5a7209c1-564a-454f-ad35-0fe53fadb9de.jpg` | GÉNÉRÉ | IMG-SRC-03 | idem | idem | idem | idem |
-| IMG-CPY-04 | `docs/images/lot1/97503b71-20cb-4d94-a8d5-b05dd2cf98de.jpg` | GÉNÉRÉ | IMG-SRC-04 | idem | idem | idem | idem |
-| IMG-CPY-05 | `docs/images/lot1/c39ff236-9ce0-4489-b2a2-fa7bdd76f736.jpg` | GÉNÉRÉ | IMG-SRC-05 | idem | idem | idem | idem |
-| IMG-CPY-06 | `docs/images/lot1/db1357eb-1d29-4f13-8b77-d8af5c2ac064.jpg` | GÉNÉRÉ | IMG-SRC-06 | idem | idem | idem | idem |
-| IMG-CPY-07 | `docs/images/lot1/dd64cdfb-f980-4e22-bba6-c4e94b9c6c34.jpg` | GÉNÉRÉ | IMG-SRC-07 | idem | idem | idem | idem |
-| IMG-CPY-08 | `docs/images/lot1/f481be6d-4d30-4639-a87a-74dea70a260b.jpg` | GÉNÉRÉ | IMG-SRC-08 | idem | idem | idem | idem |
-| IMG-CPY-09 | `docs/images/lot1/Gemini_Generated_Image_69jdlz69jdlz69jd.jpg` | GÉNÉRÉ | IMG-SRC-09 | idem | idem | idem | idem |
-| IMG-CPY-10 | `docs/images/lot1/Green_Forestry_Robot_Concept-direction-artistique-pour-les-machines-les-robot-m.jpg` | GÉNÉRÉ | IMG-SRC-10 | idem | idem | idem | idem |
-| IMG-CPY-11 | `docs/images/lot1/Green_Forestry_Robot_Concept-direction-artistique-pour-les-machines-les-robot-m-2.jpg` | GÉNÉRÉ | IMG-SRC-11 | idem | idem | idem | idem |
-| IMG-CPY-12 | `docs/images/lot1/Green_Forestry_Robot_Concept-direction-artistique-pour-les-machines-les-robot-m-3.jpg` | GÉNÉRÉ | IMG-SRC-12 | idem | idem | idem | idem |
-| IMG-CPY-13 | `docs/images/lot1/Green_Forestry_Robot_Concept-direction-artistique-pour-les-machines-les-robot-m-4.jpg` | GÉNÉRÉ | IMG-SRC-13 | idem | idem | idem | idem |
-| IMG-CPY-14 | `docs/images/lot1/image_20261007_025842.jpg` | GÉNÉRÉ | IMG-SRC-14 | idem | idem | idem | idem |
-| IMG-CPY-15 | `docs/images/lot1/image_20261007_025842-create-an-ultra-detailed-8k-cinematic-wallpaper-fo.jpg` | GÉNÉRÉ | IMG-SRC-15 | idem | idem | idem | idem |
-| IMG-CPY-16 | `docs/images/lot1/image_20261007_025934.jpg` | GÉNÉRÉ | IMG-SRC-16 | idem | idem | idem | idem |
-| IMG-CPY-17 | `docs/images/lot1/image_20261007_025934-create-an-ultra-detailed-8k-cinematic-wallpaper-fo.jpg` | GÉNÉRÉ | IMG-SRC-17 | idem | idem | idem | idem |
-| IMG-CPY-18 | `docs/images/lot1/image_20261007_030139.jpg` | GÉNÉRÉ | IMG-SRC-18 | idem | idem | idem | idem |
-| IMG-CPY-19 | `docs/images/lot1/image_20261007_030251.jpg` | GÉNÉRÉ | IMG-SRC-19 | idem | idem | idem | idem |
+Dossier : `docs/images/` (plus de `lot1/`). Reconstruire depuis la source, pas à la main.
 
 #### 2.8.3 Autres documents Investor Demo (hors Hub)
 

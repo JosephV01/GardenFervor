@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-09 — DG-00.5-W1-CLOSE**.
+Dernière entrée historique : **2026-10-10 — PRES-CLIENT-VISUEL**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-10 — PRES-CLIENT-VISUEL — Refonte visuelle présentation client
+
+- **Intention :** remplacer la page React+Base64 (~19,5 Mo) par un HTML statique avec images WebP externes, en distinguant preuve S3 et vision.
+- **Statut :** VALIDÉ (documentaire / présentation) — **pas de gameplay** · **C-15 non commencé** · 9/16 inchangé
+- **Avant → Après :** 20 WebP inline + galerie lot1 opaque → 8 WebP nommés + légendes Prototype / Vision
+- **Changements :** `Investor Demo/PrésentationClientHtml/PrésentationClient.html` · `images/*.webp` · copies `docs/` · registre §2.8 · ETAT
+- **Limitation :** aucune capture S3 haute définition dans le dépôt ; pastille 192×192 = placeholders BasicShapes
+- **Suite :** commit/push seulement sur autorisation ; captures PIE humaines encore utiles
 
 ### 2026-10-09 — DG-00.5-W1-CLOSE — Clôture documentaire W1 (impact + Hub)
 

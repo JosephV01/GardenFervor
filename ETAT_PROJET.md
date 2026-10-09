@@ -1,6 +1,6 @@
 # GardenFervor — État projet (baseline)
 
-Dernière mise à jour : **2026-10-09**  
+Dernière mise à jour : **2026-10-10**  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (inventaire sync) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
 
 **Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 = **VALIDÉ** · progression **9 / 16** · prochain requis = C-15 (non commencé) · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré**.
@@ -89,6 +89,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 - **DG-14 CONDITIONS DE VALIDATION ET PASSAGE À L’IMPLÉMENTATION : VALIDÉ** (clôture section ; 4/4 items VALIDÉ ; audit de cohérence PASS — CLÔTURABLE)
 - 00.1–00.7 + sous-items 00.5 (S→X) + 00.6 (V→P) : tous VALIDÉ
 - **00.5.W1** : formulation clarifiée (horizon fondateur + ambition hydrologique à long terme) — **confirmation humaine d’impact acquise** ; Hub local `docs/design-gate.html` aligné et vérifié ; clôture documentaire ; W2·W3·W4·X1·X2 inchangés
+- **Présentation client :** page HTML refondue (plus de Base64) ; 8 WebP ; captures/vision étiquetées ; C-15 non commencé
 
 **Points reportés aux DG suivants (depuis clôtures DG-00 / DG-01 / DG-02) :**
 1. Extensions territoriales (nombre / forme / taille) — S6 → DG-14+

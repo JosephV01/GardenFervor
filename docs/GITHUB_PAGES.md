@@ -48,7 +48,7 @@ Cette commande :
 3. régénère `docs/contracts.html` depuis `contractsSuivi.js` ;
 4. met à jour le bandeau d’état et les résumés de cartes dans `docs/index.html` ;
 5. copie `Investor Demo/PrésentationClientHtml/PrésentationClient.html` → `docs/presentation-client.html` ;
-6. copie `Investor Demo/PrésentationClientHtml/images/` → `docs/images/` (galerie lot1) ;
+6. copie `Investor Demo/PrésentationClientHtml/images/` → `docs/images/` (WebP nommés de la présentation) ;
 7. copie Project Graph et Roadmap globale ;
 8. régénère `docs/etat-global.html` depuis `docs/etat-global/etatGlobal.data.js` + `contractsSuivi.js` ;
 9. régénère `docs/historique.html` depuis `HISTORIQUE_MODIFICATIONS.md` (§4).
