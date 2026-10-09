@@ -1,9 +1,9 @@
 # GardenFervor — État projet (baseline)
 
-Dernière mise à jour : **2026-10-08**  
+Dernière mise à jour : **2026-10-09**  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
 
-**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 = **VALIDÉ** · progression **4 / 16** · prochain requis = C-07 (non commencé) · C-03 et C-06 addenda **fermés** · Case B **suspendu**.
+**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 = **VALIDÉ** · progression **5 / 16** · prochain requis = C-08 (non commencé) · C-03 et C-06 addenda **fermés** · Case B **suspendu**.
 
 ---
 
@@ -134,7 +134,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 
 ## Prochain pas
 
-1. Contrats : C-04 clôturé — **ne pas démarrer C-05** sans ordre explicite ; C-03 reste addendum* fermé
+1. Contrats : C-07 clôturé — **ne pas démarrer C-08** sans ordre explicite ; C-03 et C-06 restent addenda* fermés ; Case B **suspendu**
 2. Cohorte S3 Cas A terminée — **aucun travail gameplay supplémentaire** hors ordre explicite
 3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)  
 4. **ODC-F9** Infrastructure lifecycle (sans contourner DG)  

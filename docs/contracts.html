@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-05",
+  "activeId": "C-07",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 4,
+    "validated": 5,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -317,11 +317,11 @@
       "id": "C-07",
       "order": "7",
       "name": "Autonomie unité (agent générique)",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "",
+      "note": "VALIDÉ humainement — 47/47 décisions A1–J4 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées",
       "dependsOn": [
         "C-04",
         "C-06"
@@ -329,7 +329,26 @@
       "providesTo": [
         "C-08",
         "C-12"
-      ]
+      ],
+      "file": "CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md",
+      "detail": {
+        "decisions": "47 / 47",
+        "frontiers": [
+          "C-04 — graphe / claim / Complete",
+          "C-05 — SitePrep",
+          "C-06 — capacités (addendum fermé)",
+          "C-08 — métier Terraform",
+          "C-12 — transport avancé",
+          "DG-04 — principes autonomie"
+        ],
+        "gaps": [
+          "Terraform pulses au Verify (ApplyBrushAt ×N)",
+          "InstantMode ≠ preuve produit",
+          "ReleaseClaim → Progress=0 (écart D5/F1)",
+          "Transport / Progress (écart E5)",
+          "Fallback capacités — dette à préserver (A5)"
+        ]
+      }
     },
     {
       "id": "C-08",

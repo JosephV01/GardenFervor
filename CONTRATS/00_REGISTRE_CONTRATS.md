@@ -76,7 +76,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-04 | Tâches / graphe / dépendances | PARTIEL | détaillée | DG-11 · ODC-F4 · **C-04 VALIDÉ** | I (S3) | C-03 | **oui** | 4 |
 | C-05 | WorkSite / SitePrep (Cas A/B) | PARTIEL→REQUIS | détaillée | DG-11 · SitePrepTypes · T5 · **C-05 VALIDÉ** | P | C-01 · C-04 | **oui** | 5 |
 | C-06 | Capacités / roster unités | SUFFISANT* | secondaire | DG-03 · UnitCapabilityTypes · T3 | I (S3) | C-00 | non* | 6* |
-| C-07 | Autonomie unité (agent générique) | PARTIEL | détaillée | DG-04 · UnitTaskAgent · ODC-F5 | I | C-04 · C-06 | **oui** | 7 |
+| C-07 | Autonomie unité (agent générique) | PARTIEL | détaillée | DG-04 · UnitTaskAgent · ODC-F5 · **C-07 VALIDÉ** | I | C-04 · C-06 | **oui** | 7 |
 | C-08 | Terraformer opérationnel | REQUIS | détaillée | DG-08 · F8 · agent Terraform | P | C-01 · C-05 · C-07 | **oui** | 8 |
 | C-09 | Économie physique / ResourceKey | SUFFISANT* | secondaire | DG-05 · C7 · T1/T2 | I (Timber) | C-00 | non* | 9* |
 | C-10 | Stocks localisés A/B | SUFFISANT* | secondaire | DG-05 · C3 · T4 | I (S3) | C-09 | non* | 10* |
@@ -171,10 +171,10 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 - **Sous-systèmes :** `UnitTaskAgent` (Seek→…→Verify) · InstantMode · Travel.
 - **Doc :** DG-04 VALIDÉ (principes) ; **opérationnel partiel** (InstantMode masque durée/déplacement ; Execute ne produit pas les effets terrain — Verify le fait).
-- **Manque :** contrat Instant vs réel ; quand appliquer effets ; interruption/reprise ; rapport de blocage.
-- **Contrat :** **requis détaillé**.
+- **Contrat dédié :** **VALIDÉ** — `CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md` · **47/47** décisions A1–J4 · audit PASS.
+- **Dettes d’implémentation (hors décision) :** Terraform pulses au Verify ; InstantMode ≠ preuve produit ; ReleaseClaim → Progress=0 ; Transport/Progress ; fallback capacités.
 - **Amont :** C-04 · C-06 · **Aval :** C-08 · C-12 · C-20.
-- **Bloquant :** **oui** pour tout comportement « autonome visible ».
+- **Bloquant :** **oui** pour tout comportement « autonome visible » (contrat opérationnel désormais disponible ; Case B reste suspendu jusqu’à C-08).
 - **Ordre 7.**
 
 ### C-08 — Terraformer opérationnel *(signal Case B)*

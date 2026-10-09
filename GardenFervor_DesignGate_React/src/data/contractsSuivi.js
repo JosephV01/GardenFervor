@@ -24,11 +24,11 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-05_WORKSITE_SITEPREP.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
-  /** Dernier contrat VALIDÉ ; C-07 = prochain requis ; C-03 et C-06 addenda* fermés. */
-  activeContractId: 'C-05',
-  nextAuthorizedId: 'C-07',
+  /** Dernier contrat VALIDÉ ; C-08 = prochain requis ; C-03 et C-06 addenda* fermés. */
+  activeContractId: 'C-07',
+  nextAuthorizedId: 'C-08',
   progress: {
-    validated: 4,
+    validated: 5,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -224,11 +224,33 @@ export const CONTRACTS_SUIVI = {
       order: 7,
       category: 'REQUIS',
       coverage: 'partielle',
-      productionStatus: 'NON COMMENCÉ',
+      productionStatus: 'VALIDÉ',
       blocking: true,
       dependsOn: ['C-04', 'C-06'],
       providesTo: ['C-08', 'C-12'],
-      note: '',
+      note: 'VALIDÉ humainement — 47/47 décisions A1–J4 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées',
+      dedicatedValidated: true,
+      file: 'CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md',
+      detail: {
+        decisionsTaken: 47,
+        decisionsTotal: 47,
+        frontiers: [
+          { id: 'C-04', label: 'graphe / claim / Complete' },
+          { id: 'C-05', label: 'SitePrep' },
+          { id: 'C-06', label: 'capacités (addendum fermé)' },
+          { id: 'C-08', label: 'métier Terraform' },
+          { id: 'C-12', label: 'transport avancé' },
+          { id: 'DG-04', label: 'principes autonomie' },
+        ],
+        gaps: [
+          'Terraform pulses au Verify (ApplyBrushAt ×N)',
+          'InstantMode ≠ preuve produit',
+          'ReleaseClaim → Progress=0 (écart D5/F1)',
+          'Transport / Progress (écart E5)',
+          'Fallback capacités — dette à préserver (A5)',
+        ],
+        gapNote: 'Écarts d’implémentation — pas des corrections de cette clôture.',
+      },
     },
     {
       id: 'C-08',

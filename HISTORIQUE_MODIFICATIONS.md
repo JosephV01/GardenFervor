@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-08 — C-05-CLOSE**.
+Dernière entrée historique : **2026-10-09 — C-07-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-09 — C-07-CLOSE — Autonomie unité (agent générique) VALIDÉ (clôture documentaire)
+
+- **Intention :** clôturer formellement le contrat opérationnel C-07 après validation humaine et audit final PASS (47/47).
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay** · **C-08 non commencé** · C-03 et C-06 addenda **fermés** · Case B reste **suspendu**
+- **Décisions :** **47/47** (A1–J4) — agent générique, claim, exécution, Progress≠effets, frontiers C-04/C-05/C-08, InstantMode≠preuve produit
+- **Fichiers :** `CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md` · suivi / registre / ETAT / HISTORIQUE / ROADMAP / PROJECT_GRAPH → compteur **5 / 16**
+- **Design Gate :** aucune modification
+- **Suite :** prochain contrat requis = C-08 (ne pas démarrer sans ordre explicite)
 
 ### 2026-10-08 — C-05-CLOSE — WorkSite / SitePrep VALIDÉ (clôture documentaire)
 

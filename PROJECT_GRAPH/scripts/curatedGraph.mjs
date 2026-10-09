@@ -235,7 +235,9 @@ export const curatedNodes = [
     notes: 'VALIDÉ — 62/62 A1–N3 ; audit PASS ; Case B produit suspendu ; dettes d’implémentation conservées.',
   }),
   mkContract('c_06', 'C-06', 'Capacités / roster', 'SUFFISANT*', 'NON COMMENCÉ', 'I', false, null),
-  mkContract('c_07', 'C-07', 'Autonomie unité', 'PARTIEL', 'NON COMMENCÉ', 'I', true, null),
+  mkContract('c_07', 'C-07', 'Autonomie unité', 'PARTIEL', 'VALIDÉ', 'I', true, 'CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md', {
+    notes: 'VALIDÉ — 47/47 A1–J4 ; audit PASS ; Case B produit suspendu ; dettes d’implémentation conservées.',
+  }),
   mkContract('c_08', 'C-08', 'Terraformer opérationnel', 'REQUIS', 'NON COMMENCÉ', 'P', true, null, {
     notes: 'Bloque Demo Case B.',
   }),

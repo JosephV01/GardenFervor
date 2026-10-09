@@ -1,17 +1,17 @@
 {
   "meta": {
-    "version": "1.0.2",
-    "updated": "2026-10-08",
+    "version": "1.0.3",
+    "updated": "2026-10-09",
     "title": "GardenFervor — Roadmap globale",
-    "git_head_at_audit": "d9b8ef8",
-    "notes": "Clôture C-05 · compteur 4/16 · prochain C-07. Distincte de Plan de production/Roadmap (cohorte S3)."
+    "git_head_at_audit": "bedf8a7",
+    "notes": "Clôture C-07 · compteur 5/16 · prochain C-08. Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 4/16 (C-01·C-02·C-04·C-05 VALIDÉS) · prochain requis = C-07 (non commencé) · C-03 et C-06 addenda fermés · Case B SUSPENDU",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 5/16 (C-01·C-02·C-04·C-05·C-07 VALIDÉS) · prochain requis = C-08 (non commencé) · C-03 et C-06 addenda fermés · Case B SUSPENDU",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
-    "contracts_validated": "4",
+    "contracts_validated": "5",
     "contracts_required": "16",
     "s3_case_a": "VALIDÉ",
     "case_b": "SUSPENDU",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c07",
-    "title": "C-07 — Autonomie unité",
+    "id": "next-c08",
+    "title": "C-08 — Terraformer opérationnel",
     "status": "À FAIRE",
     "horizon": "Prochain",
-    "note": "Prochain contrat requis après C-05 VALIDÉ. Ne pas démarrer sans ordre explicite. C-03 et C-06 restent addenda fermés. Case B suspendu.",
-    "depends": "C-04 VALIDÉ · C-06 addendum fermé (S3)",
-    "unlocks": "C-08 · Case B (plus tard) · exécution unité formalisée"
+    "note": "Prochain contrat requis après C-07 VALIDÉ. Ne pas démarrer sans ordre explicite. C-03 et C-06 restent addenda fermés. Case B suspendu.",
+    "depends": "C-01 VALIDÉ · C-05 VALIDÉ · C-07 VALIDÉ",
+    "unlocks": "Case B (plus tard) · métier Terraform formalisé"
   },
   "phases": [
     {
@@ -177,8 +177,8 @@
           "validation": "PARTIEL",
           "depends": "P2.J3",
           "unlocks": "P1.J2,P4,P5,P6",
-          "sources": "CONTRATS/C-05_WORKSITE_SITEPREP.md · CONTRATS/00_REGISTRE_CONTRATS.md",
-          "note": "C-05 VALIDÉ (62/62) ; prochain requis = C-07 ; C-08 encore À FAIRE ; Case B suspendu.",
+          "sources": "CONTRATS/C-05_WORKSITE_SITEPREP.md · CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md · CONTRATS/00_REGISTRE_CONTRATS.md",
+          "note": "C-05 VALIDÉ (62/62) · C-07 VALIDÉ (47/47) ; prochain requis = C-08 ; Case B suspendu.",
           "works": []
         },
         {
@@ -300,7 +300,7 @@
           "title": "Agent générique d’exécution",
           "status": "PARTIEL",
           "depends": "P2.J3",
-          "sources": "UnitTaskAgent · ODC-F5 · futur C-07",
+          "sources": "UnitTaskAgent · ODC-F5 · CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md",
           "works": []
         },
         {
@@ -520,9 +520,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-08T18:34:36.926Z",
-    "mdHash": "e1684bc0869e833a732ce9807019ebcb522e342f6e853fa3adcb9649b098f5ba",
-    "git": "d9b8ef8",
+    "generatedAt": "2026-10-09T10:42:51.743Z",
+    "mdHash": "8ab081fbf87a821afddd5c7b377a19776068cb4d0c645d168ab285b2f0b0445e",
+    "git": "bedf8a7",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },
