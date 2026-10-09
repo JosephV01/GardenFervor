@@ -16,6 +16,17 @@ systèmes / maturité / preuves / priorités, pour consultation régulière sans
 Les **statuts contractuels** ne doivent **pas** être dupliqués à la main dans `etatGlobal.data.js`
 sauf notes runtime (`contractsNotes`). Le build injecte les statuts depuis `contractsSuivi.js`.
 
+## Quatre couches distinctes
+
+| Couche | Où | Nature |
+| --- | --- | --- |
+| HEAD Git courant | Git (`git rev-parse HEAD`) | Live. Cette page **ne le calcule pas**. |
+| Référence Git de l’audit éditorial | `meta.gitHeadAtAudit` + `meta.gitMessageAtAudit` | **Historique et figée.** Jalon choisi (clôture C-14), pas le HEAD. Ne pas bumper à chaque commit, génération ou `syncPages`. |
+| Compteurs / statuts contrats | `contractsSuivi.js` injecté au build | Live au moment de la génération. |
+| Récit éditorial | reste de `etatGlobal.data.js` | Baseline longue du Hub. Distincte de `ETAT_PROJET.md` (baseline courte). |
+
+`gitHeadAtAudit` n’est **pas** une donnée live. Le rebuild recopie le champ tel quel.
+
 ## Commandes
 
 ```bash
@@ -34,4 +45,5 @@ node docs/syncPages.mjs
 ## Origine éditoriale
 
 Contenu initial dérivé du Canvas Cursor `gardenfervor-etat-global.canvas.tsx`
-(audit post C-12, mis à jour clôture C-14, 2026-10-09). Le Canvas n’est **pas** la source de maintenance.
+(audit post C-12). Référence Git de l’audit éditorial = clôture C-14
+(`gitHeadAtAudit`, 2026-10-09). Le Canvas n’est **pas** la source de maintenance.

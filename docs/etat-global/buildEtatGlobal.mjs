@@ -270,7 +270,7 @@ const html = `<!DOCTYPE html>
           ),
           h('p', { style: { fontSize: 12, color: 'var(--muted)', marginTop: -6 } },
             'Compteurs issus de contractsSuivi.js (miroir du suivi officiel) · sync build ' + data.builtAt +
-            ' · audit de référence git ' + E.meta.gitHeadAtAudit),
+            ' · Référence Git de l’audit éditorial (historique, figée) ' + E.meta.gitHeadAtAudit),
 
           h('section', { id: 'vue' },
             h('h2', null, 'A · Vue générale'),
@@ -479,7 +479,7 @@ const html = `<!DOCTYPE html>
             h('p', { style: { fontSize: 13, color: 'var(--muted)' } }, E.meta.originNote),
             h('p', { style: { fontSize: 13 } },
               h('strong', null, 'Vérifié le '), E.meta.verifiedAt,
-              ' · git audit ', E.meta.gitHeadAtAudit, ' — ', E.meta.gitMessageAtAudit),
+              ' · référence Git historique (figée, ≠ HEAD courant) ', E.meta.gitHeadAtAudit, ' — ', E.meta.gitMessageAtAudit),
             h('ul', null, E.meta.sources.map((s, i) => h('li', { key: i }, s))),
             h('p', { style: { fontSize: 13 } },
               'Mise à jour : éditer ', h('code', null, 'docs/etat-global/etatGlobal.data.js'),

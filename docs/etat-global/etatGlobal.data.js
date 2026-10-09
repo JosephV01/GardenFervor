@@ -4,6 +4,11 @@
  * Statuts / compteurs contrats : injectés au build depuis contractsSuivi.js
  * (miroir de CONTRATS/00_SUIVI_CONTRATS.md). Ne pas y dupliquer VALIDÉ.
  *
+ * gitHeadAtAudit / gitMessageAtAudit : référence Git **historique et figée**
+ * de l’audit éditorial (jalon choisi), pas le HEAD courant. Ne pas les
+ * actualiser à chaque commit, génération ou syncPages. Le HEAD se vérifie
+ * uniquement avec Git.
+ *
  * Maintenance : docs/etat-global/README.md
  * Rebuild : node docs/etat-global/buildEtatGlobal.mjs
  * Sync Hub : node docs/syncPages.mjs
@@ -14,10 +19,10 @@ export const ETAT_GLOBAL = {
     title: 'GardenFervor — État global du projet',
     subtitle: 'Systèmes, maturité, preuves, priorités',
     verifiedAt: '2026-10-09',
-    gitHeadAtAudit: '91723da',
-    gitMessageAtAudit: 'docs(hub): redesign landing as cinematic production portal',
+    gitHeadAtAudit: 'e4e6bd6e203f0a06a64677539f7405f6f60f8f24',
+    gitMessageAtAudit: 'docs(contracts): validate C-14 infrastructure lifecycle',
     originNote:
-      'Contenu initial dérivé du Canvas d’audit global (post C-12). Mis à jour à la clôture C-14. Maintenu ici, pas dans Cursor Canvas.',
+      'Contenu initial dérivé du Canvas d’audit global (post C-12). Référence Git de l’audit éditorial figée à la clôture C-14 (≠ HEAD courant). Maintenu ici, pas dans Cursor Canvas.',
     sources: [
       'CONTRATS/00_SUIVI_CONTRATS.md',
       'CONTRATS/00_REGISTRE_CONTRATS.md',

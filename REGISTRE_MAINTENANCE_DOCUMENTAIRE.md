@@ -193,13 +193,13 @@ Chaîne distincte de la Roadmap globale. Ne pas synchroniser l’une depuis l’
 
 **Historique :** source canonique `HISTORIQUE_MODIFICATIONS.md`. Miroir `docs/historique.html` = **§4 uniquement**, via `docs/historique/buildHistorique.mjs`. Les catégories affichées (contrats, conception, technique, roadmap, documentation, hub) sont **inférées par le script**, ce ne sont pas un champ structuré de la source. Contrôle d’obsolescence : champ `sourceHash` (SHA-256 du Markdown) dans le HTML généré. Régénérer après toute modification de §4 (directement ou via `syncPages` si publication autorisée). Les §1–3 du Markdown n’ont pas de miroir Hub.
 
-`ETAT_PROJET.md` et `etatGlobal.data.js` sont des récits **distincts**. Ne pas les assimiler automatiquement (anomalie A3).
+`ETAT_PROJET.md` et `etatGlobal.data.js` sont des récits **distincts**. Ne pas les fusionner. `gitHeadAtAudit` = référence historique de l’audit éditorial, pas le HEAD courant (A3 **RÉSOLUE**).
 
 | ID | Document / artefact | Catégorie | Rôle | Nature | Source de vérité | Déclencheurs | Fréquence | Dépendances | Procédure | Validation | Risque si oubli | État |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DOC-HUB | `docs/index.html` | Hub | Portail navigation + zones `SYNC:STATUS` / `data-sync` | CANONIQUE (structure) + fragments générés | structure manuelle ; statut via sync | nouvelle page / redesign | événementielle | syncPages | éditer structure ; sync pour bandeau | liens relatifs existent | page orpheline | Actif |
 | DOC-GPAGES | `docs/GITHUB_PAGES.md` | Hub | Mode d’emploi Pages | CANONIQUE | elle-même | nouvelle page Hub | événementielle | syncPages | éditer MD | liste pages = réel | doc Pages fausse | Actif ; A2 **RÉSOLUE** (table alignée : S3, globale, graphe) |
-| DOC-EG-DATA | `docs/etat-global/etatGlobal.data.js` | Hub | Éditorial état global | CANONIQUE (éditorial) | elle-même + compteurs via MIR-SUIVI-JS | clôture / audit global | événementielle | contractsSuivi | éditer JS | buildEtatGlobal | récit faux / ≠ ETAT | Actif ; `gitHeadAtAudit: '91723da'` (A3) |
+| DOC-EG-DATA | `docs/etat-global/etatGlobal.data.js` | Hub | Éditorial état global | CANONIQUE (éditorial) | elle-même + compteurs via MIR-SUIVI-JS | clôture / audit global | événementielle | contractsSuivi | éditer JS | buildEtatGlobal | récit faux / ≠ ETAT | Actif ; `gitHeadAtAudit` figé = clôture C-14 `e4e6bd6e203f0a06a64677539f7405f6f60f8f24` (A3 **RÉSOLUE**) |
 | SCR-EG | `docs/etat-global/buildEtatGlobal.mjs` | Script | Build état global | SCRIPT | DOC-EG-DATA + MIR-SUIVI-JS | après sources | via syncPages | DOC-EG-DATA | `node docs/etat-global/buildEtatGlobal.mjs` | page générée | page stale | Actif |
 | GEN-EG | `docs/etat-global.html` | Hub | Vue état global | GÉNÉRÉ | DOC-EG-DATA + MIR-SUIVI-JS | sync / build | via syncPages | SCR-EG | buildEtatGlobal | compteurs live | Hub état faux | Généré |
 | DOC-EG-README | `docs/etat-global/README.md` | Hub | Mode d’emploi | RÉFÉRENCE | scripts | changement script | événementielle | SCR-EG | éditer MD | — | doc fausse | Actif si scripts changent |
@@ -584,14 +584,14 @@ Constat Git lors de la révision `cf3c1ff` : `main` = `origin/main` ; index vide
 
 ## 8. Anomalies et points de vigilance
 
-A3–A12 restent **ouvertes** (documentées seulement).  
-A1 et A2 sont **RÉSOLUES** (preuves ci-dessous). Les entrées sont conservées pour l’historique.
+A4–A12 restent **ouvertes** (documentées seulement).  
+A1, A2 et A3 sont **RÉSOLUES** (preuves ci-dessous). Les entrées sont conservées pour l’historique.
 
 | ID | Constat | Fichiers | Correctif futur suggéré (**proposition**) |
 | --- | --- | --- | --- |
 | A1 | **RÉSOLUE.** Origine : `activeContractId: 'C-14'` vs suivi « Contrat actuel : aucun / Dernier validé : C-14 » ; libellés UI « Contrat actif » / « ACTIF ». Audit : la **valeur** C-14 est le dernier VALIDÉ (JSDoc + Hub « dernier » + état-global) ; divergence de **vocabulaire** seulement. Correctif 2026-10-09 : libellés « Dernier contrat validé » / « DERNIER VALIDÉ » dans `docs/syncPages.mjs` et `GardenFervor_DesignGate_React/src/ContractsSuiviView.jsx` ; badge NON VALIDÉ retiré de la bannière React ; `docs/contracts.html` régénéré via `node docs/syncPages.mjs --contracts-only`. Contrôles V1–V4 PASS. Validation visuelle humaine : C-14 « Dernier contrat validé », statut VALIDÉ, 9/16. Valeurs métier inchangées (`activeContractId: 'C-14'`, `nextAuthorizedId: 'C-15'`). | MIR-SUIVI-JS, DOC-SUIVI-C, SCR-SYNC, GEN-CONTRACTS, DEV-DG-VIEW | Correctif appliqué (libellés + page générée). Validateur MD↔JS reste une **proposition** (A12), pas une condition de cette clôture. |
 | A2 | **RÉSOLUE.** Origine : `docs/GITHUB_PAGES.md` §Fichiers publiés omettait `project-graph.html` et `roadmap-globale.html`, alors que le Hub et `syncPages` les publiaient. Correctif constaté dans `docs/GITHUB_PAGES.md` (working tree, compte rendu de correction 2026-10-09, non commité au moment de cette clôture) : `roadmap-globale.html` (Roadmap globale) et `project-graph.html` (Project Graph) ajoutés à la table publiée ; `roadmap.html` distinguée comme Roadmap de production S3 ; sources de vérité scindées S3 / globale / graphe. | DOC-GPAGES, DOC-HUB, GEN-PG-PAGES, GEN-RM-PAGES | Correctif déjà appliqué dans `docs/GITHUB_PAGES.md` (fichier **non modifié** dans cette révision du registre) |
-| A3 | `etatGlobal.data.js` contient `gitHeadAtAudit: '91723da'` ; HEAD contrôlé = `cf3c1ff`. `ETAT_PROJET.md` et l’éditorial etat-global sont des récits distincts | DOC-EG-DATA, DOC-ETAT, GEN-EG | Vérifier puis aligner l’éditorial **sans les fusionner automatiquement** |
+| A3 | **RÉSOLUE.** Origine : `gitHeadAtAudit: '91723da'` (`docs(hub): redesign landing as cinematic production portal`) alors que `originNote` / README attribuaient une actualisation à la clôture C-14 ; HEAD contrôlé à l’ouverture = `cf3c1ff`, puis `0943e660f20a32e30b9a93e90d186355c8b17db6`. Audit : le champ est une **référence historique figée**, pas le HEAD live ; `ETAT_PROJET.md` (baseline courte) et l’éditorial Hub restent des récits distincts — ne pas les fusionner. Correctif 2026-10-09 : sémantique dans `etatGlobal.data.js` et `docs/etat-global/README.md` ; `gitHeadAtAudit` = `e4e6bd6e203f0a06a64677539f7405f6f60f8f24` ; `gitMessageAtAudit` = `docs(contracts): validate C-14 infrastructure lifecycle` (commit C-14 vérifié) ; `originNote` réconcilié ; libellé Hub « Référence Git de l’audit éditorial (historique, figée) » ; `docs/etat-global.html` régénéré **uniquement** (`node docs/etat-global/buildEtatGlobal.mjs`). HEAD courant **non** bumpé. Compteurs 9/16, C-14, C-15 non commencé, Case B SUSPENDU, F1 INVALIDÉ / F2–F8 PASS inchangés. Roadmap `git_head_at_audit` hors périmètre. | DOC-EG-DATA, DOC-EG-README, SCR-EG, GEN-EG | Correctif appliqué. Ne pas bumper automatiquement à chaque commit, génération ou sync. |
 | A4 | Compteurs N/16 et prochain contrat représentés plusieurs fois (index, contracts, etat-global) | DOC-HUB, GEN-CONTRACTS, GEN-EG, MIR-SUIVI-JS | Vérifier les trois surfaces ensemble à chaque E2/E10 |
 | A5 | Deux interfaces Design Gate (Vite locale ≠ HTML Pages) sans sync auto | DEV-DG-*, GEN-DG-* | Conserver la distinction ; Pages = chaîne standalone |
 | A6 | Deux roadmaps (globale vs S3) | DOC-RM-*, DOC-S3-* | Conserver les deux chaînes ; ne pas copier l’une sur l’autre |
@@ -602,7 +602,7 @@ A1 et A2 sont **RÉSOLUES** (preuves ci-dessous). Les entrées sont conservées 
 | A11 | `CURRENT_STATE.md` généré peut être lu comme état projet | GEN-PG-STATE vs DOC-ETAT | Rappeler : généré ≠ ETAT_PROJET |
 | A12 | Pas de validateur automatique HIST `sourceHash` hors rebuild ; pas de validateur SUIVI MD↔JS | SCR-HIST, MIR-SUIVI-JS | **Proposition** : checks dédiés |
 
-**Propositions** (non officielles) : revue périodique du registre (§1) ; correctifs A3–A4 (A1 et A2 **RÉSOLUES**) ; validateur A12.  
+**Propositions** (non officielles) : revue périodique du registre (§1) ; correctif A4 (A1, A2 et A3 **RÉSOLUES**) ; validateur A12.  
 C-15 n’est pas commencé.
 
 ---
