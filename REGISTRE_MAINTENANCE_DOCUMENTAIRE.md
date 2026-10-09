@@ -222,23 +222,28 @@ Chaîne distincte de la Roadmap globale. Ne pas synchroniser l’une depuis l’
 Déclencheur : ajout, remplacement ou suppression d’un WebP source, ou publication Hub autorisée.  
 Contrôle : le basename existe des deux côtés. Risque : image 404 sur la page publiée.
 
-#### 2.8.1 Sources (8 WebP) — CANONIQUE asset
+#### 2.8.1 Sources (11 WebP publiés + 10 originaux) — CANONIQUE asset
 
 Dossier : `Investor Demo/PrésentationClientHtml/images/`  
-Galerie `lot1/` retirée le 2026-10-10 (collages, doublons, JPEG opaques). HTML statique, plus de Base64.
+Galerie `lot1/` retirée le 2026-10-10. HTML statique, plus de Base64.  
+Originaux `01-…png` à `10-…png` : **ne pas modifier** ; ce sont des WebP avec extension `.png`.  
+Les WebP servis par la page sont des copies 1600×900. Ne pas recopier les originaux vers `docs/`.
 
 | ID | Chemin exact | Nature | Copie | Rôle |
 | --- | --- | --- | --- | --- |
-| IMG-SRC-HERO | `…/images/hero-territoire.webp` | CANONIQUE | IMG-CPY-HERO | Hero — vision territoire |
+| IMG-SRC-HERO | `…/images/hero-territoire.webp` | CANONIQUE | IMG-CPY-HERO | Hero — depuis 01 |
 | IMG-SRC-S3 | `…/images/gameplay-s3-overview.webp` | CANONIQUE | IMG-CPY-S3 | Prototype S3 — placeholders 192×192 |
-| IMG-SRC-U | `…/images/vision-unites-chantier.webp` | CANONIQUE | IMG-CPY-U | Vision unités / chantier |
-| IMG-SRC-L | `…/images/vision-logistique-bois.webp` | CANONIQUE | IMG-CPY-L | Vision logistique bois |
-| IMG-SRC-H | `…/images/vision-hydrologie.webp` | CANONIQUE | IMG-CPY-H | Vision hydrologie |
-| IMG-SRC-E | `…/images/vision-ecosysteme-zone-humide.webp` | CANONIQUE | IMG-CPY-E | Vision zone humide |
-| IMG-SRC-SO | `…/images/vision-sol.webp` | CANONIQUE | IMG-CPY-SO | Vision sol |
-| IMG-SRC-C | `…/images/vision-construction-riviere.webp` | CANONIQUE | IMG-CPY-C | Vision construction / rivière |
+| IMG-SRC-TS | `…/images/vision-territoire-strategique.webp` | CANONIQUE | IMG-CPY-TS | Concept — depuis 02 |
+| IMG-SRC-U | `…/images/vision-unites-chantier.webp` | CANONIQUE | IMG-CPY-U | Unités — depuis 03 |
+| IMG-SRC-L | `…/images/vision-logistique-bois.webp` | CANONIQUE | IMG-CPY-L | Logistique — depuis 04 |
+| IMG-SRC-ST | `…/images/vision-stocks-localises.webp` | CANONIQUE | IMG-CPY-ST | Stocks localisés — depuis 05 |
+| IMG-SRC-H | `…/images/vision-hydrologie.webp` | CANONIQUE | IMG-CPY-H | Hydrologie — **contenu de 09** |
+| IMG-SRC-E | `…/images/vision-ecosysteme-zone-humide.webp` | CANONIQUE | IMG-CPY-E | Zone humide — **contenu de 08** |
+| IMG-SRC-SO | `…/images/vision-sol.webp` | CANONIQUE | IMG-CPY-SO | Sol / nivellement — **contenu de 06** |
+| IMG-SRC-C | `…/images/vision-construction-riviere.webp` | CANONIQUE | IMG-CPY-C | Pont / rivière — **contenu de 07** |
+| IMG-SRC-M | `…/images/vision-mosaique-ecologique.webp` | CANONIQUE | IMG-CPY-M | Ambition — depuis 10 |
 
-#### 2.8.2 Copies Hub (8) — GÉNÉRÉ
+#### 2.8.2 Copies Hub (11) — GÉNÉRÉ
 
 Dossier : `docs/images/` (plus de `lot1/`). Reconstruire depuis la source, pas à la main.
 

@@ -58,11 +58,11 @@
     }
     .hero img {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; object-position: 68% 42%;
+      object-fit: cover; object-position: 50% 42%;
     }
     .hero::after {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(16, 24, 18, 0.15) 0%, rgba(16, 24, 18, 0.72) 88%);
+      background: linear-gradient(180deg, rgba(16, 24, 18, 0.12) 0%, rgba(16, 24, 18, 0.74) 88%);
     }
     .hero-copy { position: relative; z-index: 1; padding: 0 0 72px; }
     .eyebrow, .badge {
@@ -81,6 +81,8 @@
     section { padding: 88px 0; }
     .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .stack { display: grid; gap: 18px; }
+    .wide { margin-top: 36px; }
+    .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
     h2 {
       font-family: Syne, sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem);
       letter-spacing: -0.03em; line-height: 1.05; margin: 10px 0 16px;
@@ -125,7 +127,7 @@
       image-rendering: pixelated;
     }
     @media (max-width: 900px) {
-      .split, .pair, .cards, .chain { grid-template-columns: 1fr; }
+      .split, .pair, .cards, .chain, .duo { grid-template-columns: 1fr; }
       .nav-links, .meta { display: none; }
       section { padding: 56px 0; }
     }
@@ -148,7 +150,7 @@
   </nav>
 
   <header class="hero" id="top">
-    <img src="images/hero-territoire.webp" alt="Paysage de forêts, prairies, rivières et lacs vu depuis une crête" width="1376" height="768" fetchpriority="high">
+    <img src="images/hero-territoire.webp" alt="Vallée de prairies, cours d’eau, étangs et forêts vue depuis une crête" width="1600" height="900" fetchpriority="high">
     <div class="wrap hero-copy">
       <span class="badge">Vision cible — illustration conceptuelle</span>
       <h1>Construisez les systèmes. Façonnez les terres.</h1>
@@ -169,6 +171,12 @@
         <article class="card"><h3>Autonomie</h3><p>Extraction, transport et construction avancent sans microgestion permanente.</p></article>
         <article class="card"><h3>Causalité</h3><p>Un stock vide, un accès manquant ou un site non prêt bloquent réellement la suite.</p></article>
       </aside>
+    </div>
+    <div class="wrap wide">
+      <figure class="figure">
+        <img src="images/vision-territoire-strategique.webp" alt="Chantier forestier conceptuel : grue, grumes et camion sur une clairière accessible" width="1600" height="900" loading="lazy">
+        <figcaption><span class="tag">Vision cible — illustration conceptuelle</span><span>Lire le territoire, puis ouvrir un chantier — pas le rendu actuel</span></figcaption>
+      </figure>
     </div>
   </section>
 
@@ -191,7 +199,7 @@
         </div>
         <figure class="figure" style="max-width:260px">
           <img class="thumb" src="images/gameplay-s3-overview.webp" alt="Vue actuelle des placeholders de la scène Investor Demo S3" width="192" height="192">
-          <figcaption><span class="tag">Prototype jouable</span><span>L_InvestorDemo_S3 · BasicShapes</span></figcaption>
+          <figcaption><span class="tag">Prototype jouable — capture réelle</span><span>L_InvestorDemo_S3 · BasicShapes</span></figcaption>
         </figure>
       </div>
     </div>
@@ -200,8 +208,8 @@
   <section id="unites">
     <div class="wrap split">
       <figure class="figure">
-        <img src="images/vision-unites-chantier.webp" alt="Camp forestier conceptuel avec unités, bois et véhicules autour d’un module de chantier" width="1600" height="900" loading="lazy">
-        <figcaption><span class="tag">Vision cible</span><span>Unités spécialisées sur un chantier forestier</span></figcaption>
+        <img src="images/vision-unites-chantier.webp" alt="Unité de transport autonome sur une piste, entre un tas de bois et un chantier en amont" width="1600" height="900" loading="lazy">
+        <figcaption><span class="tag">Vision cible — illustration conceptuelle</span><span>Rôles distincts : extraire, transporter, construire</span></figcaption>
       </figure>
       <div>
         <p class="eyebrow">03 — Unités</p>
@@ -221,8 +229,14 @@
         <p>La distance est une contrainte. Les stocks sont localisés. Cette chaîne physique est déjà démontrée sur S3 Cas A.</p>
       </div>
       <figure class="figure">
-        <img src="images/vision-logistique-bois.webp" alt="Trois unités conceptuelles extraient et chargent du bois dans une forêt" width="1400" height="933" loading="lazy">
-        <figcaption><span class="tag">Vision cible</span><span>Extraction, dépôt et transport de bois</span></figcaption>
+        <img src="images/vision-logistique-bois.webp" alt="Trois engins spécialisés : abatteuse, camion de grumes et bouteur sur une aire forestière" width="1600" height="900" loading="lazy">
+        <figcaption><span class="tag">Vision cible — illustration conceptuelle</span><span>Extraction et transport — métiers distincts</span></figcaption>
+      </figure>
+    </div>
+    <div class="wrap wide">
+      <figure class="figure">
+        <img src="images/vision-stocks-localises.webp" alt="Vue aérienne d’opérations dispersées le long d’un cours d’eau, chaque tas et engin occupant un lieu précis" width="1600" height="900" loading="lazy">
+        <figcaption><span class="tag">Vision cible — illustration conceptuelle</span><span>Stock A et Stock B sont deux lieux : le transfert exige un transport</span></figcaption>
       </figure>
     </div>
   </section>
@@ -232,15 +246,17 @@
       <p class="eyebrow">05 — Territoire</p>
       <h2>Changer le sol n’est pas encore cette démo.</h2>
       <p class="lead">Le relief est une vérité de gameplay (C-01, opérations F8). S3 Cas A utilise un chantier déjà prêt. Les images ci-dessous montrent l’ambition des travaux et des ouvrages, pas une preuve runtime actuelle.</p>
-      <div class="cards" style="margin-top:32px">
+      <div class="duo">
         <figure class="figure">
-          <img src="images/vision-construction-riviere.webp" alt="Unités conceptuelles construisant une passerelle au-dessus d’une rivière" width="1400" height="933" loading="lazy">
-          <figcaption><span class="tag">Vision cible</span><span>Infrastructures et franchissement — F9 non démarré</span></figcaption>
+          <img src="images/vision-construction-riviere.webp" alt="Chantier conceptuel d’un pont en construction au-dessus d’une rivière" width="1600" height="900" loading="lazy">
+          <figcaption><span class="tag">Vision cible — illustration conceptuelle</span><span>Ouvrage et franchissement — F9 non démarré</span></figcaption>
         </figure>
         <figure class="figure">
-          <img src="images/vision-sol.webp" alt="Unités conceptuelles travaillant un sol nu, avec benne et matière extraite" width="1400" height="933" loading="lazy">
-          <figcaption><span class="tag">Vision cible</span><span>Sol et matières — contrat C-16 non commencé</span></figcaption>
+          <img src="images/vision-sol.webp" alt="Bouteur nivelant une terrasse de terre sur un versant forestier" width="1600" height="900" loading="lazy">
+          <figcaption><span class="tag">Vision cible — illustration conceptuelle</span><span>Préparation du sol — C-16 non commencé</span></figcaption>
         </figure>
+      </div>
+      <div class="cards" style="margin-top:28px">
         <article class="card">
           <h3>Ce qui est vrai aujourd’hui</h3>
           <p>Hauteur, pente, dirty spatial, opérations Raise/Lower sur d’autres preuves. Pas de Case B. Pas de peinture écologique. Pas de retenue simulée.</p>
@@ -252,8 +268,8 @@
   <section id="ecosysteme" style="background:#efe8da">
     <div class="wrap split">
       <figure class="figure">
-        <img src="images/vision-hydrologie.webp" alt="Vue aérienne conceptuelle d’un bassin versant, de rivières, de retenues et de chantiers dispersés" width="1600" height="900" loading="lazy">
-        <figcaption><span class="tag">Vision cible</span><span>Hydrologie logique connectée — C-15 non commencé</span></figcaption>
+        <img src="images/vision-hydrologie.webp" alt="Versant boisé dont les ruisseaux rejoignent un réseau de zones humides et d’étangs" width="1600" height="900" loading="lazy">
+        <figcaption><span class="tag">Vision cible — illustration conceptuelle</span><span>Hydrologie connectée au relief — C-15 non commencé</span></figcaption>
       </figure>
       <div>
         <p class="eyebrow">06 — Eau, sols, vivant</p>
@@ -262,10 +278,10 @@
         <p>Cible : une hydrologie cohérente avec le relief, un sol qui évolue, des états prairie / forêt / zone humide. Ces images ne doivent pas être lues comme un système déjà fonctionnel.</p>
       </div>
     </div>
-    <div class="wrap" style="margin-top:28px">
+    <div class="wrap wide">
       <figure class="figure">
-        <img src="images/vision-ecosysteme-zone-humide.webp" alt="Unités conceptuelles travaillant dans une zone humide, roseaux et eau peu profonde" width="1400" height="933" loading="lazy">
-        <figcaption><span class="tag">Vision cible</span><span>Zone humide — écosystème C-17 non commencé</span></figcaption>
+        <img src="images/vision-ecosysteme-zone-humide.webp" alt="Mare peu profonde, roseaux et plantes de zone humide, avec un engin au loin" width="1600" height="900" loading="lazy">
+        <figcaption><span class="tag">Vision cible — illustration conceptuelle</span><span>Zone humide — écosystème C-17 non commencé</span></figcaption>
       </figure>
     </div>
   </section>
@@ -275,6 +291,10 @@
       <p class="eyebrow">07 — Ambition</p>
       <h2>D’opérateur à orchestrateur.</h2>
       <p class="lead">Lire le territoire. Définir des intentions, pas des placements. Créer la capacité, puis laisser les chaînes s’organiser. La fidélité visuelle et les simulations plus profondes viendront par étapes, sans mentir sur l’état présent.</p>
+      <figure class="figure wide">
+        <img src="images/vision-mosaique-ecologique.webp" alt="Territoire conceptuel mêlant dépôt, route, cours d’eau, parcelles de sol et zone humide" width="1600" height="900" loading="lazy">
+        <figcaption><span class="tag">Vision cible — illustration conceptuelle</span><span>Mosaïque écologique — interactions non encore opérationnelles</span></figcaption>
+      </figure>
       <div class="cards" style="margin-top:28px">
         <article class="card"><h3>Aujourd’hui</h3><p>Boucle S3 Cas A démontrée. Contrats opérationnels 9/16. Placeholders de présentation.</p></article>
         <article class="card"><h3>Ensuite</h3><p>Assets de démo, lifecycle infrastructures, puis hydrologie, sol et écosystèmes lorsqu’ils seront contractualisés.</p></article>

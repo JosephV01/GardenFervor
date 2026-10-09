@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-10 — PRES-CLIENT-VISUEL**.
+Dernière entrée historique : **2026-10-10 — PRES-CLIENT-LOT10**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-10 — PRES-CLIENT-LOT10 — Intégration des 10 illustrations fournies
+
+- **Intention :** remplacer les visuels conceptuels par les 10 images utilisateur, sans toucher à la capture S3 ni au gameplay.
+- **Statut :** documentaire / présentation — **pas de gameplay** · **C-15 non commencé** · 9/16 inchangé
+- **Avant → Après :** 7 WebP conceptuels hérités → 10 WebP issus des PNG/WebP fournis ; S3 192×192 conservé
+- **Placement :** 06/07 et 08/09 associés selon le contenu réel (pont / nivellement ; bassin / mare), pas selon le nom du fichier source
+- **Inchangé :** originaux `01-…png` à `10-…png` ; Unreal ; Design Gate ; contrats
+- **Suite :** commit/push seulement sur autorisation
 
 ### 2026-10-10 — PRES-CLIENT-VISUEL — Refonte visuelle présentation client
 
