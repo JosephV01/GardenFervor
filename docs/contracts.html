@@ -679,7 +679,7 @@
     const active = byId[data.activeId];
     const pct = Math.round((data.progress.validated / Math.max(1, data.progress.required)) * 100);
     document.getElementById('hero').innerHTML =
-      '<div class="panel active"><div class="eyebrow">Contrat actif</div><h2>' + active.id + ' — ' + active.name + '</h2>' +
+      '<div class="panel active"><div class="eyebrow">Dernier contrat validé</div><h2>' + active.id + ' — ' + active.name + '</h2>' +
       '<p style="margin:0;color:#a7bbb3;font-size:13px">' + (active.note || '') + '</p><div class="badges">' +
       '<span class="badge ' + statusClass(active.status) + '">' + active.status + '</span>' +
       (active.status === 'REVUE' ? '<span class="badge nonval">NON VALIDÉ</span>' : '') +
@@ -729,7 +729,7 @@
         const sel = id === selected ? ' style="outline:1px solid #3d5a4c"' : '';
         return '<button class="row' + activeCls + '" data-id="' + id + '"' + sel + ' type="button">' +
           '<div class="rowTop"><span class="id">' + c.id + '</span><span class="name">' + c.name + '</span>' +
-          (id === data.activeId ? '<span class="badge revue" style="margin-left:auto">ACTIF</span>' : '') +
+          (id === data.activeId ? '<span class="badge valide" style="margin-left:auto">DERNIER VALIDÉ</span>' : '') +
           '</div><div class="badges"><span class="badge ' + statusClass(c.status) + '">' + c.status + '</span>' +
           (c.status === 'REVUE' ? '<span class="badge nonval">NON VALIDÉ</span>' : '') +
           (c.blocking ? '<span class="badge block">BLOQUANT</span>' : '') +

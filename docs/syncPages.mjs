@@ -3,6 +3,8 @@
  *
  * Usage (depuis la racine du dépôt) :
  *   node docs/syncPages.mjs
+ *   node docs/syncPages.mjs --contracts-only
+ *     → écrit uniquement docs/contracts.html (pas d’autres vues)
  *
  * - Roadmap  → docs/roadmap.html
  * - Design Gate → docs/design-gate.html
@@ -30,6 +32,7 @@ import { spawnSync } from 'child_process';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
 const docsDir = __dirname;
+const contractsOnly = process.argv.includes('--contracts-only');
 
 function runNode(scriptRel) {
   const script = path.join(repoRoot, scriptRel);
@@ -42,26 +45,22 @@ function runNode(scriptRel) {
   }
 }
 
-console.log('— Sync roadmap —');
-runNode(path.join('Plan de production', 'Roadmap', 'scripts', 'syncRoadmap.mjs'));
+if (!contractsOnly) {
+  console.log('— Sync roadmap —');
+  runNode(path.join('Plan de production', 'Roadmap', 'scripts', 'syncRoadmap.mjs'));
 
-console.log('— Sync Design Gate —');
-runNode(path.join('GardenFervor_DesignGate_React', 'scripts', 'syncStandaloneFromJs.mjs'));
+  console.log('— Sync Design Gate —');
+  runNode(path.join('GardenFervor_DesignGate_React', 'scripts', 'syncStandaloneFromJs.mjs'));
+}
 
-console.log('— Sync contrats + hub —');
+console.log(contractsOnly ? '— Generate contracts only —' : '— Sync contrats + hub —');
 const suiviMod = await import(
   pathToFileURL(
     path.join(repoRoot, 'GardenFervor_DesignGate_React', 'src', 'data', 'contractsSuivi.js')
   ).href + `?t=${Date.now()}`
 );
-const roadmapMod = await import(
-  pathToFileURL(
-    path.join(repoRoot, 'Plan de production', 'Roadmap', 'src', 'roadmap.data.js')
-  ).href + `?t=${Date.now()}`
-);
 
 const SUIVI = suiviMod.CONTRACTS_SUIVI;
-const roadmapPayload = roadmapMod.serializeRoadmap();
 const active = SUIVI.contracts.find((c) => c.id === SUIVI.activeContractId);
 const today = new Date().toISOString().slice(0, 10);
 
@@ -112,6 +111,33 @@ const contractsJson = {
 
 const contractsHtml = buildContractsHtml(contractsJson);
 fs.writeFileSync(path.join(docsDir, 'contracts.html'), contractsHtml, 'utf8');
+console.log('Wrote → docs/contracts.html');
+
+if (contractsOnly) {
+  console.log(
+    JSON.stringify(
+      {
+        ok: true,
+        mode: 'contracts-only',
+        contracts: 'docs/contracts.html',
+        activeId: SUIVI.activeContractId,
+        nextAuthorizedId: SUIVI.nextAuthorizedId,
+        progress: `${SUIVI.progress.validated}/${SUIVI.progress.required}`,
+        syncedAt: today,
+      },
+      null,
+      2
+    )
+  );
+  process.exit(0);
+}
+
+const roadmapMod = await import(
+  pathToFileURL(
+    path.join(repoRoot, 'Plan de production', 'Roadmap', 'src', 'roadmap.data.js')
+  ).href + `?t=${Date.now()}`
+);
+const roadmapPayload = roadmapMod.serializeRoadmap();
 
 const hubPath = path.join(docsDir, 'index.html');
 let hub = fs.readFileSync(hubPath, 'utf8');
@@ -356,7 +382,7 @@ ${json}
     const active = byId[data.activeId];
     const pct = Math.round((data.progress.validated / Math.max(1, data.progress.required)) * 100);
     document.getElementById('hero').innerHTML =
-      '<div class="panel active"><div class="eyebrow">Contrat actif</div><h2>' + active.id + ' — ' + active.name + '</h2>' +
+      '<div class="panel active"><div class="eyebrow">Dernier contrat validé</div><h2>' + active.id + ' — ' + active.name + '</h2>' +
       '<p style="margin:0;color:#a7bbb3;font-size:13px">' + (active.note || '') + '</p><div class="badges">' +
       '<span class="badge ' + statusClass(active.status) + '">' + active.status + '</span>' +
       (active.status === 'REVUE' ? '<span class="badge nonval">NON VALIDÉ</span>' : '') +
@@ -406,7 +432,7 @@ ${json}
         const sel = id === selected ? ' style="outline:1px solid #3d5a4c"' : '';
         return '<button class="row' + activeCls + '" data-id="' + id + '"' + sel + ' type="button">' +
           '<div class="rowTop"><span class="id">' + c.id + '</span><span class="name">' + c.name + '</span>' +
-          (id === data.activeId ? '<span class="badge revue" style="margin-left:auto">ACTIF</span>' : '') +
+          (id === data.activeId ? '<span class="badge valide" style="margin-left:auto">DERNIER VALIDÉ</span>' : '') +
           '</div><div class="badges"><span class="badge ' + statusClass(c.status) + '">' + c.status + '</span>' +
           (c.status === 'REVUE' ? '<span class="badge nonval">NON VALIDÉ</span>' : '') +
           (c.blocking ? '<span class="badge block">BLOQUANT</span>' : '') +

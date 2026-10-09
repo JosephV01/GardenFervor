@@ -11,9 +11,11 @@
 | **`index.html`** | **Hub d’accueil** — état projet + liens |
 | `etat-global.html` | État global du projet (systèmes, maturité, preuves, priorités) |
 | `historique.html` | Historique des modifications (miroir de `HISTORIQUE_MODIFICATIONS.md` §4) |
-| `roadmap.html` | Roadmap de production |
+| `roadmap.html` | Roadmap de production S3 (tranches T1–T9) |
+| `roadmap-globale.html` | Roadmap globale |
 | `design-gate.html` | Design Gate autonome |
 | `contracts.html` | Suivi des contrats |
+| `project-graph.html` | Project Graph |
 | `presentation-client.html` | Présentation client GardenFervor (copie publiée ; hors démo) |
 | `syncPages.mjs` | Synchronisation complète des pages |
 
@@ -59,7 +61,9 @@ Inventaire des documents à maintenir : **`REGISTRE_MAINTENANCE_DOCUMENTAIRE.md`
 
 | Page | Source |
 | --- | --- |
-| Roadmap | `Plan de production/Roadmap/src/roadmap.data.js` |
+| Roadmap S3 (`roadmap.html`) | `Plan de production/Roadmap/src/roadmap.data.js` |
+| Roadmap globale (`roadmap-globale.html`) | `ROADMAP/GardenFervor_ROADMAP.md` (vue HTML générée, puis copiée) |
+| Project Graph (`project-graph.html`) | `PROJECT_GRAPH/scripts/curatedGraph.mjs` (vue HTML générée, puis copiée) |
 | Design Gate | `GardenFervor_DesignGate_React/src/data/designGate.js` |
 | Contrats | `CONTRATS/*.md` (miroir UI : `contractsSuivi.js`) |
 | État global | `docs/etat-global/etatGlobal.data.js` (éditorial) + compteurs via `contractsSuivi.js` — voir `docs/etat-global/README.md` |

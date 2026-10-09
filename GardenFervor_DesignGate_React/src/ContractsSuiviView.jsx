@@ -77,11 +77,11 @@ export default function ContractsSuiviView() {
       <section className="cs-metaGrid">
         <div className="cs-metaCard">
           <span>État global</span>
-          <strong>Production documentaire en cours</strong>
-          <em>0 contrat dédié VALIDÉ</em>
+          <strong>Pilotage documentaire</strong>
+          <em>{validated} / {required} validés</em>
         </div>
         <div className="cs-metaCard active">
-          <span>Contrat actif</span>
+          <span>Dernier contrat validé</span>
           <strong>{active?.id} — {active?.name}</strong>
           <em>Statut production : {active?.productionStatus}</em>
         </div>
@@ -105,9 +105,9 @@ export default function ContractsSuiviView() {
       </section>
 
       {active && (
-        <section className="cs-activeBanner" aria-label="Contrat actif">
+        <section className="cs-activeBanner" aria-label="Dernier contrat validé">
           <div className="cs-activeLeft">
-            <div className="eyebrow">CONTRAT ACTIF</div>
+            <div className="eyebrow">DERNIER CONTRAT VALIDÉ</div>
             <h2>{active.id} — {active.name}</h2>
             <p>{active.note}</p>
           </div>
@@ -115,7 +115,6 @@ export default function ContractsSuiviView() {
             <span className={`cs-badge ${statusMeta(active.productionStatus).className}`}>
               {statusMeta(active.productionStatus).label}
             </span>
-            <span className="cs-badge cs-not-validated">NON VALIDÉ</span>
             {active.detail && (
               <div className="cs-activeDecisions">
                 Décisions : <strong>{active.detail.decisionsTaken} / {active.detail.decisionsTotal}</strong>
@@ -192,7 +191,7 @@ export default function ContractsSuiviView() {
                   <span className="cs-rowOrder">#{contract.order ?? '—'}</span>
                   <span className="cs-rowId">{contract.id}</span>
                   <span className="cs-rowName">{contract.name}</span>
-                  {isActive && <span className="cs-rowActiveTag">ACTIF</span>}
+                  {isActive && <span className="cs-rowActiveTag">DERNIER VALIDÉ</span>}
                 </div>
                 <div className="cs-rowBadges">
                   {showProductionBadge && (
