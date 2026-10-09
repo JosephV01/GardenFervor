@@ -246,7 +246,9 @@ export const curatedNodes = [
   mkContract('c_11', 'C-11', 'Réservations', 'PARTIEL', 'VALIDÉ', 'P', true, 'CONTRATS/C-11_RESERVATIONS.md', {
     notes: 'VALIDÉ — 23/23 A1–G1 ; audit PASS ; C-09/C-10 addenda fermés ; dettes runtime / preuves manquantes conservées.',
   }),
-  mkContract('c_12', 'C-12', 'Transport / logistique', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
+  mkContract('c_12', 'C-12', 'Transport / logistique', 'PARTIEL', 'VALIDÉ', 'P', true, 'CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md', {
+    notes: 'VALIDÉ — 25/25 A1–G3 ; audit PASS ; C-10 addendum fermé ; dettes runtime / preuves partielles (§17) conservées.',
+  }),
   mkContract('c_13', 'C-13', 'Construction / En service', 'SUFFISANT*', 'NON COMMENCÉ', 'I', false, null),
   mkContract('c_14', 'C-14', 'Infrastructures', 'REQUIS', 'NON COMMENCÉ', 'N', true, null),
   mkContract('c_15', 'C-15', 'Hydrologie', 'REQUIS', 'NON COMMENCÉ', 'N/P', true, null),

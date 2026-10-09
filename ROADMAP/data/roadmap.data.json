@@ -1,17 +1,17 @@
 {
   "meta": {
-    "version": "1.0.5",
+    "version": "1.0.6",
     "updated": "2026-10-09",
     "title": "GardenFervor — Roadmap globale",
-    "git_head_at_audit": "6998abc",
-    "notes": "Clôture C-11 · compteur 7/16 · prochain C-12. Distincte de Plan de production/Roadmap (cohorte S3)."
+    "git_head_at_audit": "969206e",
+    "notes": "Clôture C-12 · compteur 8/16 · prochain C-14. Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 7/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11 VALIDÉS) · prochain requis = C-12 (non commencé) · C-03·C-06·C-09·C-10 addenda fermés · Case B SUSPENDU",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 8/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12 VALIDÉS) · prochain requis = C-14 (non commencé) · C-03·C-06·C-09·C-10 addenda fermés · Case B SUSPENDU",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
-    "contracts_validated": "7",
+    "contracts_validated": "8",
     "contracts_required": "16",
     "s3_case_a": "VALIDÉ",
     "case_b": "SUSPENDU",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c12",
-    "title": "C-12 — Transport / logistique",
+    "id": "next-c14",
+    "title": "C-14 — Infrastructures",
     "status": "À FAIRE",
     "horizon": "Prochain",
-    "note": "Prochain contrat requis après C-11 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10 restent fermés. Case B suspendu.",
-    "depends": "C-07 VALIDÉ · C-11 VALIDÉ (réservations / transit)",
-    "unlocks": "logistique avancée · C-14"
+    "note": "Prochain contrat requis après C-12 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10 restent fermés. Case B suspendu.",
+    "depends": "C-02 VALIDÉ · C-05 VALIDÉ · C-12 VALIDÉ",
+    "unlocks": "ODC-F9 · lifecycle infrastructures"
   },
   "phases": [
     {
@@ -184,15 +184,15 @@
         {
           "id": "P2.J5",
           "phase": "P2",
-          "title": "Contrats reste du compteur (C-12…C-21)",
+          "title": "Contrats reste du compteur (C-14…C-21)",
           "status": "À FAIRE",
           "conception": "À CONCEVOIR",
           "realisation": "PARTIELLE",
           "validation": "NON TERMINÉE",
           "depends": "P2.J3,P2.J4",
           "unlocks": "P7,P8,P9,P10,P11,P13",
-          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-11_RESERVATIONS.md",
-          "note": "C-11 VALIDÉ (23/23) ; prochain requis = C-12.",
+          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md",
+          "note": "C-12 VALIDÉ (25/25) ; prochain requis = C-14.",
           "works": []
         }
       ]
@@ -349,6 +349,7 @@
           "status": "À FAIRE",
           "depends": "P5,P6.J1",
           "sources": "C-12 · DG-06",
+          "note": "C-12 VALIDÉ (25/25) — règles métier ; runtime réseaux / N4 / multi-flux encore partiel.",
           "works": []
         }
       ]
@@ -521,9 +522,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-09T14:29:10.375Z",
-    "mdHash": "653c589d35b744f85af7e985f342dab6350eba7da18149d35f15ca2affdfc699",
-    "git": "6998abc",
+    "generatedAt": "2026-10-09T16:32:42.631Z",
+    "mdHash": "e5f4f61849a27005019a3c7a24b803c3566c5e13aea3e0330d6564d203aa68da",
+    "git": "969206e",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },

@@ -25,13 +25,14 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-07_AUTONOMIE_UNITE_AGENT_GENERIQUE.md',
     'CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md',
     'CONTRATS/C-11_RESERVATIONS.md',
+    'CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
-  /** Dernier contrat VALIDÉ ; C-12 = prochain requis ; C-03·C-06·C-09·C-10 addenda* fermés. */
-  activeContractId: 'C-11',
-  nextAuthorizedId: 'C-12',
+  /** Dernier contrat VALIDÉ ; C-14 = prochain requis ; C-03·C-06·C-09·C-10 addenda* fermés. */
+  activeContractId: 'C-12',
+  nextAuthorizedId: 'C-14',
   progress: {
-    validated: 7,
+    validated: 8,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -41,7 +42,7 @@ export const CONTRACTS_SUIVI = {
   },
   caseB: {
     status: 'SUSPENDU',
-    note: 'Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11 VALIDÉS documentairement ; aucune reprise sans autorisation explicite.',
+    note: 'Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11·C-12 VALIDÉS documentairement ; aucune reprise sans autorisation explicite.',
   },
   /** Ordre officiel de rédaction (registre §5). */
   displayOrder: [
@@ -355,13 +356,38 @@ export const CONTRACTS_SUIVI = {
       id: 'C-12',
       name: 'Transport / logistique',
       order: 12,
-      category: 'REQUIS',
+      category: 'PARTIEL',
       coverage: 'partielle',
-      productionStatus: 'NON COMMENCÉ',
+      productionStatus: 'VALIDÉ',
       blocking: true,
       dependsOn: ['C-07', 'C-10'],
       providesTo: ['C-14'],
-      note: 'Au-delà S3',
+      note: 'VALIDÉ humainement — 25/25 décisions A1–G3 ; audit final PASS ; C-10 addendum fermé ; Case B reste suspendu ; dettes d’implémentation / preuves partielles conservées',
+      dedicatedValidated: true,
+      file: 'CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md',
+      detail: {
+        decisionsTaken: 25,
+        decisionsTotal: 25,
+        frontiers: [
+          { id: 'C-04', label: 'graphe / cycle de vie tâches' },
+          { id: 'C-05', label: 'WorkSite / SitePrep' },
+          { id: 'C-07', label: 'agent / exécution' },
+          { id: 'C-08', label: 'opérations métier matières' },
+          { id: 'C-11', label: 'réservations / concurrence' },
+          { id: 'C-14', label: 'lifecycle infrastructures' },
+          { id: 'C-19', label: 'persistance' },
+          { id: 'DG-06', label: 'logistique / réseaux' },
+          { id: '00.5.N4', label: 'saturation' },
+        ],
+        gaps: [
+          'Réseaux / routes / blocking d’accès non démontrés (limites F7)',
+          'Arbitre priorité multi-projets / multi-flux manquant',
+          'Saturation N4 opérationnelle non démontrée',
+          'Transfert atomique PE dédié absent (Withdraw+Deposit seulement)',
+          'Save/load chargements (G2) — mécanisme C-19',
+        ],
+        gapNote: 'Écarts d’implémentation / preuves partielles — pas des corrections de cette clôture. Case B non réactivé. C-10 non rouvert.',
+      },
     },
     {
       id: 'C-13',

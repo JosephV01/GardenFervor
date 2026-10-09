@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-11",
+  "activeId": "C-12",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 7,
+    "validated": 8,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -124,7 +124,7 @@
   "lastSync": "2026-10-09",
   "caseB": {
     "status": "SUSPENDU",
-    "note": "Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11 VALIDÉS documentairement ; aucune reprise sans autorisation explicite."
+    "note": "Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11·C-12 VALIDÉS documentairement ; aucune reprise sans autorisation explicite."
   },
   "contracts": [
     {
@@ -463,18 +463,40 @@
       "id": "C-12",
       "order": "12",
       "name": "Transport / logistique",
-      "status": "À FAIRE",
-      "category": "REQUIS",
+      "status": "VALIDÉ",
+      "category": "PARTIEL",
       "coverage": "partielle",
       "blocking": true,
-      "note": "Au-delà S3",
+      "note": "VALIDÉ humainement — 25/25 décisions A1–G3 ; audit final PASS ; C-10 addendum fermé ; Case B reste suspendu ; dettes d’implémentation / preuves partielles conservées",
       "dependsOn": [
         "C-07",
         "C-10"
       ],
       "providesTo": [
         "C-14"
-      ]
+      ],
+      "file": "CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md",
+      "detail": {
+        "decisions": "25 / 25",
+        "frontiers": [
+          "C-04 — graphe / cycle de vie tâches",
+          "C-05 — WorkSite / SitePrep",
+          "C-07 — agent / exécution",
+          "C-08 — opérations métier matières",
+          "C-11 — réservations / concurrence",
+          "C-14 — lifecycle infrastructures",
+          "C-19 — persistance",
+          "DG-06 — logistique / réseaux",
+          "00.5.N4 — saturation"
+        ],
+        "gaps": [
+          "Réseaux / routes / blocking d’accès non démontrés (limites F7)",
+          "Arbitre priorité multi-projets / multi-flux manquant",
+          "Saturation N4 opérationnelle non démontrée",
+          "Transfert atomique PE dédié absent (Withdraw+Deposit seulement)",
+          "Save/load chargements (G2) — mécanisme C-19"
+        ]
+      }
     },
     {
       "id": "C-13",

@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-09 — C-11-CLOSE**.
+Dernière entrée historique : **2026-10-09 — C-12-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-09 — C-12-CLOSE — Transport / logistique VALIDÉ (clôture documentaire)
+
+- **Intention :** clôturer formellement le contrat opérationnel C-12 après validation humaine et audit final PASS (25/25).
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay** · **C-14 non commencé** · C-03·C-06·C-09·C-10 addenda **fermés** · Case B reste **suspendu**
+- **Décisions :** **25/25** (A1–G3) — cycle transport ; réservation≠chargement ; transit ; accès/DG-06/N4 conception≠runtime ; frontiers C-04/C-05/C-07/C-08/C-11/C-14/C-19 ; C-10 fermé
+- **Fichiers :** `CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md` · suivi / registre / ETAT / HISTORIQUE / ROADMAP / PROJECT_GRAPH → compteur **8 / 16**
+- **Design Gate :** aucune modification
+- **Suite :** prochain contrat requis = C-14 (ne pas démarrer sans ordre explicite) · addenda C-09/C-10 non ouverts automatiquement
 
 ### 2026-10-09 — C-11-CLOSE — Réservations VALIDÉ (clôture documentaire)
 

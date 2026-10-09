@@ -1,5 +1,12 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-09 — 1.0.6 — Clôture C-12
+
+- C-12 VALIDÉ (25/25) · progression contrats **8 / 16**.
+- Prochain requis = **C-14** (non commencé) · addenda C-09/C-10 fermés · Case B suspendu.
+- Transport / logistique formalisés ≠ réseaux / N4 / multi-flux opérationnels.
+- Régénération HTML depuis le Markdown.
+
 ## 2026-10-09 — 1.0.5 — Clôture C-11
 
 - C-11 VALIDÉ (23/23) · progression contrats **7 / 16**.

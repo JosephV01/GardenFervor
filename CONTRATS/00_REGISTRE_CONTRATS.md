@@ -81,7 +81,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-09 | Économie physique / ResourceKey | SUFFISANT* | secondaire | DG-05 · C7 · T1/T2 | I (Timber) | C-00 | non* | 9* |
 | C-10 | Stocks localisés A/B | SUFFISANT* | secondaire | DG-05 · C3 · T4 | I (S3) | C-09 | non* | 10* |
 | C-11 | Réservations | PARTIEL | détaillée | DG-05.3 · **C-11 VALIDÉ** | P | C-09 · C-10 · C-04 | oui (avant multi-chantier) | 11 |
-| C-12 | Transport / logistique | PARTIEL | détaillée | DG-06 · ODC-F7 · haul A→B | P | C-07 · C-10 | oui (au-delà S3) | 12 |
+| C-12 | Transport / logistique | PARTIEL | détaillée | DG-06 · ODC-F7 · **C-12 VALIDÉ** | P | C-07 · C-10 | oui (au-delà S3) | 12 |
 | C-13 | Construction / Achevé / En service | SUFFISANT* | secondaire | DG-02/11 · C5 · T7 | I (critère cohorte) | C-05 · C-10 | non* | 13* |
 | C-14 | Infrastructures (lifecycle) | REQUIS | fondamentale | DG-10 · ODC-F9 non démarré | N | C-02 · C-05 · C-12 | **oui** (avant F9+) | 14 |
 | C-15 | Hydrologie | REQUIS | détaillée | DG-09 · Spatial stub | N/P | C-02 · C-01 | oui (avant sim eau) | 15 |
@@ -203,8 +203,10 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 ### C-12 — Transport / logistique
 
-- **État :** haul A→B VALIDÉ ; réseaux DG-06 / saturation N4 non implémentés.
-- **Contrat :** **partiel** — addendum S3 non requis ; **requis détaillé** avant réseaux.
+- **État :** haul A→B / ODC-F7 VALIDÉ (partiel) ; réseaux DG-06 / saturation N4 / multi-flux **non** opérationnels.
+- **Doc :** DG-06 · 00.5.N4 concept ; preuves F7 / S3 partielles.
+- **Contrat dédié :** **VALIDÉ** — `CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md` · **25/25** décisions A1–G3 · audit PASS · C-10 addendum fermé (G3) · dettes runtime §17 conservées.
+- **Amont :** C-07 · C-10\* · **Aval :** C-14 · C-19.
 - **Ordre 12.**
 
 ### C-13 — Construction / Achevé / En service
@@ -292,7 +294,7 @@ Ordre **par dépendances** (pas thématique). Les entrées marquées `\*` ne son
 | 21 | C-21 | Simulation / fréquences | Avant scale perf |
 
 **Prochaine rédaction recommandée (si ordre explicite humain) :**  
-`C-01` **ou**, si Case B est prioritaire après terrain minimal déjà accepté en PIE : enchaîner **C-05 → C-07 → C-08** sans sauter C-01 si la vérité shipping est exigée.
+**C-14** (infrastructures) — après C-12 VALIDÉ ; **ne pas démarrer** sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés.
 
 ---
 
