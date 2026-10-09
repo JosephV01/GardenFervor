@@ -23,14 +23,16 @@
     .meta{font-size:11px;color:#70837c}
     .active{border-color:#3d6350;background:linear-gradient(135deg,#172822,#121c19)}
     .active h2{margin:4px 0 6px;font-size:1.15rem}
-    .badges{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
-    .badge{display:inline-flex;padding:3px 8px;border-radius:99px;border:1px solid transparent;font-size:9px;font-weight:800}
-    .revue{background:#1a2438;border-color:#3a5278;color:#9ec4f5}
-    .nonval{background:#3a1f1f;border-color:#7a3d3d;color:#f0b4b4}
-    .todo{background:#2b2718;border-color:#4b4330;color:#e6d7a6}
-    .suff{background:#1a2220;border-color:#33403c;color:#9aada5}
-    .block{background:#2b2020;border-color:#4d3636;color:#e6a9a9}
-    .partiel{background:#2a2418;border-color:#53462e;color:#e2c994}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+    .badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:99px;border:1px solid transparent;font-size:10px;font-weight:850;letter-spacing:.04em;line-height:1.2}
+    .valide{background:linear-gradient(135deg,#145c38,#1f8a54);border-color:#5dffb0;color:#e8fff3;box-shadow:0 0 0 1px rgba(93,255,176,.35),0 0 14px rgba(61,220,140,.28)}
+    .revue{background:linear-gradient(135deg,#1a3a6e,#2a5fad);border-color:#8ec5ff;color:#f0f7ff;box-shadow:0 0 0 1px rgba(142,197,255,.3)}
+    .nonval{background:linear-gradient(135deg,#6a1f1f,#a33a3a);border-color:#ff8f8f;color:#fff5f5;box-shadow:0 0 0 1px rgba(255,143,143,.28)}
+    .todo{background:linear-gradient(135deg,#5a4a18,#8a7228);border-color:#ffd76a;color:#fff8e6;box-shadow:0 0 0 1px rgba(255,215,106,.25)}
+    .suff{background:linear-gradient(135deg,#2a3834,#3d524c);border-color:#9ec4b6;color:#e8f5f0}
+    .nonreq{background:#2a2a2a;border-color:#777;color:#d0d0d0}
+    .block{background:linear-gradient(135deg,#5a2424,#8a3a3a);border-color:#ff9a9a;color:#fff0f0}
+    .partiel{background:linear-gradient(135deg,#5a4218,#8a6828);border-color:#ffc86a;color:#fff6e6}
     .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;margin-top:14px}
     .list{display:flex;flex-direction:column;gap:6px}
     .row{border:1px solid #202b28;background:#111816;border-radius:10px;padding:10px 12px;width:100%;text-align:left;color:inherit;font:inherit;cursor:pointer}
@@ -68,7 +70,7 @@
     </div>
     <footer>
       <span>Source : CONTRATS/*.md · miroir contractsSuivi.js</span>
-      <span>Sync : node docs/syncPages.mjs · 2026-10-08</span>
+      <span>Sync : node docs/syncPages.mjs · 2026-10-09</span>
     </footer>
   </div>
   <script id="data" type="application/json">
@@ -119,7 +121,7 @@
       "C-21"
     ]
   },
-  "lastSync": "2026-10-08",
+  "lastSync": "2026-10-09",
   "caseB": {
     "status": "SUSPENDU",
     "note": "Case B reste suspendu (registre §9). Aucune reprise sans contrats bloquants."
@@ -580,8 +582,12 @@
       ' · Case B ' + data.caseB.status + '</div></div>';
 
     function statusClass(s) {
+      if (s === 'VALIDÉ') return 'valide';
       if (s === 'REVUE') return 'revue';
+      if (s === 'RÉDACTION') return 'revue';
       if (s === 'SUFFISANT') return 'suff';
+      if (s === 'NON REQUIS') return 'nonreq';
+      if (s === 'SUSPENDU') return 'partiel';
       return 'todo';
     }
     function renderDetail(c) {
