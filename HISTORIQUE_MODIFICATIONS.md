@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-09 — DOC-MAINT-REGISTRE**.
+Dernière entrée historique : **2026-10-09 — DG-00.5-W1-CLOSE**.
 
 ---
 
@@ -198,6 +198,31 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-09 — DG-00.5-W1-CLOSE — Clôture documentaire W1 (impact + Hub)
+
+- **Intention :** consigner la confirmation humaine d’impact de `00.5.W1` et la synchronisation ciblée déjà faite de `docs/design-gate.html`. Pas de nouvelle décision.
+- **Statut :** VALIDÉ (documentaire) — formulation et statut item inchangés (`VALIDÉ`) · **C-15 non commencé** · compteurs **9/16**
+- **Avant → Après :** confirmation d’impact et Hub encore ouverts dans `DG-00.5-W1-HORIZON` → confirmation **acquise** ; Hub local aligné et vérifié visuellement
+- **Inchangé :** texte W1 ; W2, W3, W4, X1, X2 ; contrats ; aucun runtime
+- **Changements (fichiers / systèmes) :** `ETAT_PROJET.md` · cette entrée — SoT et vues DG **non réécrites**
+- **Preuves :** quatre vues W1 identiques (JS / JSON / HTML local / `docs/design-gate.html`) ; validation humaine explicite de l’impact
+- **Dette ouverte :** alignement éventuel de W3 / W4 / X1 / X2 (autorisation distincte) ; C-15 non commencé
+- **Suite :** ne pas démarrer C-15 sans ordre explicite ; pas de commit/push dans cette clôture
+
+### 2026-10-09 — DG-00.5-W1-HORIZON — Clarification d’horizon hydrologique (W1)
+
+- **Intention :** lever l’ambiguïté d’horizon de `00.5.W1` : conserver le grain fondateur, limiter l’exclusion d’hydrodynamique détaillée au fondateur, et inscrire l’ambition à long terme sans pré-approuver un modèle.
+- **Statut :** PARTIEL — formulation appliquée dans la SoT ; **confirmation humaine d’impact encore requise** ; statut item W1 laissé `VALIDÉ` (aucun statut intermédiaire documenté pour une révision de décision déjà VALIDÉE)
+- **Avant → Après :**
+  - Avant : « Pas d’hydrodynamique détaillée » sans horizon temporel explicite
+  - Après : exclusion limitée au **périmètre du fondateur** + objectif à long terme d’une simulation hydrologique réaliste et approfondie, sans phénomène / algorithme / solveur / implémentation pré-approuvés
+- **Inchangé :** W2, W3, W4, X1, X2 ; frontières C-01 / C-02 / C-14 / C-16 / C-17 ; C-15 non rédigé ; aucun runtime eau ; compteurs contrats 9/16
+- **Changements (fichiers / systèmes) :** `GardenFervor_DesignGate_React/src/data/designGate.js` · vues locales `designGate.data.json` + `GardenFervor_DESIGN_GATE_v0.1.html` · `ETAT_PROJET.md` · cette entrée
+- **Preuves :** texte W1 = formulation approuvée ; `node GardenFervor_DesignGate_React/scripts/syncStandaloneFromJs.mjs` (vues locales) ; `docs/design-gate.html` **non publié**
+- **Pièges / leçons :** le script standalone écrit aussi `docs/design-gate.html` — ne pas le traiter comme publication autorisée ; W3 / W4 / X1 / X2 gardent un wording voisin encore non aligné
+- **Dette ouverte :** confirmation humaine de la clarification W1 ; éventuel alignement ultérieur de W3 / W4 / X1 / X2 (autorisation distincte) ; C-15 non commencé
+- **Suite :** validation humaine de l’impact → alors seulement publication Hub / clôture W1 / éventuel questionnaire C-15
 
 ### 2026-10-09 — DOC-MAINT-REGISTRE — Registre de maintenance documentaire + miroir Hub historique
 
