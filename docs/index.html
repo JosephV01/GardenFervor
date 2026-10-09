@@ -3,115 +3,265 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="GardenFervor — hub de documentation" />
-  <title>GardenFervor — Documentation</title>
+  <meta name="description" content="GardenFervor — portail de production et documentation" />
+  <title>GardenFervor — Production</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0e1413;
-      --panel: #141d1b;
-      --line: #26332f;
-      --muted: #8fa19b;
-      --text: #e9efec;
-      --accent: #7bd7a8;
-      --amber: #e5c28d;
-      --blue: #8ecdf8;
-      --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --bg-deep: #0a100e;
+      --bg: #0f1613;
+      --panel: #141c18;
+      --panel-2: #1a2420;
+      --line: #2a3832;
+      --line-soft: #22302b;
+      --text: #e8eee9;
+      --muted: #8f9f96;
+      --moss: #6fbf8a;
+      --moss-deep: #3d7a5c;
+      --copper: #c4895a;
+      --copper-soft: #a87248;
+      --ivory: #f2f5f1;
+      --warn-bg: #1c1610;
+      --warn-line: #5a4229;
+      --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+      --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: var(--font);
+      font-family: var(--font-body);
       color: var(--text);
-      background:
-        radial-gradient(circle at 78% -8%, rgba(83,150,117,.13), transparent 32%),
-        var(--bg);
-      line-height: 1.5;
-    }
-    .wrap { max-width: 920px; margin: 0 auto; padding: 36px 22px 64px; }
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: .16em;
-      font-weight: 800;
-      color: #71877f;
-      text-transform: uppercase;
-    }
-    h1 {
-      margin: 8px 0 10px;
-      font-size: clamp(1.85rem, 4vw, 2.55rem);
-      letter-spacing: -.03em;
-      line-height: 1.1;
-    }
-    .lead {
-      margin: 0;
-      color: var(--muted);
-      max-width: 560px;
-      font-size: 15px;
+      background: var(--bg-deep);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* —— Status —— */
+    /* Atmospheric stage */
+    .stage {
+      position: relative;
+      overflow: hidden;
+    }
+    .stage::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 90% 60% at 12% -10%, rgba(61, 122, 92, 0.28), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 88% 8%, rgba(196, 137, 90, 0.12), transparent 50%),
+        radial-gradient(ellipse 80% 40% at 50% 100%, rgba(15, 40, 28, 0.55), transparent 60%),
+        linear-gradient(180deg, #0c1411 0%, #0a100e 45%, #0d1512 100%);
+    }
+    .stage::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--moss);
+      outline-offset: 3px;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      min-height: min(100vh, 820px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 0 56px;
+      animation: heroIn 0.9s ease-out both;
+    }
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .brand {
+      margin: 0 0 28px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.8rem, 9vw, 5.4rem);
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+      color: var(--ivory);
+    }
+    .brand span {
+      display: block;
+      color: var(--moss);
+      font-weight: 700;
+    }
+    .promise {
+      margin: 0 0 14px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      letter-spacing: -0.02em;
+      color: var(--copper);
+    }
+    .hero-lead {
+      margin: 0 0 32px;
+      max-width: 34rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+      padding: 14px 22px;
+      border-radius: 4px;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .cta-primary {
+      background: var(--moss-deep);
+      color: var(--ivory);
+      border: 1px solid #4a9470;
+      animation: ctaBreath 3.2s ease-in-out infinite;
+    }
+    .cta-primary:hover {
+      background: #458a66;
+      transform: translateY(-2px);
+      animation: none;
+    }
+    .cta-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+    .cta-secondary:hover {
+      border-color: var(--copper-soft);
+      color: var(--copper);
+      transform: translateY(-2px);
+    }
+    @keyframes ctaBreath {
+      0%, 100% { box-shadow: inset 0 0 0 0 rgba(111, 191, 138, 0); }
+      50% { box-shadow: inset 0 0 0 1px rgba(111, 191, 138, 0.35); }
+    }
+    .scroll-hint {
+      margin-top: 48px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5f736a;
+      font-weight: 600;
+    }
+
+    /* —— Status (synced markup) —— */
+    .board {
+      margin: 0 0 48px;
+      padding-top: 8px;
+    }
+    .board-label {
+      margin: 0 0 14px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #6f857c;
+      font-weight: 700;
+    }
     .statusStrip {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
-      margin: 22px 0 28px;
     }
     .statusCard {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 12px;
-      padding: 12px 13px;
+      border: 1px solid var(--line-soft);
+      background: linear-gradient(165deg, var(--panel-2), var(--panel));
+      border-radius: 6px;
+      padding: 14px 14px 16px;
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      min-height: 96px;
+      gap: 6px;
+      min-height: 108px;
     }
-    .statusCard.accent { border-color: #3d6350; background: #15231e; }
-    .statusCard.warn { border-color: #5a4229; background: #1c1812; }
+    .statusCard.accent {
+      border-color: #355847;
+      background: linear-gradient(165deg, #1a2822, #121c18);
+    }
+    .statusCard.warn {
+      border-color: var(--warn-line);
+      background: linear-gradient(165deg, #221c14, var(--warn-bg));
+    }
     .statusCard span {
-      font-size: 9px;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: .1em;
-      font-weight: 800;
+      letter-spacing: 0.12em;
+      font-weight: 700;
       color: #6f857c;
+      font-family: var(--font-display);
     }
     .statusCard strong {
       font-size: 13px;
-      line-height: 1.3;
-      color: #dce7e2;
+      line-height: 1.35;
+      color: var(--ivory);
+      font-weight: 700;
     }
     .statusCard em {
       font-style: normal;
-      font-size: 11px;
-      color: #7d9189;
+      font-size: 12px;
+      color: var(--muted);
       line-height: 1.4;
     }
 
-    /* —— Sections —— */
-    .section { margin: 0 0 28px; }
+    /* —— Production zones —— */
+    .section {
+      margin: 0 0 40px;
+    }
     .sectionHead {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      gap: 12px;
-      margin: 0 0 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
+      gap: 16px;
+      margin: 0 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line-soft);
     }
     .sectionHead h2 {
       margin: 0;
-      font-size: 12px;
-      letter-spacing: .12em;
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #86a399;
-      font-weight: 800;
+      color: var(--moss);
+      font-weight: 700;
     }
     .sectionHead p {
       margin: 0;
-      font-size: 12px;
+      font-size: 13px;
       color: #6f857c;
       text-align: right;
-      max-width: 340px;
+      max-width: 360px;
     }
 
     .grid {
@@ -124,121 +274,160 @@
     a.card {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       text-decoration: none;
       color: inherit;
-      background: linear-gradient(145deg, #151f1d, #101816);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px 16px;
-      transition: border-color .15s ease, transform .15s ease;
-      min-height: 132px;
+      background: linear-gradient(155deg, rgba(26, 36, 32, 0.95), rgba(16, 22, 19, 0.98));
+      border: 1px solid var(--line-soft);
+      border-radius: 6px;
+      padding: 20px 18px;
+      min-height: 148px;
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
     }
     a.card:hover {
-      border-color: #3d6350;
-      transform: translateY(-1px);
+      border-color: var(--moss-deep);
+      transform: translateY(-3px);
+      background: linear-gradient(155deg, #1e2a25, #141c18);
     }
     a.card.primary {
-      border-color: #355647;
-      background: linear-gradient(145deg, #1a2822, #121c18);
-      min-height: 148px;
+      border-color: #355847;
+      background: linear-gradient(155deg, #1c2a24, #121c18);
+    }
+    a.card.primary:hover {
+      border-color: var(--moss);
     }
     a.card .tag {
       align-self: flex-start;
+      font-family: var(--font-display);
       font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .08em;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 999px;
+      padding: 4px 8px;
+      border-radius: 3px;
       border: 1px solid transparent;
     }
-    .tag.pilot { background: #243018; border-color: #4a6230; color: #c5e08e; }
-    .tag.gate { background: #143026; border-color: #244c3b; color: var(--accent); }
-    .tag.contracts { background: #30241a; border-color: #5a4229; color: var(--amber); }
-    .tag.graph { background: #1a2430; border-color: #3a5270; color: var(--blue); }
-    .tag.demo { background: #241828; border-color: #4a3358; color: #d4a8ef; }
-    .tag.proof { background: #152a37; border-color: #284b62; color: var(--blue); }
+    .tag.pilot { background: #1e2a18; border-color: #4a6230; color: #b8d47a; }
+    .tag.gate { background: #142820; border-color: #2a5a42; color: var(--moss); }
+    .tag.contracts { background: #2a2018; border-color: #6a4a30; color: var(--copper); }
+    .tag.graph { background: #182420; border-color: #3a5a4a; color: #9ec4b0; }
+    .tag.demo { background: #241c16; border-color: #5a4030; color: #d4a888; }
+    .tag.proof { background: #152420; border-color: #2a5048; color: #8ec4b0; }
     a.card h3 {
       margin: 2px 0 0;
-      font-size: 1.12rem;
-      letter-spacing: -.02em;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: -0.025em;
       font-weight: 700;
+      color: var(--ivory);
     }
     a.card p {
       margin: 0;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 13.5px;
       flex: 1;
+      font-weight: 500;
     }
     a.card .go {
-      margin-top: 4px;
-      font-size: 12px;
+      margin-top: 6px;
+      font-size: 13px;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--moss);
+      font-family: var(--font-display);
+      transition: letter-spacing 0.2s ease;
+    }
+    a.card:hover .go {
+      letter-spacing: 0.03em;
     }
 
     .howto {
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-soft);
       background: var(--panel);
-      border-radius: 12px;
-      padding: 14px 16px;
+      border-radius: 6px;
+      padding: 18px 20px;
       margin-top: 8px;
     }
     .howto h2 {
-      margin: 0 0 8px;
+      margin: 0 0 10px;
+      font-family: var(--font-display);
       font-size: 11px;
-      letter-spacing: .12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #86a399;
+      color: var(--copper);
+      font-weight: 700;
     }
     .howto ol {
       margin: 0;
       padding-left: 18px;
-      color: #9eb0a8;
-      font-size: 13px;
+      color: var(--muted);
+      font-size: 13.5px;
     }
-    .howto li { margin: 5px 0; }
+    .howto li { margin: 6px 0; }
     .howto code {
       font-size: 12px;
-      color: #c5d4ce;
+      color: var(--ivory);
       background: #101715;
       border: 1px solid #22302c;
-      padding: 1px 6px;
-      border-radius: 5px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
     }
 
     footer {
-      margin-top: 28px;
+      margin-top: 40px;
       display: flex;
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
       color: #5f736a;
-      font-size: 11px;
+      font-size: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line-soft);
     }
+    footer a {
+      color: #7d9189;
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--moss); }
 
-    @media (max-width: 800px) {
+    @media (max-width: 860px) {
       .statusStrip { grid-template-columns: 1fr 1fr; }
       .grid { grid-template-columns: 1fr; }
       .sectionHead { flex-direction: column; align-items: flex-start; }
       .sectionHead p { text-align: left; }
+      .hero { min-height: auto; padding: 56px 0 40px; }
     }
     @media (max-width: 520px) {
       .statusStrip { grid-template-columns: 1fr; }
+      .cta { width: 100%; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero, .cta-primary { animation: none; }
+      a.card, .cta { transition: none; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="eyebrow">GardenFervor</div>
-    <h1>Documentation du projet</h1>
-    <p class="lead">
-      Point d’entrée unique. Choisissez d’abord <strong style="color:#dce7e2;font-weight:650">où va le projet</strong>,
-      puis les décisions, les règles, ou la cartographie technique.
-    </p>
+  <div class="stage">
+    <div class="wrap">
+      <header class="hero" aria-label="Accueil GardenFervor">
+        <p class="brand">GARDEN<span>FERVOR</span></p>
+        <p class="promise">RTS d’intentions · salle de production</p>
+        <p class="hero-lead">
+          Portail de production du jeu : où en est le territoire documentaire,
+          quelles décisions gouvernent le build, et quoi ouvrir ensuite.
+        </p>
+        <div class="cta-row">
+          <a class="cta cta-primary" href="etat-global.html">État global du projet</a>
+          <a class="cta cta-secondary" href="roadmap-globale.html">Feuille de route</a>
+        </div>
+        <p class="scroll-hint">Tableau de bord · plus bas</p>
+      </header>
 
-    <!-- SYNC:STATUS:START -->
+      <div class="board">
+        <p class="board-label">État de production synchronisé</p>
+        <!-- SYNC:STATUS:START -->
     <section class="statusStrip" aria-label="État projet synchronisé">
       <div class="statusCard accent">
         <span>Contrats</span>
@@ -262,98 +451,100 @@
       </div>
     </section>
     <!-- SYNC:STATUS:END -->
+      </div>
 
-    <section class="section" aria-labelledby="sec-pilot">
-      <div class="sectionHead">
-        <h2 id="sec-pilot">1 · Pilotage</h2>
-        <p>Où en est le projet, et que faire ensuite</p>
-      </div>
-      <div class="grid">
-        <a class="card primary" href="etat-global.html">
-          <span class="tag pilot">Vue d’ensemble</span>
-          <h3>État global du projet</h3>
-          <p>Systèmes, maturité, preuves, scénarios et priorités — bilan détaillé pour faire le point sans relancer un audit.</p>
-          <span class="go">Ouvrir l’état global →</span>
-        </a>
-        <a class="card" href="roadmap-globale.html">
-          <span class="tag pilot">Feuille de route</span>
-          <h3>Roadmap GardenFervor</h3>
-          <p>Vision globale jusqu’au jeu final : acquis, prochain travail officiel, suspensions, phases.</p>
-          <span class="go">Ouvrir la Roadmap →</span>
-        </a>
-      </div>
-    </section>
+      <section class="section" aria-labelledby="sec-pilot">
+        <div class="sectionHead">
+          <h2 id="sec-pilot">01 · Pilotage</h2>
+          <p>Situation globale et trajectoire officielle</p>
+        </div>
+        <div class="grid">
+          <a class="card primary" href="etat-global.html">
+            <span class="tag pilot">Vue d’ensemble</span>
+            <h3>État global du projet</h3>
+            <p>Systèmes, maturité, preuves, scénarios et priorités — bilan de production pour faire le point sans relancer un audit.</p>
+            <span class="go">Ouvrir l’état global →</span>
+          </a>
+          <a class="card" href="roadmap-globale.html">
+            <span class="tag pilot">Feuille de route</span>
+            <h3>Roadmap GardenFervor</h3>
+            <p>Vision jusqu’au jeu final : acquis, prochain travail officiel, suspensions, phases.</p>
+            <span class="go">Ouvrir la Roadmap →</span>
+          </a>
+        </div>
+      </section>
 
-    <section class="section" aria-labelledby="sec-rules">
-      <div class="sectionHead">
-        <h2 id="sec-rules">2 · Décisions et règles</h2>
-        <p>Ce qui est décidé, et ce qui gouverne l’exécution</p>
-      </div>
-      <div class="grid">
-        <a class="card" href="design-gate.html">
-          <span class="tag gate">Conception</span>
-          <h3>Design Gate</h3>
-          <p>Décisions de gameplay VALIDÉES (DG-00 → DG-14). Source de vérité de conception.</p>
-          <span class="go">Ouvrir le Design Gate →</span>
-        </a>
-        <a class="card" href="contracts.html" data-sync="contracts-card">
-          <span class="tag contracts">Contrats</span>
-          <h3>Suivi des contrats</h3>
-          <p data-sync="contracts-blurb">Pilotage documentaire · 8/16 validés · dernier C-12 (VALIDÉ).</p>
-          <span class="go">Ouvrir les contrats →</span>
-        </a>
-      </div>
-    </section>
+      <section class="section" aria-labelledby="sec-rules">
+        <div class="sectionHead">
+          <h2 id="sec-rules">02 · Décisions et règles</h2>
+          <p>Ce qui est tranché, et ce qui gouverne l’exécution</p>
+        </div>
+        <div class="grid">
+          <a class="card" href="design-gate.html">
+            <span class="tag gate">Conception</span>
+            <h3>Design Gate</h3>
+            <p>Décisions de gameplay VALIDÉES (DG-00 → DG-14). Source de vérité de conception.</p>
+            <span class="go">Ouvrir le Design Gate →</span>
+          </a>
+          <a class="card" href="contracts.html" data-sync="contracts-card">
+            <span class="tag contracts">Contrats</span>
+            <h3>Suivi des contrats</h3>
+            <p data-sync="contracts-blurb">Pilotage documentaire · 8/16 validés · dernier C-12 (VALIDÉ).</p>
+            <span class="go">Ouvrir les contrats →</span>
+          </a>
+        </div>
+      </section>
 
-    <section class="section" aria-labelledby="sec-map">
-      <div class="sectionHead">
-        <h2 id="sec-map">3 · Comprendre le système</h2>
-        <p>Architecture, liens entre systèmes, présentation</p>
-      </div>
-      <div class="grid">
-        <a class="card" href="project-graph.html">
-          <span class="tag graph">Architecture</span>
-          <h3>Project Graph</h3>
-          <p>Cartographie des systèmes, contrats, données et preuves — et comment ils se relient.</p>
-          <span class="go">Ouvrir le graphe →</span>
-        </a>
-        <a class="card" href="presentation-client.html">
-          <span class="tag demo">Présentation</span>
-          <h3>Présentation client</h3>
-          <p>Pitch vision + état réel du projet · galerie concept (clic pour agrandir).</p>
-          <span class="go">Ouvrir la présentation →</span>
-        </a>
-      </div>
-    </section>
+      <section class="section" aria-labelledby="sec-map">
+        <div class="sectionHead">
+          <h2 id="sec-map">03 · Système et vision</h2>
+          <p>Architecture, liens entre systèmes, pitch</p>
+        </div>
+        <div class="grid">
+          <a class="card" href="project-graph.html">
+            <span class="tag graph">Architecture</span>
+            <h3>Project Graph</h3>
+            <p>Cartographie des systèmes, contrats, données et preuves — et comment ils se relient.</p>
+            <span class="go">Ouvrir le graphe →</span>
+          </a>
+          <a class="card" href="presentation-client.html">
+            <span class="tag demo">Présentation</span>
+            <h3>Présentation client</h3>
+            <p>Pitch vision + état réel du projet · galerie concept (clic pour agrandir).</p>
+            <span class="go">Ouvrir la présentation →</span>
+          </a>
+        </div>
+      </section>
 
-    <section class="section" aria-labelledby="sec-s3">
-      <div class="sectionHead">
-        <h2 id="sec-s3">4 · Preuve contrôlée S3</h2>
-        <p>Suivi des tranches T1–T9 (cohorte forestière) — distinct de la Roadmap globale</p>
-      </div>
-      <div class="grid one">
-        <a class="card" href="roadmap.html" data-sync="s3-card">
-          <span class="tag proof">Cohorte S3</span>
-          <h3>Roadmap de production S3</h3>
-          <p data-sync="s3-blurb">T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9 · 9/9 (100%).</p>
-          <span class="go">Ouvrir le suivi S3 →</span>
-        </a>
-      </div>
-    </section>
+      <section class="section" aria-labelledby="sec-s3">
+        <div class="sectionHead">
+          <h2 id="sec-s3">04 · Preuve contrôlée S3</h2>
+          <p>Tranches T1–T9 — cohorte forestière, distincte de la Roadmap globale</p>
+        </div>
+        <div class="grid one">
+          <a class="card" href="roadmap.html" data-sync="s3-card">
+            <span class="tag proof">Cohorte S3</span>
+            <h3>Roadmap de production S3</h3>
+            <p data-sync="s3-blurb">T9 VALIDÉ — cohorte S3 Cas A clôturée · 9/9 · 9/9 (100%).</p>
+            <span class="go">Ouvrir le suivi S3 →</span>
+          </a>
+        </div>
+      </section>
 
-    <section class="howto">
-      <h2>Mettre à jour les pages</h2>
-      <ol>
-        <li>Modifier les sources dans le dépôt (Markdown, Design Gate, contrats, Roadmap, <code>docs/etat-global/etatGlobal.data.js</code>…)</li>
-        <li>Exécuter <code>node docs/syncPages.mjs</code> depuis la racine</li>
-        <li>Commit + push <code>main</code> pour rafraîchir GitHub Pages</li>
-      </ol>
-    </section>
+      <section class="howto">
+        <h2>Mettre à jour le portail</h2>
+        <ol>
+          <li>Modifier les sources dans le dépôt (Markdown, Design Gate, contrats, Roadmap, <code>docs/etat-global/etatGlobal.data.js</code>…)</li>
+          <li>Exécuter <code>node docs/syncPages.mjs</code> depuis la racine</li>
+          <li>Commit + push <code>main</code> pour rafraîchir GitHub Pages</li>
+        </ol>
+      </section>
 
-    <footer>
-      <span>https://josephv01.github.io/GardenFervor/</span>
-      <span>Les HTML sous /docs sont des vues publiées — pas les sources de vérité</span>
-    </footer>
+      <footer>
+        <a href="https://josephv01.github.io/GardenFervor/">josephv01.github.io/GardenFervor</a>
+        <span>Vues publiées sous /docs — les sources de vérité restent dans le dépôt</span>
+      </footer>
+    </div>
   </div>
 </body>
 </html>
