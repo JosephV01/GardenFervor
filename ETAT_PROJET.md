@@ -3,7 +3,7 @@
 Dernière mise à jour : **2026-10-09**  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
 
-**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 = **VALIDÉ** · progression **8 / 16** · prochain requis = C-14 (non commencé) · C-03·C-06·C-09·C-10 addenda **fermés** · Case B **suspendu**.
+**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 = **VALIDÉ** · progression **9 / 16** · prochain requis = C-15 (non commencé) · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré**.
 
 ---
 
@@ -134,8 +134,8 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 
 ## Prochain pas
 
-1. Contrats : C-12 clôturé — **ne pas démarrer C-14** sans ordre explicite ; C-03·C-06·C-09·C-10 restent addenda* fermés ; Case B **suspendu**
+1. Contrats : C-14 clôturé — **ne pas démarrer C-15** sans ordre explicite ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
 2. Cohorte S3 Cas A terminée — **aucun travail gameplay supplémentaire** hors ordre explicite
 3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)  
-4. **ODC-F9** Infrastructure lifecycle (sans contourner DG)  
+4. **ODC-F9** Infrastructure lifecycle (sur ordre explicite — sans contourner DG ; C-14 = règles ≠ preuve F9)  
 5. Interdit sans validation : carte / M4 / T01

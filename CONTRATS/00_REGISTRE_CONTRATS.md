@@ -83,7 +83,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-11 | Réservations | PARTIEL | détaillée | DG-05.3 · **C-11 VALIDÉ** | P | C-09 · C-10 · C-04 | oui (avant multi-chantier) | 11 |
 | C-12 | Transport / logistique | PARTIEL | détaillée | DG-06 · ODC-F7 · **C-12 VALIDÉ** | P | C-07 · C-10 | oui (au-delà S3) | 12 |
 | C-13 | Construction / Achevé / En service | SUFFISANT* | secondaire | DG-02/11 · C5 · T7 | I (critère cohorte) | C-05 · C-10 | non* | 13* |
-| C-14 | Infrastructures (lifecycle) | REQUIS | fondamentale | DG-10 · ODC-F9 non démarré | N | C-02 · C-05 · C-12 | **oui** (avant F9+) | 14 |
+| C-14 | Infrastructures (lifecycle) | REQUIS | fondamentale | DG-10 · **C-14 VALIDÉ** · ODC-F9 non démarré | N | C-02 · C-05 · C-12 | **oui** (avant F9+) | 14 |
 | C-15 | Hydrologie | REQUIS | détaillée | DG-09 · Spatial stub | N/P | C-02 · C-01 | oui (avant sim eau) | 15 |
 | C-16 | Sol | REQUIS | détaillée | DG-09 · Spatial stub | N/P | C-02 · C-01 | oui (avant sim sol) | 16 |
 | C-17 | Végétation / écosystèmes | PARTIEL→REQUIS | détaillée | DG-09 | N | C-15 · C-16 · C-01 | oui (avant eco) | 17 |
@@ -218,8 +218,8 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 ### C-14 — Infrastructures
 
-- **État :** **non commencé** (ODC-F9 annoncé) · DG-10 VALIDÉ conceptuellement.
-- **Contrat :** **requis fondamentale** avant F9+ — sinon invention de lifecycle.
+- **État :** **VALIDÉ** — `CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md` · 15/15 A1–F1 · audit PASS FINAL · ODC-F9 **non démarré**.
+- **Contrat :** **requis fondamentale** avant F9+ — formalisé ; ≠ preuve runtime F9.
 - **Amont :** C-02 · C-05 · C-12.
 - **Ordre 14.**
 
@@ -294,7 +294,7 @@ Ordre **par dépendances** (pas thématique). Les entrées marquées `\*` ne son
 | 21 | C-21 | Simulation / fréquences | Avant scale perf |
 
 **Prochaine rédaction recommandée (si ordre explicite humain) :**  
-**C-14** (infrastructures) — après C-12 VALIDÉ ; **ne pas démarrer** sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés.
+**C-15** (hydrologie) — après C-14 VALIDÉ ; **ne pas démarrer** sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement.
 
 ---
 

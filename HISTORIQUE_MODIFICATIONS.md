@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-09 — C-12-CLOSE**.
+Dernière entrée historique : **2026-10-09 — C-14-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-09 — C-14-CLOSE — Infrastructures (lifecycle) VALIDÉ (clôture documentaire)
+
+- **Intention :** clôturer formellement le contrat opérationnel C-14 après validation humaine et audit final PASS FINAL (15/15).
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay** · **C-15 non commencé** · ODC-F9 **non démarré** · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B reste **suspendu** · points ouverts §18 conservés
+- **Décisions :** **15/15** (A1–F1) — lifecycle infrastructures ; propriété d’état ; frontières C-01/C-02/C-04/C-05/C-07/C-08/C-11/C-12/C-13\* ; C-10 fermé ; DG-10 non modifié
+- **Fichiers :** `CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md` · suivi / registre / ETAT / HISTORIQUE / ROADMAP / PROJECT_GRAPH / Hub état-global → compteur **9 / 16**
+- **Design Gate :** aucune modification (DG-10 déjà VALIDÉ)
+- **Suite :** prochain contrat requis = C-15 (ne pas démarrer sans ordre explicite) · ODC-F9 non démarré automatiquement · addenda C-09/C-10/C-13 non ouverts automatiquement
 
 ### 2026-10-09 — C-12-CLOSE — Transport / logistique VALIDÉ (clôture documentaire)
 

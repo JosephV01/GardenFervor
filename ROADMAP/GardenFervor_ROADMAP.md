@@ -6,11 +6,11 @@ Balises machine : RM:META, RM:NOW, RM:NEXT, RM:PHASE, RM:JALON, RM:WORK
 -->
 
 <!--RM:META
-version: 1.0.6
+version: 1.0.7
 updated: 2026-10-09
 title: GardenFervor — Roadmap globale
-git_head_at_audit: 969206e
-notes: Clôture C-12 · compteur 8/16 · prochain C-14. Distincte de Plan de production/Roadmap (cohorte S3).
+git_head_at_audit: 91723da
+notes: Clôture C-14 · compteur 9/16 · prochain C-15. Distincte de Plan de production/Roadmap (cohorte S3).
 -->
 
 # GardenFervor — Roadmap globale
@@ -34,11 +34,11 @@ notes: Clôture C-12 · compteur 8/16 · prochain C-14. Distincte de Plan de pro
 ## Où en est GardenFervor ?
 
 <!--RM:NOW
-summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 8/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12 VALIDÉS) · prochain requis = C-14 (non commencé) · C-03·C-06·C-09·C-10 addenda fermés · Case B SUSPENDU
+summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 9/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS) · prochain requis = C-15 (non commencé) · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré
 conception: VALIDÉ
 realisation: PARTIELLE
 validation: PARTIELLE
-contracts_validated: 8
+contracts_validated: 9
 contracts_required: 16
 s3_case_a: VALIDÉ
 case_b: SUSPENDU
@@ -46,7 +46,7 @@ design_gate: VALIDÉ (DG-00→DG-14)
 odc_f1: À REFAIRE
 -->
 
-**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; graphe, SitePrep, autonomie, métier Terraform, réservations et transport/logistique ont leurs contrats opérationnels ; la suite élargit le jeu (infrastructures…) sans réactiver Case B ni implémenter Creuser/Remblayer/Aplanir hors ordre.
+**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; graphe, SitePrep, autonomie, métier Terraform, réservations, transport/logistique et lifecycle infrastructures ont leurs contrats opérationnels ; la suite élargit le jeu (hydrologie…) sans réactiver Case B ni démarrer ODC-F9 automatiquement.
 
 ### Acquis confirmés
 
@@ -61,6 +61,7 @@ odc_f1: À REFAIRE
   - **C-08** — Terraformer opérationnel (**58/58** décisions) — métier formalisé ; **pas** encore implémenté en jeu ;
   - **C-11** — Réservations (**23/23** décisions) — concurrence formalisée ; **pas** validation runtime multi-chantier ;
   - **C-12** — Transport / logistique (**25/25** décisions) — règles métier formalisées ; haul A→B / F7 **partiel** ≠ réseaux / multi-flux complets.
+  - **C-14** — Infrastructures lifecycle (**15/15** décisions) — règles métier formalisées ; ODC-F9 **non démarré** ; points ouverts §18 conservés.
 - **Preuves techniques majeures (ODC) :** F2 présentation · F3 spatial · F4 tâches · F5 autonomie · F6 économie physique · F7 logistique · F8 opérations terrain — **PASS** (F5/F7 avec validation humaine).
 - **Investor Demo** : présentation et démonstration S3 présentes.
 - **Cartographie** : `PROJECT_GRAPH/` disponible (projection, pas SoT).
@@ -68,49 +69,50 @@ odc_f1: À REFAIRE
 ### En construction / partiel
 
 - Runtime terrain **shipping** (ODC-F1 **À REFAIRE** — preuve précédente INVALIDÉE).
-- Chaîne chantiers / préparation : code S3 opérationnel ; **C-04**, **C-05**, **C-07**, **C-08**, **C-11** et **C-12 VALIDÉS** (règles métier) ; dettes runtime SitePrep / tâches / agent / Terraform / réservations / logistique documentées — **Creuser / Remblayer / Aplanir non validés en jeu**.
+- Chaîne chantiers / préparation : code S3 opérationnel ; **C-04**, **C-05**, **C-07**, **C-08**, **C-11**, **C-12** et **C-14 VALIDÉS** (règles métier) ; dettes runtime SitePrep / tâches / agent / Terraform / réservations / logistique / infra documentées — **Creuser / Remblayer / Aplanir non validés en jeu** · **F9 non démarré**.
 - Eau / sol spatiaux : **stubs**.
 - Persistance terrain : **désactivée**.
 
 ### Suspendu
 
-- **Case B** — chantier qui exige d’abord de préparer / transformer le terrain : **SUSPENDU** malgré C-05·C-07·C-08·C-11·C-12 VALIDÉS documentairement ; réactivation = autorisation explicite distincte.
+- **Case B** — chantier qui exige d’abord de préparer / transformer le terrain : **SUSPENDU** malgré C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS documentairement ; réactivation = autorisation explicite distincte.
 
 ### Notes d’ordre
 
-- **C-03**, **C-06**, **C-09** et **C-10** restent des **addenda fermés** (suffisants pour S3) : **ne pas les ouvrir** sans besoin réel.
-- **Prochain contrat requis du compteur 16 = C-14** (ordre registre 14) — **non commencé**.
+- **C-03**, **C-06**, **C-09**, **C-10** et **C-13** restent des **addenda fermés** (suffisants pour S3) : **ne pas les ouvrir** sans besoin réel.
+- **Prochain contrat requis du compteur 16 = C-15** (ordre registre 15) — **non commencé**.
+- **ODC-F9** reste **non démarré** (C-14 VALIDÉ ≠ preuve F9).
 
 ---
 
 ## Prochain travail autorisé
 
 <!--RM:NEXT
-id: next-c14
-title: C-14 — Infrastructures
+id: next-c15
+title: C-15 — Hydrologie
 status: À FAIRE
 horizon: Prochain
-note: Prochain contrat requis après C-12 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10 restent fermés. Case B suspendu.
-depends: C-02 VALIDÉ · C-05 VALIDÉ · C-12 VALIDÉ
-unlocks: ODC-F9 · lifecycle infrastructures
+note: Prochain contrat requis après C-14 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10/C-13 restent fermés. Case B suspendu. ODC-F9 non démarré automatiquement.
+depends: C-02 VALIDÉ · C-01 VALIDÉ
+unlocks: sim eau · C-17
 -->
 
-### Prochain — C-14 : infrastructures (lifecycle)
+### Prochain — C-15 : hydrologie
 
 **Statut :** À FAIRE (non commencé)  
 **Horizon :** Prochain  
-**En langage simple :** formaliser le cycle de vie des infrastructures avant ODC-F9, sans ouvrir C-09/C-10 ni réactiver Case B.
+**En langage simple :** formaliser l’hydrologie avant toute simulation d’eau réelle, sans ouvrir les addenda fermés ni démarrer ODC-F9 automatiquement.
 
 | | |
 | --- | --- |
-| Prérequis | C-02 VALIDÉ · C-05 VALIDÉ · C-12 VALIDÉ · addenda C-09/C-10 fermés (S3) |
-| Débloque | enchaînement ODC-F9 et raffinement territorial |
-| Ne pas faire maintenant | ouvrir C-09/C-10 · reprendre Case B · implémenter Creuser/Remblayer/Aplanir hors ordre |
+| Prérequis | C-02 VALIDÉ · C-01 VALIDÉ · addenda C-09/C-10/C-13 fermés |
+| Débloque | enchaînement sim eau et C-17 |
+| Ne pas faire maintenant | ouvrir C-09/C-10/C-13 · reprendre Case B · démarrer ODC-F9 hors ordre · implémenter Creuser/Remblayer/Aplanir hors ordre |
 
 ### Travaux ultérieurs (non autorisés comme « en cours »)
 
-1. **C-14** (prochain requis) — infrastructures / lifecycle.
-2. **En parallèle / ensuite** : dettes terrain shipping (F1), écosystèmes (C-15…), UX joueur (C-20), sauvegarde (C-19), dettes runtime logistique C-12 — et **seulement sur ordre** éventuelle reprise Case B ou implémentation métier Terraform / réservations runtime.
+1. **C-15** (prochain requis) — hydrologie.
+2. **En parallèle / ensuite** : dettes terrain shipping (F1), ODC-F9 (sur ordre), écosystèmes (C-16…), UX joueur (C-20), sauvegarde (C-19), dettes runtime logistique C-12 / infra C-14 — et **seulement sur ordre** éventuelle reprise Case B ou implémentation métier Terraform / réservations runtime.
 
 ---
 
@@ -380,23 +382,24 @@ note: C-05·C-07·C-08 VALIDÉS documentairement ; métier Terraform formalisé 
 <!--RM:JALON
 id: P2.J5
 phase: P2
-title: Contrats reste du compteur (C-14…C-21)
+title: Contrats reste du compteur (C-15…C-21)
 status: À FAIRE
 conception: À CONCEVOIR
 realisation: PARTIELLE
 validation: NON TERMINÉE
 depends: P2.J3,P2.J4
 unlocks: P7,P8,P9,P10,P11,P13
-sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md
-note: C-12 VALIDÉ (25/25) ; prochain requis = C-14.
+sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md
+note: C-14 VALIDÉ (15/15) ; prochain requis = C-15.
 -->
 
 ### Jalon P2.J5 — Autres contrats obligatoires
 
 **C-11** — **VALIDÉ** — réservations / concurrence (`CONTRATS/C-11_RESERVATIONS.md`).  
-**C-12** — **VALIDÉ** — transport / logistique (`CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md`) — règles formalisées ; runtime réseaux / multi-flux **partiel**.
+**C-12** — **VALIDÉ** — transport / logistique (`CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md`) — règles formalisées ; runtime réseaux / multi-flux **partiel**.  
+**C-14** — **VALIDÉ** — infrastructures lifecycle (`CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md`) — règles formalisées ; ODC-F9 **non démarré**.
 
-Infrastructures, eau/sol/végétation, tech, sauvegarde, UX, simulation/perf — **dans l’ordre du registre**, sans précipiter.
+Eau/sol/végétation, tech, sauvegarde, UX, simulation/perf — **dans l’ordre du registre**, sans précipiter.
 
 <!--/RM:PHASE-->
 
@@ -645,31 +648,32 @@ Réseaux, accès, replanification de transport — conception DG-06 VALIDÉE ; *
 <!--RM:PHASE
 id: P7
 title: Infrastructures et territoire
-status: À FAIRE
-horizon: À planifier
+status: EN COURS
+horizon: Actuel
 depends: P4,P6
 unlocks: P9,P10
-sources: DG-10 · registre C-14 · ODC-F9 (non démarré)
+sources: DG-10 · CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md · ODC-F9 (non démarré)
 -->
 
 ## Phase P7 — Infrastructures et territoire
 
-**Statut :** À FAIRE · **Horizon :** À planifier  
+**Statut :** EN COURS · **Horizon :** Actuel  
 
-Routes, supports, infrastructures temporaires/permanentes qui changent l’accès et le possible — **après** chantiers et logistique suffisamment solides.
+Routes, supports, infrastructures temporaires/permanentes qui changent l’accès et le possible — **C-14 VALIDÉ** (règles) ; preuve ODC-F9 encore **à faire** sur ordre.
 
 <!--RM:JALON
 id: P7.J1
 phase: P7
 title: Cycle de vie des infrastructures
-status: À FAIRE
+status: PARTIEL
 depends: P2.J5,P4
 sources: C-14 · ODC-F9
+note: C-14 VALIDÉ (15/15) ; ODC-F9 non démarré.
 -->
 
 ### Jalon P7.J1 — Cycle de vie infrastructures
 
-Contrat C-14 + preuve ODC-F9 — **non démarrés**.
+**C-14 VALIDÉ** (15/15) — règles lifecycle formalisées. Preuve **ODC-F9** — **non démarrée**.
 
 <!--/RM:PHASE-->
 
@@ -915,13 +919,13 @@ Validation humaine des boucles critiques, stabilité, build shipping — **sans 
 ```text
 P0 Fondations (TERMINÉ)
  └─► P1 Preuve S3 Cas A (TERMINÉ) · Case B (SUSPENDU)
-      └─► P2 Contrats (EN COURS : C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12 VALIDÉS → C-14 prochain)
+      └─► P2 Contrats (EN COURS : C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS → C-15 prochain)
            ├─► P3 Monde / terrain (F1 À REFAIRE)
            ├─► P4 Chantiers (C-05·C-07·C-08 VALIDÉS doc · implémentation métier À FAIRE)
            ├─► P5 Unités (C-07 VALIDÉ)
            └─► P6 Ressources / logistique (C-11·C-12 VALIDÉS doc · runtime logistique partiel)
-                └─► P7 Infrastructures (C-14 prochain)
-                     └─► P8 Écosystèmes
+                └─► P7 Infrastructures (C-14 VALIDÉ doc · F9 non démarré)
+                     └─► P8 Écosystèmes (C-15 prochain)
                           └─► P9 Progression
                                └─► P10 UX / pédagogie
                                     └─► P11 Contenu / polish
@@ -934,17 +938,20 @@ P0 Fondations (TERMINÉ)
 
 | Sujet | Statut | Pourquoi | Débloqué par |
 | --- | --- | --- | --- |
-| Case B | SUSPENDU | Contrats C-05·C-07·C-08·C-11·C-12 VALIDÉS ; réactivation ≠ automatique | Autorisation explicite distincte (+ dettes C-01 utiles) |
+| Case B | SUSPENDU | Contrats C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS ; réactivation ≠ automatique | Autorisation explicite distincte (+ dettes C-01 utiles) |
 | C-03 | Fermé (addendum) | S3 suffit | Ouverture humaine seulement si besoin |
 | C-06 | Fermé (addendum) | S3 suffit | Ouverture humaine seulement si besoin |
 | C-09 / C-10 | Fermés (addenda) | S3 suffit | Ouverture humaine seulement si besoin |
+| C-13 | Fermé (addendum) | Critère cohorte | Ouverture humaine seulement si besoin |
 | ODC-F1 | À REFAIRE | Preuve shipping INVALIDÉE | Travaux terrain shipping |
+| ODC-F9 | NON DÉMARRÉ | C-14 VALIDÉ ≠ preuve F9 | Ordre explicite distinct |
 | C-05 | VALIDÉ | Contrat opérationnel 62/62 | — |
 | C-07 | VALIDÉ | Contrat opérationnel 47/47 | — |
 | C-08 | VALIDÉ | Contrat opérationnel 58/58 (métier formalisé ≠ produit) | — |
 | C-11 | VALIDÉ | Contrat opérationnel 23/23 (concurrence formalisée ≠ runtime complet) | — |
 | C-12 | VALIDÉ | Contrat opérationnel 25/25 (logistique formalisée ≠ réseaux / multi-flux complets) | — |
-| C-14 | À FAIRE | Prochain requis (non commencé) | Ordre explicite de rédaction |
+| C-14 | VALIDÉ | Contrat opérationnel 15/15 (lifecycle formalisé ≠ F9 runtime) | — |
+| C-15 | À FAIRE | Prochain requis (non commencé) | Ordre explicite de rédaction |
 
 ---
 
@@ -967,6 +974,7 @@ P0 Fondations (TERMINÉ)
 
 | Date | Version | Changement |
 | --- | --- | --- |
+| 2026-10-09 | 1.0.7 | Clôture C-14 VALIDÉ · compteur 9/16 · prochain = C-15 · ODC-F9 non démarré · Case B reste suspendu |
 | 2026-10-09 | 1.0.6 | Clôture C-12 VALIDÉ · compteur 8/16 · prochain = C-14 · Case B reste suspendu |
 | 2026-10-09 | 1.0.5 | Clôture C-11 VALIDÉ · compteur 7/16 · prochain = C-12 · Case B reste suspendu |
 | 2026-10-09 | 1.0.4 | Clôture C-08 VALIDÉ · compteur 6/16 · prochain = C-11 · Case B reste suspendu |

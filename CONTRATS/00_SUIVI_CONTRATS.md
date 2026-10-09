@@ -70,8 +70,8 @@ Périmètre compté = contrats pour lesquels le registre exige un **contrat auto
 | ID concernés | C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 |
 | --- | --- |
 | Total à créer/valider | **16** |
-| Contrats dédiés VALIDÉS | **8** |
-| Progression validation | **8 / 16** |
+| Contrats dédiés VALIDÉS | **9** |
+| Progression validation | **9 / 16** |
 
 *(Les `SUFFISANT*` et `NON REQUIS` sont suivis dans le tableau mais exclus du dénominateur tant qu’aucun addendum / contrat dédié n’est ouvert.)*
 
@@ -95,7 +95,7 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 | C-11 | Réservations | 11 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 23/23 A1–G1 ; audit final PASS ; C-09·C-10 addenda fermés ; Case B reste suspendu ; dettes d’implémentation / preuves manquantes conservées |
 | C-12 | Transport / logistique | 12 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 25/25 A1–G3 ; audit final PASS ; C-10 addendum fermé ; Case B reste suspendu ; dettes d’implémentation / preuves partielles (§17) conservées |
 | C-13 | Construction / En service | 13* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | Critère cohorte ; pas VALIDÉ dédié |
-| C-14 | Infrastructures | 14 | oui | absente | — | — | — | — | — | NON COMMENCÉ | oui | Avant ODC-F9 |
+| C-14 | Infrastructures | 14 | oui | absente | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 15/15 A1–F1 ; audit final PASS ; C-10·C-13\* addenda fermés ; Case B reste suspendu ; points ouverts §18 et dettes F9 / implémentation conservés |
 | C-15 | Hydrologie | 15 | oui | absente | — | — | — | — | — | NON COMMENCÉ | oui | |
 | C-16 | Sol | 16 | oui | absente | — | — | — | — | — | NON COMMENCÉ | oui | |
 | C-17 | Végétation / écosystèmes | 17 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
@@ -114,23 +114,23 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 
 ```text
 Contrat actuel : aucun
-Dernier validé : C-12
+Dernier validé : C-14
 ```
 
-**C-12 — VALIDÉ** (clôture formelle)
+**C-14 — VALIDÉ** (clôture formelle)
 
 | Étape | État |
 | --- | --- |
 | Audit préparatoire / inspection code | **terminé** |
-| Décisions | **prises** — **25/25** (A1–G3) |
-| Rédaction | **terminée** — `CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md` |
-| Revue / audit contrat | **terminé** (AUDIT FINAL — PASS ; 25/25) |
+| Décisions | **prises** — **15/15** (A1–F1) |
+| Rédaction | **terminée** — `CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md` |
+| Revue / audit contrat | **terminé** (AUDIT FINAL — PASS FINAL ; 15/15) |
 | Validation | **acquise** — validation humaine explicite |
 
-**C-01**, **C-02**, **C-04**, **C-05**, **C-07**, **C-08** et **C-11** restent **VALIDÉ**.  
+**C-01**, **C-02**, **C-04**, **C-05**, **C-07**, **C-08**, **C-11** et **C-12** restent **VALIDÉ**.  
 **C-03** reste addendum fermé (NON COMMENCÉ / hors compteur).  
-**C-06\***, **C-09\*** et **C-10\*** restent addenda fermés (SUFFISANT\* / hors compteur).  
-C-14 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B reste **suspendu**.
+**C-06\***, **C-09\***, **C-10\*** et **C-13\*** restent addenda fermés (SUFFISANT\* / hors compteur).  
+C-15 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B reste **suspendu**. ODC-F9 **non démarré**.
 
 ---
 
@@ -138,12 +138,12 @@ C-14 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B rest
 
 ```text
 Prochain contrat autorisé :
-C-14
+C-15
 ```
 
-Prochain élément **requis** du compteur 16 / ordre officiel après C-12.  
-**Ne pas démarrer** C-14 sans ordre explicite.  
-C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte).
+Prochain élément **requis** du compteur 16 / ordre officiel après C-14.  
+**Ne pas démarrer** C-15 sans ordre explicite.  
+C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte). ODC-F9 reste **non démarré** automatiquement.
 
 ---
 
@@ -151,7 +151,7 @@ C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registr
 
 | Sujet | Statut suivi | Motif |
 | --- | --- | --- |
-| **Case B** (gameplay / Demo) | **SUSPENDU** | Contrats documentaires C-05·C-07·C-08·C-11·C-12 VALIDÉS ; réactivation / implémentation / validation produit **interdites** sans autorisation explicite distincte ; dettes runtime conservées |
+| **Case B** (gameplay / Demo) | **SUSPENDU** | Contrats documentaires C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS ; réactivation / implémentation / validation produit **interdites** sans autorisation explicite distincte ; dettes runtime conservées |
 | Aucun contrat documentaire | BLOQUÉ | — |
 
 ---
@@ -178,7 +178,9 @@ C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registr
 | 2026-10-09 | C-11 | REVUE | **VALIDÉ** | Validation humaine explicite ; 23/23 A1–G1 ; audit final PASS ; compteur **7 / 16** |
 | 2026-10-09 | C-12 | NON COMMENCÉ | **REVUE** | Contrat `C-12_TRANSPORT_LOGISTIQUE.md` rédigé ; audit 25/25 PASS ; compteur reste 7/16 |
 | 2026-10-09 | C-12 | REVUE | **VALIDÉ** | Validation humaine explicite ; 25/25 A1–G3 ; audit final PASS ; compteur **8 / 16** |
+| 2026-10-09 | C-14 | NON COMMENCÉ | **REVUE** | Contrat `C-14_INFRASTRUCTURES_LIFECYCLE.md` rédigé ; audit 15/15 PASS FINAL ; compteur reste 8/16 |
+| 2026-10-09 | C-14 | REVUE | **VALIDÉ** | Validation humaine explicite ; 15/15 A1–F1 ; audit final PASS FINAL ; compteur **9 / 16** |
 
 ---
 
-*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12 VALIDÉS ; compteur 8/16 ; Case B suspendu ; C-03·C-06·C-09·C-10 addenda fermés ; prochain requis = C-14.*
+*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS ; compteur 9/16 ; Case B suspendu ; C-03·C-06·C-09·C-10·C-13 addenda fermés ; prochain requis = C-15.*

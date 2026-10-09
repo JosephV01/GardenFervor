@@ -1,7 +1,7 @@
 # PROJECT_GRAPH — CURRENT_STATE
 
-Généré : **2026-10-09T16:32:42.820Z**
-HEAD : `969206e5bae4ffc8646e774680b02d09bc33ecc2` (dirty, 83 fichiers dirty)
+Généré : **2026-10-09T18:31:15.699Z**
+HEAD : `91723da19c09b97c763135d6760dbebb1328f1d7` (dirty, 85 fichiers dirty)
 Curated schema : `1.0.0`
 
 ## Inventaire
@@ -17,7 +17,7 @@ Curated schema : `1.0.0`
 | Relations FUTURE | 6 |
 | Relations UNVERIFIED | 0 |
 | Contrats (registre) | 24 |
-| Contrats fichiers présents | 8 |
+| Contrats fichiers présents | 9 |
 | Preuves inventoriées | 9 |
 | Gates Saved détectés | 14 |
 | Headers systèmes scannés | 13 |
@@ -61,6 +61,7 @@ Curated schema : `1.0.0`
 - C-08 — Terraformer opérationnel
 - C-11 — Réservations
 - C-12 — Transport / logistique
+- C-14 — Infrastructures
 
 ## Systèmes SUSPENDED / LEGACY / STUB
 

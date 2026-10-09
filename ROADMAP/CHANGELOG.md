@@ -1,5 +1,12 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-09 — 1.0.7 — Clôture C-14
+
+- C-14 VALIDÉ (15/15) · progression contrats **9 / 16**.
+- Prochain requis = **C-15** (non commencé) · addenda C-09/C-10/C-13 fermés · Case B suspendu · ODC-F9 non démarré.
+- Lifecycle infrastructures formalisé ≠ preuve ODC-F9 / implémentation gameplay.
+- Régénération HTML depuis le Markdown.
+
 ## 2026-10-09 — 1.0.6 — Clôture C-12
 
 - C-12 VALIDÉ (25/25) · progression contrats **8 / 16**.

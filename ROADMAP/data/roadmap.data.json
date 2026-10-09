@@ -1,17 +1,17 @@
 {
   "meta": {
-    "version": "1.0.6",
+    "version": "1.0.7",
     "updated": "2026-10-09",
     "title": "GardenFervor — Roadmap globale",
-    "git_head_at_audit": "969206e",
-    "notes": "Clôture C-12 · compteur 8/16 · prochain C-14. Distincte de Plan de production/Roadmap (cohorte S3)."
+    "git_head_at_audit": "91723da",
+    "notes": "Clôture C-14 · compteur 9/16 · prochain C-15. Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 8/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12 VALIDÉS) · prochain requis = C-14 (non commencé) · C-03·C-06·C-09·C-10 addenda fermés · Case B SUSPENDU",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 9/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS) · prochain requis = C-15 (non commencé) · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
-    "contracts_validated": "8",
+    "contracts_validated": "9",
     "contracts_required": "16",
     "s3_case_a": "VALIDÉ",
     "case_b": "SUSPENDU",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c14",
-    "title": "C-14 — Infrastructures",
+    "id": "next-c15",
+    "title": "C-15 — Hydrologie",
     "status": "À FAIRE",
     "horizon": "Prochain",
-    "note": "Prochain contrat requis après C-12 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10 restent fermés. Case B suspendu.",
-    "depends": "C-02 VALIDÉ · C-05 VALIDÉ · C-12 VALIDÉ",
-    "unlocks": "ODC-F9 · lifecycle infrastructures"
+    "note": "Prochain contrat requis après C-14 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10/C-13 restent fermés. Case B suspendu. ODC-F9 non démarré automatiquement.",
+    "depends": "C-02 VALIDÉ · C-01 VALIDÉ",
+    "unlocks": "sim eau · C-17"
   },
   "phases": [
     {
@@ -184,15 +184,15 @@
         {
           "id": "P2.J5",
           "phase": "P2",
-          "title": "Contrats reste du compteur (C-14…C-21)",
+          "title": "Contrats reste du compteur (C-15…C-21)",
           "status": "À FAIRE",
           "conception": "À CONCEVOIR",
           "realisation": "PARTIELLE",
           "validation": "NON TERMINÉE",
           "depends": "P2.J3,P2.J4",
           "unlocks": "P7,P8,P9,P10,P11,P13",
-          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md",
-          "note": "C-12 VALIDÉ (25/25) ; prochain requis = C-14.",
+          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md",
+          "note": "C-14 VALIDÉ (15/15) ; prochain requis = C-15.",
           "works": []
         }
       ]
@@ -357,19 +357,20 @@
     {
       "id": "P7",
       "title": "Infrastructures et territoire",
-      "status": "À FAIRE",
-      "horizon": "À planifier",
+      "status": "EN COURS",
+      "horizon": "Actuel",
       "depends": "P4,P6",
       "unlocks": "P9,P10",
-      "sources": "DG-10 · registre C-14 · ODC-F9 (non démarré)",
+      "sources": "DG-10 · CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md · ODC-F9 (non démarré)",
       "jalons": [
         {
           "id": "P7.J1",
           "phase": "P7",
           "title": "Cycle de vie des infrastructures",
-          "status": "À FAIRE",
+          "status": "PARTIEL",
           "depends": "P2.J5,P4",
           "sources": "C-14 · ODC-F9",
+          "note": "C-14 VALIDÉ (15/15) ; ODC-F9 non démarré.",
           "works": []
         }
       ]
@@ -522,9 +523,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-09T16:32:42.631Z",
-    "mdHash": "e5f4f61849a27005019a3c7a24b803c3566c5e13aea3e0330d6564d203aa68da",
-    "git": "969206e",
+    "generatedAt": "2026-10-09T18:31:15.518Z",
+    "mdHash": "b007a18a876be23cb8c0fcfd55dce5f24ab63c836dcb33be0caaa716b2e5b7b2",
+    "git": "91723da",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },

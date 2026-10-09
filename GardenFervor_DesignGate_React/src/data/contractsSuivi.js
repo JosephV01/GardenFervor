@@ -26,13 +26,14 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-08_TERRAFORMER_OPERATIONNEL.md',
     'CONTRATS/C-11_RESERVATIONS.md',
     'CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md',
+    'CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
-  /** Dernier contrat VALIDÉ ; C-14 = prochain requis ; C-03·C-06·C-09·C-10 addenda* fermés. */
-  activeContractId: 'C-12',
-  nextAuthorizedId: 'C-14',
+  /** Dernier contrat VALIDÉ ; C-15 = prochain requis ; C-03·C-06·C-09·C-10·C-13 addenda* fermés. */
+  activeContractId: 'C-14',
+  nextAuthorizedId: 'C-15',
   progress: {
-    validated: 8,
+    validated: 9,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -42,7 +43,7 @@ export const CONTRACTS_SUIVI = {
   },
   caseB: {
     status: 'SUSPENDU',
-    note: 'Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11·C-12 VALIDÉS documentairement ; aucune reprise sans autorisation explicite.',
+    note: 'Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS documentairement ; aucune reprise sans autorisation explicite.',
   },
   /** Ordre officiel de rédaction (registre §5). */
   displayOrder: [
@@ -407,11 +408,41 @@ export const CONTRACTS_SUIVI = {
       order: 14,
       category: 'REQUIS',
       coverage: 'absente',
-      productionStatus: 'NON COMMENCÉ',
+      productionStatus: 'VALIDÉ',
       blocking: true,
       dependsOn: ['C-02', 'C-05', 'C-12'],
       providesTo: [],
-      note: 'Avant ODC-F9',
+      note: 'VALIDÉ humainement — 15/15 décisions A1–F1 ; audit final PASS FINAL ; C-10·C-13* addenda fermés ; Case B reste suspendu ; points ouverts §18 et dettes F9 / implémentation conservés',
+      dedicatedValidated: true,
+      file: 'CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md',
+      detail: {
+        decisionsTaken: 15,
+        decisionsTotal: 15,
+        frontiers: [
+          { id: 'C-01', label: 'vérité terrain' },
+          { id: 'C-02', label: 'services spatiaux' },
+          { id: 'C-04', label: 'graphe / cycle de vie tâches' },
+          { id: 'C-05', label: 'WorkSite / SitePrep' },
+          { id: 'C-07', label: 'agent / exécution' },
+          { id: 'C-08', label: 'métier Terraform' },
+          { id: 'C-11', label: 'réservations' },
+          { id: 'C-12', label: 'transport / logistique' },
+          { id: 'C-13*', label: 'critère cohorte En service' },
+          { id: 'DG-10', label: 'conception infrastructures' },
+          { id: 'DG-02', label: 'intentions / projets' },
+          { id: 'DG-06', label: 'logistique / accès' },
+        ],
+        gaps: [
+          'Conditions exactes / catalogue transitions d’état (A3) — §18',
+          'Architecture C++ propriétaire d’état (B1) — §18',
+          'Quantités / barèmes de récupération (C2) — §18',
+          'Formalisme détaillé autorisations / conflits au-delà de D1 — §18',
+          'Critères définitifs fiche ODC-F9 (E2) — §18',
+          'Migration hors BuildingPlacement (E1) — §18',
+          'ODC-F9 non démarré · implémentation gameplay absente',
+        ],
+        gapNote: 'Points ouverts §18 et dettes d’implémentation / preuve F9 — pas des corrections de cette clôture. Case B non réactivé. C-10·C-13* non rouverts.',
+      },
     },
     {
       id: 'C-15',

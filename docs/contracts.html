@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-12",
+  "activeId": "C-14",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 8,
+    "validated": 9,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -124,7 +124,7 @@
   "lastSync": "2026-10-09",
   "caseB": {
     "status": "SUSPENDU",
-    "note": "Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11·C-12 VALIDÉS documentairement ; aucune reprise sans autorisation explicite."
+    "note": "Case B reste suspendu (registre §9). C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS documentairement ; aucune reprise sans autorisation explicite."
   },
   "contracts": [
     {
@@ -517,17 +517,44 @@
       "id": "C-14",
       "order": "14",
       "name": "Infrastructures (lifecycle)",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "absente",
       "blocking": true,
-      "note": "Avant ODC-F9",
+      "note": "VALIDÉ humainement — 15/15 décisions A1–F1 ; audit final PASS FINAL ; C-10·C-13* addenda fermés ; Case B reste suspendu ; points ouverts §18 et dettes F9 / implémentation conservés",
       "dependsOn": [
         "C-02",
         "C-05",
         "C-12"
       ],
-      "providesTo": []
+      "providesTo": [],
+      "file": "CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md",
+      "detail": {
+        "decisions": "15 / 15",
+        "frontiers": [
+          "C-01 — vérité terrain",
+          "C-02 — services spatiaux",
+          "C-04 — graphe / cycle de vie tâches",
+          "C-05 — WorkSite / SitePrep",
+          "C-07 — agent / exécution",
+          "C-08 — métier Terraform",
+          "C-11 — réservations",
+          "C-12 — transport / logistique",
+          "C-13* — critère cohorte En service",
+          "DG-10 — conception infrastructures",
+          "DG-02 — intentions / projets",
+          "DG-06 — logistique / accès"
+        ],
+        "gaps": [
+          "Conditions exactes / catalogue transitions d’état (A3) — §18",
+          "Architecture C++ propriétaire d’état (B1) — §18",
+          "Quantités / barèmes de récupération (C2) — §18",
+          "Formalisme détaillé autorisations / conflits au-delà de D1 — §18",
+          "Critères définitifs fiche ODC-F9 (E2) — §18",
+          "Migration hors BuildingPlacement (E1) — §18",
+          "ODC-F9 non démarré · implémentation gameplay absente"
+        ]
+      }
     },
     {
       "id": "C-15",

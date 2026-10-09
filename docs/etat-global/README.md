@@ -34,4 +34,4 @@ node docs/syncPages.mjs
 ## Origine éditoriale
 
 Contenu initial dérivé du Canvas Cursor `gardenfervor-etat-global.canvas.tsx`
-(audit post C-12, 2026-10-09). Le Canvas n’est **pas** la source de maintenance.
+(audit post C-12, mis à jour clôture C-14, 2026-10-09). Le Canvas n’est **pas** la source de maintenance.

@@ -458,7 +458,7 @@ const html = `<!DOCTYPE html>
               ))
             ),
             h(Callout, { title: 'Garde-fou', kind: 'ok' },
-              'Cette page n’ouvre pas C-14, ne modifie aucun statut et ne démarre aucun gameplay. Prochain officiel affiché : ' + live.nextId + '.')
+              'Cette page n’ouvre pas le prochain contrat, ne modifie aucun statut et ne démarre aucun gameplay. Prochain officiel affiché : ' + live.nextId + '.')
           ),
 
           h('section', { id: 'risques' },

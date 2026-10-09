@@ -14,10 +14,10 @@ export const ETAT_GLOBAL = {
     title: 'GardenFervor — État global du projet',
     subtitle: 'Systèmes, maturité, preuves, priorités',
     verifiedAt: '2026-10-09',
-    gitHeadAtAudit: 'da9130e',
-    gitMessageAtAudit: 'docs(contracts): validate C-12 transport logistics',
+    gitHeadAtAudit: '91723da',
+    gitMessageAtAudit: 'docs(hub): redesign landing as cinematic production portal',
     originNote:
-      'Contenu initial dérivé du Canvas d’audit global (post C-12). Maintenu ici, pas dans Cursor Canvas.',
+      'Contenu initial dérivé du Canvas d’audit global (post C-12). Mis à jour à la clôture C-14. Maintenu ici, pas dans Cursor Canvas.',
     sources: [
       'CONTRATS/00_SUIVI_CONTRATS.md',
       'CONTRATS/00_REGISTRE_CONTRATS.md',
@@ -48,10 +48,10 @@ export const ETAT_GLOBAL = {
     unitsRole:
       'Sélectionner une tâche, se déplacer, exécuter, vérifier le résultat, livrer (C-07) sur un graphe de tâches (C-04).',
     maturityOneLiner:
-      'Prototype avancé + conception complète + 8/16 contrats opérationnels + preuve contrôlée S3 Cas A. Boucle écologique produit non démontrée.',
+      'Prototype avancé + conception complète + 9/16 contrats opérationnels + preuve contrôlée S3 Cas A. Boucle écologique produit non démontrée.',
     acquis: [
       'Design Gate DG-00 → DG-14 VALIDÉ',
-      'Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12 VALIDÉS',
+      'Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS',
       'Cohorte S3 Cas A T1–T9 VALIDÉE',
       'Gates techniques F2–F8 PASS (F1 INVALIDÉ)',
       'Haul A→B et PE Timber démontrés',
@@ -63,6 +63,7 @@ export const ETAT_GLOBAL = {
       'Terrain shipping F1 INVALIDÉ',
       'UX produit / save monde incomplets',
       'Logistique réseaux / N4 non opérationnelle',
+      'ODC-F9 non démarré (C-14 = règles seulement)',
     ],
   },
 
@@ -73,11 +74,11 @@ export const ETAT_GLOBAL = {
     { q: 'Rôle des unités ?', a: 'Exécuter le graphe de tâches avec déplacement, effets et vérification.' },
     { q: 'Maturité réelle ?', a: 'Fondations + règles métier + preuve S3 ; pas un jeu shipping complet.' },
     { q: 'Déjà observable ?', a: 'PIE / gates : LevelPad, haul, PE Timber, RaiseGrade (store), smokes cohort, Investor Demo S3.' },
-    { q: 'Blocage boucle complète ?', a: 'Écosystèmes absents ; métier terrain produit ; F1 ; UX/save ; Case B.' },
+    { q: 'Blocage boucle complète ?', a: 'Écosystèmes absents ; métier terrain produit ; F1 ; UX/save ; Case B ; F9.' },
     { q: 'Risque principal ?', a: 'Confondre VALIDÉ contractuel ou gate technique avec capacité produit.' },
     {
       q: 'Priorité justifiée ?',
-      a: 'Décision humaine : cadrage C-14 (ordre officiel) OU consolidation F1 / F8 humain — sans démarrer C-14 automatiquement.',
+      a: 'Décision humaine : cadrage C-15 (ordre officiel) OU consolidation F1 / F8 humain / F9 — sans démarrer C-15 ni F9 automatiquement.',
       recommendation: true,
     },
   ],
@@ -93,8 +94,8 @@ export const ETAT_GLOBAL = {
     {
       id: 'contrats',
       label: 'Contrats / règles métier',
-      state: 'PARTIEL (8/16)',
-      meaning: 'Fondations chantier / logistique formalisées ; infra/éco/save encore ouvertes.',
+      state: 'PARTIEL (9/16)',
+      meaning: 'Fondations chantier / logistique / lifecycle infra formalisées ; éco/save encore ouvertes.',
       evidence: 'CONTRATS/00_SUIVI_CONTRATS.md',
     },
     {
@@ -308,16 +309,16 @@ export const ETAT_GLOBAL = {
       id: 'infra',
       domain: 'Infrastructures',
       name: 'Infrastructures (lifecycle)',
-      docState: 'C-14 NON COMMENCÉ',
-      codeState: 'Absent (contrat)',
-      function: 'Cycle de vie des infrastructures (cible).',
+      docState: 'C-14 VALIDÉ',
+      codeState: 'Absent (runtime)',
+      function: 'Cycle de vie des infrastructures (règles A1–F1).',
       playerValue: 'Accès / réseaux durables pour les flux.',
-      proof: 'DG-10 conception seulement',
-      limits: 'ODC-F9 non démarré.',
+      proof: 'DG-10 conception · C-14 règles ; F9 non démarré',
+      limits: 'ODC-F9 non démarré · points ouverts §18.',
       depends: 'C-02 · C-05 · C-12',
-      next: 'C-14 puis F9 — sur ordre explicite.',
-      refs: ['CONTRATS/00_REGISTRE_CONTRATS.md', 'ROADMAP/GardenFervor_ROADMAP.md'],
-      tags: ['infrastructures', 'absent', 'c-14'],
+      next: 'ODC-F9 — sur ordre explicite (≠ auto).',
+      refs: ['CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md', 'ROADMAP/GardenFervor_ROADMAP.md'],
+      tags: ['infrastructures', 'partiel', 'c-14'],
     },
     {
       id: 'persist',
@@ -451,7 +452,7 @@ export const ETAT_GLOBAL = {
     'C-11': { runtime: 'API partielle', debt: 'Multi-chantier non prouvé' },
     'C-12': { runtime: 'F7 partiel', debt: 'Réseaux/N4 absents' },
     'C-13': { runtime: 'Critère S3', debt: 'Addendum fermé' },
-    'C-14': { runtime: 'Absent', debt: 'Avant ODC-F9' },
+    'C-14': { runtime: 'Absent', debt: 'Règles VALIDÉES · F9 non démarré · §18' },
     'C-15': { runtime: 'Stub', debt: 'Bloquant eco' },
     'C-16': { runtime: 'Stub', debt: 'Bloquant eco' },
     'C-17': { runtime: 'Absent', debt: 'Boucle éco' },
@@ -566,7 +567,7 @@ export const ETAT_GLOBAL = {
     {
       id: 'DOCS',
       title: 'Roadmap / Project Graph (validate)',
-      result: '0 errors (post C-12)',
+      result: '0 errors (post C-14)',
       date: '2026-10-09',
       env: 'Node scripts',
       tested: 'build + validateRoadmap / Project Graph',
@@ -619,13 +620,13 @@ export const ETAT_GLOBAL = {
     },
     {
       domain: 'Infrastructures',
-      problem: 'C-14 / ODC-F9 absents',
-      benefit: 'Lifecycle infra avant F9',
-      prereq: 'C-12 VALIDÉ',
-      success: 'C-14 VALIDÉ puis gate F9',
+      problem: 'ODC-F9 non démarré (C-14 VALIDÉ)',
+      benefit: 'Preuve runtime lifecycle infra',
+      prereq: 'C-14 VALIDÉ',
+      success: 'Gate F9 PASS',
       blocking: true,
       source: 'roadmap',
-      jalon: 'C-14',
+      jalon: 'ODC-F9',
     },
     {
       domain: 'Persistance',
@@ -683,11 +684,11 @@ export const ETAT_GLOBAL = {
       title: 'Fondations nécessaires',
       items: [
         {
-          work: 'C-14 Infrastructures (prochain officiel registre)',
-          why: 'Ordre compteur 16 · prérequis ODC-F9',
-          unlocks: 'Lifecycle infra',
-          costOfDelay: 'F9 bloqué contractuellement',
-          proof: 'C-14 VALIDÉ',
+          work: 'C-15 Hydrologie (prochain officiel registre)',
+          why: 'Ordre compteur 16 · prérequis sim eau',
+          unlocks: 'Chaîne éco C-17',
+          costOfDelay: 'Éco bloquée contractuellement',
+          proof: 'C-15 VALIDÉ',
           type: 'officiel',
         },
         {
@@ -755,27 +756,27 @@ export const ETAT_GLOBAL = {
 
   roadmapCompare: {
     officialNext:
-      'Roadmap officielle : prochain = C-14 Infrastructures (NON COMMENCÉ). Ne pas démarrer sans ordre explicite.',
+      'Roadmap officielle : prochain = C-15 Hydrologie (NON COMMENCÉ). Ne pas démarrer sans ordre explicite. C-14 VALIDÉ · ODC-F9 non démarré.',
     alternative:
-      'Recommandation non officielle : si l’objectif immédiat est le shipping jouable, prioriser F1 + validation visuelle F8 avant d’élargir aux infrastructures.',
+      'Recommandation non officielle : si l’objectif immédiat est le shipping jouable, prioriser F1 + validation visuelle F8 / éventuel F9 avant d’élargir à l’hydrologie.',
   },
 
   milestones: [
     {
       id: 'J0',
       title: 'Décision humaine',
-      objective: 'Choisir axe C-14 doc OU dettes runtime',
+      objective: 'Choisir axe C-15 doc OU dettes runtime / F9',
       prereq: 'Audit / cette page',
       validation: 'Ordre explicite',
       doNotStart: 'Tout travail suivant',
     },
     {
       id: 'J1a',
-      title: 'C-14 (officiel)',
-      objective: 'Contracter lifecycle infra',
-      prereq: 'C-12 VALIDÉ',
-      validation: 'Audit + VALIDÉ C-14',
-      doNotStart: 'ODC-F9',
+      title: 'C-15 (officiel)',
+      objective: 'Contracter hydrologie',
+      prereq: 'C-14 VALIDÉ',
+      validation: 'Audit + VALIDÉ C-15',
+      doNotStart: 'Sim eau runtime',
     },
     {
       id: 'J1b',
@@ -789,9 +790,9 @@ export const ETAT_GLOBAL = {
       id: 'J2',
       title: 'ODC-F9',
       objective: 'Infra runtime minimale',
-      prereq: 'C-14',
+      prereq: 'C-14 VALIDÉ',
       validation: 'Gate F9',
-      doNotStart: 'Éco dépendante d’accès non prêts',
+      doNotStart: 'Éco dépendante d’accès non prêts · démarrage automatique interdit',
     },
     {
       id: 'J3',
@@ -831,7 +832,7 @@ export const ETAT_GLOBAL = {
     {
       risk: 'VALIDÉ documentaire ≠ runtime',
       impact: 'Fausse confiance',
-      mitigation: 'Lire dettes C-08 / C-11 / C-12',
+      mitigation: 'Lire dettes C-08 / C-11 / C-12 / C-14 §18',
     },
     {
       risk: 'F1 INVALIDÉ',
@@ -862,10 +863,10 @@ export const ETAT_GLOBAL = {
 
   conclusion: {
     acquired:
-      'Conception fondatrice · 8 contrats opérationnels · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-12 formalise la logistique cible.',
+      'Conception fondatrice · 9 contrats opérationnels · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-12 logistique cible · C-14 lifecycle infra formalisé.',
     missing:
-      'Boucle écologique · Case B · métier terrain produit · F1 shipping · UX/save · réseaux/N4.',
+      'Boucle écologique · Case B · métier terrain produit · F1 shipping · UX/save · réseaux/N4 · ODC-F9.',
     decision:
-      'Si l’ordre administratif prime → autoriser cadrage C-14. Si le shipping jouable prime → F1 + validation F8 humaine, sans ouvrir C-14 automatiquement.',
+      'Si l’ordre administratif prime → autoriser cadrage C-15. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9, sans ouvrir C-15 automatiquement.',
   },
 };
