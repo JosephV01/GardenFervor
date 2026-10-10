@@ -33,11 +33,11 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
-  /** Dernier VALIDÉ = C-17 ; C-18 = contrat en REVUE (DRAFT, non validé). C-03·C-06·C-09·C-10·C-13 addenda* fermés. */
+  /** Dernier VALIDÉ = C-18 ; C-19 = prochain autorisé, non commencé. C-03·C-06·C-09·C-10·C-13 addenda* fermés. */
   activeContractId: 'C-18',
-  nextAuthorizedId: 'C-18',
+  nextAuthorizedId: 'C-19',
   progress: {
-    validated: 12,
+    validated: 13,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -528,7 +528,7 @@ export const CONTRACTS_SUIVI = {
           'O3 C-15 seuils eau → sol / écosystèmes ouverts',
           'Stub QuerySoil ≠ simulation · aucune implémentation',
         ],
-        gapNote: 'Points ouverts P1–P10 et O1–O9 C-15 — pas des corrections de cette clôture. C-17 VALIDÉ (conception uniquement). C-18 REVUE / DRAFT — non validé. Case B non réactivé.',
+        gapNote: 'Points ouverts P1–P10 et O1–O9 C-15 — pas des corrections de cette clôture. C-17·C-18 VALIDÉS (conception uniquement). C-19 non commencé. Case B non réactivé.',
       },
     },
     {
@@ -574,7 +574,7 @@ export const CONTRACTS_SUIVI = {
           'O1–O9 C-15 et P1–P10 C-16 inchangés',
           'Lecture / sample végétation absents · aucune implémentation',
         ],
-        gapNote: 'Points ouverts Q1–Q12, O1–O9 C-15 et P1–P10 C-16 — pas des corrections de cette clôture. C-18 REVUE / DRAFT — non validé. Case B non réactivé.',
+        gapNote: 'Points ouverts Q1–Q12, O1–O9 C-15 et P1–P10 C-16 — pas des corrections de cette clôture. C-18 VALIDÉ (conception uniquement). C-19 non commencé. Case B non réactivé.',
       },
     },
     {
@@ -583,12 +583,12 @@ export const CONTRACTS_SUIVI = {
       order: 18,
       category: 'REQUIS',
       coverage: 'partielle',
-      productionStatus: 'REVUE',
+      productionStatus: 'VALIDÉ',
       blocking: true,
       dependsOn: ['C-00', 'C-03'],
       providesTo: [],
-      note: 'DRAFT / BROUILLON — non validé · Q1–Q31 formalisés · audit étape 6 + corrections étape 7 · publié 632b6ee · Ages = legacy · ≠ runtime DG-07',
-      dedicatedValidated: false,
+      note: 'VALIDÉ humainement — cadrage Q1–Q31 ; audit final PASS ; contrat de conception uniquement ; R1–R8, R11 ouverts ; O1–O9, P1–P10 et Q1–Q12 C-17 conservés ; Ages = legacy ; ≠ runtime DG-07',
+      dedicatedValidated: true,
       file: 'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md',
       detail: {
         decisionsTaken: 31,

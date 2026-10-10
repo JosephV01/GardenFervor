@@ -1,17 +1,17 @@
 {
   "meta": {
-    "version": "1.0.9",
+    "version": "1.0.10",
     "updated": "2026-10-10",
     "title": "GardenFervor — Roadmap globale",
-    "git_head_at_audit": "632b6ee",
-    "notes": "C-18 DRAFT / REVUE (non validé) · compteur 12/16 · C-16·C-17 VALIDÉS conception. Distincte de Plan de production/Roadmap (cohorte S3)."
+    "git_head_at_audit": "b04ec3b",
+    "notes": "C-18 VALIDÉ conception · compteur 13/16 · C-19 non commencé. Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 12/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17 VALIDÉS) · C-18 = DRAFT / REVUE — non validé · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré · aucune implémentation éco / sol / eau / DG-07",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 13/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18 VALIDÉS) · C-19 non commencé · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré · aucune implémentation éco / sol / eau / DG-07",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
-    "contracts_validated": "12",
+    "contracts_validated": "13",
     "contracts_required": "16",
     "s3_case_a": "VALIDÉ",
     "case_b": "SUSPENDU",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c18",
-    "title": "C-18 — Technologie / progression",
-    "status": "REVUE",
-    "horizon": "En cours",
-    "note": "Brouillon publié (632b6ee) · DRAFT / BROUILLON — non validé. Ne pas valider ni implémenter. Ne pas démarrer C-19. Addenda fermés. Case B suspendu. ODC-F9 non démarré.",
-    "depends": "C-17 VALIDÉ · DG-07 VALIDÉ",
-    "unlocks": "C-19 (après VALIDÉ C-18 seulement)"
+    "id": "next-c19",
+    "title": "C-19 — Persistance / sauvegarde",
+    "status": "À FAIRE",
+    "horizon": "Non commencé",
+    "note": "C-18 VALIDÉ conception (b04ec3b). Ne pas démarrer C-19 sans ordre explicite. Pas d’implémentation DG-07. Addenda fermés. Case B suspendu. ODC-F9 non démarré.",
+    "depends": "C-18 VALIDÉ",
+    "unlocks": "shipping / save monde (après C-19)"
   },
   "phases": [
     {
@@ -192,7 +192,7 @@
           "depends": "P2.J3,P2.J4",
           "unlocks": "P7,P8,P9,P10,P11,P13",
           "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-15_HYDROLOGIE.md",
-          "note": "C-16·C-17 VALIDÉS conception ; C-18 DRAFT / REVUE — non validé.",
+          "note": "C-16·C-17·C-18 VALIDÉS conception ; C-19 non commencé.",
           "works": []
         }
       ]
@@ -523,9 +523,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-10T13:50:13.753Z",
-    "mdHash": "594dcce12b87df1c6d4cb9ba62da0eb792f07ffb45de950159ad9cb9cefa8ec5",
-    "git": "632b6ee",
+    "generatedAt": "2026-10-10T14:12:50.471Z",
+    "mdHash": "c3829e18ccae4b032eeaae6b1e3ba0bd542c64914cd07c66ef0d77d8e2f7fdd3",
+    "git": "b04ec3b",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },

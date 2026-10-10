@@ -53,11 +53,11 @@ export const ETAT_GLOBAL = {
     unitsRole:
       'Sélectionner une tâche, se déplacer, exécuter, vérifier le résultat, livrer (C-07) sur un graphe de tâches (C-04).',
     maturityOneLiner:
-      'Prototype avancé + conception complète + 12/16 contrats VALIDÉS + C-18 DRAFT non validé + preuve S3 Cas A. Boucle écologique et déblocages DG-07 non démontrés.',
+      'Prototype avancé + conception complète + 13/16 contrats VALIDÉS + C-18 conception uniquement + preuve S3 Cas A. Boucle écologique et déblocages DG-07 non démontrés.',
     acquis: [
       'Design Gate DG-00 → DG-14 VALIDÉ',
-      'Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17 VALIDÉS',
-      'C-18 brouillon publié (DRAFT / REVUE — non validé)',
+      'Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18 VALIDÉS',
+      'C-18 VALIDÉ conception (≠ runtime DG-07 ; Ages = legacy)',
       'Cohorte S3 Cas A T1–T9 VALIDÉE',
       'Gates techniques F2–F8 PASS (F1 INVALIDÉ)',
       'Haul A→B et PE Timber démontrés',
@@ -100,8 +100,8 @@ export const ETAT_GLOBAL = {
     {
       id: 'contrats',
       label: 'Contrats / règles métier',
-      state: 'PARTIEL (12/16)',
-      meaning: 'Fondations chantier / logistique / lifecycle / C-15…C-17 conception formalisées ; C-18 DRAFT non validé ; save/UX encore ouvertes.',
+      state: 'PARTIEL (13/16)',
+      meaning: 'Fondations chantier / logistique / lifecycle / C-15…C-18 conception formalisées ; C-19 non commencé ; save/UX encore ouvertes.',
       evidence: 'CONTRATS/00_SUIVI_CONTRATS.md',
     },
     {
@@ -345,7 +345,7 @@ export const ETAT_GLOBAL = {
       id: 'eco',
       domain: 'Écologie',
       name: 'Eau / sol / végétation / écosystèmes',
-      docState: 'C-15·C-16·C-17 VALIDÉS conception · C-18 DRAFT non validé',
+      docState: 'C-15·C-16·C-17 VALIDÉS conception · C-18 VALIDÉ conception (≠ runtime)',
       codeState: 'Absent / stubs',
       function: 'Comportements environnementaux gameplay (cible).',
       playerValue: 'Résultat écologique mesurable.',
@@ -690,11 +690,11 @@ export const ETAT_GLOBAL = {
       title: 'Fondations nécessaires',
       items: [
         {
-          work: 'Revue humaine de C-18 (DRAFT publié — non validé)',
-          why: 'Ordre compteur 18 · brouillon 632b6ee · pas de runtime DG-07',
-          unlocks: 'C-19 seulement après VALIDÉ C-18',
-          costOfDelay: 'Déblocages cibles sans règle opposable',
-          proof: 'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md statut DRAFT',
+          work: 'Ne pas démarrer C-19 sans ordre explicite',
+          why: 'C-18 VALIDÉ conception · prochain autorisé = C-19 · pas de runtime DG-07',
+          unlocks: 'C-19 seulement sur ordre humain',
+          costOfDelay: 'Ouverture prématurée de la persistance',
+          proof: 'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md statut VALIDÉ',
           type: 'officiel',
         },
         {
@@ -762,7 +762,7 @@ export const ETAT_GLOBAL = {
 
   roadmapCompare: {
     officialNext:
-      'Roadmap officielle : C-18 en REVUE (DRAFT — non validé, 632b6ee). Ne pas valider ni implémenter. C-19 non commencé. C-15…C-17 VALIDÉS ≠ simulation éco · ODC-F9 non démarré.',
+      'Roadmap officielle : C-18 VALIDÉ conception (b04ec3b). Ne pas implémenter DG-07. C-19 non commencé. C-15…C-18 VALIDÉS ≠ simulation éco / déblocages · ODC-F9 non démarré.',
     alternative:
       'Recommandation non officielle : si l’objectif immédiat est le shipping jouable, prioriser F1 + validation visuelle F8 / éventuel F9 avant d’élargir à l’hydrologie.',
   },
@@ -771,17 +771,17 @@ export const ETAT_GLOBAL = {
     {
       id: 'J0',
       title: 'Décision humaine',
-      objective: 'Valider ou amender C-18 DRAFT — sans implémenter recherche / éco / F9',
+      objective: 'Ne pas démarrer C-19 ni implémenter recherche / éco / F9 sans ordre',
       prereq: 'Audit / cette page',
       validation: 'Ordre explicite',
       doNotStart: 'Tout travail suivant',
     },
     {
       id: 'J1a',
-      title: 'C-15…C-17 (faits) / C-18 (DRAFT, non validé)',
-      objective: 'C-15·C-16·C-17 VALIDÉS conception ; C-18 publié en REVUE',
-      prereq: 'C-17 VALIDÉ · brouillon C-18',
-      validation: 'Revue humaine C-18 — pas encore VALIDÉ',
+      title: 'C-15…C-18 (faits) / C-19 (non commencé)',
+      objective: 'C-15·C-16·C-17·C-18 VALIDÉS conception ; C-19 non ouvert',
+      prereq: 'C-18 VALIDÉ',
+      validation: 'C-18 VALIDÉ conception — C-19 non commencé',
       doNotStart: 'Sim éco · déblocages DG-07 · C-19',
     },
     {
@@ -869,10 +869,10 @@ export const ETAT_GLOBAL = {
 
   conclusion: {
     acquired:
-      'Conception fondatrice · 12 contrats VALIDÉS · C-18 DRAFT non validé · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-15…C-17 conception (≠ runtime).',
+      'Conception fondatrice · 13 contrats VALIDÉS · C-18 conception uniquement · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-15…C-18 conception (≠ runtime).',
     missing:
       'Runtime eau/sol/éco · déblocages DG-07 · Case B · métier terrain produit · F1 shipping · UX/save · réseaux/N4 · ODC-F9.',
     decision:
-      'Si l’ordre administratif prime → ne pas valider C-18 sans humain ni démarrer C-19. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9. Aucun VALIDÉ C-15…C-17 n’autorise une simulation environnementale.',
+      'Si l’ordre administratif prime → ne pas démarrer C-19 sans ordre. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9. Aucun VALIDÉ C-15…C-18 n’autorise une simulation environnementale ni un déblocage DG-07.',
   },
 };

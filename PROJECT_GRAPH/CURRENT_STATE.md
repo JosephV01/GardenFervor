@@ -1,7 +1,7 @@
 # PROJECT_GRAPH — CURRENT_STATE
 
-Généré : **2026-10-10T13:50:07.876Z**
-HEAD : `632b6eec5d4ed8e515968c72175491d0b1a12d2c` (dirty, 85 fichiers dirty)
+Généré : **2026-10-10T14:12:50.665Z**
+HEAD : `b04ec3b4a94d0379b62768bbec0348782ee0d418` (dirty, 87 fichiers dirty)
 Curated schema : `1.0.0`
 
 ## Inventaire
@@ -65,6 +65,7 @@ Curated schema : `1.0.0`
 - C-15 — Hydrologie
 - C-16 — Sol
 - C-17 — Végétation / écosystèmes
+- C-18 — Technologie / progression
 
 ## Systèmes SUSPENDED / LEGACY / STUB
 

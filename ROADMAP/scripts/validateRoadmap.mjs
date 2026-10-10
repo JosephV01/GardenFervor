@@ -93,8 +93,8 @@ function main() {
   if (caseB && caseB.status !== 'SUSPENDU') warn('Case B expected SUSPENDU');
   else ok('Case B SUSPENDU');
 
-  if (data.next?.id !== 'next-c18') warn(`next expected next-c18, got ${data.next?.id}`);
-  else ok('next work is C-18 DRAFT / REVUE');
+  if (data.next?.id !== 'next-c19') warn(`next expected next-c19, got ${data.next?.id}`);
+  else ok('next work is C-19 (not started)');
 
   if ((data.parseIssues || []).length) {
     for (const i of data.parseIssues) warn(`parse issue: ${i}`);

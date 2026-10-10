@@ -262,8 +262,8 @@ export const curatedNodes = [
   mkContract('c_17', 'C-17', 'Végétation / écosystèmes', 'PARTIEL→REQUIS', 'VALIDÉ', 'N', true, 'CONTRATS/C-17_VEGETATION_ECOSYSTEMES.md', {
     notes: 'VALIDÉ — conception uniquement ; Q1–Q12, O1–O9, P1–P10 conservés. Fichier présent localement ; suivi Git encore ouvert.',
   }),
-  mkContract('c_18', 'C-18', 'Technologie / progression', 'PARTIEL', 'REVUE', 'P', true, 'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md', {
-    notes: 'DRAFT / BROUILLON — non validé · Q1–Q31 · Ages / RequiredAge / FWSG = legacy isolé · ≠ runtime DG-07 · bloquant avant déblocages réels.',
+  mkContract('c_18', 'C-18', 'Technologie / progression', 'PARTIEL', 'VALIDÉ', 'P', true, 'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md', {
+    notes: 'VALIDÉ conception · Q1–Q31 · Ages / RequiredAge / FWSG = legacy isolé · ≠ runtime DG-07 · bloquant avant déblocages réels.',
   }),
   mkContract('c_19', 'C-19', 'Persistance / sauvegarde', 'REQUIS', 'NON COMMENCÉ', 'N/P', true, null),
   mkContract('c_20', 'C-20', 'Observabilité / UX', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),

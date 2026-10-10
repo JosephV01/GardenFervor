@@ -6,11 +6,11 @@ Balises machine : RM:META, RM:NOW, RM:NEXT, RM:PHASE, RM:JALON, RM:WORK
 -->
 
 <!--RM:META
-version: 1.0.9
+version: 1.0.10
 updated: 2026-10-10
 title: GardenFervor — Roadmap globale
-git_head_at_audit: 632b6ee
-notes: C-18 DRAFT / REVUE (non validé) · compteur 12/16 · C-16·C-17 VALIDÉS conception. Distincte de Plan de production/Roadmap (cohorte S3).
+git_head_at_audit: b04ec3b
+notes: C-18 VALIDÉ conception · compteur 13/16 · C-19 non commencé. Distincte de Plan de production/Roadmap (cohorte S3).
 -->
 
 # GardenFervor — Roadmap globale
@@ -34,11 +34,11 @@ notes: C-18 DRAFT / REVUE (non validé) · compteur 12/16 · C-16·C-17 VALIDÉS
 ## Où en est GardenFervor ?
 
 <!--RM:NOW
-summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 12/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17 VALIDÉS) · C-18 = DRAFT / REVUE — non validé · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré · aucune implémentation éco / sol / eau / DG-07
+summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 13/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18 VALIDÉS) · C-19 non commencé · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré · aucune implémentation éco / sol / eau / DG-07
 conception: VALIDÉ
 realisation: PARTIELLE
 validation: PARTIELLE
-contracts_validated: 12
+contracts_validated: 13
 contracts_required: 16
 s3_case_a: VALIDÉ
 case_b: SUSPENDU
@@ -46,7 +46,7 @@ design_gate: VALIDÉ (DG-00→DG-14)
 odc_f1: À REFAIRE
 -->
 
-**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; les contrats jusqu’à C-17 sont VALIDÉS (C-15…C-17 = conception uniquement) ; C-18 est un brouillon publié, **non validé**, et n’autorise aucun déblocage runtime.
+**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; les contrats jusqu’à C-18 sont VALIDÉS (C-15…C-18 = conception uniquement) ; C-18 n’autorise aucun déblocage runtime ; C-19 n’est pas commencé.
 
 ### Acquis confirmés
 
@@ -65,6 +65,7 @@ odc_f1: À REFAIRE
   - **C-15** — Hydrologie (cadrage **A–G**) — règles formalisées ; stub `QueryWater` conservé ; **aucune implémentation** ; O1–O9 conservés.
   - **C-16** — Sol (cadrage **A1–K1**) — conception uniquement ; stub `QuerySoil` ; P1–P10 ouverts.
   - **C-17** — Végétation / écosystèmes (cadrage **A1–K1**) — conception uniquement ; Q1–Q12 ouverts. Fichier local encore **non suivi Git**.
+  - **C-18** — Technologie / progression (cadrage **Q1–Q31**) — conception uniquement ; Ages = legacy ; **aucune implémentation DG-07**.
 - **Preuves techniques majeures (ODC) :** F2 présentation · F3 spatial · F4 tâches · F5 autonomie · F6 économie physique · F7 logistique · F8 opérations terrain — **PASS** (F5/F7 avec validation humaine).
 - **Investor Demo** : présentation et démonstration S3 présentes.
 - **Cartographie** : `PROJECT_GRAPH/` disponible (projection, pas SoT).
@@ -83,9 +84,9 @@ odc_f1: À REFAIRE
 ### Notes d’ordre
 
 - **C-03**, **C-06**, **C-09**, **C-10** et **C-13** restent des **addenda fermés** (suffisants pour S3) : **ne pas les ouvrir** sans besoin réel.
-- **Contrat en revue du compteur 16 = C-18** (ordre 18) — **DRAFT / BROUILLON — non validé**.
-- **C-15 / C-16 / C-17 VALIDÉ ≠** simulation environnementale runtime.
-- **C-18 DRAFT ≠** déblocages DG-07 runtime. Ages = legacy.
+- **Dernier VALIDÉ du compteur 16 = C-18** (ordre 18) — conception uniquement.
+- **C-15 / C-16 / C-17 / C-18 VALIDÉ ≠** simulation environnementale ni déblocages DG-07 runtime.
+- **C-18 VALIDÉ ≠** implémentation recherche / Ages. Ages = legacy.
 - **ODC-F9** reste **non démarré** (C-14 VALIDÉ ≠ preuve F9).
 
 ---
@@ -93,31 +94,31 @@ odc_f1: À REFAIRE
 ## Prochain travail autorisé
 
 <!--RM:NEXT
-id: next-c18
-title: C-18 — Technologie / progression
-status: REVUE
-horizon: En cours
-note: Brouillon publié (632b6ee) · DRAFT / BROUILLON — non validé. Ne pas valider ni implémenter. Ne pas démarrer C-19. Addenda fermés. Case B suspendu. ODC-F9 non démarré.
-depends: C-17 VALIDÉ · DG-07 VALIDÉ
-unlocks: C-19 (après VALIDÉ C-18 seulement)
+id: next-c19
+title: C-19 — Persistance / sauvegarde
+status: À FAIRE
+horizon: Non commencé
+note: C-18 VALIDÉ conception (b04ec3b). Ne pas démarrer C-19 sans ordre explicite. Pas d’implémentation DG-07. Addenda fermés. Case B suspendu. ODC-F9 non démarré.
+depends: C-18 VALIDÉ
+unlocks: shipping / save monde (après C-19)
 -->
 
-### En cours — C-18 : technologie / progression
+### Prochain autorisé — C-19 : persistance / sauvegarde
 
-**Statut :** REVUE (`DRAFT / BROUILLON — non validé`)  
-**Horizon :** En cours (revue humaine)  
-**En langage simple :** le contrat de conception de la progression est rédigé et publié ; il n’est pas une règle `VALIDÉ` et n’autorise aucun déblocage runtime.
+**Statut :** NON COMMENCÉ  
+**Horizon :** Non commencé  
+**En langage simple :** C-18 est la règle de conception de la progression. C-19 est le prochain contrat requis. Il n’est pas ouvert.
 
 | | |
 | --- | --- |
-| Prérequis | C-17 VALIDÉ · DG-07 VALIDÉ · addenda C-03/C-06/C-09/C-10/C-13 fermés |
-| Débloque | C-19 seulement **après** un C-18 `VALIDÉ` |
-| Ne pas faire maintenant | valider C-18 sans humain · implémenter recherche/schémas · mapper Ages ou Wood↔Timber · ouvrir les addenda · Case B · ODC-F9 |
+| Prérequis | C-18 VALIDÉ (conception) · addenda C-03/C-06/C-09/C-10/C-13 fermés |
+| Débloque | rien tant que C-19 n’est pas ouvert |
+| Ne pas faire maintenant | démarrer C-19 · implémenter recherche/schémas · mapper Ages ou Wood↔Timber · ouvrir les addenda · Case B · ODC-F9 |
 
 ### Travaux ultérieurs (non autorisés comme « en cours »)
 
-1. **Validation humaine de C-18** — pas une implémentation.
-2. **Ensuite** : C-19 (sauvegarde), dettes F1, ODC-F9 (sur ordre), C-20, C-21 — et **seulement sur ordre** reprise Case B.
+1. **C-19** — seulement sur ordre explicite.
+2. **Ensuite** : dettes F1, ODC-F9 (sur ordre), C-20, C-21 — et **seulement sur ordre** reprise Case B.
 
 ---
 
@@ -395,7 +396,7 @@ validation: NON TERMINÉE
 depends: P2.J3,P2.J4
 unlocks: P7,P8,P9,P10,P11,P13
 sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-15_HYDROLOGIE.md
-note: C-16·C-17 VALIDÉS conception ; C-18 DRAFT / REVUE — non validé.
+note: C-16·C-17·C-18 VALIDÉS conception ; C-19 non commencé.
 -->
 
 ### Jalon P2.J5 — Autres contrats obligatoires
@@ -406,9 +407,9 @@ note: C-16·C-17 VALIDÉS conception ; C-18 DRAFT / REVUE — non validé.
 **C-15** — **VALIDÉ** — hydrologie (`CONTRATS/C-15_HYDROLOGIE.md`) — règles formalisées ; **aucune implémentation** ; O1–O9 conservés.  
 **C-16** — **VALIDÉ** — sol (conception) ; P1–P10 ouverts.  
 **C-17** — **VALIDÉ** — végétation / écosystèmes (conception) ; Q1–Q12 ouverts.  
-**C-18** — **DRAFT / REVUE — non validé** — `C-18_TECHNOLOGIE_PROGRESSION.md`.
+**C-18** — **VALIDÉ** — conception uniquement — `C-18_TECHNOLOGIE_PROGRESSION.md` — Ages = legacy ; ≠ runtime DG-07.
 
-Sauvegarde, UX, simulation/perf — **dans l’ordre du registre**, sans valider C-18 automatiquement.
+Sauvegarde, UX, simulation/perf — **dans l’ordre du registre**, sans démarrer C-19 automatiquement.
 
 <!--/RM:PHASE-->
 
@@ -759,7 +760,7 @@ sources: C-18 · TechComponent legacy
 
 ### Jalon P9.J1 — Progression jouable
 
-Conception DG-07 VALIDÉE · brouillon C-18 publié (DRAFT, non validé) · implémentation legacy Ages isolée · aucun déblocage DG-07 runtime.
+Conception DG-07 VALIDÉE · C-18 VALIDÉ conception · implémentation legacy Ages isolée · aucun déblocage DG-07 runtime.
 
 <!--/RM:PHASE-->
 
@@ -928,7 +929,7 @@ Validation humaine des boucles critiques, stabilité, build shipping — **sans 
 ```text
 P0 Fondations (TERMINÉ)
  └─► P1 Preuve S3 Cas A (TERMINÉ) · Case B (SUSPENDU)
-      └─► P2 Contrats (EN COURS : 12/16 VALIDÉS · C-18 DRAFT / REVUE — non validé)
+      └─► P2 Contrats (EN COURS : 13/16 VALIDÉS · C-18 VALIDÉ conception · C-19 non commencé)
            ├─► P3 Monde / terrain (F1 À REFAIRE)
            ├─► P4 Chantiers (C-05·C-07·C-08 VALIDÉS doc · implémentation métier À FAIRE)
            ├─► P5 Unités (C-07 VALIDÉ)
@@ -984,6 +985,7 @@ P0 Fondations (TERMINÉ)
 
 | Date | Version | Changement |
 | --- | --- | --- |
+| 2026-10-10 | 1.0.10 | C-18 VALIDÉ conception · compteur 13/16 · C-19 non commencé · aucune implémentation DG-07 · Case B reste suspendu |
 | 2026-10-10 | 1.0.9 | C-18 DRAFT / REVUE (non validé) · compteur 12/16 · C-16·C-17 VALIDÉS conception · aucune implémentation DG-07 · Case B reste suspendu |
 | 2026-10-10 | 1.0.8 | Clôture C-15 VALIDÉ · compteur 10/16 · prochain = C-16 · aucune implémentation hydrologique · Case B reste suspendu |
 | 2026-10-09 | 1.0.7 | Clôture C-14 VALIDÉ · compteur 9/16 · prochain = C-15 · ODC-F9 non démarré · Case B reste suspendu |
