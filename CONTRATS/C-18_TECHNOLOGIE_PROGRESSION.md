@@ -6,7 +6,7 @@
 | --- | --- |
 | **ID** | C-18 |
 | **Nom** | Technologie / progression |
-| **Statut documentaire** | **DRAFT / BROUILLON** — non validé, pour revue indépendante |
+| **Statut documentaire** | **VALIDÉ** — validation humaine explicite ; audit final PASS ; contrat de conception uniquement ; points ouverts R1–R8, R11 ; O1–O9, P1–P10 et Q1–Q12 conservés |
 | **Profondeur** | Détaillée (registre) |
 | **Ordre de rédaction** | 18 |
 | **Nécessité** | Requise (Q2) |
@@ -17,11 +17,12 @@
 
 Ce document formalise le **cadrage technologie / progression déjà accepté** (décisions humaines Q1–Q31) et les **décisions Design Gate déjà VALIDÉES** de DG-07.  
 Il n’invente aucune règle supplémentaire.  
-Il constitue un **brouillon de conception** destiné à une revue indépendante.  
-Il **n’est pas** `VALIDÉ`. Il **n’autorise pas** l’implémentation runtime.
+Il constitue la **règle officielle de conception** C-18 après validation humaine explicite.  
+La clôture est **documentaire**. Elle **n’autorise pas** l’implémentation runtime DG-07, ni le démarrage de C-19, C-20 ou C-21, ni la migration Ages / `RequiredAge` / HUD FWSG.
 
 **Case B** demeure **suspendu**.  
-**ODC-F9** n’est **pas** démarré par cette rédaction.  
+**ODC-F9** n’est **pas** démarré par cette clôture.  
+**C-19**, **C-20** et **C-21** demeurent **non commencés**.  
 **C-15**, **C-16** et **C-17** demeurent **VALIDÉ** comme contrats de **conception** uniquement. Leurs points **O1–O9**, **P1–P10** et **Q1–Q12** restent **ouverts** et **inchangés**.  
 Les addenda C-03 · C-06 · C-09 · C-10 · C-13 restent **fermés**.  
 S3 / Investor Demo restent **hors** dépendance à Ages, à la recherche et aux déblocages DG-07 (Q7).
@@ -43,7 +44,7 @@ Le titre registre §5 « Progression / tech (hors Ages legacy) » décrit la mê
 `PARTIEL` **ne signifie pas** que le contrat est facultatif.  
 C-18 est **requis** et **bloquant** avant les déblocages réels DG-07 (Q2).
 
-Niveau de garantie de ce brouillon :
+Niveau de garantie de ce contrat :
 
 - formaliser le **périmètre** et les **frontières** ;  
 - rendre auditable ce que C-18 **possède, lit, signale et n’absorbe pas** ;  
@@ -581,7 +582,7 @@ M4 / Paint       représentation  ───────────►  jamais u
 
 ## 12. Critères de conformité du contrat
 
-Un audit indépendant pourra vérifier ce brouillon **sans** exiger une implémentation, s’il constate que le document :
+Un audit indépendant pourra vérifier ce contrat **sans** exiger une implémentation, s’il constate que le document :
 
 1. reprend 07.1–07.7 **intégralement** et sans les altérer ;  
 2. formalise Q1–Q31 sans nouvelle conception ;  
@@ -598,7 +599,7 @@ Un audit indépendant pourra vérifier ce brouillon **sans** exiger une impléme
 13. laisse **ouverts** O1–O9, P1–P10, Q1–Q12 C-17 et R1–R8, R11 ; classe R9 / R10 hors périmètre ; maintient les interdictions de mapping (§13.3) ;  
 14. refuse tout verrou runtime sur stub / Paint / visuel / biome non lu ;  
 15. maintient S3 / Demo hors dépendance DG-07 ;  
-16. se déclare **DRAFT / BROUILLON** et précise qu’un futur `VALIDÉ` resterait documentaire (Q30).
+16. se déclare **VALIDÉ** comme contrat de conception uniquement, sans preuve runtime ni autorisation d’implémentation (Q30).
 
 Critères de **conformité runtime** — uniquement **après** validation du contrat **et** autorisation d’implémenter distincte — indicatifs, **non exécutés** :
 
@@ -656,7 +657,7 @@ Ce contrat **interdit** tout mapping entre Ages I–III et un domaine, une techn
 
 ## 14. Vérification documentaire — divergences signalées (non corrigées)
 
-Ces écarts existent **avant** ou **autour** de C-18. Ce brouillon **ne les résout pas** en modifiant le registre, le suivi, le Design Gate, le Hub ou les contrats voisins (Q4, Q31).
+Ces écarts existent **avant** ou **autour** de C-18. Ce contrat **ne les résout pas** en modifiant le registre, le suivi, le Design Gate, le Hub ou les contrats voisins (Q4, Q31).
 
 ### 14.1 Descriptibles dans C-18 (faits dans ce fichier)
 
@@ -671,7 +672,8 @@ Ces écarts existent **avant** ou **autour** de C-18. Ce brouillon **ne les rés
 2. Harmoniser le titre §5 du registre avec le titre canonique.  
 3. Suivi : passer C-18 de `NON COMMENCÉ` à un statut de rédaction — **hors cette étape**.  
 4. Suivi Git de `CONTRATS/C-17_VEGETATION_ECOSYSTEMES.md` s’il demeure non suivi.  
-5. Sync Hub / `contractsSuivi.js` / pages `docs/` après une future clôture.
+5. Sync Hub / `contractsSuivi.js` / pages `docs/` — **hors cette clôture de fichier**.  
+6. **Suivi / compteur.** Ce fichier est **VALIDÉ** documentairement comme contrat de conception. Il n’est **pas** une preuve runtime. La mise à jour du suivi et du compteur n’est **pas** effectuée par cette clôture de fichier.
 
 ### 14.3 Hors périmètre C-18
 
@@ -699,17 +701,16 @@ Ces écarts existent **avant** ou **autour** de C-18. Ce brouillon **ne les rés
 13. O1–O9, P1–P10, Q1–Q12 C-17 inchangés (Q18).  
 14. Addenda C-03\* · C-06\* · C-09\* · C-10\* · C-13\* fermés (Q16, Q20).  
 15. S3 / Demo hors C-18 (Q7).  
-16. Ce brouillon n’autorise aucune implémentation (Q30).
+16. Ce contrat **VALIDÉ** n’autorise aucune implémentation (Q30).
 
 ---
 
 ## 16. Limites de l’autorisation documentaire
 
-Ce document est **DRAFT / BROUILLON**.  
-Il **n’est pas** `VALIDÉ`.
+Ce contrat est **`VALIDÉ`**.  
+Cette validation est **documentaire** seulement (Q30).
 
-Même un futur statut **`VALIDÉ`** de C-18 **ne constituerait** qu’une validation **documentaire**.  
-Il **n’autoriserait pas**, à lui seul :
+Elle **n’autorise pas**, à elle seule :
 
 - l’implémentation runtime de la recherche, des technologies, des schémas ou des déblocages ;  
 - la refonte, la suppression ou la migration des Ages ;  
@@ -721,7 +722,7 @@ Il **n’autoriserait pas**, à lui seul :
 - une preuve S3 / Demo nouvelle ;  
 - Case B ou ODC-F9.
 
-Toute implémentation exigerait une **autorisation distincte**, après un contrat `VALIDÉ` et dans le respect des contrats propriétaires.
+Toute implémentation exigerait une **autorisation distincte**, après ce contrat `VALIDÉ` et dans le respect des contrats propriétaires.
 
 ---
 
@@ -742,21 +743,19 @@ Toute implémentation exigerait une **autorisation distincte**, après un contra
 
 ---
 
-## 18. Hors autorisation de cette rédaction
+## 18. Hors autorisation
 
-L’**audit indépendant** de l’étape 6 a été réalisé.  
-Le présent brouillon demeure **`DRAFT / BROUILLON — non validé`**, soumis à revue humaine.  
-Il **n’est pas** `VALIDÉ`.
+Ce contrat **VALIDÉ** **n’autorise pas** :
 
-Cette étape **n’autorise pas** :
-
-- le passage de ce fichier à `VALIDÉ` ;  
+- l’implémentation runtime DG-07 ;  
+- la migration, la suppression ou le remplacement des Ages, de `RequiredAge` ou du HUD FWSG ;  
 - la modification du Design Gate, des registres, du suivi, de l’historique, du Hub ou des contrats voisins ;  
-- tout commit, push, staging ou synchronisation ;  
-- toute implémentation.
+- le démarrage ou la modification de **C-19**, **C-20** ou **C-21** ;  
+- la fermeture de R1–R8, R11, O1–O9, P1–P10 ou Q1–Q12 C-17 ;  
+- la réouverture des addenda fermés, de Case B ou d’ODC-F9.
 
-**Arrêt après corrections ciblées de l’étape 7.** L’étape suivante n’est pas ouverte.
+**Arrêt après clôture :** aucune implémentation, aucun démarrage de C-19.
 
 ---
 
-*Fin C-18 — DRAFT / BROUILLON. Non validé. Audit indépendant étape 6 réalisé ; corrections ciblées étape 7 appliquées. Pour revue humaine. Q1–Q31 inchangés. O1–O9, P1–P10 et Q1–Q12 C-17 conservés. Aucune implémentation ni contrat suivant démarrés par cette rédaction.*
+*Fin C-18 — VALIDÉ. C-19 demeure non commencé. Case B demeure suspendu. Points ouverts R1–R8, R11, O1–O9, P1–P10 et Q1–Q12 C-17 conservés. Aucune implémentation DG-07 ni contrat suivant démarrés par cette clôture.*

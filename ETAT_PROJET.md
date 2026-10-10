@@ -1,9 +1,9 @@
 # GardenFervor — État projet (baseline)
 
-Dernière mise à jour : **2026-10-10** (Hub C-18 DRAFT)  
+Dernière mise à jour : **2026-10-10** (C-18 VALIDÉ — conception)  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (inventaire sync) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
 
-**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 = **VALIDÉ** · progression **12 / 16** · C-18 = **REVUE / DRAFT — non validé** (`C-18_TECHNOLOGIE_PROGRESSION.md`, `632b6ee`) · C-19 non commencé · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation écologique, sol, hydrologique ni progression DG-07**. C-16 · C-17 = conception uniquement (≠ runtime). C-18 = conception DRAFT (≠ runtime ; Ages = legacy).
+**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 = **VALIDÉ** · progression **13 / 16** · C-19 non commencé · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation écologique, sol, hydrologique ni progression DG-07**. C-16 · C-17 · C-18 = conception uniquement (≠ runtime). C-18 : Ages / `RequiredAge` / FWSG = legacy isolé.
 
 ---
 
@@ -93,7 +93,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 - **C-15 Hydrologie :** **VALIDÉ** (cadrage A–G ; audit après correction PASS ; O1–O9 conservés) — **≠** simulation runtime
 - **C-16 Sol :** **VALIDÉ** (cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; P1–P10 conservés) — **≠** simulation runtime
 - **C-17 Végétation / écosystèmes :** **VALIDÉ** (cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; Q1–Q12, O1–O9 C-15 et P1–P10 C-16 conservés) — **≠** simulation runtime
-- **C-18 Technologie / progression :** **DRAFT / BROUILLON — non validé** (Q1–Q31 formalisés ; audit étape 6 + corrections étape 7 ; publié `632b6ee`) — **≠** runtime DG-07 ; Ages / `RequiredAge` / FWSG = legacy isolé
+- **C-18 Technologie / progression :** **VALIDÉ** (cadrage Q1–Q31 ; audit final PASS ; contrat de conception uniquement ; R1–R8, R11 ouverts ; O1–O9, P1–P10 et Q1–Q12 C-17 conservés) — **≠** runtime DG-07 ; Ages / `RequiredAge` / FWSG = legacy isolé
 
 **Points reportés aux DG suivants (depuis clôtures DG-00 / DG-01 / DG-02) :**
 1. Extensions territoriales (nombre / forme / taille) — S6 → DG-14+
@@ -140,7 +140,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 
 ## Prochain pas
 
-1. Contrats : C-18 en **REVUE** (`DRAFT / BROUILLON — non validé`) — **ne pas** valider C-18 ni démarrer C-19 sans ordre explicite ; **aucune implémentation** écologique, sol, hydrologique ni déblocage DG-07 ; Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
+1. Contrats : C-18 **VALIDÉ** (conception uniquement) — **ne pas** démarrer C-19 sans ordre explicite ; **aucune implémentation** écologique, sol, hydrologique ni déblocage DG-07 ; R1–R8, R11, Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
 2. Cohorte S3 Cas A terminée — **aucun travail gameplay supplémentaire** hors ordre explicite
 3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)
 4. **ODC-F9** Infrastructure lifecycle (sur ordre explicite — sans contourner DG ; C-14 = règles ≠ preuve F9)

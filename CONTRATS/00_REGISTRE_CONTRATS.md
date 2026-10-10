@@ -246,8 +246,8 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 ### C-18 — Technologie / progression
 
-- **État :** brouillon publié — `CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md` (`632b6ee`) · statut documentaire **DRAFT / BROUILLON — non validé** · Ages/Tech legacy FWSG vs DG-07 VALIDÉ — **tension** isolée (Ages = non-autorité).
-- **Contrat :** **requis détaillée** et **bloquant** avant déblocages DG-07 runtime. Couverture registre `PARTIEL` = formalisation DG-07 actuelle, **pas** facultativité. ≠ implémentation.
+- **État :** **VALIDÉ** — `CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md` · cadrage Q1–Q31 · audit final PASS · contrat de conception uniquement · R1–R8, R11 ouverts · Ages/Tech legacy FWSG vs DG-07 VALIDÉ — **tension** isolée (Ages = non-autorité) · ≠ runtime.
+- **Contrat :** **requis détaillée** et **bloquant** avant déblocages DG-07 runtime. Couverture registre `PARTIEL` = formalisation DG-07 actuelle, **pas** facultativité. **N’autorise pas** l’implémentation.
 - **Amont officiel :** C-00 (DG-00, pas de fichier) · C-03\* (addendum fermé).
 - **Ordre 18.**
 
@@ -309,7 +309,7 @@ Ordre **par dépendances** (pas thématique). Les entrées marquées `\*` ne son
 | 20 | C-20 | Observabilité produit | Avant UX DG-13 complète |
 | 21 | C-21 | Simulation / fréquences | Avant scale perf |
 
-**Rédaction C-18 :** brouillon **publié** et en **REVUE** — **ne pas** valider automatiquement. Après un C-18 `VALIDÉ` : **C-19**. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique ni déblocage DG-07.
+**Après C-18 :** C-18 est **VALIDÉ** (conception uniquement). **Ne pas** démarrer C-19 sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique ni déblocage DG-07.
 
 ---
 
@@ -328,7 +328,7 @@ Absence = **interdire** l’implémentation structurelle listée :
 | **C-11** | Concurrence stocks multi-agents |
 | **C-14** | ODC-F9 infrastructures |
 | **C-15…C-17** | Sim environnementale réelle |
-| **C-18** | Déblocages DG-07 runtime (brouillon DRAFT — non validé ; Ages legacy ≠ autorité) |
+| **C-18** | Déblocages DG-07 runtime (VALIDÉ conception ; Ages legacy ≠ autorité ; ≠ autorisation d’implémentation) |
 | **C-19** | Shipping / save monde |
 
 ---
