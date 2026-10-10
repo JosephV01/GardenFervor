@@ -53,10 +53,10 @@ export const ETAT_GLOBAL = {
     unitsRole:
       'Sélectionner une tâche, se déplacer, exécuter, vérifier le résultat, livrer (C-07) sur un graphe de tâches (C-04).',
     maturityOneLiner:
-      'Prototype avancé + conception complète + 13/16 contrats VALIDÉS + C-18 conception uniquement + preuve S3 Cas A. Boucle écologique et déblocages DG-07 non démontrés.',
+      'Prototype avancé + conception complète + 15/16 contrats VALIDÉS + C-20 conception uniquement + preuve S3 Cas A. Boucle écologique et déblocages DG-07 non démontrés.',
     acquis: [
       'Design Gate DG-00 → DG-14 VALIDÉ',
-      'Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18 VALIDÉS',
+      'Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20 VALIDÉS',
       'C-18 VALIDÉ conception (≠ runtime DG-07 ; Ages = legacy)',
       'Cohorte S3 Cas A T1–T9 VALIDÉE',
       'Gates techniques F2–F8 PASS (F1 INVALIDÉ)',
@@ -84,7 +84,7 @@ export const ETAT_GLOBAL = {
     { q: 'Risque principal ?', a: 'Confondre VALIDÉ contractuel ou gate technique avec capacité produit.' },
     {
       q: 'Priorité justifiée ?',
-      a: 'Décision humaine : C-16 (ordre officiel, non démarré) OU consolidation F1 / F8 humain / F9 — sans implémenter l’eau ni démarrer C-16 / F9 automatiquement.',
+      a: 'Décision humaine : C-20 VALIDÉ conception ; C-21 prochain autorisé mais non ouvert — OU consolidation F1 / F8 humain / F9 — sans démarrer C-21 / F9 automatiquement.',
       recommendation: true,
     },
   ],
