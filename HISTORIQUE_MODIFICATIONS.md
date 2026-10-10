@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-10 — C-16-CLOSE**.
+Dernière entrée historique : **2026-10-10 — C-17-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-10 — C-17-CLOSE — Végétation / écosystèmes VALIDÉ (clôture documentaire)
+
+- **Intention :** clôturer formellement le contrat de conception C-17 après validation humaine et audit final PASS.
+- **Statut :** VALIDÉ (humain) — **contrat de conception uniquement** · **pas de code gameplay** · **C-18 non commencé** · ODC-F9 **non démarré** · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B reste **suspendu** · points ouverts Q1–Q12, O1–O9 C-15 et P1–P10 C-16 conservés · **aucune implémentation écologique**
+- **Décisions :** cadrage **A1–K1** — vérité végétation / états écologiques ; E1–E4 repris intégralement ; frontières C-01/C-02/C-08/C-14/C-15/C-16/C-19/C-21 ; Design Gate non modifié
+- **Fichiers :** `CONTRATS/C-17_VEGETATION_ECOSYSTEMES.md` · suivi / registre / ETAT / HISTORIQUE → compteur **12 / 16**
+- **Design Gate :** aucune modification
+- **Suite :** prochain contrat requis = C-18 (ne pas démarrer sans ordre explicite) · pas d’implémentation écologique · addenda et Case B non ouverts automatiquement · commit/push seulement sur autorisation
 
 ### 2026-10-10 — C-16-CLOSE — Sol VALIDÉ (clôture documentaire)
 

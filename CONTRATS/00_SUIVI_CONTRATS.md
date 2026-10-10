@@ -70,8 +70,8 @@ Périmètre compté = contrats pour lesquels le registre exige un **contrat auto
 | ID concernés | C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 |
 | --- | --- |
 | Total à créer/valider | **16** |
-| Contrats dédiés VALIDÉS | **11** |
-| Progression validation | **11 / 16** |
+| Contrats dédiés VALIDÉS | **12** |
+| Progression validation | **12 / 16** |
 
 *(Les `SUFFISANT*` et `NON REQUIS` sont suivis dans le tableau mais exclus du dénominateur tant qu’aucun addendum / contrat dédié n’est ouvert.)*
 
@@ -98,7 +98,7 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 | C-14 | Infrastructures | 14 | oui | absente | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 15/15 A1–F1 ; audit final PASS ; C-10·C-13\* addenda fermés ; Case B reste suspendu ; points ouverts §18 et dettes F9 / implémentation conservés |
 | C-15 | Hydrologie | 15 | oui | absente | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; cadrage A–G ; audit après correction PASS ; W1 cité intégralement ; O1–O9 et dettes stub / Dirty Water conservés ; Case B reste suspendu ; aucune implémentation |
 | C-16 | Sol | 16 | oui | absente | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; P1–P10 et O1–O9 C-15 conservés ; dettes stub / Dirty Soil conservées ; Case B reste suspendu ; aucune implémentation |
-| C-17 | Végétation / écosystèmes | 17 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
+| C-17 | Végétation / écosystèmes | 17 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; Q1–Q12, O1–O9 C-15 et P1–P10 C-16 conservés ; Case B reste suspendu ; aucune implémentation écologique |
 | C-18 | Technologie / progression | 18 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
 | C-19 | Persistance / sauvegarde | 19 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Avant shipping |
 | C-20 | Observabilité / UX | 20 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | conditionnel | Preuve vs produit |
@@ -114,23 +114,23 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 
 ```text
 Contrat actuel : aucun
-Dernier validé : C-16
+Dernier validé : C-17
 ```
 
-**C-16 — VALIDÉ** (clôture formelle — contrat de conception uniquement)
+**C-17 — VALIDÉ** (clôture formelle — contrat de conception uniquement)
 
 | Étape | État |
 | --- | --- |
 | Audit préparatoire / inspection code | **terminé** |
 | Décisions | **prises** — cadrage **A1–K1** (pas de nouveau Design Gate) |
-| Rédaction | **terminée** — `CONTRATS/C-16_SOL.md` |
+| Rédaction | **terminée** — `CONTRATS/C-17_VEGETATION_ECOSYSTEMES.md` |
 | Revue / audit contrat | **terminé** (audit final — **PASS**) |
 | Validation | **acquise** — validation humaine explicite |
 
-**C-01**, **C-02**, **C-04**, **C-05**, **C-07**, **C-08**, **C-11**, **C-12**, **C-14** et **C-15** restent **VALIDÉ**.  
+**C-01**, **C-02**, **C-04**, **C-05**, **C-07**, **C-08**, **C-11**, **C-12**, **C-14**, **C-15** et **C-16** restent **VALIDÉ**.  
 **C-03** reste addendum fermé (NON COMMENCÉ / hors compteur).  
 **C-06\***, **C-09\***, **C-10\*** et **C-13\*** restent addenda fermés (SUFFISANT\* / hors compteur).  
-C-17 et suivants restent **NON COMMENCÉS**. Case B reste **suspendu**. ODC-F9 **non démarré**. Aucune implémentation sol ni hydrologique. C-15 O1–O9 restent ouverts.
+C-18 et suivants restent **NON COMMENCÉS**. Case B reste **suspendu**. ODC-F9 **non démarré**. Aucune implémentation écologique, sol ni hydrologique. Q1–Q12, C-15 O1–O9 et C-16 P1–P10 restent ouverts.
 
 ---
 
@@ -138,12 +138,12 @@ C-17 et suivants restent **NON COMMENCÉS**. Case B reste **suspendu**. ODC-F9 *
 
 ```text
 Prochain contrat autorisé :
-C-17
+C-18
 ```
 
-Prochain élément **requis** du compteur 16 / ordre officiel après C-16.  
-**Ne pas démarrer** C-17 sans ordre explicite.  
-C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte). ODC-F9 reste **non démarré** automatiquement. Aucune implémentation sol ni hydrologique.
+Prochain élément **requis** du compteur 16 / ordre officiel après C-17.  
+**Ne pas démarrer** C-18 sans ordre explicite.  
+C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte). ODC-F9 reste **non démarré** automatiquement. Aucune implémentation écologique, sol ni hydrologique.
 
 ---
 
@@ -183,7 +183,8 @@ C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registr
 | 2026-10-10 | C-15 | NON COMMENCÉ | **REVUE** | Contrat `C-15_HYDROLOGIE.md` rédigé puis corrigé (W1 intégral + §3.2 emprise) ; audit après correction PASS ; compteur reste 9/16 |
 | 2026-10-10 | C-15 | REVUE | **VALIDÉ** | Validation humaine explicite ; cadrage A–G ; audit après correction PASS ; O1–O9 conservés ; compteur **10 / 16** |
 | 2026-10-10 | C-16 | NON COMMENCÉ | **VALIDÉ** | Validation humaine explicite ; cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; P1–P10 et O1–O9 C-15 conservés ; compteur **11 / 16** |
+| 2026-10-10 | C-17 | NON COMMENCÉ | **VALIDÉ** | Validation humaine explicite ; cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; Q1–Q12, O1–O9 C-15 et P1–P10 C-16 conservés ; compteur **12 / 16** |
 
 ---
 
-*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16 VALIDÉS ; compteur 11/16 ; Case B suspendu ; C-03·C-06·C-09·C-10·C-13 addenda fermés ; prochain requis = C-17 ; aucune implémentation sol.*
+*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17 VALIDÉS ; compteur 12/16 ; Case B suspendu ; C-03·C-06·C-09·C-10·C-13 addenda fermés ; prochain requis = C-18 ; aucune implémentation écologique.*
