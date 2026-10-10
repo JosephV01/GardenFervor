@@ -88,7 +88,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-16 | Sol | REQUIS | détaillée | DG-09 · **C-16 VALIDÉ** · Spatial stub | N/P | C-02 · C-01 | oui (avant sim sol) | 16 |
 | C-17 | Végétation / écosystèmes | PARTIEL→REQUIS | détaillée | DG-09 · **C-17 VALIDÉ** | N | C-15 · C-16 · C-01 | oui (avant eco) | 17 |
 | C-18 | Technologie / progression | PARTIEL | détaillée | DG-07 · Ages legacy FWSG | P | C-00 · C-03 | oui (avant déblocages réels) | 18 |
-| C-19 | Persistance / sauvegarde | REQUIS | fondamentale | DG · save Terraform désactivé | N/P | C-01 · C-09 · C-03 | **oui** (avant shipping) | 19 |
+| C-19 | Persistance / sauvegarde | REQUIS | fondamentale | DG · save Terraform désactivé · **C-19 VALIDÉ** | N/P | C-01 · C-09 · C-03 | **oui** (avant shipping) | 19 |
 | C-20 | Observabilité / UX lisibilité | PARTIEL | secondaire→détaillée | DG-13 · C6 smoke | P | C-04 · C-07 · C-09 | non (preuve) / oui (produit) | 20 |
 | C-21 | Simulation / fréquences / perf | PARTIEL | fondamentale | DG-00.5/00.6 | P | C-00 · C-02 | oui (avant scale) | 21 |
 | C-22 | Investor Demo | NON REQUIS | — | Investor Demo docs | I (prés.) | consomme C-03…C-13 | non | — |
@@ -253,8 +253,9 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 ### C-19 — Persistance / sauvegarde
 
-- **État :** `bEnableRuntimeTerraformPersistence=False` · save terrain désactivé.
-- **Contrat :** **requis fondamentale** avant shipping / F1 redo durable.
+- **État :** **VALIDÉ** — `CONTRATS/C-19_PERSISTANCE_SAUVEGARDE.md` · cadrage S1–S14 · L1–L3 · audit final PASS · contrat de conception uniquement · O5, P8, Q7, R5 ouverts · runtime persist **OFF** · ≠ activation flags / SaveGame / F1.
+- **Contrat :** **requis fondamentale** et **bloquant** avant shipping / F1 redo durable. **N’autorise pas** l’implémentation.
+- **Amont officiel :** C-01 `VALIDÉ` · C-09\* · C-03\* (addenda fermés, cités sans ouvrir).
 - **Ordre 19.**
 
 ### C-20 — Observabilité / UX
@@ -309,7 +310,7 @@ Ordre **par dépendances** (pas thématique). Les entrées marquées `\*` ne son
 | 20 | C-20 | Observabilité produit | Avant UX DG-13 complète |
 | 21 | C-21 | Simulation / fréquences | Avant scale perf |
 
-**Après C-18 :** C-18 est **VALIDÉ** (conception uniquement). **Ne pas** démarrer C-19 sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique ni déblocage DG-07.
+**Après C-19 :** C-19 est **VALIDÉ** (conception uniquement). **Ne pas** démarrer C-20 sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique, déblocage DG-07 ni persistance runtime.
 
 ---
 
@@ -329,7 +330,7 @@ Absence = **interdire** l’implémentation structurelle listée :
 | **C-14** | ODC-F9 infrastructures |
 | **C-15…C-17** | Sim environnementale réelle |
 | **C-18** | Déblocages DG-07 runtime (VALIDÉ conception ; Ages legacy ≠ autorité ; ≠ autorisation d’implémentation) |
-| **C-19** | Shipping / save monde |
+| **C-19** | Shipping / save monde (VALIDÉ conception ; ≠ autorisation d’implémentation runtime) |
 
 ---
 

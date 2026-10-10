@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-10 — C-18-CLOSE**.
+Dernière entrée historique : **2026-10-10 — C-19-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-10 — C-19-CLOSE — Persistance / sauvegarde VALIDÉ (clôture documentaire)
+
+- **Intention :** synchroniser le suivi après clôture formelle du contrat de conception C-19 (validation humaine + audit final PASS).
+- **Statut :** VALIDÉ (humain) — **contrat de conception uniquement** · **pas de code gameplay** · **C-20 non commencé** · ODC-F9 **non démarré** · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B reste **suspendu** · points ouverts O5, P8, Q7, R5, R1–R8 / R11, O1–O9, P1–P10 et Q1–Q12 C-17 conservés · **aucune implémentation persist / F1 / DG-07**
+- **Décisions :** cadrage **S1–S14 · L1–L3** inchangé ; familles T/R/L/I ; E/X conditionnels ; P/K exclus ; Dirty hors save ; hybride session / durable ; Design Gate non modifié
+- **Fichiers :** suivi / registre / ETAT / HISTORIQUE → compteur **14 / 16** (le fichier `C-19_PERSISTANCE_SAUVEGARDE.md` déjà `VALIDÉ` à l’étape 10)
+- **Design Gate :** aucune modification
+- **Suite :** prochain contrat requis = C-20 (ne pas démarrer sans ordre explicite) · pas d’implémentation persist · addenda et Case B non ouverts automatiquement · commit/push / Hub seulement sur autorisation
 
 ### 2026-10-10 — C-18-CLOSE — Technologie / progression VALIDÉ (clôture documentaire)
 
