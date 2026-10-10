@@ -1,9 +1,9 @@
 # GardenFervor — État projet (baseline)
 
-Dernière mise à jour : **2026-10-10** (clôture C-15)  
+Dernière mise à jour : **2026-10-10** (clôture C-16)  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (inventaire sync) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
 
-**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 = **VALIDÉ** · progression **10 / 16** · prochain requis = C-16 (non commencé) · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation hydrologique**.
+**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 = **VALIDÉ** · progression **11 / 16** · prochain requis = C-17 (non commencé) · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation sol ni hydrologique**. C-16 = contrat de conception uniquement (≠ runtime).
 
 ---
 
@@ -90,7 +90,8 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 - 00.1–00.7 + sous-items 00.5 (S→X) + 00.6 (V→P) : tous VALIDÉ
 - **00.5.W1** : formulation clarifiée (horizon fondateur + ambition hydrologique à long terme) — **confirmation humaine d’impact acquise** ; Hub local `docs/design-gate.html` aligné et vérifié ; clôture documentaire ; W2·W3·W4·X1·X2 inchangés
 - **Présentation client :** 10 illustrations 2026-10-10 intégrées (WebP) ; capture S3 réelle conservée
-- **C-15 Hydrologie :** **VALIDÉ** (cadrage A–G ; audit après correction PASS ; O1–O9 conservés) — **≠** simulation runtime ; C-16 **non commencé**
+- **C-15 Hydrologie :** **VALIDÉ** (cadrage A–G ; audit après correction PASS ; O1–O9 conservés) — **≠** simulation runtime
+- **C-16 Sol :** **VALIDÉ** (cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; P1–P10 conservés) — **≠** simulation runtime ; C-17 **non commencé**
 
 **Points reportés aux DG suivants (depuis clôtures DG-00 / DG-01 / DG-02) :**
 1. Extensions territoriales (nombre / forme / taille) — S6 → DG-14+
@@ -137,7 +138,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 
 ## Prochain pas
 
-1. Contrats : C-15 clôturé — **ne pas démarrer C-16** sans ordre explicite ; **aucune implémentation hydrologique** ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
+1. Contrats : C-16 clôturé (conception uniquement) — **ne pas démarrer C-17** sans ordre explicite ; **aucune implémentation sol ni hydrologique** ; C-15 O1–O9 restent ouverts ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
 2. Cohorte S3 Cas A terminée — **aucun travail gameplay supplémentaire** hors ordre explicite
 3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)
 4. **ODC-F9** Infrastructure lifecycle (sur ordre explicite — sans contourner DG ; C-14 = règles ≠ preuve F9)

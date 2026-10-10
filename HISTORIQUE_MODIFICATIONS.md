@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-10 — PRES-CLIENT-LOT10**.
+Dernière entrée historique : **2026-10-10 — C-16-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-10 — C-16-CLOSE — Sol VALIDÉ (clôture documentaire)
+
+- **Intention :** clôturer formellement le contrat de conception C-16 après validation humaine et audit final PASS.
+- **Statut :** VALIDÉ (humain) — **contrat de conception uniquement** · **pas de code gameplay** · **C-17 non commencé** · ODC-F9 **non démarré** · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B reste **suspendu** · points ouverts P1–P10 et O1–O9 C-15 conservés · **aucune implémentation sol**
+- **Décisions :** cadrage **A1–K1** — vérité métier du sol ; O1–O4 repris intégralement ; frontières C-01/C-02/C-08/C-14/C-15/C-17/C-19/C-21 ; Design Gate non modifié
+- **Fichiers :** `CONTRATS/C-16_SOL.md` · suivi / registre / ETAT / HISTORIQUE → compteur **11 / 16**
+- **Design Gate :** aucune modification
+- **Suite :** prochain contrat requis = C-17 (ne pas démarrer sans ordre explicite) · pas d’implémentation sol · addenda et Case B non ouverts automatiquement · commit/push seulement sur autorisation
 
 ### 2026-10-10 — C-15-CLOSE — Hydrologie VALIDÉ (clôture documentaire)
 

@@ -85,7 +85,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-13 | Construction / Achevé / En service | SUFFISANT* | secondaire | DG-02/11 · C5 · T7 | I (critère cohorte) | C-05 · C-10 | non* | 13* |
 | C-14 | Infrastructures (lifecycle) | REQUIS | fondamentale | DG-10 · **C-14 VALIDÉ** · ODC-F9 non démarré | N | C-02 · C-05 · C-12 | **oui** (avant F9+) | 14 |
 | C-15 | Hydrologie | REQUIS | détaillée | DG-09 · **C-15 VALIDÉ** · Spatial stub | N/P | C-02 · C-01 | oui (avant sim eau) | 15 |
-| C-16 | Sol | REQUIS | détaillée | DG-09 · Spatial stub | N/P | C-02 · C-01 | oui (avant sim sol) | 16 |
+| C-16 | Sol | REQUIS | détaillée | DG-09 · **C-16 VALIDÉ** · Spatial stub | N/P | C-02 · C-01 | oui (avant sim sol) | 16 |
 | C-17 | Végétation / écosystèmes | PARTIEL→REQUIS | détaillée | DG-09 | N | C-15 · C-16 · C-01 | oui (avant eco) | 17 |
 | C-18 | Technologie / progression | PARTIEL | détaillée | DG-07 · Ages legacy FWSG | P | C-00 · C-03 | oui (avant déblocages réels) | 18 |
 | C-19 | Persistance / sauvegarde | REQUIS | fondamentale | DG · save Terraform désactivé | N/P | C-01 · C-09 · C-03 | **oui** (avant shipping) | 19 |
@@ -230,11 +230,18 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 - **Amont :** C-02 · C-01.
 - **Ordre 15.**
 
-### C-16 / C-17 — Sol · Végétation/écosystèmes
+### C-16 — Sol
+
+- **État :** **VALIDÉ** — `CONTRATS/C-16_SOL.md` · cadrage A1–K1 · audit final PASS · contrat de conception uniquement · P1–P10 conservés · ≠ preuve runtime.
+- **Contrat :** **requis détaillée** avant simulation de sol — formalisé ; **n’autorise pas** l’implémentation.
+- **Amont :** C-02 · C-01.
+- **Ordre 16.**
+
+### C-17 — Végétation / écosystèmes
 
 - **État :** Spatial stubs · DG-09 VALIDÉ · pas de sim réelle · **NON COMMENCÉ**.
 - **Contrats :** **requis** avant comportements eco (ordre Sol avant végétation ; C-17 après C-15 · C-16).
-- **Ordre 16 · 17.**
+- **Ordre 17.**
 
 ### C-18 — Technologie / progression
 
@@ -301,7 +308,7 @@ Ordre **par dépendances** (pas thématique). Les entrées marquées `\*` ne son
 | 21 | C-21 | Simulation / fréquences | Avant scale perf |
 
 **Prochaine rédaction recommandée (si ordre explicite humain) :**  
-**C-16** (sol) — après C-15 VALIDÉ ; **ne pas démarrer** sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation hydrologique.
+**C-17** (végétation / écosystèmes) — après C-15 · C-16 VALIDÉS ; **ne pas démarrer** sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation sol ni hydrologique.
 
 ---
 
