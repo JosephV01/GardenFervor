@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-20",
+  "activeId": "C-21",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 15,
+    "validated": 16,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -807,17 +807,39 @@
     {
       "id": "C-21",
       "order": "21",
-      "name": "Simulation / fréquences / perf",
-      "status": "À FAIRE",
+      "name": "Cadences de simulation et budgets temporels",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "Avant scale",
+      "note": "VALIDÉ humainement — cadrage T1 + B1–B8 ; audit final PASS ; contrat de conception uniquement ; O6, P9, C-17 Q8, R6, O-FREQ / O-OVER / O-EXC / O-INST / O-SCALE conservés ; ≠ scheduler / Hertz / budgets runtime",
       "dependsOn": [
         "C-00",
         "C-02"
       ],
-      "providesTo": []
+      "providesTo": [],
+      "file": "CONTRATS/C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md",
+      "detail": {
+        "decisions": "9 / 9",
+        "frontiers": [
+          "C-02 — dirty / cellules (E1–E3)",
+          "C-07 — InstantMode / métier agent",
+          "C-04 — graphe ≠ ordonnancement temporel",
+          "C-15…17 — vérités eau / sol / éco",
+          "C-18 — R6 Hertz recherche ouvert",
+          "C-19 — S14 temporisations ouvertes",
+          "C-20 — cadence d’affichage ≠ simulation"
+        ],
+        "gaps": [
+          "O-FREQ — première table chiffrée",
+          "O-OVER — politique fine de dépassement",
+          "O-EXC — balayage global exceptionnel",
+          "O-INST — InstantMode ↔ progression",
+          "O-SCALE — critères chiffrés de scale",
+          "O6 / P9 / C-17 Q8 / R6 / S14 ouverts",
+          "Aucune implémentation de cadence"
+        ]
+      }
     }
   ]
 }
