@@ -1,5 +1,10 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-10 — 1.0.12 — Clôture C-20
+
+- C-20 VALIDÉ (cadrage X1–X10 · L1–L3) · progression contrats **15 / 16**.
+- Prochain requis = **C-21** (non commencé) · ≠ UX produit / HUD DG-13 · addenda fermés · Case B suspendu · ODC-F9 non démarré.
+
 ## 2026-10-10 — 1.0.11 — Clôture C-19
 
 - C-19 VALIDÉ (cadrage S1–S14 · L1–L3) · progression contrats **14 / 16**.

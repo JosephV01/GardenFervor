@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-19",
+  "activeId": "C-20",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 14,
+    "validated": 15,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -774,17 +774,35 @@
       "id": "C-20",
       "order": "20",
       "name": "Observabilité / UX lisibilité",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
-      "blocking": false,
-      "note": "Preuve vs produit",
+      "blocking": true,
+      "note": "VALIDÉ humainement — cadrage X1–X10 · L1–L3 ; audit final PASS ; contrat de conception uniquement ; R7 C-18 ouvert ; ≠ UX produit / HUD DG-13",
       "dependsOn": [
         "C-04",
         "C-07",
         "C-09"
       ],
-      "providesTo": []
+      "providesTo": [],
+      "file": "CONTRATS/C-20_OBSERVABILITE_UX_LISIBILITE.md",
+      "detail": {
+        "decisions": "13 / 13",
+        "frontiers": [
+          "DG-13 — lisibilité (inchangée)",
+          "C-04 — Blocked + cause F1/F2",
+          "C-07 — étapes / rapport J1–J2",
+          "C-11 — agrégats §12",
+          "C-19 — présentation save S14",
+          "C-21 — cadence / Hertz"
+        ],
+        "gaps": [
+          "R7 C-18 wording HUD encore ouvert",
+          "HUD existant = dette / non-autorité",
+          "Pas de HUD DG-13 produit",
+          "Aucune implémentation UX"
+        ]
+      }
     },
     {
       "id": "C-21",

@@ -100,8 +100,8 @@ export const ETAT_GLOBAL = {
     {
       id: 'contrats',
       label: 'Contrats / règles métier',
-      state: 'PARTIEL (14/16)',
-      meaning: 'Fondations chantier / logistique / lifecycle / C-15…C-19 conception formalisées ; C-20 non commencé ; persist runtime / UX encore ouvertes.',
+      state: 'PARTIEL (15/16)',
+      meaning: 'Fondations chantier / logistique / lifecycle / C-15…C-20 conception formalisées ; C-21 non commencé ; persist runtime / UX produit encore ouvertes.',
       evidence: 'CONTRATS/00_SUIVI_CONTRATS.md',
     },
     {
@@ -337,7 +337,7 @@ export const ETAT_GLOBAL = {
       proof: 'GardenFervorTerraformSaveGame · flag false',
       limits: 'Politique documentaire seulement · persist OFF · F1 distinct · O5/P8/Q7/R5 ouverts.',
       depends: 'C-01',
-      next: 'Ne pas activer flags / SaveGame / F1. Prochain autorisé = C-20.',
+      next: 'Ne pas activer flags / SaveGame / F1. C-20 VALIDÉ conception. Prochain autorisé = C-21.',
       refs: ['Source/GardenFervor/RTS/Terraform/GardenFervorTerraformSaveGame.h'],
       tags: ['persistance', 'partiel', 'c-19'],
     },
@@ -360,14 +360,14 @@ export const ETAT_GLOBAL = {
       id: 'ux',
       domain: 'UX',
       name: 'Observabilité / UX joueur',
-      docState: 'C-20 NON COMMENCÉ',
+      docState: 'C-20 VALIDÉ conception',
       codeState: 'Partiel',
       function: 'Selection, status strings, smokes, Investor Demo.',
       playerValue: 'Comprendre ce qui avance ou bloque.',
-      proof: 'DG-13 · Investor Demo',
-      limits: 'Pas de HUD DG-13 produit.',
+      proof: 'DG-13 · C-20 · Investor Demo',
+      limits: 'Politique documentaire seulement · HUD = dette · pas de HUD DG-13 produit.',
       depends: 'C-04 · C-07',
-      next: 'C-20.',
+      next: 'Ne pas implémenter UX / HUD. Prochain autorisé = C-21.',
       refs: ['Source/GardenFervor/RTS/Selection/', 'Source/GardenFervor/Game/'],
       tags: ['ux', 'partiel', 'c-20'],
     },
@@ -464,7 +464,7 @@ export const ETAT_GLOBAL = {
     'C-17': { runtime: 'Absent', debt: 'Boucle éco' },
     'C-18': { runtime: 'Legacy Ages', debt: 'Tension DG-07' },
     'C-19': { runtime: 'Flags OFF', debt: 'VALIDÉ conception · persist OFF · ≠ F1' },
-    'C-20': { runtime: 'Smokes/strings', debt: 'Preuve vs produit' },
+    'C-20': { runtime: 'Smokes/strings', debt: 'VALIDÉ conception · HUD = dette · ≠ UX produit' },
     'C-21': { runtime: 'Partiel', debt: 'Avant scale' },
     'C-22': { runtime: 'Présent', debt: 'Hors compteur' },
     'C-23': { runtime: 'F2 PASS', debt: 'Hors compteur' },
@@ -690,11 +690,11 @@ export const ETAT_GLOBAL = {
       title: 'Fondations nécessaires',
       items: [
         {
-          work: 'Ne pas démarrer C-20 sans ordre explicite',
-          why: 'C-19 VALIDÉ conception · prochain autorisé = C-20 · persist OFF · ≠ flags / F1',
-          unlocks: 'C-20 seulement sur ordre humain',
-          costOfDelay: 'Ouverture prématurée de l’UX',
-          proof: 'CONTRATS/C-19_PERSISTANCE_SAUVEGARDE.md statut VALIDÉ',
+          work: 'Ne pas démarrer C-21 sans ordre explicite',
+          why: 'C-20 VALIDÉ conception · prochain autorisé = C-21 · ≠ UX produit / HUD DG-13',
+          unlocks: 'C-21 seulement sur ordre humain',
+          costOfDelay: 'Ouverture prématurée des cadences',
+          proof: 'CONTRATS/C-20_OBSERVABILITE_UX_LISIBILITE.md statut VALIDÉ',
           type: 'officiel',
         },
         {
@@ -762,7 +762,7 @@ export const ETAT_GLOBAL = {
 
   roadmapCompare: {
     officialNext:
-      'Roadmap officielle : C-19 VALIDÉ conception (b0c3367). Ne pas implémenter persist / F1 / DG-07. C-20 non commencé. C-15…C-19 VALIDÉS ≠ simulation éco / déblocages / save runtime · ODC-F9 non démarré.',
+      'Roadmap officielle : C-20 VALIDÉ conception (4d27f36). Ne pas implémenter UX / persist / F1 / DG-07. C-21 non commencé. C-15…C-20 VALIDÉS ≠ simulation éco / déblocages / save runtime / UX produit · ODC-F9 non démarré.',
     alternative:
       'Recommandation non officielle : si l’objectif immédiat est le shipping jouable, prioriser F1 + validation visuelle F8 / éventuel F9 avant d’élargir à l’hydrologie.',
   },
@@ -771,18 +771,18 @@ export const ETAT_GLOBAL = {
     {
       id: 'J0',
       title: 'Décision humaine',
-      objective: 'Ne pas démarrer C-20 ni implémenter persist / F1 / DG-07 / F9 sans ordre',
+      objective: 'Ne pas démarrer C-21 ni implémenter UX / persist / F1 / DG-07 / F9 sans ordre',
       prereq: 'Audit / cette page',
       validation: 'Ordre explicite',
       doNotStart: 'Tout travail suivant',
     },
     {
       id: 'J1a',
-      title: 'C-15…C-19 (faits) / C-20 (non commencé)',
-      objective: 'C-15·C-16·C-17·C-18·C-19 VALIDÉS conception ; C-20 non ouvert',
-      prereq: 'C-19 VALIDÉ',
-      validation: 'C-19 VALIDÉ conception — C-20 non commencé',
-      doNotStart: 'Sim éco · persist runtime · déblocages DG-07 · C-20',
+      title: 'C-15…C-20 (faits) / C-21 (non commencé)',
+      objective: 'C-15·C-16·C-17·C-18·C-19·C-20 VALIDÉS conception ; C-21 non ouvert',
+      prereq: 'C-20 VALIDÉ',
+      validation: 'C-20 VALIDÉ conception — C-21 non commencé',
+      doNotStart: 'Sim éco · persist runtime · déblocages DG-07 · UX produit · C-21',
     },
     {
       id: 'J1b',
@@ -869,10 +869,10 @@ export const ETAT_GLOBAL = {
 
   conclusion: {
     acquired:
-      'Conception fondatrice · 14 contrats VALIDÉS · C-19 conception uniquement · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-15…C-19 conception (≠ runtime persist).',
+      'Conception fondatrice · 15 contrats VALIDÉS · C-20 conception uniquement · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-15…C-20 conception (≠ runtime persist / UX produit).',
     missing:
       'Runtime eau/sol/éco · déblocages DG-07 · Case B · métier terrain produit · F1 shipping · persist runtime · UX · réseaux/N4 · ODC-F9.',
     decision:
-      'Si l’ordre administratif prime → ne pas démarrer C-20 sans ordre. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9. Aucun VALIDÉ C-15…C-19 n’autorise une simulation environnementale, un déblocage DG-07 ni une activation persist.',
+      'Si l’ordre administratif prime → ne pas démarrer C-21 sans ordre. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9. Aucun VALIDÉ C-15…C-20 n’autorise une simulation environnementale, un déblocage DG-07, une activation persist ni une UX produit.',
   },
 };

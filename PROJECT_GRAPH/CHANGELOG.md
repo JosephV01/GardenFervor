@@ -1,5 +1,11 @@
 # PROJECT_GRAPH — CHANGELOG
 
+## 2026-10-10 — 1.0.7 — Clôture C-20 VALIDÉ
+
+- Nœud `c_20` : documentStatus **VALIDÉ** (conception) ; HUD = dette ; ≠ UX produit / HUD DG-13.
+- Compteur canonique **15 / 16**. C-21 demeure NON COMMENCÉ.
+- Aucune implémentation UX.
+
 ## 2026-10-10 — 1.0.6 — Clôture C-19 VALIDÉ
 
 - Nœud `c_19` : documentStatus **VALIDÉ** (conception) ; persist OFF ; ≠ flags / SaveGame / F1.

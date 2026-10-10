@@ -268,7 +268,9 @@ export const curatedNodes = [
   mkContract('c_19', 'C-19', 'Persistance / sauvegarde', 'REQUIS', 'VALIDÉ', 'N/P', true, 'CONTRATS/C-19_PERSISTANCE_SAUVEGARDE.md', {
     notes: 'VALIDÉ conception · S1–S14 · L1–L3 · persist OFF · ≠ flags / SaveGame / F1 · bloquant shipping durable.',
   }),
-  mkContract('c_20', 'C-20', 'Observabilité / UX', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
+  mkContract('c_20', 'C-20', 'Observabilité / UX lisibilité', 'PARTIEL', 'VALIDÉ', 'P', true, 'CONTRATS/C-20_OBSERVABILITE_UX_LISIBILITE.md', {
+    notes: 'VALIDÉ conception · X1–X10 · L1–L3 · HUD = dette · ≠ UX produit / HUD DG-13 · bloquant avant déclaration produit.',
+  }),
   mkContract('c_21', 'C-21', 'Simulation / fréquences', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
   mkContract('c_22', 'C-22', 'Investor Demo', 'NON REQUIS', 'NON COMMENCÉ', 'I', false, null),
   mkContract('c_23', 'C-23', 'Présentation M4 / UDS', 'NON REQUIS', 'NON COMMENCÉ', 'I', false, null),
