@@ -22,7 +22,7 @@ La clôture est **documentaire**. Elle **n’autorise pas** l’implémentation 
 
 **Case B** demeure **suspendu**.  
 **ODC-F9** n’est **pas** démarré par cette clôture.  
-**C-19**, **C-20** et **C-21** demeurent **non commencés**.  
+**C-19** est **VALIDÉ** conception uniquement. **C-20** est **VALIDÉ** conception uniquement (UX non implémentée). **C-21** demeure **non commencé**.  
 **C-15**, **C-16** et **C-17** demeurent **VALIDÉ** comme contrats de **conception** uniquement. Leurs points **O1–O9**, **P1–P10** et **Q1–Q12** restent **ouverts** et **inchangés**.  
 Les addenda C-03 · C-06 · C-09 · C-10 · C-13 restent **fermés**.  
 S3 / Investor Demo restent **hors** dépendance à Ages, à la recherche et aux déblocages DG-07 (Q7).

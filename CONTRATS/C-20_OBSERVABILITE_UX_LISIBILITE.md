@@ -388,7 +388,7 @@ Ces écarts existaient **avant** cette rédaction. C-20 **ne les corrige pas**.
 1. **DG-13 VALIDÉ ≠ HUD DG-13 produit.** Conception close ; surface produit absente.  
 2. **HUD FWSG / Age** vs C-18 Q6 (legacy isolé).  
 3. **C6 « pas HUD »** vs ligne smoke déjà affichée par `UGardenFervorRTSHUDWidget`.  
-4. **C-15 O5** dit encore « C-19 non rédigé » alors que C-19 est `VALIDÉ` conception.  
+4. **C-15 O5** demeure ouvert : C-19 est `VALIDÉ` conception ; la politique de persistance ne tranche pas la définition de l’état eau persisté.  
 5. **`CONTRATS/C-17_VEGETATION_ECOSYSTEMES.md`** encore **non suivi Git** (`??`) alors que C-17 est `VALIDÉ` au suivi.  
 6. **InstantMode** et DisplayName Raise/Lower dans l’agent — dettes C-07 / C-08, pas des règles C-20.  
 7. **Wood** à l’écran vs vérité **`Timber`** (C7 / C-18 Q22).  
