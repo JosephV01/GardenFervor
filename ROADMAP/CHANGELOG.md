@@ -1,5 +1,12 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-10 — 1.0.8 — Clôture C-15
+
+- C-15 VALIDÉ (cadrage A–G) · progression contrats **10 / 16**.
+- Prochain requis = **C-16** (non commencé) · aucune implémentation hydrologique · addenda C-09/C-10/C-13 fermés · Case B suspendu · ODC-F9 non démarré.
+- Hydrologie formalisée ≠ simulation runtime / solveur.
+- Régénération HTML depuis le Markdown.
+
 ## 2026-10-09 — 1.0.7 — Clôture C-14
 
 - C-14 VALIDÉ (15/15) · progression contrats **9 / 16**.

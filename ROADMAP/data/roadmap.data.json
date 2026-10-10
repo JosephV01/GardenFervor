@@ -1,17 +1,17 @@
 {
   "meta": {
-    "version": "1.0.7",
-    "updated": "2026-10-09",
+    "version": "1.0.8",
+    "updated": "2026-10-10",
     "title": "GardenFervor — Roadmap globale",
     "git_head_at_audit": "91723da",
-    "notes": "Clôture C-14 · compteur 9/16 · prochain C-15. Distincte de Plan de production/Roadmap (cohorte S3)."
+    "notes": "Clôture C-15 · compteur 10/16 · prochain C-16. Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 9/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS) · prochain requis = C-15 (non commencé) · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 10/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15 VALIDÉS) · prochain requis = C-16 (non commencé) · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré · aucune implémentation hydrologique",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
-    "contracts_validated": "9",
+    "contracts_validated": "10",
     "contracts_required": "16",
     "s3_case_a": "VALIDÉ",
     "case_b": "SUSPENDU",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c15",
-    "title": "C-15 — Hydrologie",
+    "id": "next-c16",
+    "title": "C-16 — Sol",
     "status": "À FAIRE",
     "horizon": "Prochain",
-    "note": "Prochain contrat requis après C-14 VALIDÉ. Ne pas démarrer sans ordre explicite. Addenda C-09/C-10/C-13 restent fermés. Case B suspendu. ODC-F9 non démarré automatiquement.",
-    "depends": "C-02 VALIDÉ · C-01 VALIDÉ",
-    "unlocks": "sim eau · C-17"
+    "note": "Prochain contrat requis après C-15 VALIDÉ. Ne pas démarrer sans ordre explicite. Aucune implémentation hydrologique. Addenda C-09/C-10/C-13 restent fermés. Case B suspendu. ODC-F9 non démarré automatiquement.",
+    "depends": "C-02 VALIDÉ · C-01 VALIDÉ · C-15 VALIDÉ",
+    "unlocks": "C-17"
   },
   "phases": [
     {
@@ -184,15 +184,15 @@
         {
           "id": "P2.J5",
           "phase": "P2",
-          "title": "Contrats reste du compteur (C-15…C-21)",
+          "title": "Contrats reste du compteur (C-16…C-21)",
           "status": "À FAIRE",
           "conception": "À CONCEVOIR",
           "realisation": "PARTIELLE",
           "validation": "NON TERMINÉE",
           "depends": "P2.J3,P2.J4",
           "unlocks": "P7,P8,P9,P10,P11,P13",
-          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md",
-          "note": "C-14 VALIDÉ (15/15) ; prochain requis = C-15.",
+          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-15_HYDROLOGIE.md",
+          "note": "C-15 VALIDÉ (cadrage A–G) ; prochain requis = C-16.",
           "works": []
         }
       ]
@@ -523,9 +523,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-09T18:31:15.518Z",
-    "mdHash": "b007a18a876be23cb8c0fcfd55dce5f24ab63c836dcb33be0caaa716b2e5b7b2",
-    "git": "91723da",
+    "generatedAt": "2026-10-10T10:13:10.062Z",
+    "mdHash": "2410833864fb952e926b53d6f6ac336f827fd8218e3e5b75d7a602f4ba3856f6",
+    "git": "0931e06",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },

@@ -1,5 +1,11 @@
 # PROJECT_GRAPH — CHANGELOG
 
+## 2026-10-10 — 1.0.3 — Clôture C-15
+
+- Nœud `c_15` : documentStatus **VALIDÉ** · fichier `CONTRATS/C-15_HYDROLOGIE.md`.
+- C-16 demeure NON COMMENCÉ. Aucune implémentation hydrologique.
+- Régénération JSON / vues / HTML / CURRENT_STATE.
+
 ## 2026-10-08 — 1.0.2 — Clôture C-05
 
 - Nœud `c_05` : documentStatus **VALIDÉ** · fichier `CONTRATS/C-05_WORKSITE_SITEPREP.md`.

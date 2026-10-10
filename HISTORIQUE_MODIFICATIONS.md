@@ -199,6 +199,15 @@ Format d’entrée (à dupliquer) :
 
 ---
 
+### 2026-10-10 — C-15-CLOSE — Hydrologie VALIDÉ (clôture documentaire)
+
+- **Intention :** clôturer formellement le contrat opérationnel C-15 après validation humaine et audit après correction PASS.
+- **Statut :** VALIDÉ (humain) — **pas de code gameplay** · **C-16 non commencé** · ODC-F9 **non démarré** · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B reste **suspendu** · points ouverts O1–O9 conservés · **aucune implémentation hydrologique**
+- **Décisions :** cadrage **A–G** — vérité hydrologique ; W1 repris intégralement ; frontières C-01/C-02/C-14/C-16/C-17 ; Design Gate non modifié
+- **Fichiers :** `CONTRATS/C-15_HYDROLOGIE.md` · suivi / registre / ETAT / HISTORIQUE / ROADMAP / PROJECT_GRAPH / Hub contrats · état-global · historique → compteur **10 / 16**
+- **Design Gate :** aucune modification (W1 déjà VALIDÉ)
+- **Suite :** prochain contrat requis = C-16 (ne pas démarrer sans ordre explicite) · pas d’implémentation eau · addenda et Case B non ouverts automatiquement
+
 ### 2026-10-10 — PRES-CLIENT-LOT10 — Intégration des 10 illustrations fournies
 
 - **Intention :** remplacer les visuels conceptuels par les 10 images utilisateur, sans toucher à la capture S3 ni au gameplay.

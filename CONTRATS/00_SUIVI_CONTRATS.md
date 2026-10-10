@@ -70,8 +70,8 @@ Périmètre compté = contrats pour lesquels le registre exige un **contrat auto
 | ID concernés | C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 |
 | --- | --- |
 | Total à créer/valider | **16** |
-| Contrats dédiés VALIDÉS | **9** |
-| Progression validation | **9 / 16** |
+| Contrats dédiés VALIDÉS | **10** |
+| Progression validation | **10 / 16** |
 
 *(Les `SUFFISANT*` et `NON REQUIS` sont suivis dans le tableau mais exclus du dénominateur tant qu’aucun addendum / contrat dédié n’est ouvert.)*
 
@@ -96,7 +96,7 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 | C-12 | Transport / logistique | 12 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 25/25 A1–G3 ; audit final PASS ; C-10 addendum fermé ; Case B reste suspendu ; dettes d’implémentation / preuves partielles (§17) conservées |
 | C-13 | Construction / En service | 13* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | Critère cohorte ; pas VALIDÉ dédié |
 | C-14 | Infrastructures | 14 | oui | absente | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 15/15 A1–F1 ; audit final PASS ; C-10·C-13\* addenda fermés ; Case B reste suspendu ; points ouverts §18 et dettes F9 / implémentation conservés |
-| C-15 | Hydrologie | 15 | oui | absente | — | — | — | — | — | NON COMMENCÉ | oui | |
+| C-15 | Hydrologie | 15 | oui | absente | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; cadrage A–G ; audit après correction PASS ; W1 cité intégralement ; O1–O9 et dettes stub / Dirty Water conservés ; Case B reste suspendu ; aucune implémentation |
 | C-16 | Sol | 16 | oui | absente | — | — | — | — | — | NON COMMENCÉ | oui | |
 | C-17 | Végétation / écosystèmes | 17 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
 | C-18 | Technologie / progression | 18 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
@@ -114,23 +114,23 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 
 ```text
 Contrat actuel : aucun
-Dernier validé : C-14
+Dernier validé : C-15
 ```
 
-**C-14 — VALIDÉ** (clôture formelle)
+**C-15 — VALIDÉ** (clôture formelle)
 
 | Étape | État |
 | --- | --- |
 | Audit préparatoire / inspection code | **terminé** |
-| Décisions | **prises** — **15/15** (A1–F1) |
-| Rédaction | **terminée** — `CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md` |
-| Revue / audit contrat | **terminé** (AUDIT FINAL — PASS FINAL ; 15/15) |
+| Décisions | **prises** — cadrage **A–G** (pas de nouveau Design Gate) |
+| Rédaction | **terminée** — `CONTRATS/C-15_HYDROLOGIE.md` |
+| Revue / audit contrat | **terminé** (audit après correction — **PASS**) |
 | Validation | **acquise** — validation humaine explicite |
 
-**C-01**, **C-02**, **C-04**, **C-05**, **C-07**, **C-08**, **C-11** et **C-12** restent **VALIDÉ**.  
+**C-01**, **C-02**, **C-04**, **C-05**, **C-07**, **C-08**, **C-11**, **C-12** et **C-14** restent **VALIDÉ**.  
 **C-03** reste addendum fermé (NON COMMENCÉ / hors compteur).  
 **C-06\***, **C-09\***, **C-10\*** et **C-13\*** restent addenda fermés (SUFFISANT\* / hors compteur).  
-C-15 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B reste **suspendu**. ODC-F9 **non démarré**.
+C-16 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B reste **suspendu**. ODC-F9 **non démarré**. Aucune implémentation hydrologique.
 
 ---
 
@@ -138,12 +138,12 @@ C-15 et suivants restent **NON COMMENCÉS** (aucun travail engagé). Case B rest
 
 ```text
 Prochain contrat autorisé :
-C-15
+C-16
 ```
 
-Prochain élément **requis** du compteur 16 / ordre officiel après C-14.  
-**Ne pas démarrer** C-15 sans ordre explicite.  
-C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte). ODC-F9 reste **non démarré** automatiquement.
+Prochain élément **requis** du compteur 16 / ordre officiel après C-15.  
+**Ne pas démarrer** C-16 sans ordre explicite.  
+C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte). ODC-F9 reste **non démarré** automatiquement. Aucune implémentation hydrologique.
 
 ---
 
@@ -180,7 +180,9 @@ C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registr
 | 2026-10-09 | C-12 | REVUE | **VALIDÉ** | Validation humaine explicite ; 25/25 A1–G3 ; audit final PASS ; compteur **8 / 16** |
 | 2026-10-09 | C-14 | NON COMMENCÉ | **REVUE** | Contrat `C-14_INFRASTRUCTURES_LIFECYCLE.md` rédigé ; audit 15/15 PASS FINAL ; compteur reste 8/16 |
 | 2026-10-09 | C-14 | REVUE | **VALIDÉ** | Validation humaine explicite ; 15/15 A1–F1 ; audit final PASS FINAL ; compteur **9 / 16** |
+| 2026-10-10 | C-15 | NON COMMENCÉ | **REVUE** | Contrat `C-15_HYDROLOGIE.md` rédigé puis corrigé (W1 intégral + §3.2 emprise) ; audit après correction PASS ; compteur reste 9/16 |
+| 2026-10-10 | C-15 | REVUE | **VALIDÉ** | Validation humaine explicite ; cadrage A–G ; audit après correction PASS ; O1–O9 conservés ; compteur **10 / 16** |
 
 ---
 
-*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS ; compteur 9/16 ; Case B suspendu ; C-03·C-06·C-09·C-10·C-13 addenda fermés ; prochain requis = C-15.*
+*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15 VALIDÉS ; compteur 10/16 ; Case B suspendu ; C-03·C-06·C-09·C-10·C-13 addenda fermés ; prochain requis = C-16 ; aucune implémentation hydrologique.*

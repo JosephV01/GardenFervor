@@ -18,7 +18,7 @@ export const ETAT_GLOBAL = {
   meta: {
     title: 'GardenFervor — État global du projet',
     subtitle: 'Systèmes, maturité, preuves, priorités',
-    verifiedAt: '2026-10-09',
+    verifiedAt: '2026-10-10',
     gitHeadAtAudit: 'e4e6bd6e203f0a06a64677539f7405f6f60f8f24',
     gitMessageAtAudit: 'docs(contracts): validate C-14 infrastructure lifecycle',
     originNote:
@@ -53,16 +53,16 @@ export const ETAT_GLOBAL = {
     unitsRole:
       'Sélectionner une tâche, se déplacer, exécuter, vérifier le résultat, livrer (C-07) sur un graphe de tâches (C-04).',
     maturityOneLiner:
-      'Prototype avancé + conception complète + 9/16 contrats opérationnels + preuve contrôlée S3 Cas A. Boucle écologique produit non démontrée.',
+      'Prototype avancé + conception complète + 10/16 contrats opérationnels + preuve contrôlée S3 Cas A. Boucle écologique produit non démontrée.',
     acquis: [
       'Design Gate DG-00 → DG-14 VALIDÉ',
-      'Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14 VALIDÉS',
+      'Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15 VALIDÉS',
       'Cohorte S3 Cas A T1–T9 VALIDÉE',
       'Gates techniques F2–F8 PASS (F1 INVALIDÉ)',
       'Haul A→B et PE Timber démontrés',
     ],
     obstacles: [
-      'Pas de runtime écologique (C-15…C-17)',
+      'Pas de runtime écologique (C-15 = règles seulement · C-16/C-17 non commencés)',
       'Case B suspendu',
       'Creuser / Remblayer / Aplanir non validés en jeu (C-08 = règles)',
       'Terrain shipping F1 INVALIDÉ',
@@ -83,7 +83,7 @@ export const ETAT_GLOBAL = {
     { q: 'Risque principal ?', a: 'Confondre VALIDÉ contractuel ou gate technique avec capacité produit.' },
     {
       q: 'Priorité justifiée ?',
-      a: 'Décision humaine : cadrage C-15 (ordre officiel) OU consolidation F1 / F8 humain / F9 — sans démarrer C-15 ni F9 automatiquement.',
+      a: 'Décision humaine : C-16 (ordre officiel, non démarré) OU consolidation F1 / F8 humain / F9 — sans implémenter l’eau ni démarrer C-16 / F9 automatiquement.',
       recommendation: true,
     },
   ],
@@ -99,8 +99,8 @@ export const ETAT_GLOBAL = {
     {
       id: 'contrats',
       label: 'Contrats / règles métier',
-      state: 'PARTIEL (9/16)',
-      meaning: 'Fondations chantier / logistique / lifecycle infra formalisées ; éco/save encore ouvertes.',
+      state: 'PARTIEL (10/16)',
+      meaning: 'Fondations chantier / logistique / lifecycle infra / hydrologie formalisées ; sol/éco/save encore ouvertes.',
       evidence: 'CONTRATS/00_SUIVI_CONTRATS.md',
     },
     {
@@ -201,7 +201,7 @@ export const ETAT_GLOBAL = {
       proof: 'gf.Spatial.RuntimeGate · ODC-F3 PASS',
       limits: 'Soil / Water = stubs gameplay.',
       depends: 'C-01',
-      next: 'C-15 / C-16.',
+      next: 'C-16 (non démarré) · pas de simulation C-15.',
       refs: ['Source/GardenFervor/RTS/Spatial/GardenFervorSpatialSubsystem.cpp'],
       tags: ['spatial', 'partiel', 'c-02'],
     },
@@ -344,7 +344,7 @@ export const ETAT_GLOBAL = {
       id: 'eco',
       domain: 'Écologie',
       name: 'Eau / sol / végétation / écosystèmes',
-      docState: 'C-15…C-17 NON COMMENCÉ',
+      docState: 'C-15 VALIDÉ · C-16/C-17 NON COMMENCÉ',
       codeState: 'Absent / stubs',
       function: 'Comportements environnementaux gameplay (cible).',
       playerValue: 'Résultat écologique mesurable.',
@@ -458,7 +458,7 @@ export const ETAT_GLOBAL = {
     'C-12': { runtime: 'F7 partiel', debt: 'Réseaux/N4 absents' },
     'C-13': { runtime: 'Critère S3', debt: 'Addendum fermé' },
     'C-14': { runtime: 'Absent', debt: 'Règles VALIDÉES · F9 non démarré · §18' },
-    'C-15': { runtime: 'Stub', debt: 'Bloquant eco' },
+    'C-15': { runtime: 'Stub', debt: 'VALIDÉ ≠ runtime' },
     'C-16': { runtime: 'Stub', debt: 'Bloquant eco' },
     'C-17': { runtime: 'Absent', debt: 'Boucle éco' },
     'C-18': { runtime: 'Legacy Ages', debt: 'Tension DG-07' },
@@ -645,7 +645,7 @@ export const ETAT_GLOBAL = {
     },
     {
       domain: 'Écologie',
-      problem: 'C-15…17 non commencés',
+      problem: 'C-16/C-17 non commencés · C-15 sans runtime',
       benefit: 'Boucle écologique',
       prereq: 'C-02 · C-01',
       success: 'Comportements eco démontrés',
@@ -689,11 +689,11 @@ export const ETAT_GLOBAL = {
       title: 'Fondations nécessaires',
       items: [
         {
-          work: 'C-15 Hydrologie (prochain officiel registre)',
-          why: 'Ordre compteur 16 · prérequis sim eau',
+          work: 'C-16 Sol (prochain officiel registre — non démarré)',
+          why: 'Ordre compteur 16 · après C-15 VALIDÉ',
           unlocks: 'Chaîne éco C-17',
           costOfDelay: 'Éco bloquée contractuellement',
-          proof: 'C-15 VALIDÉ',
+          proof: 'Ordre explicite C-16 (absent)',
           type: 'officiel',
         },
         {
@@ -761,7 +761,7 @@ export const ETAT_GLOBAL = {
 
   roadmapCompare: {
     officialNext:
-      'Roadmap officielle : prochain = C-15 Hydrologie (NON COMMENCÉ). Ne pas démarrer sans ordre explicite. C-14 VALIDÉ · ODC-F9 non démarré.',
+      'Roadmap officielle : prochain = C-16 Sol (NON COMMENCÉ). Ne pas démarrer sans ordre explicite. C-15 VALIDÉ ≠ simulation eau · ODC-F9 non démarré.',
     alternative:
       'Recommandation non officielle : si l’objectif immédiat est le shipping jouable, prioriser F1 + validation visuelle F8 / éventuel F9 avant d’élargir à l’hydrologie.',
   },
@@ -770,18 +770,18 @@ export const ETAT_GLOBAL = {
     {
       id: 'J0',
       title: 'Décision humaine',
-      objective: 'Choisir axe C-15 doc OU dettes runtime / F9',
+      objective: 'Choisir axe C-16 doc (non démarré) OU dettes runtime / F9 — sans implémenter l’eau',
       prereq: 'Audit / cette page',
       validation: 'Ordre explicite',
       doNotStart: 'Tout travail suivant',
     },
     {
       id: 'J1a',
-      title: 'C-15 (officiel)',
-      objective: 'Contracter hydrologie',
-      prereq: 'C-14 VALIDÉ',
-      validation: 'Audit + VALIDÉ C-15',
-      doNotStart: 'Sim eau runtime',
+      title: 'C-15 (fait) / C-16 (officiel, non démarré)',
+      objective: 'C-15 VALIDÉ ; ne pas démarrer C-16 sans ordre',
+      prereq: 'C-15 VALIDÉ',
+      validation: 'C-15 déjà VALIDÉ · C-16 non ouvert',
+      doNotStart: 'Sim eau runtime · rédaction C-16',
     },
     {
       id: 'J1b',
@@ -868,10 +868,10 @@ export const ETAT_GLOBAL = {
 
   conclusion: {
     acquired:
-      'Conception fondatrice · 9 contrats opérationnels · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-12 logistique cible · C-14 lifecycle infra formalisé.',
+      'Conception fondatrice · 10 contrats opérationnels · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-12 logistique cible · C-14 lifecycle infra · C-15 hydrologie formalisée (≠ runtime).',
     missing:
-      'Boucle écologique · Case B · métier terrain produit · F1 shipping · UX/save · réseaux/N4 · ODC-F9.',
+      'Runtime eau · C-16/C-17 · Case B · métier terrain produit · F1 shipping · UX/save · réseaux/N4 · ODC-F9.',
     decision:
-      'Si l’ordre administratif prime → autoriser cadrage C-15. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9, sans ouvrir C-15 automatiquement.',
+      'Si l’ordre administratif prime → ne pas démarrer C-16 sans ordre explicite. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9. C-15 VALIDÉ n’autorise aucune simulation hydrologique.',
   },
 };

@@ -253,7 +253,9 @@ export const curatedNodes = [
   mkContract('c_14', 'C-14', 'Infrastructures', 'REQUIS', 'VALIDÉ', 'N', true, 'CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md', {
     notes: 'VALIDÉ — 15/15 A1–F1 ; audit PASS FINAL ; C-10/C-13* addenda fermés ; points ouverts §18 ; ODC-F9 non démarré.',
   }),
-  mkContract('c_15', 'C-15', 'Hydrologie', 'REQUIS', 'NON COMMENCÉ', 'N/P', true, null),
+  mkContract('c_15', 'C-15', 'Hydrologie', 'REQUIS', 'VALIDÉ', 'N/P', true, 'CONTRATS/C-15_HYDROLOGIE.md', {
+    notes: 'VALIDÉ — cadrage A–G ; audit après correction PASS ; O1–O9 conservés ; aucune implémentation runtime.',
+  }),
   mkContract('c_16', 'C-16', 'Sol', 'REQUIS', 'NON COMMENCÉ', 'N/P', true, null),
   mkContract('c_17', 'C-17', 'Végétation / écosystèmes', 'PARTIEL→REQUIS', 'NON COMMENCÉ', 'N', true, null),
   mkContract('c_18', 'C-18', 'Technologie / progression', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),

@@ -4,7 +4,7 @@
 | --- | --- |
 | **ID** | C-15 |
 | **Nom** | Hydrologie |
-| **Statut documentaire** | **DRAFT / REVUE** — en attente d’audit indépendant et de validation humaine |
+| **Statut documentaire** | **VALIDÉ** — validation humaine explicite ; audit après correction PASS ; points ouverts O1–O9 et dettes d’implémentation / stub `QueryWater` conservés |
 | **Profondeur** | Détaillée (registre) |
 | **Ordre de rédaction** | 15 |
 | **Bloquant** | Oui (avant simulation d’eau réelle — registre) |
@@ -14,12 +14,12 @@
 
 Ce document formalise le **cadrage hydrologique déjà accepté** et les **décisions de conception déjà VALIDÉES**.  
 Il n’invente aucune règle supplémentaire.  
-Il **n’est pas** une règle opérationnelle officielle tant qu’il n’est pas **VALIDÉ** dans le suivi.  
+Il constitue la **règle opérationnelle** C-15 après validation humaine et inscription **VALIDÉ** dans le suivi.  
 Il **n’autorise pas** l’implémentation d’une simulation hydrologique, ni le démarrage de C-16 / C-17, ni une preuve runtime d’eau.
 
 **Case B** demeure **suspendu**.  
 **C-16** et **C-17** demeurent **non commencés**.  
-**ODC-F9** n’est **pas** démarré par ce brouillon.
+**ODC-F9** n’est **pas** démarré par cette clôture.
 
 ---
 
@@ -29,14 +29,14 @@ C-15 est le contrat de la **vérité hydrologique gameplay** : rivières, lacs e
 
 Il s’appuie sur **00.5.W1** (VALIDÉ, formulation clarifiée et publiée) sans la remplacer.
 
-Niveau de garantie de ce brouillon :
+Niveau de garantie de ce contrat :
 
 - formaliser le **périmètre fondateur** et les **frontières** ;  
 - rendre auditable ce que C-15 **lit, possède, expose et signale** ;  
 - conserver **ouverts** les points non arbitrés ;  
 - **ne pas** figer algorithme, solveur, fréquence chiffrée ni précision finale.
 
-Ce brouillon **ne crée pas** de nouvelles décisions de conception. Les lettres **A–G** ci-dessous sont le **cadrage accepté**, pas un second Design Gate.
+Ce contrat **ne crée pas** de nouvelles décisions de conception. Les lettres **A–G** ci-dessous sont le **cadrage accepté**, pas un second Design Gate.
 
 ---
 
@@ -44,9 +44,16 @@ Ce brouillon **ne crée pas** de nouvelles décisions de conception. Les lettres
 
 ### 2.1 Conception VALIDÉE (Design Gate — non modifié ici)
 
+**00.5.W1** (VALIDÉ) — reprise intégrale, mot pour mot :
+
+> « Le fondateur simule dès sa première version une hydrologie logique connectée : rivières, lacs et retenues comme états ou structures hydrauliques de gameplay ; connectivité simulée ; ruissellement et accumulation simplifiés. L’hydrodynamique détaillée est hors du périmètre du fondateur. »
+>
+> « L’objectif à long terme de GardenFervor est de permettre une simulation hydrologique réaliste et approfondie, cohérente avec le relief et capable d’interagir avec les systèmes du sol et des écosystèmes. »
+>
+> « Cette cible à long terme ne pré-approuve aucun phénomène particulier, algorithme, solveur, niveau de précision ou implémentation. Les étapes futures devront être décidées explicitement selon les critères de conception applicables, notamment la cohérence du gameplay, la lisibilité, les performances et le réalisme. »
+
 | ID | Portée reprise |
 | --- | --- |
-| **00.5.W1** | Fondateur = hydrologie logique connectée (rivières, lacs, retenues ; connectivité ; ruissellement et accumulation simplifiés). Hydrodynamique détaillée **hors fondateur**. Objectif à long terme = simulation réaliste et approfondie, cohérente avec le relief, capable d’interagir avec sol et écosystèmes. Cette cible **ne pré-approuve** aucun phénomène, algorithme, solveur, précision ou implémentation. Les étapes futures se décident explicitement (gameplay, lisibilité, performances, réalisme). |
 | **00.5.W2** | Vérité gameplay de l’eau **indépendante** des systèmes visuels. M4 / UDW peuvent représenter ; ils ne définissent jamais la vérité. |
 | **00.5.W3** | L’eau influence réellement sols et écosystèmes dès la boucle minimale, via états / seuils **simples** et un grain spatial adapté. **Pas** de simulation détaillée des échanges eau-sol. |
 | **00.5.W4** | Une retenue / un lac / une rivière nécessite une connectivité hydraulique logique : zone, niveau ou état, entrées / sorties et connexions pertinentes. **Pas** de simulation fluide complète. |
@@ -101,7 +108,7 @@ Ce brouillon **ne crée pas** de nouvelles décisions de conception. Les lettres
 | --- | --- | --- |
 | Hauteur, pente, surface de relief | **C-01** (via C-02 pour le relais spatial) | Déterminer les chemins d’écoulement et la cohérence relief ↔ eau (C) |
 | Cellules, hors-périmètre, Dirty | **C-02** | Localiser, invalider, exposer |
-| Existence / emprise / cycle d’une structure hydraulique | **C-14** | Une retenue ou un ouvrage n’existe comme infrastructure que selon C-14 ; C-15 en lit l’existence / l’emprise, pas le lifecycle |
+| Existence / emprise d’une structure hydraulique | **C-14** | Une retenue ou un ouvrage n’existe comme infrastructure que selon C-14 ; C-15 en lit l’existence / l’emprise, pas le lifecycle |
 | Impact déclaré d’une construction | DG-09.4 / fiches (hors catalogue C-15) | Activer une conséquence hydraulique seulement si pertinente (F1) |
 
 ### 3.3 Ce que C-15 expose
@@ -425,19 +432,19 @@ Les règles §2–§11 sont **normatives cibles**. Le runtime actuel est une **d
 
 ## 14. Vérification documentaire — divergences signalées (non corrigées)
 
-Ces écarts existent **avant** C-15. Ce brouillon **ne les résout pas** en modifiant C-01, C-02, le registre ou le suivi.
+Ces écarts existent **avant** C-15. Ce contrat **ne les résout pas** en corrigeant C-01, C-02 ou le runtime.
 
 1. **C-01 E4 vs D4/D5.** L’implémentation notifie un dirty `Soil \| Water` lors d’un brush relief. C-01 dit ne gérer que le relief et seulement **signaler**. La sémantique eau de ce dirty n’est **pas** une autorité C-01. C-15 reprend : C-01 signale le relief ; C-15 décide le recalcul hydraulique. Le droit d’émission du canal `Water` reste **O8**.
 
 2. **C-02 stub vs C-02 C1/C5.** `QueryWater` retourne `bValid=true` dans le périmètre alors qu’aucune sim n’existe. C-02 l’interdit déjà de présenter comme garantie. C-15 confirme : **pas de vérité fonctionnelle** tant que le contrat n’est pas VALIDÉ et implémenté.
 
-3. **Registre vs voisinage.** L’amont officiel C-15 = **C-02 · C-01**. C-14 / C-16 / C-17 sont des **frontières**, pas des dépendances de rédaction manquantes. Le registre n’est pas modifié.
+3. **Registre vs voisinage.** L’amont officiel C-15 = **C-02 · C-01**. C-14 / C-16 / C-17 sont des **frontières**, pas des dépendances de rédaction manquantes. L’ordre et les autorités amont ne sont pas recalculés ici.
 
-4. **Suivi.** `00_SUIVI_CONTRATS.md` liste encore C-15 = **NON COMMENCÉ**. Ce brouillon **ne met pas à jour** le suivi (consigne de cette opération). L’écart suivi ↔ existence du fichier est **volontaire** jusqu’à l’étape d’audit / validation.
+4. **Suivi.** La clôture documentaire met à jour `00_SUIVI_CONTRATS.md` (C-15 = **VALIDÉ**, compteur **10 / 16**). Cela ne démarre pas C-16 et n’autorise aucune implémentation.
 
-5. **W3 vs G.** W3 affirme une influence fondatrice simple eau → sol / écosystèmes. G interdit de déclarer ces effets **opérationnels** sans C-16 / C-17. Ce brouillon les tient ensemble : influence **conçue**, propriété **future**, pas d’effet runtime déclaré.
+5. **W3 vs G.** W3 affirme une influence fondatrice simple eau → sol / écosystèmes. G interdit de déclarer ces effets **opérationnels** sans C-16 / C-17. Ce contrat les tient ensemble : influence **conçue**, propriété **future**, pas d’effet runtime déclaré.
 
-6. **Compteur 9/16.** Inchangé. Ce fichier ne vaut pas VALIDÉ.
+6. **Compteur 10/16.** Ce fichier est **VALIDÉ** documentairement. Il n’est **pas** une preuve runtime.
 
 ---
 
@@ -458,16 +465,16 @@ Ces écarts existent **avant** C-15. Ce brouillon **ne les résout pas** en modi
 
 ## 16. Hors autorisation
 
-Ce brouillon **n’autorise pas** :
+Ce contrat **VALIDÉ** **n’autorise pas** :
 
 - l’implémentation d’une hydrologie réelle ;  
 - le remplacement du stub par un solveur ;  
 - le démarrage de C-16, C-17, C-21 ou ODC-F9 ;  
-- la modification du Design Gate, des contrats amont, du registre ou du suivi ;  
+- la modification du Design Gate ou des contrats amont ;  
 - la réouverture de Case B.
 
-**Prochaine étape prévue :** audit indépendant **en lecture seule** de ce brouillon, puis validation humaine — **pas** l’implémentation.
+**Arrêt après clôture :** aucune implémentation, aucun démarrage de C-16.
 
 ---
 
-*Fin du brouillon C-15 — DRAFT / REVUE.*
+*Fin C-15 — VALIDÉ. C-16 et C-17 demeurent non commencés. Case B demeure suspendu. Points ouverts O1–O9 conservés. Aucune implémentation hydrologique ni contrat suivant démarrés par cette clôture.*

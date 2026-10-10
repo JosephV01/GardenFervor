@@ -14,7 +14,7 @@
 export const CONTRACTS_SUIVI = {
   title: 'GARDENFERVOR — SUIVI DES CONTRATS',
   subtitle: 'Contracts / Operational Architecture',
-  lastSync: '2026-10-09',
+  lastSync: '2026-10-10',
   sources: [
     'CONTRATS/00_REGISTRE_CONTRATS.md',
     'CONTRATS/00_SUIVI_CONTRATS.md',
@@ -27,13 +27,14 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-11_RESERVATIONS.md',
     'CONTRATS/C-12_TRANSPORT_LOGISTIQUE.md',
     'CONTRATS/C-14_INFRASTRUCTURES_LIFECYCLE.md',
+    'CONTRATS/C-15_HYDROLOGIE.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
-  /** Dernier contrat VALIDÉ ; C-15 = prochain requis ; C-03·C-06·C-09·C-10·C-13 addenda* fermés. */
-  activeContractId: 'C-14',
-  nextAuthorizedId: 'C-15',
+  /** Dernier contrat VALIDÉ ; C-16 = prochain requis ; C-03·C-06·C-09·C-10·C-13 addenda* fermés. */
+  activeContractId: 'C-15',
+  nextAuthorizedId: 'C-16',
   progress: {
-    validated: 9,
+    validated: 10,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -450,11 +451,38 @@ export const CONTRACTS_SUIVI = {
       order: 15,
       category: 'REQUIS',
       coverage: 'absente',
-      productionStatus: 'NON COMMENCÉ',
+      productionStatus: 'VALIDÉ',
       blocking: true,
       dependsOn: ['C-02', 'C-01'],
       providesTo: ['C-17'],
-      note: '',
+      note: 'VALIDÉ humainement — cadrage A–G ; audit après correction PASS ; W1 cité intégralement ; O1–O9 et dettes stub / Dirty Water conservés ; Case B reste suspendu ; aucune implémentation',
+      dedicatedValidated: true,
+      file: 'CONTRATS/C-15_HYDROLOGIE.md',
+      detail: {
+        decisionsTaken: 7,
+        decisionsTotal: 7,
+        frontiers: [
+          { id: 'C-01', label: 'hauteur / relief' },
+          { id: 'C-02', label: 'cellules / dirty / lectures spatiales' },
+          { id: 'C-14', label: 'existence / emprise d’ouvrage' },
+          { id: 'C-16', label: 'sol (futur)' },
+          { id: 'C-17', label: 'écosystèmes (futur)' },
+          { id: 'W2', label: 'présentation M4 / UDW' },
+        ],
+        gaps: [
+          'Quadruplet QueryWater valide / absence / inconnu / invalide (O1)',
+          'Catalogue des transitions hydrauliques (O2)',
+          'Seuils simples W3 eau → sol / écosystèmes (O3)',
+          'Topologie C++ propriétaire d’état (O4)',
+          'Persistance état eau (O5)',
+          'Fréquences / budgets numériques (O6)',
+          'Alignement W3 / W4 / X1 / X2 (O7)',
+          'Émetteur Dirty Water (O8)',
+          'Mapping ouvrage C-14 ↔ objet C-15 (O9)',
+          'Stub QueryWater ≠ simulation · aucune implémentation',
+        ],
+        gapNote: 'Points ouverts O1–O9 et dettes d’implémentation — pas des corrections de cette clôture. C-16 non démarré. Case B non réactivé.',
+      },
     },
     {
       id: 'C-16',
