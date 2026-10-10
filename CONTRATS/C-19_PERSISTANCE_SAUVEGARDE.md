@@ -10,7 +10,7 @@
 | **Nécessité** | Requise |
 | **Bloquant** | Oui — avant shipping / F1 redo **durable** (registre · S9). C-19 **n’est pas** la reprise F1 |
 | **Dépendances amont (registre)** | **C-01** · **C-09** · **C-03** — C-01 est **VALIDÉ** ; C-09\* et C-03\* demeurent addenda **fermés** (S6) |
-| **Voisinage opérationnel** | **C-02** (Dirty hors save, B5) · **C-08** (états de reprise, K2) · **C-11** (invariant réservations, F1) · **C-12** (chargements / transit, G2) · **C-14** (lifecycle, mécanisme) · **C-15** / **C-16** / **C-17** (O5 / P8 / Q7 ouverts) · **C-18** (R5 ouvert) · **C-20** (UX, non commencé) · **C-21** (fréquences, non commencé) |
+| **Voisinage opérationnel** | **C-02** (Dirty hors save, B5) · **C-08** (états de reprise, K2) · **C-11** (invariant réservations, F1) · **C-12** (chargements / transit, G2) · **C-14** (lifecycle, mécanisme) · **C-15** / **C-16** / **C-17** (O5 / P8 / Q7 ouverts) · **C-18** (R5 ouvert) · **C-20** (UX, **VALIDÉ** conception) · **C-21** (fréquences, non commencé) |
 | **Références** | Registre C-19 · `REGLES_PROJET` session-only / persist OFF / F1 INVALIDÉ · C-01 D12 / D14 / E6 · C-02 B5 · C-08 K2 · C-11 F1 · C-12 G2 · C-14 · C-15 O5 · C-16 J1 / P8 · C-17 Q7 · C-18 R5 / Q30 · cadrage C-19 S1–S14 · L1–L3 |
 
 Ce document formalise le **cadrage persistance / sauvegarde déjà accepté** (décisions humaines S1–S14 et L1–L3).  
@@ -26,7 +26,7 @@ Trois plans sont **distingués** partout dans ce contrat :
 
 **Case B** demeure **suspendu**.  
 **ODC-F9** n’est **pas** démarré.  
-**C-20** et **C-21** demeurent **non commencés** (S14).  
+**C-20** est **VALIDÉ** comme contrat de **conception** (UX save non implémentée). **C-21** demeure **non commencé** (S14).  
 **C-15**, **C-16**, **C-17** et **C-18** demeurent **VALIDÉ** comme contrats de **conception**. Leurs points **O5**, **P8**, **Q7**, **R5** et **R1–R8 / R11** restent **ouverts** et **inchangés**.  
 Les addenda C-03\* · C-06\* · C-09\* · C-10\* · C-13\* restent **fermés**.  
 S3 / Investor Demo restent **hors** exigence de sauvegarde monde (S13).
@@ -329,7 +329,7 @@ C-19 ne les rouvre pas. Aligné C-18 Q7 (hors Ages / DG-07).
 
 | Sujet | Autorité | État |
 | --- | --- | --- |
-| Écran, wording, flux joueur, observabilité produit de la save | **C-20** | **Non commencé** |
+| Écran, wording, flux joueur, observabilité produit de la save | **C-20** | **VALIDÉ** — conception uniquement ; présentation de la sauvegarde non implémentée |
 | Fréquences, temporisations, budgets, Hertz | **C-21** | **Non commencé** |
 
 C-19 ne les démarre pas et n’emprunte pas leurs champs.
@@ -479,4 +479,4 @@ Ce contrat **VALIDÉ** **n’autorise pas** :
 
 ---
 
-*Fin C-19 — VALIDÉ. La clôture est documentaire. C-20 et C-21 demeurent non commencés. Case B demeure suspendu. Points ouverts O5, P8, Q7, R5 et R1–R8 / R11 conservés. Aucune implémentation runtime ni contrat suivant démarrés par cette clôture. Le suivi / compteur restent à l’étape 11.*
+*Fin C-19 — VALIDÉ. La clôture est documentaire. C-20 est VALIDÉ conception (UX save non implémentée). C-21 demeure non commencé. Case B demeure suspendu. Points ouverts O5, P8, Q7, R5 et R1–R8 / R11 conservés. Aucune implémentation runtime ni contrat suivant démarrés par cette clôture. Le suivi / compteur restent à l’étape 11.*

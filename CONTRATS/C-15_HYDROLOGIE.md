@@ -403,7 +403,7 @@ Critères de **conformité runtime** (uniquement **après** validation du contra
 | O2 | Catalogue des transitions hydrauliques | Dépend C-14, C-01 et décisions non prises |
 | O3 | Seuils simples W3 (eau → sol / écosystèmes) | Propriété future C-16 / C-17 ; pas de chiffres confirmés |
 | O4 | Topologie C++ du propriétaire d’état hydrologique | Même prudence que C-14 B1 : respecter l’architecture réelle |
-| O5 | Persistance de l’état eau | C-19 non rédigé |
+| O5 | Persistance de l’état eau | C-19 VALIDÉ conception ; O5 demeure ouvert (politique de persistance ≠ définition de l’état eau persisté) |
 | O6 | Fréquences / budgets numériques | X1 pose le principe ; les valeurs relèvent d’un arbitrage futur / C-21 |
 | O7 | Alignement éventuel de formulations W3 / W4 / X1 / X2 après clarification W1 | Historique : dette documentaire **hors** ce brouillon ; W1 seul a été clarifié |
 | O8 | Qui a le droit d’émettre le canal Dirty `Water` | C-02 B3 : les contrats propriétaires définissent les émetteurs. C-01 E4 constate aujourd’hui un dirty Water côté relief — **divergence signalée §14**, non résolue ici |
