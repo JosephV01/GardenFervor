@@ -1,7 +1,7 @@
 # PROJECT_GRAPH — CURRENT_STATE
 
-Généré : **2026-10-10T10:13:20.319Z**
-HEAD : `0931e06c7b156b42fde481e9f08eab247e5a8c89` (dirty, 91 fichiers dirty)
+Généré : **2026-10-10T13:50:07.876Z**
+HEAD : `632b6eec5d4ed8e515968c72175491d0b1a12d2c` (dirty, 85 fichiers dirty)
 Curated schema : `1.0.0`
 
 ## Inventaire
@@ -9,15 +9,15 @@ Curated schema : `1.0.0`
 | Métrique | Valeur |
 | --- | ---: |
 | Nœuds | 88 |
-| Relations | 105 |
-| Relations HIGH | 82 |
+| Relations | 117 |
+| Relations HIGH | 94 |
 | Relations MEDIUM | 23 |
 | Relations LOW | 0 |
-| Relations ACTIVE | 99 |
+| Relations ACTIVE | 111 |
 | Relations FUTURE | 6 |
 | Relations UNVERIFIED | 0 |
 | Contrats (registre) | 24 |
-| Contrats fichiers présents | 10 |
+| Contrats fichiers présents | 13 |
 | Preuves inventoriées | 9 |
 | Gates Saved détectés | 14 |
 | Headers systèmes scannés | 13 |
@@ -63,6 +63,8 @@ Curated schema : `1.0.0`
 - C-12 — Transport / logistique
 - C-14 — Infrastructures
 - C-15 — Hydrologie
+- C-16 — Sol
+- C-17 — Végétation / écosystèmes
 
 ## Systèmes SUSPENDED / LEGACY / STUB
 

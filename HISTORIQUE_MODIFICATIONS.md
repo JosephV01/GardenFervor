@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-10 — C-17-CLOSE**.
+Dernière entrée historique : **2026-10-10 — C-18-DRAFT**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-10 — C-18-DRAFT — Technologie / progression (brouillon publié)
+
+- **Intention :** synchroniser le Hub et les registres avec le brouillon C-18 poussé (`632b6eec5d4ed8e515968c72175491d0b1a12d2c`).
+- **Statut :** PARTIEL — **DRAFT / BROUILLON — non validé** · compteur **reste 12 / 16** · **pas de runtime** · Ages = legacy isolé · ODC-F9 **non démarré** · addenda C-03·C-06·C-09·C-10·C-13 **fermés** · Case B **suspendu** · O1–O9, P1–P10, Q1–Q12 C-17 **ouverts**
+- **Décisions :** cadrage **Q1–Q31** déjà formalisé dans le contrat ; cette entrée **n’ajoute** aucune règle de gameplay
+- **Fichiers :** contrat déjà sur `origin/main` · suivi / registre / ETAT / HISTORIQUE / miroir Hub / roadmap / graphe alignés sur DRAFT
+- **Design Gate :** aucune modification
+- **Suite :** revue humaine de C-18 · **ne pas** valider ni implémenter · C-19 non commencé · C-17 fichier local encore **non suivi Git**
 
 ### 2026-10-10 — C-17-CLOSE — Végétation / écosystèmes VALIDÉ (clôture documentaire)
 

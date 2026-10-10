@@ -256,9 +256,15 @@ export const curatedNodes = [
   mkContract('c_15', 'C-15', 'Hydrologie', 'REQUIS', 'VALIDÉ', 'N/P', true, 'CONTRATS/C-15_HYDROLOGIE.md', {
     notes: 'VALIDÉ — cadrage A–G ; audit après correction PASS ; O1–O9 conservés ; aucune implémentation runtime.',
   }),
-  mkContract('c_16', 'C-16', 'Sol', 'REQUIS', 'NON COMMENCÉ', 'N/P', true, null),
-  mkContract('c_17', 'C-17', 'Végétation / écosystèmes', 'PARTIEL→REQUIS', 'NON COMMENCÉ', 'N', true, null),
-  mkContract('c_18', 'C-18', 'Technologie / progression', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
+  mkContract('c_16', 'C-16', 'Sol', 'REQUIS', 'VALIDÉ', 'N/P', true, 'CONTRATS/C-16_SOL.md', {
+    notes: 'VALIDÉ — conception uniquement ; P1–P10 et O1–O9 C-15 conservés ; stub QuerySoil ≠ vérité.',
+  }),
+  mkContract('c_17', 'C-17', 'Végétation / écosystèmes', 'PARTIEL→REQUIS', 'VALIDÉ', 'N', true, 'CONTRATS/C-17_VEGETATION_ECOSYSTEMES.md', {
+    notes: 'VALIDÉ — conception uniquement ; Q1–Q12, O1–O9, P1–P10 conservés. Fichier présent localement ; suivi Git encore ouvert.',
+  }),
+  mkContract('c_18', 'C-18', 'Technologie / progression', 'PARTIEL', 'REVUE', 'P', true, 'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md', {
+    notes: 'DRAFT / BROUILLON — non validé · Q1–Q31 · Ages / RequiredAge / FWSG = legacy isolé · ≠ runtime DG-07 · bloquant avant déblocages réels.',
+  }),
   mkContract('c_19', 'C-19', 'Persistance / sauvegarde', 'REQUIS', 'NON COMMENCÉ', 'N/P', true, null),
   mkContract('c_20', 'C-20', 'Observabilité / UX', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
   mkContract('c_21', 'C-21', 'Simulation / fréquences', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
@@ -926,6 +932,20 @@ export const curatedEdges = [
   e('c_11', 'c_10', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
   e('c_12', 'c_07', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
   e('c_12', 'c_10', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_14', 'c_02', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_14', 'c_05', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_14', 'c_12', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_15', 'c_02', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_15', 'c_01', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_16', 'c_02', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_16', 'c_01', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_17', 'c_15', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_17', 'c_16', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_17', 'c_01', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_18', 'c_00', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_18', 'c_03', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
+    notes: 'Amont officiel C-03* = addendum fermé ; C-18 n’invente pas Intention→Project.',
+  }),
 
   // Runtime dataflow (observed in code)
   e('sys_landscape_terraform', 'data_height_store', 'WRITES', 'HIGH', 'Source/GardenFervor/RTS/Terraform/GardenFervorLandscapeTerraformSubsystem.cpp'),

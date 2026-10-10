@@ -36,8 +36,8 @@ flowchart TB
     c_13["C-13 — Construction / En service\n[IMPLEMENTED]"]
     c_14["C-14 — Infrastructures\n[PASS]"]
     c_15["C-15 — Hydrologie\n[PASS]"]
-    c_16["C-16 — Sol\n[PARTIAL]"]
-    c_17["C-17 — Végétation / écosystèmes\n[PLANNED]"]
+    c_16["C-16 — Sol\n[PASS]"]
+    c_17["C-17 — Végétation / écosystèmes\n[PASS]"]
     c_18["C-18 — Technologie / progression\n[PARTIAL]"]
     c_19["C-19 — Persistance / sauvegarde\n[PARTIAL]"]
     c_20["C-20 — Observabilité / UX\n[PARTIAL]"]
@@ -121,6 +121,18 @@ flowchart TB
   c_11 -->|DEPENDS_ON| c_10
   c_12 -->|DEPENDS_ON| c_07
   c_12 -->|DEPENDS_ON| c_10
+  c_14 -->|DEPENDS_ON| c_02
+  c_14 -->|DEPENDS_ON| c_05
+  c_14 -->|DEPENDS_ON| c_12
+  c_15 -->|DEPENDS_ON| c_02
+  c_15 -->|DEPENDS_ON| c_01
+  c_16 -->|DEPENDS_ON| c_02
+  c_16 -->|DEPENDS_ON| c_01
+  c_17 -->|DEPENDS_ON| c_15
+  c_17 -->|DEPENDS_ON| c_16
+  c_17 -->|DEPENDS_ON| c_01
+  c_18 -->|DEPENDS_ON| c_00
+  c_18 -->|DEPENDS_ON| c_03
   sys_landscape_terraform -->|SIGNALS| sys_spatial
   sys_spatial -->|READS| sys_runtime_store
   sys_project -->|PRODUCES| sys_task

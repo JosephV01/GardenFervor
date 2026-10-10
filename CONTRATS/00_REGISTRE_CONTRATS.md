@@ -246,8 +246,9 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 ### C-18 — Technologie / progression
 
-- **État :** Ages/Tech legacy FWSG vs DG-07 VALIDÉ — **tension** (voir § Zones d’ambiguïté).
-- **Contrat :** **partiel → requis** avant déblocages « vrais » hors HUD legacy.
+- **État :** brouillon publié — `CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md` (`632b6ee`) · statut documentaire **DRAFT / BROUILLON — non validé** · Ages/Tech legacy FWSG vs DG-07 VALIDÉ — **tension** isolée (Ages = non-autorité).
+- **Contrat :** **requis détaillée** et **bloquant** avant déblocages DG-07 runtime. Couverture registre `PARTIEL` = formalisation DG-07 actuelle, **pas** facultativité. ≠ implémentation.
+- **Amont officiel :** C-00 (DG-00, pas de fichier) · C-03\* (addendum fermé).
 - **Ordre 18.**
 
 ### C-19 — Persistance / sauvegarde
@@ -308,8 +309,7 @@ Ordre **par dépendances** (pas thématique). Les entrées marquées `\*` ne son
 | 20 | C-20 | Observabilité produit | Avant UX DG-13 complète |
 | 21 | C-21 | Simulation / fréquences | Avant scale perf |
 
-**Prochaine rédaction recommandée (si ordre explicite humain) :**  
-**C-18** (technologie / progression) — après C-17 VALIDÉ ; **ne pas démarrer** sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol ni hydrologique.
+**Rédaction C-18 :** brouillon **publié** et en **REVUE** — **ne pas** valider automatiquement. Après un C-18 `VALIDÉ` : **C-19**. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique ni déblocage DG-07.
 
 ---
 
@@ -328,6 +328,7 @@ Absence = **interdire** l’implémentation structurelle listée :
 | **C-11** | Concurrence stocks multi-agents |
 | **C-14** | ODC-F9 infrastructures |
 | **C-15…C-17** | Sim environnementale réelle |
+| **C-18** | Déblocages DG-07 runtime (brouillon DRAFT — non validé ; Ages legacy ≠ autorité) |
 | **C-19** | Shipping / save monde |
 
 ---

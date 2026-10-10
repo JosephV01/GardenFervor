@@ -1,5 +1,12 @@
 # PROJECT_GRAPH — CHANGELOG
 
+## 2026-10-10 — 1.0.4 — Alignement C-16/C-17 VALIDÉ · C-18 DRAFT
+
+- Nœuds `c_16` / `c_17` : documentStatus **VALIDÉ** (conception) ; fichiers référencés. C-17 noté **non suivi Git**.
+- Nœud `c_18` : documentStatus **REVUE** · fichier `C-18_TECHNOLOGIE_PROGRESSION.md` · DRAFT non validé · Ages = legacy.
+- DEPENDS_ON registre : C-14←C-02/C-05/C-12 · C-15/C-16←C-01/C-02 · C-17←C-15/C-16/C-01 · C-18←C-00/C-03\*.
+- Aucune implémentation écologique ni déblocage DG-07. Addenda fermés inchangés.
+
 ## 2026-10-10 — 1.0.3 — Clôture C-15
 
 - Nœud `c_15` : documentStatus **VALIDÉ** · fichier `CONTRATS/C-15_HYDROLOGIE.md`.

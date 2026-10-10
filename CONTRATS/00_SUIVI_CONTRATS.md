@@ -99,7 +99,7 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 | C-15 | Hydrologie | 15 | oui | absente | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; cadrage A–G ; audit après correction PASS ; W1 cité intégralement ; O1–O9 et dettes stub / Dirty Water conservés ; Case B reste suspendu ; aucune implémentation |
 | C-16 | Sol | 16 | oui | absente | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; P1–P10 et O1–O9 C-15 conservés ; dettes stub / Dirty Soil conservées ; Case B reste suspendu ; aucune implémentation |
 | C-17 | Végétation / écosystèmes | 17 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; Q1–Q12, O1–O9 C-15 et P1–P10 C-16 conservés ; Case B reste suspendu ; aucune implémentation écologique |
-| C-18 | Technologie / progression | 18 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | |
+| C-18 | Technologie / progression | 18 | oui | partielle | OK | OK | OK | EN COURS | — | **REVUE** | oui | DRAFT / BROUILLON publié (`C-18_TECHNOLOGIE_PROGRESSION.md`, `632b6ee`) ; **non validé** ; requis / bloquant avant déblocages DG-07 ; Ages = legacy ; ≠ runtime |
 | C-19 | Persistance / sauvegarde | 19 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Avant shipping |
 | C-20 | Observabilité / UX | 20 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | conditionnel | Preuve vs produit |
 | C-21 | Simulation / fréquences / perf | 21 | oui | partielle | — | — | — | — | — | NON COMMENCÉ | oui | Avant scale |
@@ -113,9 +113,19 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 ## 5. Contrat actuellement en cours
 
 ```text
-Contrat actuel : aucun
+Contrat actuel : C-18
 Dernier validé : C-17
 ```
+
+**C-18 — REVUE** (`DRAFT / BROUILLON — non validé`)
+
+| Étape | État |
+| --- | --- |
+| Audit préparatoire / inspection code | **terminé** |
+| Décisions | **prises** — cadrage **Q1–Q31** |
+| Rédaction | **terminée** — `CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md` (commit `632b6ee`) |
+| Revue / audit contrat | **étape 6 PASS** · corrections étape 7 appliquées · **revue humaine de validation encore ouverte** |
+| Validation | **non acquise** — le contrat n’est **pas** `VALIDÉ` |
 
 **C-17 — VALIDÉ** (clôture formelle — contrat de conception uniquement)
 
@@ -127,23 +137,22 @@ Dernier validé : C-17
 | Revue / audit contrat | **terminé** (audit final — **PASS**) |
 | Validation | **acquise** — validation humaine explicite |
 
-**C-01**, **C-02**, **C-04**, **C-05**, **C-07**, **C-08**, **C-11**, **C-12**, **C-14**, **C-15** et **C-16** restent **VALIDÉ**.  
+**C-01**, **C-02**, **C-04**, **C-05**, **C-07**, **C-08**, **C-11**, **C-12**, **C-14**, **C-15**, **C-16** et **C-17** restent **VALIDÉ**.  
 **C-03** reste addendum fermé (NON COMMENCÉ / hors compteur).  
 **C-06\***, **C-09\***, **C-10\*** et **C-13\*** restent addenda fermés (SUFFISANT\* / hors compteur).  
-C-18 et suivants restent **NON COMMENCÉS**. Case B reste **suspendu**. ODC-F9 **non démarré**. Aucune implémentation écologique, sol ni hydrologique. Q1–Q12, C-15 O1–O9 et C-16 P1–P10 restent ouverts.
+C-18 est en **REVUE** (brouillon publié, non validé). C-19 et suivants restent **NON COMMENCÉS**. Case B reste **suspendu**. ODC-F9 **non démarré**. Aucune implémentation écologique, sol, hydrologique ni progression DG-07. Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts.
 
 ---
 
 ## 6. Prochain contrat autorisé
 
 ```text
-Prochain contrat autorisé :
-C-18
+Contrat en cours : C-18 (REVUE / DRAFT — non validé)
+Après validation de C-18 : C-19
 ```
 
-Prochain élément **requis** du compteur 16 / ordre officiel après C-17.  
-**Ne pas démarrer** C-18 sans ordre explicite.  
-C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte). ODC-F9 reste **non démarré** automatiquement. Aucune implémentation écologique, sol ni hydrologique.
+C-18 est le contrat **requis** en revue. **Ne pas** le passer à `VALIDÉ` sans décision humaine. **Ne pas** démarrer C-19.  
+C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte). ODC-F9 reste **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique ni déblocage DG-07.
 
 ---
 
@@ -184,7 +193,8 @@ C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registr
 | 2026-10-10 | C-15 | REVUE | **VALIDÉ** | Validation humaine explicite ; cadrage A–G ; audit après correction PASS ; O1–O9 conservés ; compteur **10 / 16** |
 | 2026-10-10 | C-16 | NON COMMENCÉ | **VALIDÉ** | Validation humaine explicite ; cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; P1–P10 et O1–O9 C-15 conservés ; compteur **11 / 16** |
 | 2026-10-10 | C-17 | NON COMMENCÉ | **VALIDÉ** | Validation humaine explicite ; cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; Q1–Q12, O1–O9 C-15 et P1–P10 C-16 conservés ; compteur **12 / 16** |
+| 2026-10-10 | C-18 | NON COMMENCÉ | **REVUE** | Brouillon publié (`C-18_TECHNOLOGIE_PROGRESSION.md`, `632b6ee`) ; Q1–Q31 formalisés ; audit étape 6 + corrections étape 7 ; **DRAFT / BROUILLON — non validé** ; compteur reste **12 / 16** |
 
 ---
 
-*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17 VALIDÉS ; compteur 12/16 ; Case B suspendu ; C-03·C-06·C-09·C-10·C-13 addenda fermés ; prochain requis = C-18 ; aucune implémentation écologique.*
+*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17 VALIDÉS ; compteur 12/16 ; C-18 REVUE (DRAFT, non validé) ; Case B suspendu ; C-03·C-06·C-09·C-10·C-13 addenda fermés ; C-19 non commencé ; aucune implémentation écologique ni progression DG-07.*

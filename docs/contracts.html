@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-17",
+  "activeId": "C-18",
   "order": [
     "C-01",
     "C-02",
@@ -694,16 +694,43 @@
       "id": "C-18",
       "order": "18",
       "name": "Technologie / progression",
-      "status": "À FAIRE",
+      "status": "REVUE",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "",
+      "note": "DRAFT / BROUILLON — non validé · Q1–Q31 formalisés · audit étape 6 + corrections étape 7 · publié 632b6ee · Ages = legacy · ≠ runtime DG-07",
       "dependsOn": [
         "C-00",
         "C-03"
       ],
-      "providesTo": []
+      "providesTo": [],
+      "file": "CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md",
+      "detail": {
+        "decisions": "31 / 31",
+        "frontiers": [
+          "C-00 — DG-00 vocabulaire (pas de fichier)",
+          "C-03* — Intention→Project fermé",
+          "C-14 — lifecycle / mise en service",
+          "C-04 — tâches (non ouvert ici)",
+          "C-15…17 — lectures env. si utilisables",
+          "C-19 — persistance",
+          "C-20 — présentation UI",
+          "C-21 — Hertz / budgets"
+        ],
+        "gaps": [
+          "Catalogue nommé techs / schémas (R1)",
+          "Montants de coût (R2)",
+          "Valeurs T2 (R3)",
+          "Configurations U6 (R4)",
+          "Persistance (R5 / C-19)",
+          "Fréquences / Hertz (R6 / C-21)",
+          "UX / wording (R7 / C-20)",
+          "Verrou environnemental exécutable (R8 ; O1–O9, P1–P10, Q1–Q12 C-17 ouverts)",
+          "Cycle opérationnel de recherche (R11 / C-04)",
+          "Runtime Ages / RequiredAge / HUD FWSG = legacy isolé",
+          "Aucune implémentation DG-07"
+        ]
+      }
     },
     {
       "id": "C-19",
