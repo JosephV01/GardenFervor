@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-10 — C-19-CLOSE**.
+Dernière entrée historique : **2026-10-10 — C-20-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-10 — C-20-CLOSE — Observabilité / UX lisibilité VALIDÉ (clôture documentaire)
+
+- **Intention :** synchroniser le suivi après clôture formelle du contrat de conception C-20 (validation humaine + audit final PASS).
+- **Statut :** VALIDÉ (humain) — **contrat de conception uniquement** · **pas de code gameplay** · **C-21 non commencé** · ODC-F9 **non démarré** · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B reste **suspendu** · points ouverts R7 C-18, O1–O9, P1–P10, Q1–Q12 C-17, R1–R8 / R11 conservés · **aucune implémentation UX / HUD DG-13 / persist / F1 / DG-07**
+- **Décisions :** cadrage **X1–X10 · L1–L3** inchangé ; noyau DG-13.1–13.5 + save S14 + faits déjà exposables C-04/C-07/C-11/PE C6 ; HUD = dette ; Design Gate non modifié
+- **Fichiers :** suivi / registre / ETAT / HISTORIQUE → compteur **15 / 16** (le fichier `C-20_OBSERVABILITE_UX_LISIBILITE.md` déjà `VALIDÉ` à l’étape 10)
+- **Design Gate :** aucune modification
+- **Suite :** prochain contrat requis = C-21 (ne pas démarrer sans ordre explicite) · pas d’implémentation UX · addenda et Case B non ouverts automatiquement · commit/push / Hub seulement sur autorisation
 
 ### 2026-10-10 — C-19-CLOSE — Persistance / sauvegarde VALIDÉ (clôture documentaire)
 

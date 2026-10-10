@@ -89,7 +89,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-17 | Végétation / écosystèmes | PARTIEL→REQUIS | détaillée | DG-09 · **C-17 VALIDÉ** | N | C-15 · C-16 · C-01 | oui (avant eco) | 17 |
 | C-18 | Technologie / progression | PARTIEL | détaillée | DG-07 · Ages legacy FWSG | P | C-00 · C-03 | oui (avant déblocages réels) | 18 |
 | C-19 | Persistance / sauvegarde | REQUIS | fondamentale | DG · save Terraform désactivé · **C-19 VALIDÉ** | N/P | C-01 · C-09 · C-03 | **oui** (avant shipping) | 19 |
-| C-20 | Observabilité / UX lisibilité | PARTIEL | secondaire→détaillée | DG-13 · C6 smoke | P | C-04 · C-07 · C-09 | non (preuve) / oui (produit) | 20 |
+| C-20 | Observabilité / UX lisibilité | PARTIEL | secondaire→détaillée | DG-13 · C6 smoke · **C-20 VALIDÉ** | P | C-04 · C-07 · C-09 | non (preuve) / oui (produit) | 20 |
 | C-21 | Simulation / fréquences / perf | PARTIEL | fondamentale | DG-00.5/00.6 | P | C-00 · C-02 | oui (avant scale) | 21 |
 | C-22 | Investor Demo | NON REQUIS | — | Investor Demo docs | I (prés.) | consomme C-03…C-13 | non | — |
 | C-23 | Présentation M4 / UDS | NON REQUIS† | secondaire | ODC-F2 · doc M4 externe | I | C-01 (rendu) | non† | — |
@@ -258,10 +258,11 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 - **Amont officiel :** C-01 `VALIDÉ` · C-09\* · C-03\* (addenda fermés, cités sans ouvrir).
 - **Ordre 19.**
 
-### C-20 — Observabilité / UX
+### C-20 — Observabilité / UX lisibilité
 
-- **État :** C6 smoke/PE · Demo overlay · pas DG-13 produit.
-- **Contrat :** secondaire pour preuves ; **détaillé** avant UX produit.
+- **État :** **VALIDÉ** — `CONTRATS/C-20_OBSERVABILITE_UX_LISIBILITE.md` · cadrage X1–X10 · L1–L3 · audit final PASS · contrat de conception uniquement · R7 C-18 ouvert · ≠ UX produit / HUD DG-13 en service.
+- **Contrat :** **requis** au compteur 16 ; `PARTIEL` = couverture actuelle (DG-13 + C6), **pas** facultativité. **N’autorise pas** l’implémentation.
+- **Amont officiel :** C-04 `VALIDÉ` · C-07 `VALIDÉ` · C-09\* (addendum fermé, cité sans ouvrir).
 - **Ordre 20.**
 
 ### C-21 — Simulation / performance
@@ -310,7 +311,7 @@ Ordre **par dépendances** (pas thématique). Les entrées marquées `\*` ne son
 | 20 | C-20 | Observabilité produit | Avant UX DG-13 complète |
 | 21 | C-21 | Simulation / fréquences | Avant scale perf |
 
-**Après C-19 :** C-19 est **VALIDÉ** (conception uniquement). **Ne pas** démarrer C-20 sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique, déblocage DG-07 ni persistance runtime.
+**Après C-20 :** C-20 est **VALIDÉ** (conception uniquement). **Ne pas** démarrer C-21 sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique, déblocage DG-07, persistance runtime ni UX produit.
 
 ---
 
@@ -331,6 +332,7 @@ Absence = **interdire** l’implémentation structurelle listée :
 | **C-15…C-17** | Sim environnementale réelle |
 | **C-18** | Déblocages DG-07 runtime (VALIDÉ conception ; Ages legacy ≠ autorité ; ≠ autorisation d’implémentation) |
 | **C-19** | Shipping / save monde (VALIDÉ conception ; ≠ autorisation d’implémentation runtime) |
+| **C-20** | UX produit / HUD DG-13 en service (VALIDÉ conception ; ≠ autorisation d’implémentation) |
 
 ---
 
@@ -389,6 +391,7 @@ Aucune modification de Case B, Terraformer, `ApplyBrushAt`, Investor Demo dans l
 | C-08 | décomposition spatiale · fin · échec Landscape · coopération · observabilité |
 | C-14 | cycle de vie · temporaire/permanent · partage |
 | C-19 | ce qui est persisté · migration · session-only |
+| C-20 | couches · cause primaire · présentation save · non-objectifs · frontières |
 
 ---
 
