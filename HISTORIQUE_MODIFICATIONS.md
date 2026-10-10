@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-10 — C-20-CLOSE**.
+Dernière entrée historique : **2026-10-10 — C-21-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-10 — C-21-CLOSE — Cadences de simulation et budgets temporels VALIDÉ (clôture documentaire)
+
+- **Intention :** synchroniser le suivi après clôture formelle du contrat de conception C-21 (validation humaine + audit final PASS).
+- **Statut :** VALIDÉ (humain) — **contrat de conception uniquement** · **pas de code gameplay** · ODC-F9 **non démarré** · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B reste **suspendu** · points ouverts O6, P9, C-17 Q8, R6, O-FREQ, O-OVER, O-EXC, O-INST, O-SCALE conservés · **aucune implémentation de scheduler / Hertz / budgets / éco / sol / eau / DG-07 / persist / UX**
+- **Décisions :** cadrage **T1 + B1–B8** inchangé ; fréquence ≠ progression ≠ FPS ; pas de tick universel ; frontières C-02 / C-07 / vérités ; Design Gate non modifié
+- **Fichiers :** suivi / registre / ETAT / HISTORIQUE → compteur **16 / 16** (le fichier `C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md` déjà `VALIDÉ` à l’étape 10)
+- **Design Gate :** aucune modification
+- **Suite :** aucun contrat requis restant au compteur 16 · C-22·C-23 NON REQUIS · pas d’implémentation de cadence · addenda et Case B non ouverts automatiquement · commit/push / Hub seulement sur autorisation
 
 ### 2026-10-10 — C-20-CLOSE — Observabilité / UX lisibilité VALIDÉ (clôture documentaire)
 

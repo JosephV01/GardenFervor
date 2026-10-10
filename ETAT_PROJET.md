@@ -1,9 +1,9 @@
 # GardenFervor — État projet (baseline)
 
-Dernière mise à jour : **2026-10-10** (C-20 VALIDÉ — conception)  
+Dernière mise à jour : **2026-10-10** (C-21 VALIDÉ — conception)  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (inventaire sync) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
 
-**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 = **VALIDÉ** · progression **15 / 16** · C-21 non commencé · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation écologique, sol, hydrologique, progression DG-07, persistance runtime ni UX produit**. C-16 · C-17 · C-18 · C-19 · C-20 = conception uniquement (≠ runtime). C-18 : Ages / `RequiredAge` / FWSG = legacy isolé. C-19 : persist OFF ; ≠ flags / SaveGame / F1. C-20 : HUD existant = dette ; ≠ UX produit / HUD DG-13.
+**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = **VALIDÉ** · progression **16 / 16** · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation écologique, sol, hydrologique, progression DG-07, persistance runtime, UX produit ni cadence**. C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = conception uniquement (≠ runtime). C-18 : Ages / `RequiredAge` / FWSG = legacy isolé. C-19 : persist OFF ; ≠ flags / SaveGame / F1. C-20 : HUD existant = dette ; ≠ UX produit / HUD DG-13. C-21 : pas de scheduler / Hertz / budgets runtime.
 
 ---
 
@@ -96,6 +96,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 - **C-18 Technologie / progression :** **VALIDÉ** (cadrage Q1–Q31 ; audit final PASS ; contrat de conception uniquement ; R1–R8, R11 ouverts ; O1–O9, P1–P10 et Q1–Q12 C-17 conservés) — **≠** runtime DG-07 ; Ages / `RequiredAge` / FWSG = legacy isolé
 - **C-19 Persistance / sauvegarde :** **VALIDÉ** (cadrage S1–S14 · L1–L3 ; audit final PASS ; contrat de conception uniquement ; O5, P8, Q7, R5 ouverts) — **≠** runtime persist ; flags / SaveGame / F1 non autorisés
 - **C-20 Observabilité / UX lisibilité :** **VALIDÉ** (cadrage X1–X10 · L1–L3 ; audit final PASS ; contrat de conception uniquement ; R7 C-18 ouvert) — **≠** UX produit / HUD DG-13 en service ; HUD existant = dette
+- **C-21 Cadences de simulation et budgets temporels :** **VALIDÉ** (cadrage T1 + B1–B8 ; audit final PASS ; contrat de conception uniquement ; O6, P9, C-17 Q8, R6, O-FREQ / O-OVER / O-EXC / O-INST / O-SCALE ouverts) — **≠** scheduler / Hertz / budgets runtime
 
 **Points reportés aux DG suivants (depuis clôtures DG-00 / DG-01 / DG-02) :**
 1. Extensions territoriales (nombre / forme / taille) — S6 → DG-14+
@@ -142,7 +143,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 
 ## Prochain pas
 
-1. Contrats : C-20 **VALIDÉ** (conception uniquement) — **ne pas** démarrer C-21 sans ordre explicite ; **aucune implémentation** écologique, sol, hydrologique, déblocage DG-07, persistance runtime ni UX produit ; R1–R8, R11, Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
+1. Contrats : C-21 **VALIDÉ** (conception uniquement) — séquence des **16** contrats requis **close** ; **aucune implémentation** écologique, sol, hydrologique, déblocage DG-07, persistance runtime, UX produit ni cadence ; O6, P9, C-17 Q8, R6, O-FREQ / O-OVER / O-EXC / O-INST / O-SCALE, R1–R8, R11, Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; C-22·C-23 **NON REQUIS** ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
 2. Cohorte S3 Cas A terminée — **aucun travail gameplay supplémentaire** hors ordre explicite
 3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)
 4. **ODC-F9** Infrastructure lifecycle (sur ordre explicite — sans contourner DG ; C-14 = règles ≠ preuve F9)

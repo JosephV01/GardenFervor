@@ -90,7 +90,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | C-18 | Technologie / progression | PARTIEL | détaillée | DG-07 · Ages legacy FWSG | P | C-00 · C-03 | oui (avant déblocages réels) | 18 |
 | C-19 | Persistance / sauvegarde | REQUIS | fondamentale | DG · save Terraform désactivé · **C-19 VALIDÉ** | N/P | C-01 · C-09 · C-03 | **oui** (avant shipping) | 19 |
 | C-20 | Observabilité / UX lisibilité | PARTIEL | secondaire→détaillée | DG-13 · C6 smoke · **C-20 VALIDÉ** | P | C-04 · C-07 · C-09 | non (preuve) / oui (produit) | 20 |
-| C-21 | Simulation / fréquences / perf | PARTIEL | fondamentale | DG-00.5/00.6 | P | C-00 · C-02 | oui (avant scale) | 21 |
+| C-21 | Simulation / fréquences / perf | PARTIEL | fondamentale | DG-00.5/00.6 · **C-21 VALIDÉ** | P | C-00 · C-02 | oui (avant scale) | 21 |
 | C-22 | Investor Demo | NON REQUIS | — | Investor Demo docs | I (prés.) | consomme C-03…C-13 | non | — |
 | C-23 | Présentation M4 / UDS | NON REQUIS† | secondaire | ODC-F2 · doc M4 externe | I | C-01 (rendu) | non† | — |
 
@@ -267,9 +267,10 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 ### C-21 — Simulation / performance
 
-- **Doc :** DG-00.5/00.6 (modes, dirty, fréquences) — principes VALIDÉS.
-- **Contrat :** **partiel** — formaliser budgets/fréquences par couche avant scale.
-- **Ordre 21** (peut avancer en parallèle après C-02).
+- **État :** **VALIDÉ** — `CONTRATS/C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md` · titre canonique **Cadences de simulation et budgets temporels** · cadrage T1 + B1–B8 · audit final PASS · contrat de conception uniquement · O6, P9, C-17 Q8, R6, O-FREQ, O-OVER, O-EXC, O-INST, O-SCALE ouverts · ≠ scheduler / Hertz / budgets runtime.
+- **Contrat :** **requis** au compteur 16 ; `PARTIEL` = couverture actuelle (DG-00.5/00.6 + cadre C-21), **pas** facultativité. **N’autorise pas** l’implémentation.
+- **Amont officiel :** C-00 (DG-00, pas de fichier) · C-02 `VALIDÉ`.
+- **Ordre 21.**
 
 ### C-22 — Investor Demo
 
@@ -311,7 +312,7 @@ Ordre **par dépendances** (pas thématique). Les entrées marquées `\*` ne son
 | 20 | C-20 | Observabilité produit | Avant UX DG-13 complète |
 | 21 | C-21 | Simulation / fréquences | Avant scale perf |
 
-**Après C-20 :** C-20 est **VALIDÉ** (conception uniquement). **Ne pas** démarrer C-21 sans ordre explicite. Addenda C-03·C-06·C-09·C-10·C-13 restent fermés. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique, déblocage DG-07, persistance runtime ni UX produit.
+**Après C-21 :** C-21 est **VALIDÉ** (conception uniquement). Les **16** contrats dédiés requis sont **VALIDÉ**. **Ne pas** ouvrir les addenda C-03·C-06·C-09·C-10·C-13 automatiquement. C-22 et C-23 restent **NON REQUIS**. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique, déblocage DG-07, persistance runtime, UX produit ni cadence.
 
 ---
 
@@ -333,6 +334,7 @@ Absence = **interdire** l’implémentation structurelle listée :
 | **C-18** | Déblocages DG-07 runtime (VALIDÉ conception ; Ages legacy ≠ autorité ; ≠ autorisation d’implémentation) |
 | **C-19** | Shipping / save monde (VALIDÉ conception ; ≠ autorisation d’implémentation runtime) |
 | **C-20** | UX produit / HUD DG-13 en service (VALIDÉ conception ; ≠ autorisation d’implémentation) |
+| **C-21** | Scale de simulation déclaré (VALIDÉ conception ; chiffres ouverts ; ≠ autorisation d’implémentation) |
 
 ---
 
