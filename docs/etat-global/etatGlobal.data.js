@@ -100,8 +100,8 @@ export const ETAT_GLOBAL = {
     {
       id: 'contrats',
       label: 'Contrats / règles métier',
-      state: 'PARTIEL (13/16)',
-      meaning: 'Fondations chantier / logistique / lifecycle / C-15…C-18 conception formalisées ; C-19 non commencé ; save/UX encore ouvertes.',
+      state: 'PARTIEL (14/16)',
+      meaning: 'Fondations chantier / logistique / lifecycle / C-15…C-19 conception formalisées ; C-20 non commencé ; persist runtime / UX encore ouvertes.',
       evidence: 'CONTRATS/00_SUIVI_CONTRATS.md',
     },
     {
@@ -330,14 +330,14 @@ export const ETAT_GLOBAL = {
       id: 'persist',
       domain: 'Persistance',
       name: 'Sauvegarde / persistance',
-      docState: 'C-19 NON COMMENCÉ',
+      docState: 'C-19 VALIDÉ conception',
       codeState: 'Partiel (API off)',
       function: 'Save/Load terrain slot si flag ON.',
       playerValue: 'Reprendre une session.',
       proof: 'GardenFervorTerraformSaveGame · flag false',
-      limits: 'Projets / PE / tâches non sauvés.',
+      limits: 'Politique documentaire seulement · persist OFF · F1 distinct · O5/P8/Q7/R5 ouverts.',
       depends: 'C-01',
-      next: 'Contrat C-19.',
+      next: 'Ne pas activer flags / SaveGame / F1. Prochain autorisé = C-20.',
       refs: ['Source/GardenFervor/RTS/Terraform/GardenFervorTerraformSaveGame.h'],
       tags: ['persistance', 'partiel', 'c-19'],
     },
@@ -463,7 +463,7 @@ export const ETAT_GLOBAL = {
     'C-16': { runtime: 'Stub', debt: 'Bloquant eco' },
     'C-17': { runtime: 'Absent', debt: 'Boucle éco' },
     'C-18': { runtime: 'Legacy Ages', debt: 'Tension DG-07' },
-    'C-19': { runtime: 'Flags OFF', debt: 'Avant shipping' },
+    'C-19': { runtime: 'Flags OFF', debt: 'VALIDÉ conception · persist OFF · ≠ F1' },
     'C-20': { runtime: 'Smokes/strings', debt: 'Preuve vs produit' },
     'C-21': { runtime: 'Partiel', debt: 'Avant scale' },
     'C-22': { runtime: 'Présent', debt: 'Hors compteur' },
@@ -636,13 +636,13 @@ export const ETAT_GLOBAL = {
     },
     {
       domain: 'Persistance',
-      problem: 'Save monde / projets absente',
+      problem: 'C-19 VALIDÉ conception · save runtime OFF',
       benefit: 'Reprise de session',
       prereq: 'C-01 · C-19',
-      success: 'C-19 + preuves',
+      success: 'Implémentation persist (ordre distinct) + preuves',
       blocking: true,
       source: 'roadmap',
-      jalon: 'C-19',
+      jalon: 'persist runtime',
     },
     {
       domain: 'Écologie',
@@ -690,11 +690,11 @@ export const ETAT_GLOBAL = {
       title: 'Fondations nécessaires',
       items: [
         {
-          work: 'Ne pas démarrer C-19 sans ordre explicite',
-          why: 'C-18 VALIDÉ conception · prochain autorisé = C-19 · pas de runtime DG-07',
-          unlocks: 'C-19 seulement sur ordre humain',
-          costOfDelay: 'Ouverture prématurée de la persistance',
-          proof: 'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md statut VALIDÉ',
+          work: 'Ne pas démarrer C-20 sans ordre explicite',
+          why: 'C-19 VALIDÉ conception · prochain autorisé = C-20 · persist OFF · ≠ flags / F1',
+          unlocks: 'C-20 seulement sur ordre humain',
+          costOfDelay: 'Ouverture prématurée de l’UX',
+          proof: 'CONTRATS/C-19_PERSISTANCE_SAUVEGARDE.md statut VALIDÉ',
           type: 'officiel',
         },
         {
@@ -762,7 +762,7 @@ export const ETAT_GLOBAL = {
 
   roadmapCompare: {
     officialNext:
-      'Roadmap officielle : C-18 VALIDÉ conception (b04ec3b). Ne pas implémenter DG-07. C-19 non commencé. C-15…C-18 VALIDÉS ≠ simulation éco / déblocages · ODC-F9 non démarré.',
+      'Roadmap officielle : C-19 VALIDÉ conception (b0c3367). Ne pas implémenter persist / F1 / DG-07. C-20 non commencé. C-15…C-19 VALIDÉS ≠ simulation éco / déblocages / save runtime · ODC-F9 non démarré.',
     alternative:
       'Recommandation non officielle : si l’objectif immédiat est le shipping jouable, prioriser F1 + validation visuelle F8 / éventuel F9 avant d’élargir à l’hydrologie.',
   },
@@ -771,18 +771,18 @@ export const ETAT_GLOBAL = {
     {
       id: 'J0',
       title: 'Décision humaine',
-      objective: 'Ne pas démarrer C-19 ni implémenter recherche / éco / F9 sans ordre',
+      objective: 'Ne pas démarrer C-20 ni implémenter persist / F1 / DG-07 / F9 sans ordre',
       prereq: 'Audit / cette page',
       validation: 'Ordre explicite',
       doNotStart: 'Tout travail suivant',
     },
     {
       id: 'J1a',
-      title: 'C-15…C-18 (faits) / C-19 (non commencé)',
-      objective: 'C-15·C-16·C-17·C-18 VALIDÉS conception ; C-19 non ouvert',
-      prereq: 'C-18 VALIDÉ',
-      validation: 'C-18 VALIDÉ conception — C-19 non commencé',
-      doNotStart: 'Sim éco · déblocages DG-07 · C-19',
+      title: 'C-15…C-19 (faits) / C-20 (non commencé)',
+      objective: 'C-15·C-16·C-17·C-18·C-19 VALIDÉS conception ; C-20 non ouvert',
+      prereq: 'C-19 VALIDÉ',
+      validation: 'C-19 VALIDÉ conception — C-20 non commencé',
+      doNotStart: 'Sim éco · persist runtime · déblocages DG-07 · C-20',
     },
     {
       id: 'J1b',
@@ -869,10 +869,10 @@ export const ETAT_GLOBAL = {
 
   conclusion: {
     acquired:
-      'Conception fondatrice · 13 contrats VALIDÉS · C-18 conception uniquement · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-15…C-18 conception (≠ runtime).',
+      'Conception fondatrice · 14 contrats VALIDÉS · C-19 conception uniquement · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-15…C-19 conception (≠ runtime persist).',
     missing:
-      'Runtime eau/sol/éco · déblocages DG-07 · Case B · métier terrain produit · F1 shipping · UX/save · réseaux/N4 · ODC-F9.',
+      'Runtime eau/sol/éco · déblocages DG-07 · Case B · métier terrain produit · F1 shipping · persist runtime · UX · réseaux/N4 · ODC-F9.',
     decision:
-      'Si l’ordre administratif prime → ne pas démarrer C-19 sans ordre. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9. Aucun VALIDÉ C-15…C-18 n’autorise une simulation environnementale ni un déblocage DG-07.',
+      'Si l’ordre administratif prime → ne pas démarrer C-20 sans ordre. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9. Aucun VALIDÉ C-15…C-19 n’autorise une simulation environnementale, un déblocage DG-07 ni une activation persist.',
   },
 };

@@ -92,7 +92,7 @@ Fichiers `C-03`, `C-06`, `C-09`, `C-10`, `C-13` : **absents volontairement** (ad
 | ID | Document / artefact | Catégorie | Rôle | Nature | Source de vérité | Déclencheurs | Fréquence | Dépendances | Procédure | Validation | Risque si oubli | État |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DOC-REG-C | `CONTRATS/00_REGISTRE_CONTRATS.md` | Contrats | Liste, nécessité, ordre, dépendances | CANONIQUE | elle-même | clôture / ouverture contrat | clôture & arbitrages registre | SUIVI, contrats dédiés | éditer MD | compteur / ordre cohérents | mauvais prochain contrat | Actif |
-| DOC-SUIVI-C | `CONTRATS/00_SUIVI_CONTRATS.md` | Contrats | Avancement production documentaire | CANONIQUE | elle-même | clôture contrat | chaque clôture | REGISTRE, contrat dédié | éditer MD | progression N/16 | Hub contrats faux | Actif ; §5 : C-18 REVUE / dernier VALIDÉ C-17 |
+| DOC-SUIVI-C | `CONTRATS/00_SUIVI_CONTRATS.md` | Contrats | Avancement production documentaire | CANONIQUE | elle-même | clôture contrat | chaque clôture | REGISTRE, contrat dédié | éditer MD | progression N/16 | Hub contrats faux | Actif ; §5 : C-19 VALIDÉ / dernier VALIDÉ C-19 / prochain C-20 |
 | DOC-ROUT-C | `CONTRATS/ReglesRoutinesContrats.md` | Contrats | Routine étapes contrats | CANONIQUE | elle-même | évolution process contrats | événementielle | SUIVI | éditer MD | — | clôtures incohérentes | Actif **et non suivi Git** (`??`) — constat, pas une action d’indexation |
 | DOC-C01 | `CONTRATS/C-01_TERRAIN_RUNTIME.md` | Contrats | Règle C-01 | CANONIQUE | elle-même | réouverture seulement | stable post-VALIDÉ | SUIVI, REGISTRE | routine DOC-ROUT-C | audit + validation humaine | règle terrain ambiguë | Actif |
 | DOC-C02 | `CONTRATS/C-02_SUBSTRAT_SPATIAL.md` | Contrats | Règle C-02 | CANONIQUE | elle-même | réouverture seulement | stable post-VALIDÉ | SUIVI, REGISTRE | routine DOC-ROUT-C | idem | règle ambiguë | Actif |
@@ -107,7 +107,8 @@ Fichiers `C-03`, `C-06`, `C-09`, `C-10`, `C-13` : **absents volontairement** (ad
 | DOC-C16 | `CONTRATS/C-16_SOL.md` | Contrats | Règle C-16 | CANONIQUE | elle-même | réouverture seulement | stable post-VALIDÉ | SUIVI, REGISTRE | routine DOC-ROUT-C | idem | sol ambigu | Actif ; conception uniquement ; P1–P10 ouverts |
 | DOC-C17 | `CONTRATS/C-17_VEGETATION_ECOSYSTEMES.md` | Contrats | Règle C-17 | CANONIQUE | elle-même | réouverture seulement | stable post-VALIDÉ | SUIVI, REGISTRE | routine DOC-ROUT-C | idem | éco ambiguë | Actif ; **non suivi Git** (`??`) ; conception uniquement ; Q1–Q12 ouverts |
 | DOC-C18 | `CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md` | Contrats | Règle C-18 | CANONIQUE | elle-même | réouverture seulement | stable post-VALIDÉ | SUIVI, REGISTRE, DG-07 | routine DOC-ROUT-C | ne pas implémenter sans autorisation distincte | fausse progression | Actif ; **VALIDÉ** conception (`b04ec3b`) ; Ages = legacy ; ≠ runtime DG-07 |
-| MIR-SUIVI-JS | `GardenFervor_DesignGate_React/src/data/contractsSuivi.js` | Contrats | Miroir UI / compteurs Hub | **MIROIR MANUEL** | `00_SUIVI` + `00_REGISTRE` + C-xx | clôture contrat | chaque clôture | syncPages, GEN-CONTRACTS, DOC-HUB, GEN-EG | éditer JS **puis** (si publication autorisée) sync | Hub affiche N/16 aligné sur le MD | pages contrats obsolètes | Actif ; A1 **RÉSOLUE** ; dernier VALIDÉ = C-18 ; C-19 = non commencé |
+| DOC-C19 | `CONTRATS/C-19_PERSISTANCE_SAUVEGARDE.md` | Contrats | Règle C-19 | CANONIQUE | elle-même | réouverture seulement | stable post-VALIDÉ | SUIVI, REGISTRE | routine DOC-ROUT-C | ne pas implémenter persist / F1 sans autorisation distincte | fausse persistance | Actif ; **VALIDÉ** conception (`b0c3367`) ; persist OFF ; ≠ flags / SaveGame / F1 |
+| MIR-SUIVI-JS | `GardenFervor_DesignGate_React/src/data/contractsSuivi.js` | Contrats | Miroir UI / compteurs Hub | **MIROIR MANUEL** | `00_SUIVI` + `00_REGISTRE` + C-xx | clôture contrat | chaque clôture | syncPages, GEN-CONTRACTS, DOC-HUB, GEN-EG | éditer JS **puis** (si publication autorisée) sync | Hub affiche N/16 aligné sur le MD | pages contrats obsolètes | Actif ; A1 **RÉSOLUE** ; dernier VALIDÉ = C-19 ; C-20 = non commencé |
 | GEN-CONTRACTS | `docs/contracts.html` | Hub | Page suivi contrats | GÉNÉRÉ | MIR-SUIVI-JS | sync Hub | via `syncPages` | MIR-SUIVI-JS | `node docs/syncPages.mjs` | bandeau + cartes | lecture publique fausse | Généré |
 
 ### 2.3 Conception (Design Gate) — deux interfaces distinctes
@@ -590,7 +591,7 @@ Les totaux ci-dessous comptent les **lignes d’inventaire nominatives** de §2.
 | Groupe | IDs |
 | --- | --- |
 | Pilotage | DOC-REGLES, DOC-ETAT, DOC-HIST, DOC-MAINT, DOC-ODC-DOCX, DOC-ODC-TXT |
-| Contrats | DOC-REG-C, DOC-SUIVI-C, DOC-ROUT-C, DOC-C01, DOC-C02, DOC-C04, DOC-C05, DOC-C07, DOC-C08, DOC-C11, DOC-C12, DOC-C14, DOC-C15, MIR-SUIVI-JS, GEN-CONTRACTS |
+| Contrats | DOC-REG-C, DOC-SUIVI-C, DOC-ROUT-C, DOC-C01, DOC-C02, DOC-C04, DOC-C05, DOC-C07, DOC-C08, DOC-C11, DOC-C12, DOC-C14, DOC-C15, DOC-C16, DOC-C17, DOC-C18, DOC-C19, MIR-SUIVI-JS, GEN-CONTRACTS |
 | Design Gate Pages | DOC-DG-JS, SCR-DG, GEN-DG-HTML, GEN-DG-JSON, GEN-DG-PAGES |
 | Design Gate outil | DEV-DG-IDX, DEV-DG-MAIN, DEV-DG-VIEW, DEV-DG-CSS, DEV-DG-README, DEV-DG-PKG, DEV-DG-LOCK |
 | Roadmap globale | DOC-RM-MD, DOC-RM-CL, GEN-RM-HTML, GEN-RM-JSON, GEN-RM-PAGES, SCR-RM-BUILD, SCR-RM-VAL, DOC-RM-README, DOC-RM-REACT |

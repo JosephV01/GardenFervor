@@ -1,5 +1,12 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-10 — 1.0.11 — Clôture C-19
+
+- C-19 VALIDÉ (cadrage S1–S14 · L1–L3) · progression contrats **14 / 16**.
+- Prochain requis = **C-20** (non commencé) · persist OFF · ≠ flags / SaveGame / F1 · addenda fermés · Case B suspendu · ODC-F9 non démarré.
+- Politique de sauvegarde formalisée ≠ runtime persist.
+- Régénération HTML depuis le Markdown.
+
 ## 2026-10-10 — 1.0.8 — Clôture C-15
 
 - C-15 VALIDÉ (cadrage A–G) · progression contrats **10 / 16**.

@@ -265,7 +265,9 @@ export const curatedNodes = [
   mkContract('c_18', 'C-18', 'Technologie / progression', 'PARTIEL', 'VALIDÉ', 'P', true, 'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md', {
     notes: 'VALIDÉ conception · Q1–Q31 · Ages / RequiredAge / FWSG = legacy isolé · ≠ runtime DG-07 · bloquant avant déblocages réels.',
   }),
-  mkContract('c_19', 'C-19', 'Persistance / sauvegarde', 'REQUIS', 'NON COMMENCÉ', 'N/P', true, null),
+  mkContract('c_19', 'C-19', 'Persistance / sauvegarde', 'REQUIS', 'VALIDÉ', 'N/P', true, 'CONTRATS/C-19_PERSISTANCE_SAUVEGARDE.md', {
+    notes: 'VALIDÉ conception · S1–S14 · L1–L3 · persist OFF · ≠ flags / SaveGame / F1 · bloquant shipping durable.',
+  }),
   mkContract('c_20', 'C-20', 'Observabilité / UX', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
   mkContract('c_21', 'C-21', 'Simulation / fréquences', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
   mkContract('c_22', 'C-22', 'Investor Demo', 'NON REQUIS', 'NON COMMENCÉ', 'I', false, null),

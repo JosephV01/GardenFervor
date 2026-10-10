@@ -1,5 +1,11 @@
 # PROJECT_GRAPH — CHANGELOG
 
+## 2026-10-10 — 1.0.6 — Clôture C-19 VALIDÉ
+
+- Nœud `c_19` : documentStatus **VALIDÉ** (conception) ; persist OFF ; ≠ flags / SaveGame / F1.
+- Compteur canonique **14 / 16**. C-20 demeure NON COMMENCÉ.
+- Aucune implémentation persist runtime.
+
 ## 2026-10-10 — 1.0.5 — Clôture C-18 VALIDÉ
 
 - Nœud `c_18` : documentStatus **VALIDÉ** (conception) ; Ages / `RequiredAge` / FWSG = legacy ; ≠ runtime DG-07.

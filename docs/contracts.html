@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-18",
+  "activeId": "C-19",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 13,
+    "validated": 14,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -736,17 +736,39 @@
       "id": "C-19",
       "order": "19",
       "name": "Persistance / sauvegarde",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "Avant shipping",
+      "note": "VALIDÉ humainement — cadrage S1–S14 · L1–L3 ; audit final PASS ; contrat de conception uniquement ; O5, P8, Q7, R5 ouverts ; ≠ runtime persist / F1",
       "dependsOn": [
         "C-01",
         "C-09",
         "C-03"
       ],
-      "providesTo": []
+      "providesTo": [],
+      "file": "CONTRATS/C-19_PERSISTANCE_SAUVEGARDE.md",
+      "detail": {
+        "decisions": "17 / 17",
+        "frontiers": [
+          "C-01 — capacité relief / paint",
+          "C-02 — Dirty hors save (B5)",
+          "C-11 — réservations (mécanisme)",
+          "C-12 — chargements / transit",
+          "C-14 — lifecycle",
+          "C-15…17 — E conditionnel (O5/P8/Q7)",
+          "C-18 — X conditionnel (R5)",
+          "C-20 — UX save",
+          "C-21 — fréquences"
+        ],
+        "gaps": [
+          "O5 / P8 / Q7 / R5 ouverts",
+          "P/K exclus (addenda fermés)",
+          "SaveGame terrain OFF · load hard-skip",
+          "F1 INVALIDÉ — distinct de C-19",
+          "Aucune implémentation persist"
+        ]
+      }
     },
     {
       "id": "C-20",
