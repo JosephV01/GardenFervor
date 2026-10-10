@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-15",
+  "activeId": "C-16",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 10,
+    "validated": 11,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -579,7 +579,7 @@
           "C-01 — hauteur / relief",
           "C-02 — cellules / dirty / lectures spatiales",
           "C-14 — existence / emprise d’ouvrage",
-          "C-16 — sol (futur)",
+          "C-16 — sol",
           "C-17 — écosystèmes (futur)",
           "W2 — présentation M4 / UDW"
         ],
@@ -601,18 +601,47 @@
       "id": "C-16",
       "order": "16",
       "name": "Sol",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "absente",
       "blocking": true,
-      "note": "",
+      "note": "VALIDÉ humainement — cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; P1–P10 et O1–O9 C-15 conservés ; dettes stub / Dirty Soil conservées ; Case B reste suspendu ; aucune implémentation",
       "dependsOn": [
         "C-02",
         "C-01"
       ],
       "providesTo": [
         "C-17"
-      ]
+      ],
+      "file": "CONTRATS/C-16_SOL.md",
+      "detail": {
+        "decisions": "18 / 18",
+        "frontiers": [
+          "C-01 — hauteur / relief",
+          "C-02 — cellules / dirty / lectures spatiales",
+          "C-08 — travaux / compactage métier",
+          "C-14 — existence / emprise d’ouvrage",
+          "C-15 — vérité hydrologique",
+          "C-17 — écosystèmes (futur)",
+          "C-19 — politique de sauvegarde",
+          "C-21 — budgets / Hertz",
+          "O4 — présentation M4 / Paint"
+        ],
+        "gaps": [
+          "Unité / échelle humidité métier (P1)",
+          "Barème fertilité / dérivation sol fertile (P2)",
+          "Barème compaction du sol (P3)",
+          "Mapping C2 sur Moisture / bValid (P4)",
+          "Catalogue des transitions sol (P5)",
+          "Autres conditions au-delà de sol fertile / zones sèches (P6)",
+          "Émetteurs Dirty Soil (P7)",
+          "Persistance état sol (P8)",
+          "Fréquences / budgets numériques (P9)",
+          "Topologie C++ propriétaire d’état (P10)",
+          "O3 C-15 seuils eau → sol / écosystèmes ouverts",
+          "Stub QuerySoil ≠ simulation · aucune implémentation"
+        ]
+      }
     },
     {
       "id": "C-17",
