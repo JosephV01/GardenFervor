@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-16",
+  "activeId": "C-17",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 11,
+    "validated": 12,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -647,17 +647,48 @@
       "id": "C-17",
       "order": "17",
       "name": "Végétation / écosystèmes",
-      "status": "À FAIRE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "",
+      "note": "VALIDÉ humainement — cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; Q1–Q12, O1–O9 C-15 et P1–P10 C-16 conservés ; Case B reste suspendu ; aucune implémentation écologique",
       "dependsOn": [
         "C-15",
         "C-16",
         "C-01"
       ],
-      "providesTo": []
+      "providesTo": [],
+      "file": "CONTRATS/C-17_VEGETATION_ECOSYSTEMES.md",
+      "detail": {
+        "decisions": "20 / 20",
+        "frontiers": [
+          "C-01 — hauteur / relief",
+          "C-02 — cellules / dirty / lectures spatiales",
+          "C-08 — défrichement / travaux",
+          "C-14 — emprise / impact déclaré",
+          "C-15 — vérité hydrologique",
+          "C-16 — vérité sol",
+          "C-19 — politique de sauvegarde",
+          "C-21 — budgets / Hertz",
+          "A2 — présentation M4 / Paint / UDS / UDW"
+        ],
+        "gaps": [
+          "Canal Dirty végétation / écosystème (Q1)",
+          "Sémantique / mapping lecture écologique et API (Q2)",
+          "Topologie C++ propriétaire d’état (Q3)",
+          "Seuils, formules, barèmes (Q4)",
+          "Catalogue opérationnel des transitions (Q5)",
+          "Coexistence zone humide ↔ structures C-15 (Q6)",
+          "Persistance état écologique (Q7)",
+          "Fréquences / budgets numériques (Q8)",
+          "Conséquences économiques / ResourceKey (Q9)",
+          "Exigences consommateurs UX / tâches / C-18 (Q10)",
+          "État écologique aquatique (Q11)",
+          "État dominant vs multi-états (Q12)",
+          "O1–O9 C-15 et P1–P10 C-16 inchangés",
+          "Lecture / sample végétation absents · aucune implémentation"
+        ]
+      }
     },
     {
       "id": "C-18",
