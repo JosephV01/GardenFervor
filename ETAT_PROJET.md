@@ -42,7 +42,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 
 ## Kit minimal de cohorte forestière — arbitré
 
-**Statut :** défini pour la préparation de l’implémentation contrôlée — **implémentation non démarrée** · **non autorisée par la seule formalisation**.
+**Statut :** kit **formalisé** (F02/F03) — la formalisation **n’autorise pas** à coder. La cohorte S3 Cas A, T1–T9, est **clôturée** (voir Plan de production).
 
 | Élément | Contenu arbitrée |
 | --- | --- |
