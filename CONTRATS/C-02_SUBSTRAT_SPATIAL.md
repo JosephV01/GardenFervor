@@ -4,16 +4,16 @@
 | --- | --- |
 | **ID** | C-02 |
 | **Nom** | Substrat spatial (cellules / dirty / queries) |
-| **Statut documentaire** | **REVUE / DRAFT DE TRAVAIL** — rédigé sur décisions humaines ; **non VALIDÉ** |
+| **Statut documentaire** | **VALIDÉ** — validation humaine explicite (2026-10-08) ; audit 31/31 A1–F3 PASS ; clôture formelle étape 10 |
 | **Profondeur** | Détaillée (registre) |
 | **Ordre de rédaction** | 2 |
 | **Bloquant** | Oui (avant gameplay fondé sur soil/water spatial ; avant F9+ / eco) |
-| **Dépendances amont** | **C-01** (VALIDÉ) |
+| **Dépendances amont** | **C-01** (**REVUE** / non VALIDÉ) |
 | **Références** | Registre C-02 · DG 00.5.S2/S3/S5 · 00.6.M3 · DG-08.5 · DG-09.1/09.3 · REGLES §7bis · décisions humaines A1–F3 |
 
 Ce document formalise les **décisions humaines C-02 validées** (A1–F3).  
 Il n’invente aucune règle de gameplay supplémentaire.  
-Il ne constitue pas une règle officielle tant qu’il n’est pas **VALIDÉ** dans le suivi.
+Il constitue la **règle officielle** C-02 après validation humaine et clôture formelle. La clôture est **documentaire**. Elle n’autorise aucune implémentation. **C-01** demeure **REVUE** / **non VALIDÉ**.
 
 ---
 
@@ -387,10 +387,10 @@ Après **validation** humaine du contrat et alignement d’implémentation, C-02
 | Couche | État |
 | --- | --- |
 | Décisions humaines A1–F3 | Reprises dans ce document |
-| Contrat opérationnel C-02 | **REVUE / DRAFT DE TRAVAIL** |
-| Validation suivi | **Non acquise** — ≠ `VALIDÉ` |
+| Contrat opérationnel C-02 | **VALIDÉ** |
+| Validation suivi | **Acquise** — `VALIDÉ` |
 | Implémentation | Hors portée de cette rédaction |
 
 ---
 
-*Fin C-02 — draft de travail en revue. Non VALIDÉ. Compteur global inchangé jusqu’à validation humaine.*
+*Fin C-02 — VALIDÉ. Clôture documentaire. C-01 demeure REVUE / non VALIDÉ. Case B demeure suspendu. Aucune implémentation spatiale supplémentaire autorisée par cette clôture.*

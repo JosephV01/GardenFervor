@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-10 — C-21-CLOSE**.
+Dernière entrée historique : **2026-10-11 — C-01-REVUE / C-02-CLOSE-FILE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-11 — C-01-REVUE / C-02-CLOSE-FILE — Correction des statuts C-01 / C-02
+
+- **Intention :** aligner les fichiers et le suivi sur les décisions humaines du 2026-10-08 (C-01 non validé / maintenu en revue ; C-02 validé) et appliquer l’étape 10 à C-02.
+- **Statut :** C-01 = **REVUE / non VALIDÉ** · C-02 = **VALIDÉ** (clôture formelle du fichier) · compteur **15 / 16** · **pas de code gameplay** · Case B **suspendu** · addenda fermés
+- **Décisions :** aucune décision technique C-01 / C-02 ajoutée ou retirée ; A1–F3 C-02 inchangés ; D1–D14 C-01 inchangés
+- **Fichiers :** `CONTRATS/C-01_TERRAIN_RUNTIME.md` · `CONTRATS/C-02_SUBSTRAT_SPATIAL.md` · suivi / registre / ETAT / HISTORIQUE
+- **Design Gate :** aucune modification
+- **Suite :** étape 12 (commit dédié) **non exécutée** — en attente d’autorisation ; ne pas relancer la validation C-01 sans ordre explicite
 
 ### 2026-10-10 — C-21-CLOSE — Cadences de simulation et budgets temporels VALIDÉ (clôture documentaire)
 

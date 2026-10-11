@@ -4,15 +4,15 @@
 | --- | --- |
 | **ID** | C-01 |
 | **Nom** | Terrain runtime (vérité hauteur / shipping) |
-| **Statut documentaire** | Rédigé — **en attente d’audit et de validation** (non VALIDÉ) |
+| **Statut documentaire** | **REVUE** — rédigé ; **non VALIDÉ** (validation humaine finale refusée / non acquise le 2026-10-08) |
 | **Profondeur** | Fondamentale (registre) |
 | **Ordre de rédaction** | 1 |
 | **Bloquant** | Oui (F1 shipping · vérité terrain · Cas B durable) |
 | **Références** | Registre C-01 · DG-08 / 00.5.G* / 00.5.S4 / 00.6.A2 · REGLES §4 · ODC-F1 / F8 |
 
-Ce document formalise les **décisions C-01 validées**.  
+Ce document formalise les **décisions de cadrage déjà prises** pour C-01.  
 Il n’invente aucune règle de gameplay supplémentaire.  
-Il ne constitue pas encore une règle officielle tant qu’il n’est pas **VALIDÉ** dans le suivi.
+Il **n’est pas** une règle officielle : le statut documentaire reste **REVUE** / **non VALIDÉ**.
 
 ---
 
@@ -299,10 +299,10 @@ Aucune correction n’est effectuée ici.
 ## 15. Hors périmètre explicite
 
 - Toute modification de Case B, Investor Demo, Design Gate, ou code.
-- Rédaction de C-02 ou contrats aval.
+- Modification des décisions de C-02 ou des contrats aval.
 - Choix d’architecture F1 (matériau, RT, etc.).
 - Définition des règles Terraformer / SitePrep.
 
 ---
 
-*Fin C-01 — document rédigé, non VALIDÉ.*
+*Fin C-01 — document en REVUE, non VALIDÉ. Aucune clôture formelle. Aucune validation humaine finale.*
