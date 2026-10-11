@@ -14,7 +14,7 @@
 export const CONTRACTS_SUIVI = {
   title: 'GARDENFERVOR — SUIVI DES CONTRATS',
   subtitle: 'Contracts / Operational Architecture',
-  lastSync: '2026-10-10',
+  lastSync: '2026-10-11',
   sources: [
     'CONTRATS/00_REGISTRE_CONTRATS.md',
     'CONTRATS/00_SUIVI_CONTRATS.md',
@@ -36,11 +36,11 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
-  /** Dernier VALIDÉ = C-21 ; compteur 16/16 clos. C-03·C-06·C-09·C-10·C-13 addenda* fermés. */
+  /** Dernier VALIDÉ = C-21 ; C-01 REVUE / non VALIDÉ ; compteur 15/16. C-03·C-06·C-09·C-10·C-13 addenda* fermés. */
   activeContractId: 'C-21',
-  nextAuthorizedId: '—',
+  nextAuthorizedId: 'C-01',
   progress: {
-    validated: 16,
+    validated: 15,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -77,12 +77,12 @@ export const CONTRACTS_SUIVI = {
       order: 1,
       category: 'REQUIS',
       coverage: 'partielle',
-      productionStatus: 'VALIDÉ',
+      productionStatus: 'REVUE',
       blocking: true,
       dependsOn: ['C-00'],
       providesTo: ['C-02', 'C-05', 'C-08', 'C-15', 'C-16', 'C-17', 'C-19'],
-      note: 'VALIDÉ humainement — écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil|Water, lexique)',
-      dedicatedValidated: true,
+      note: 'REVUE / non VALIDÉ — validation humaine finale refusée / non acquise (2026-10-08) ; pas de clôture ; écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil|Water, lexique)',
+      dedicatedValidated: false,
       file: 'CONTRATS/C-01_TERRAIN_RUNTIME.md',
       detail: {
         decisionsTaken: 14,
@@ -117,7 +117,7 @@ export const CONTRACTS_SUIVI = {
       blocking: true,
       dependsOn: ['C-01'],
       providesTo: ['C-14', 'C-15', 'C-16', 'C-17', 'C-21'],
-      note: 'VALIDÉ humainement — 31/31 décisions A1–F3 ; audit final PASS',
+      note: 'VALIDÉ humainement (2026-10-08) — 31/31 A1–F3 ; audit final PASS ; clôture formelle étape 10 ; C-01 demeure REVUE',
       dedicatedValidated: true,
       file: 'CONTRATS/C-02_SUBSTRAT_SPATIAL.md',
       detail: {
