@@ -41,7 +41,7 @@ flowchart TB
     c_18["C-18 — Technologie / progression\n[PASS]"]
     c_19["C-19 — Persistance / sauvegarde\n[PASS]"]
     c_20["C-20 — Observabilité / UX lisibilité\n[PASS]"]
-    c_21["C-21 — Simulation / fréquences\n[PARTIAL]"]
+    c_21["C-21 — Simulation / fréquences\n[PASS]"]
     c_22["C-22 — Investor Demo\n[IMPLEMENTED]"]
     c_23["C-23 — Présentation M4 / UDS\n[IMPLEMENTED]"]
   end
@@ -133,6 +133,22 @@ flowchart TB
   c_17 -->|DEPENDS_ON| c_01
   c_18 -->|DEPENDS_ON| c_00
   c_18 -->|DEPENDS_ON| c_03
+  c_01 -->|DEPENDS_ON| c_00
+  c_03 -->|DEPENDS_ON| c_00
+  c_06 -->|DEPENDS_ON| c_00
+  c_09 -->|DEPENDS_ON| c_00
+  c_10 -->|DEPENDS_ON| c_09
+  c_13 -->|DEPENDS_ON| c_05
+  c_13 -->|DEPENDS_ON| c_10
+  c_19 -->|DEPENDS_ON| c_01
+  c_19 -->|DEPENDS_ON| c_09
+  c_19 -->|DEPENDS_ON| c_03
+  c_20 -->|DEPENDS_ON| c_04
+  c_20 -->|DEPENDS_ON| c_07
+  c_20 -->|DEPENDS_ON| c_09
+  c_21 -->|DEPENDS_ON| c_00
+  c_21 -->|DEPENDS_ON| c_02
+  c_23 -->|DEPENDS_ON| c_01
   sys_landscape_terraform -->|SIGNALS| sys_spatial
   sys_spatial -->|READS| sys_runtime_store
   sys_project -->|PRODUCES| sys_task

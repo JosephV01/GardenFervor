@@ -296,6 +296,9 @@ function buildHtml(data) {
   .badge.FUTURE { background:#1e2a3a; color:var(--future); }
   .badge.SUSPENDED,.badge.INVALIDÉ { background:#3a2418; color:var(--warn); }
   .legend { font-size:10px; color:var(--muted); margin-top:10px; }
+  #resetView { margin-top:8px; width:100%; background:#101610; color:var(--ink); border:1px solid var(--line); border-radius:4px; padding:6px 8px; cursor:pointer; }
+  #resetView:hover { border-color:var(--accent); color:var(--accent); }
+  #detail a { color:var(--accent); }
 </style>
 </head>
 <body>
@@ -328,9 +331,12 @@ function buildHtml(data) {
     <option>UNKNOWN</option>
     <option>n/a</option>
   </select>
+  <button type="button" id="resetView">Réinitialiser la vue</button>
   <div class="legend">
     Drag = pan · Molette = zoom · Survol / clic = détail<br/>
-    Ports : entrée ← · sortie → · Survol = flux le long des relations
+    Ports : entrée ← · sortie → · Survol = flux le long des relations<br/>
+    Badge nœud : <b>doc</b> = statut documentaire · <b>impl</b> = état technique<br/>
+    Échap = reset · +/− = zoom · flèches = pan
   </div>
   <div id="detail"><em>Sélectionnez ou survolez un nœud</em></div>
 </aside>
@@ -446,9 +452,13 @@ function measureNode(n) {
   let maxLine = 0;
   for (const line of lines) maxLine = Math.max(maxLine, ctx.measureText(line).width);
   n._lines = lines;
-  n._status = n.implementationStatus && n.implementationStatus !== 'n/a'
-    ? n.implementationStatus
-    : (n.designStatus || '');
+  n._doc = n.documentStatus || '';
+  n._impl = (n.implementationStatus && n.implementationStatus !== 'n/a') ? n.implementationStatus : '';
+  if (n._doc && n._impl) n._status = 'doc ' + n._doc + ' · impl ' + n._impl;
+  else if (n._doc) n._status = 'doc ' + n._doc;
+  else n._status = n._impl || n.designStatus || '';
+  ctx.font = STATUS_FONT;
+  maxLine = Math.max(maxLine, ctx.measureText(n._status).width);
   n._w = Math.max(MIN_W, maxLine + PAD_X * 2 + 12);
   n._h = PAD_Y + lines.length * LINE_H + 4 + 12 + PAD_Y;
 }
@@ -645,16 +655,27 @@ function roundRect(x,y,w,h,r) {
   ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
 }
 
+function publishedLink(n) {
+  if (n.category === 'CONTRACTS') {
+    return '<div style="margin-top:6px"><a href="contracts.html">Liste publiée des contrats</a> <span style="color:#9aab9c">(Hub — pas de fiche individuelle en ligne)</span></div>';
+  }
+  return '';
+}
 function showDetail(n) {
   selected = n;
   const rel = DATA.edges.filter(e => e.from === n.id || e.to === n.id);
+  const docLine = n.documentStatus
+    ? 'doc: <code>' + n.documentStatus + '</code> · design: <code>' + n.designStatus + '</code> · impl: <code>' + n.implementationStatus + '</code> · valid: <code>' + n.validationStatus + '</code>'
+    : 'design: <code>' + n.designStatus + '</code> · impl: <code>' + n.implementationStatus + '</code> · valid: <code>' + n.validationStatus + '</code>';
   document.getElementById('detail').innerHTML = \`
     <div><strong>\${n.name}</strong> <span class="badge">\${n.category}</span>
+    \${n.documentStatus?'<span class="badge">doc '+n.documentStatus+'</span>':''}
     \${n.implementationStatus==='SUSPENDED'?'<span class="badge SUSPENDED">SUSPENDED</span>':''}
     \${n.validationStatus==='INVALIDÉ'?'<span class="badge INVALIDÉ">INVALIDÉ</span>':''}</div>
     <div style="margin-top:6px"><b>Responsabilité</b><br/>\${n.responsibility || '—'}</div>
-    <div>design: <code>\${n.designStatus}</code> · impl: <code>\${n.implementationStatus}</code> · valid: <code>\${n.validationStatus}</code></div>
+    <div>\${docLine}</div>
     <div>confidence: <code>\${n.confidence}</code></div>
+    \${publishedLink(n)}
     <div style="margin-top:6px"><b>Sources</b><br/>\${[...(n.sourceDocuments||[]),...(n.sourceFiles||[])].map(s=>'<code>'+s+'</code>').join('<br/>') || '—'}</div>
     <div style="margin-top:6px"><b>Relations (\${rel.length})</b><br/>\${rel.map(e => {
       const other = e.from === n.id ? e.to : e.from;
@@ -695,6 +716,28 @@ canvas.addEventListener('wheel', ev => {
 ['search','view','implFilter'].forEach(id => {
   document.getElementById(id).addEventListener('input', () => { layout(); draw(); });
   document.getElementById(id).addEventListener('change', () => { layout(); draw(); });
+});
+function resetView() {
+  document.getElementById('search').value = '';
+  document.getElementById('view').value = 'MASTER';
+  document.getElementById('implFilter').value = '';
+  Object.keys(catState).forEach(c => { catState[c] = true; });
+  [...catsEl.children].forEach(el => el.classList.add('on'));
+  transform = { x: 40, y: 40, s: 1 };
+  selected = null;
+  document.getElementById('detail').innerHTML = '<em>Sélectionnez ou survolez un nœud</em>';
+  layout(); draw();
+}
+document.getElementById('resetView').addEventListener('click', resetView);
+window.addEventListener('keydown', ev => {
+  if (ev.target && /INPUT|SELECT|TEXTAREA/.test(ev.target.tagName)) return;
+  if (ev.key === 'Escape') { resetView(); ev.preventDefault(); return; }
+  if (ev.key === '+' || ev.key === '=') { transform.s = Math.min(2.5, transform.s * 1.1); draw(); ev.preventDefault(); return; }
+  if (ev.key === '-' || ev.key === '_') { transform.s = Math.max(0.3, transform.s * 0.9); draw(); ev.preventDefault(); return; }
+  if (ev.key === 'ArrowLeft') { transform.x += 40; draw(); ev.preventDefault(); return; }
+  if (ev.key === 'ArrowRight') { transform.x -= 40; draw(); ev.preventDefault(); return; }
+  if (ev.key === 'ArrowUp') { transform.y += 40; draw(); ev.preventDefault(); return; }
+  if (ev.key === 'ArrowDown') { transform.y -= 40; draw(); ev.preventDefault(); return; }
 });
 window.addEventListener('resize', resize);
 function tickFlow(now) {

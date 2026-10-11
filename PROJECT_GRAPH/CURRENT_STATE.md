@@ -1,7 +1,7 @@
 # PROJECT_GRAPH — CURRENT_STATE
 
-Généré : **2026-10-10T18:13:33.768Z**
-HEAD : `d528941522d065f5e224a127cd8cb2d6540db76e` (dirty, 72 fichiers dirty)
+Généré : **2026-10-11T12:21:37.727Z**
+HEAD : `1d5f791694b7c21cd68b8d5d6381d87f35c5a043` (dirty, 73 fichiers dirty)
 Curated schema : `1.0.0`
 
 ## Inventaire
@@ -9,15 +9,15 @@ Curated schema : `1.0.0`
 | Métrique | Valeur |
 | --- | ---: |
 | Nœuds | 88 |
-| Relations | 117 |
-| Relations HIGH | 94 |
+| Relations | 133 |
+| Relations HIGH | 110 |
 | Relations MEDIUM | 23 |
 | Relations LOW | 0 |
-| Relations ACTIVE | 111 |
+| Relations ACTIVE | 127 |
 | Relations FUTURE | 6 |
 | Relations UNVERIFIED | 0 |
 | Contrats (registre) | 24 |
-| Contrats fichiers présents | 15 |
+| Contrats fichiers présents | 16 |
 | Preuves inventoriées | 9 |
 | Gates Saved détectés | 14 |
 | Headers systèmes scannés | 13 |
@@ -68,6 +68,7 @@ Curated schema : `1.0.0`
 - C-18 — Technologie / progression
 - C-19 — Persistance / sauvegarde
 - C-20 — Observabilité / UX lisibilité
+- C-21 — Simulation / fréquences
 
 ## Systèmes SUSPENDED / LEGACY / STUB
 

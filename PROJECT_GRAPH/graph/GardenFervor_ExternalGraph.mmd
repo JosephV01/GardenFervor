@@ -29,5 +29,6 @@ flowchart TB
   c_01 -->|CONSTRAINS| sys_terraform_visualizer
   c_01 -->|CONSTRAINS| sys_terraform_save
   c_23 -->|CONSTRAINS| ext_m4
+  c_23 -->|DEPENDS_ON| c_01
   ext_m4 -->|VISUALIZES| sys_landscape_terraform
   ext_uds -->|INTEGRATES_WITH| sys_visual_runtime_gate

@@ -201,7 +201,7 @@ export const curatedNodes = [
     sourceFiles: [],
     evidence: [],
     confidence: 'HIGH',
-    notes: 'Complémentaire au mécanisme tâche (futur C-04) ; pas d’implémentation dédiée observée.',
+    notes: 'Complémentaire au mécanisme tâche (C-04 VALIDÉ) ; pas d’implémentation dédiée observée.',
   },
   {
     id: 'dg_13',
@@ -220,7 +220,7 @@ export const curatedNodes = [
   // ——— CONTRACTS (from registre + suivi; files only when present) ———
   mkContract('c_00', 'C-00', 'Cadre / invariants', 'NON REQUIS', 'NON COMMENCÉ', 'I', false, null),
   mkContract('c_01', 'C-01', 'Terrain runtime', 'REQUIS', 'VALIDÉ', 'P', true, 'CONTRATS/C-01_TERRAIN_RUNTIME.md', {
-    notes: 'Contrat VALIDÉ ; dettes d’implémentation documentées (F1, persist, dirty Soil/Water…).',
+    notes: 'VALIDÉ (2026-10-11) — clôture documentaire ≠ conformité runtime ; dettes E1–E7 ouvertes ; E8 lexique conservé.',
   }),
   mkContract('c_02', 'C-02', 'Substrat spatial', 'REQUIS', 'VALIDÉ', 'P', true, 'CONTRATS/C-02_SUBSTRAT_SPATIAL.md', {
     notes: '31 décisions A1–F3 ; contrat VALIDÉ.',
@@ -260,7 +260,7 @@ export const curatedNodes = [
     notes: 'VALIDÉ — conception uniquement ; P1–P10 et O1–O9 C-15 conservés ; stub QuerySoil ≠ vérité.',
   }),
   mkContract('c_17', 'C-17', 'Végétation / écosystèmes', 'PARTIEL→REQUIS', 'VALIDÉ', 'N', true, 'CONTRATS/C-17_VEGETATION_ECOSYSTEMES.md', {
-    notes: 'VALIDÉ — conception uniquement ; Q1–Q12, O1–O9, P1–P10 conservés. Fichier présent localement ; suivi Git encore ouvert.',
+    notes: 'VALIDÉ — conception uniquement ; Q1–Q12, O1–O9, P1–P10 conservés.',
   }),
   mkContract('c_18', 'C-18', 'Technologie / progression', 'PARTIEL', 'VALIDÉ', 'P', true, 'CONTRATS/C-18_TECHNOLOGIE_PROGRESSION.md', {
     notes: 'VALIDÉ conception · Q1–Q31 · Ages / RequiredAge / FWSG = legacy isolé · ≠ runtime DG-07 · bloquant avant déblocages réels.',
@@ -271,8 +271,12 @@ export const curatedNodes = [
   mkContract('c_20', 'C-20', 'Observabilité / UX lisibilité', 'PARTIEL', 'VALIDÉ', 'P', true, 'CONTRATS/C-20_OBSERVABILITE_UX_LISIBILITE.md', {
     notes: 'VALIDÉ conception · X1–X10 · L1–L3 · HUD = dette · ≠ UX produit / HUD DG-13 · bloquant avant déclaration produit.',
   }),
-  mkContract('c_21', 'C-21', 'Simulation / fréquences', 'PARTIEL', 'NON COMMENCÉ', 'P', true, null),
-  mkContract('c_22', 'C-22', 'Investor Demo', 'NON REQUIS', 'NON COMMENCÉ', 'I', false, null),
+  mkContract('c_21', 'C-21', 'Simulation / fréquences', 'PARTIEL', 'VALIDÉ', 'P', true, 'CONTRATS/C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md', {
+    notes: 'VALIDÉ conception (T1 + B1–B8) · ≠ scheduler / Hertz / budgets runtime · O-FREQ / O-OVER / O-EXC / O-INST / O-SCALE ouverts.',
+  }),
+  mkContract('c_22', 'C-22', 'Investor Demo', 'NON REQUIS', 'NON COMMENCÉ', 'I', false, null, {
+    notes: 'NON REQUIS (présentation). Pas de DEPENDS_ON formel au registre — isolement intentionnel.',
+  }),
   mkContract('c_23', 'C-23', 'Présentation M4 / UDS', 'NON REQUIS', 'NON COMMENCÉ', 'I', false, null),
 
   // ——— SYSTEMS ———
@@ -437,10 +441,10 @@ export const curatedNodes = [
       'Source/GardenFervor/RTS/Tasks/GardenFervorTaskSubsystem.cpp',
       'Source/GardenFervor/RTS/Tasks/GardenFervorTaskTypes.h',
     ],
-    sourceDocuments: ['CONTRATS/00_REGISTRE_CONTRATS.md', 'Saved/ODC_F4_TaskGraphGate.txt'],
+    sourceDocuments: ['CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md', 'CONTRATS/00_REGISTRE_CONTRATS.md', 'Saved/ODC_F4_TaskGraphGate.txt'],
     evidence: ['evid_odc_f4'],
     confidence: 'HIGH',
-    notes: 'Contrat C-04 non rédigé ; runtime S3 opérationnel.',
+    notes: 'Contrat C-04 VALIDÉ ; runtime S3 opérationnel ; dettes d’implémentation conservées.',
   },
   {
     id: 'sys_unit_base',
@@ -950,6 +954,30 @@ export const curatedEdges = [
   e('c_18', 'c_03', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
     notes: 'Amont officiel C-03* = addendum fermé ; C-18 n’invente pas Intention→Project.',
   }),
+  e('c_01', 'c_00', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_03', 'c_00', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_06', 'c_00', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_09', 'c_00', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_10', 'c_09', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_13', 'c_05', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
+    notes: 'Addendum fermé ; amont officiel conservé.',
+  }),
+  e('c_13', 'c_10', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
+    notes: 'Addendum fermé ; amont officiel conservé.',
+  }),
+  e('c_19', 'c_01', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_19', 'c_09', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_19', 'c_03', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
+    notes: 'Amont officiel C-03* = addendum fermé.',
+  }),
+  e('c_20', 'c_04', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_20', 'c_07', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_20', 'c_09', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_21', 'c_00', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_21', 'c_02', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md'),
+  e('c_23', 'c_01', 'DEPENDS_ON', 'HIGH', 'CONTRATS/00_REGISTRE_CONTRATS.md', {
+    notes: 'Amont officiel : C-01 (rendu) ; gameplay terrain reste C-01.',
+  }),
 
   // Runtime dataflow (observed in code)
   e('sys_landscape_terraform', 'data_height_store', 'WRITES', 'HIGH', 'Source/GardenFervor/RTS/Terraform/GardenFervorLandscapeTerraformSubsystem.cpp'),
@@ -984,7 +1012,7 @@ export const curatedEdges = [
   // Frontiers / FUTURE invalidation
   e('sys_spatial', 'sys_task', 'SIGNALS', 'MEDIUM', 'CONTRATS/C-02_SUBSTRAT_SPATIAL.md', {
     relationKind: 'FUTURE',
-    notes: 'C-02 localise Dirty ; consommation tâche non câblée (futur C-04 G4).',
+    notes: 'C-02 localise Dirty ; C-04 VALIDÉ ; câblage runtime Dirty→tâches encore dette (G4).',
   }),
   e('c_02', 'c_04', 'SIGNALS', 'MEDIUM', 'CONTRATS/C-04_TACHES_GRAPHE_DEPENDANCES.md', {
     relationKind: 'FUTURE',
