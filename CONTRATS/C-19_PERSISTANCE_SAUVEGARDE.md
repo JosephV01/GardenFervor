@@ -26,7 +26,7 @@ Trois plans sont **distingués** partout dans ce contrat :
 
 **Case B** demeure **suspendu**.  
 **ODC-F9** n’est **pas** démarré.  
-**C-20** est **VALIDÉ** comme contrat de **conception** (UX save non implémentée). **C-21** demeure **non commencé** (S14).  
+**C-20** est **VALIDÉ** comme contrat de **conception** (UX save non implémentée). **C-21** est **VALIDÉ** conception uniquement (≠ scheduler / Hertz / budgets runtime ; S14 demeure ouvert).  
 **C-15**, **C-16**, **C-17** et **C-18** demeurent **VALIDÉ** comme contrats de **conception**. Leurs points **O5**, **P8**, **Q7**, **R5** et **R1–R8 / R11** restent **ouverts** et **inchangés**.  
 Les addenda C-03\* · C-06\* · C-09\* · C-10\* · C-13\* restent **fermés**.  
 S3 / Investor Demo restent **hors** exigence de sauvegarde monde (S13).
@@ -479,4 +479,4 @@ Ce contrat **VALIDÉ** **n’autorise pas** :
 
 ---
 
-*Fin C-19 — VALIDÉ. La clôture est documentaire. C-20 est VALIDÉ conception (UX save non implémentée). C-21 demeure non commencé. Case B demeure suspendu. Points ouverts O5, P8, Q7, R5 et R1–R8 / R11 conservés. Aucune implémentation runtime ni contrat suivant démarrés par cette clôture. Le suivi / compteur restent à l’étape 11.*
+*Fin C-19 — VALIDÉ. La clôture est documentaire. C-20 est VALIDÉ conception (UX save non implémentée). C-21 demeure VALIDÉ conception uniquement. Case B demeure suspendu. Points ouverts O5, P8, Q7, R5 et R1–R8 / R11 conservés. Aucune implémentation runtime ni contrat suivant démarrés par cette clôture. Le suivi / compteur restent à l’étape 11.*

@@ -261,8 +261,8 @@ Alors : **pas de contournement** ; documenter ; arbitrage humain avant reprise.
 | Élément | État |
 | --- | --- |
 | Plan | **Créé** (ce fichier) |
-| Implémentation | **Non démarrée** |
-| Prochaine action humaine | Ordonner T1 (ou contrôle/lecture du plan) |
+| Implémentation | **T1–T9 VALIDÉ** — cohorte S3 Cas A **clôturée** (9/9) |
+| Prochaine action humaine | Aucune tranche S3 suivante — aucun travail gameplay hors ordre explicite |
 
 ---
 

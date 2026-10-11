@@ -22,7 +22,7 @@ La clôture est **documentaire**. Elle **n’autorise pas** l’implémentation 
 
 **Case B** demeure **suspendu**.  
 **ODC-F9** n’est **pas** démarré par cette clôture.  
-**C-19** est **VALIDÉ** conception uniquement. **C-20** est **VALIDÉ** conception uniquement (UX non implémentée). **C-21** demeure **non commencé**.  
+**C-19** est **VALIDÉ** conception uniquement. **C-20** est **VALIDÉ** conception uniquement (UX non implémentée). **C-21** est **VALIDÉ** conception uniquement (≠ scheduler / Hertz / budgets runtime).  
 **C-15**, **C-16** et **C-17** demeurent **VALIDÉ** comme contrats de **conception** uniquement. Leurs points **O1–O9**, **P1–P10** et **Q1–Q12** restent **ouverts** et **inchangés**.  
 Les addenda C-03 · C-06 · C-09 · C-10 · C-13 restent **fermés**.  
 S3 / Investor Demo restent **hors** dépendance à Ages, à la recherche et aux déblocages DG-07 (Q7).
@@ -758,4 +758,4 @@ Ce contrat **VALIDÉ** **n’autorise pas** :
 
 ---
 
-*Fin C-18 — VALIDÉ. C-19 demeure non commencé. Case B demeure suspendu. Points ouverts R1–R8, R11, O1–O9, P1–P10 et Q1–Q12 C-17 conservés. Aucune implémentation DG-07 ni contrat suivant démarrés par cette clôture.*
+*Fin C-18 — VALIDÉ. C-19 et C-21 demeurent VALIDÉ conception uniquement. Case B demeure suspendu. Points ouverts R1–R8, R11, O1–O9, P1–P10 et Q1–Q12 C-17 conservés. Aucune implémentation DG-07 ni contrat suivant démarrés par cette clôture.*

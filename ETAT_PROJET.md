@@ -37,7 +37,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 - F1 shipping Base+Delta visual packaged encore à refaire (F8 prouve la **donnée**, pas le PMC)
 - Compact/Grade = alias industriels basiques
 - Sol / eau spatial = stubs · végétation / écosystème gameplay = absent
-- **Readiness :** F01·F02·F03 · **contrôle final PASS** · Plan de production S3 créé — **pas d’implémentation** ; code **uniquement sur ordre explicite** (DG-14.4 · tranche T1+)
+- **Readiness :** F01·F02·F03 · **contrôle final PASS** · Plan S3 + T1–T9 **VALIDÉ** · cohorte Cas A **clôturée** ; aucun travail gameplay hors ordre explicite (DG-14.4)
 ---
 
 ## Kit minimal de cohorte forestière — arbitré

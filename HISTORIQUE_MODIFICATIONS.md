@@ -64,7 +64,7 @@ F1 Terrain → F2 M4/UDS/UDW → **F3 Spatial** → **F4 Project/Task** → F5 A
 | ODC-F7 | **PASS (humain)** | `Saved/ODC_F7_LogisticsGate.txt` + PIE |
 | ODC-F8 | **PASS** | `Saved/ODC_F8_TerraformOperationGate.txt` |
 
-Prochain pas ODC : **F9 Infrastructure** (après validation humaine F8).
+Prochain pas ODC : **F1** (shipping Base+Delta) **À REFAIRE** — dettes C-01 E1–E7 ouvertes. **ODC-F9** non démarré (ordre explicite distinct ; C-14 = règles ≠ preuve F9).
 
 ---
 

@@ -10,7 +10,7 @@
 | **Nécessité** | **Requise** au compteur 16 (X2). `PARTIEL` dans le registre décrit la **couverture actuelle** (DG-13 + C6), **pas** une facultativité |
 | **Bloquant** | Oui — avant de déclarer une UX **produit** ou un HUD DG-13 **en service** (X9). **N’invalide pas** S3 / C6 |
 | **Dépendances amont (registre)** | **C-04** · **C-07** · **C-09** — C-04 et C-07 sont **VALIDÉS** ; C-09\* demeure addendum **fermé** (cité, non ouvert) |
-| **Voisinage opérationnel** | **DG-13** (13.1–13.5) · **C-11** (informations agrégées) · **C-18** (règle exprimable, R7) · **C-19** (S14, présentation save) · **C-21** (cadence, **non ouvert**) · PE / C6 (faits de preuve) |
+| **Voisinage opérationnel** | **DG-13** (13.1–13.5) · **C-11** (informations agrégées) · **C-18** (règle exprimable, R7) · **C-19** (S14, présentation save) · **C-21** (cadence, **VALIDÉ** conception) · PE / C6 (faits de preuve) |
 | **Références** | Registre C-20 · suivi C-20 · DG-13.1–13.5 · `00.6` V1–V4, H1, P1 · C-04 F1/F2 · C-07 J1/J2 · C-11 §12 · C-18 13.1, Q6, Q19, R7 · C-19 S8, S14, §16 · ETAT C6 · cadrage C-20 X1–X10 · L1–L3 |
 
 Ce document formalise le **cadrage observabilité / UX lisibilité déjà accepté** (décisions humaines X1–X10 et L1–L3).  
@@ -26,7 +26,7 @@ Trois plans sont **distingués** partout dans ce contrat :
 
 **Case B** demeure **suspendu**.  
 **ODC-F9** n’est **pas** démarré.  
-**C-21** demeure **non ouvert**.  
+**C-21** est **VALIDÉ** conception uniquement (≠ scheduler / Hertz / budgets runtime).  
 **C-19** demeure **VALIDÉ** comme contrat de **conception** ; persist runtime **OFF**.  
 **C-15**, **C-16**, **C-17** et **C-18** demeurent **VALIDÉ** comme contrats de **conception**. Leurs points ouverts restent **inchangés**.  
 Les addenda C-03\* · C-06\* · C-09\* · C-10\* · C-13\* restent **fermés**.  
@@ -326,7 +326,7 @@ Ces travaux exigent une **autorisation humaine distincte**.
 | Eau / sol / éco (vérité) | **C-15** / **C-16** / **C-17** |
 | Autorisation / déblocage | **C-18** / DG-07 |
 | Politique persist / load / migration | **C-19** |
-| Cadence / Hertz / budgets | **C-21** (non ouvert) |
+| Cadence / Hertz / budgets | **C-21** (VALIDÉ conception) |
 | Investor Demo | **C-22** (non requis) |
 | Rendu M4 | **C-23** / vendor |
 | Exigences de lisibilité fondatrices | **DG-13** (inchangé) |
@@ -375,7 +375,7 @@ Reprise du cadrage, plus les précisions confirmées :
 | **R7 C-18** | Wording HUD de disponibilité / verrou **implémenté** | C-18 laisse R7 ouvert. C-20 porte la présentation de conception, **pas** le wording figé ni le code. |
 | **O1–O9, P1–P10, Q1–Q12** | Données eau / sol / éco | Présentation **conditionnelle** (X8). Points **inchangés**. |
 | **R1–R8, R11** hors le renvoi R7 | Catalogue, coûts, Hertz recherche, cycle tâches | **Inchangés**. R6 / cadence = C-21. |
-| **C-21** | Fréquences / Hertz | **Non ouvert**. |
+| **C-21** | Fréquences / Hertz | **VALIDÉ** conception uniquement ; chiffres O-FREQ / Hertz **ouverts**. |
 | Textes / layout / widgets | DG-13.4 / 13.5 | **Hors** contrat. |
 | Preuve UX produit | X9 | Travail **futur**, non autorisé ici. |
 
@@ -430,7 +430,7 @@ Critères **documentaires** de ce contrat — pas des preuves runtime :
 | Faits | Tous renvoyés à un propriétaire déjà exposable |
 | UI | Aucun layout / widget / couleur / Hertz |
 | Preuves | S3 / C6 non invalidés ; HUD / smokes / Demo ≠ UX produit |
-| Voisins | Non modifiés ; addenda fermés ; C-21 fermé |
+| Voisins | Non modifiés ; addenda fermés ; C-21 VALIDÉ conception |
 | Dettes | Signalées §19, non corrigées |
 
 Validation humaine **finale** enregistrée. Clôture **documentaire** (étape 10).  
@@ -472,4 +472,4 @@ Ce contrat **VALIDÉ** **n’autorise pas** :
 
 ---
 
-*Fin C-20 — VALIDÉ. La clôture est documentaire. C-21 demeure non ouvert. Case B demeure suspendu. R7 C-18 et O1–O9 / P1–P10 / Q1–Q12 conservés. Aucune implémentation UX ni contrat suivant démarrés par cette clôture. Le suivi / compteur restent à l’étape 11.*
+*Fin C-20 — VALIDÉ. La clôture est documentaire. C-21 demeure VALIDÉ conception uniquement. Case B demeure suspendu. R7 C-18 et O1–O9 / P1–P10 / Q1–Q12 conservés. Aucune implémentation UX ni contrat suivant démarrés par cette clôture. Le suivi / compteur restent à l’étape 11.*

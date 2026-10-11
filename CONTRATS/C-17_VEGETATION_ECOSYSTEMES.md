@@ -18,7 +18,7 @@ Il constitue la **règle officielle de conception** C-17 après validation humai
 La clôture est **documentaire**. Elle **n’autorise pas** l’implémentation d’une simulation écologique, ni le démarrage de C-18, ni une preuve runtime de végétation / état écologique, ni l’implémentation hydrologique ou de sol.
 
 **Case B** demeure **suspendu**.  
-**C-18** demeure **non commencé**.  
+**C-18** est **VALIDÉ** conception uniquement (≠ runtime DG-07).  
 **C-15** et **C-16** demeurent **VALIDÉ** comme contrats de **conception** uniquement. Leurs points **O1–O9** et **P1–P10** restent **ouverts** et **inchangés**.  
 **ODC-F9** n’est **pas** démarré par cette clôture.  
 Les addenda C-03 · C-06 · C-09 · C-10 · C-13 restent **fermés**.
@@ -515,4 +515,4 @@ Ce contrat **VALIDÉ** **n’autorise pas** :
 
 ---
 
-*Fin C-17 — VALIDÉ. C-18 demeure non commencé. Case B demeure suspendu. Points ouverts Q1–Q12, O1–O9 et P1–P10 conservés. Aucune implémentation écologique ni contrat suivant démarrés par cette clôture.*
+*Fin C-17 — VALIDÉ. C-18 demeure VALIDÉ conception uniquement. Case B demeure suspendu. Points ouverts Q1–Q12, O1–O9 et P1–P10 conservés. Aucune implémentation écologique ni contrat suivant démarrés par cette clôture.*
