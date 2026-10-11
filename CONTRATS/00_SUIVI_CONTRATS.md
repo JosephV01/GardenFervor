@@ -70,8 +70,8 @@ Périmètre compté = contrats pour lesquels le registre exige un **contrat auto
 | ID concernés | C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 |
 | --- | --- |
 | Total à créer/valider | **16** |
-| Contrats dédiés VALIDÉS | **15** |
-| Progression validation | **15 / 16** |
+| Contrats dédiés VALIDÉS | **16** |
+| Progression validation | **16 / 16** |
 
 *(Les `SUFFISANT*` et `NON REQUIS` sont suivis dans le tableau mais exclus du dénominateur tant qu’aucun addendum / contrat dédié n’est ouvert.)*
 
@@ -82,8 +82,8 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 | ID | Nom | Ordre | Contrat requis | Couverture existante | Audit | Décisions | Rédaction | Revue | Validation | Statut | Bloquant | Notes |
 | -- | --- | ----: | -------------- | -------------------- | ----- | --------- | --------- | ----- | ---------- | ------ | -------- | ----- |
 | C-00 | Cadre / invariants fondateurs | — | non | suffisante | n/a | n/a | n/a | n/a | n/a | NON COMMENCÉ | non | Pas de contrat dédié (DG-00) |
-| C-01 | Terrain runtime | 1 | oui | partielle | OK | OK | OK | **EN COURS** | — | **REVUE** | oui | Rédigé ; validation humaine finale **refusée / non acquise** (2026-10-08) ; **non VALIDÉ** ; écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil\|Water, lexique) |
-| C-02 | Substrat spatial | 2 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement (2026-10-08) ; 31/31 A1–F3 ; audit final PASS ; clôture formelle étape 10 ; C-01 demeure REVUE |
+| C-01 | Terrain runtime | 1 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement (2026-10-11) ; D1–D14 ; audit final PASS ; clôture formelle étape 10 ; clôture **documentaire** ≠ conformité runtime ; dettes E1–E7 ouvertes ; E8 lexique conservé ; Case B suspendu |
+| C-02 | Substrat spatial | 2 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement (2026-10-08) ; 31/31 A1–F3 ; audit final PASS ; clôture formelle étape 10 ; C-01 désormais VALIDÉ |
 | C-03 | Projet / Intention | 3* | addendum* | suffisante | — | — | — | — | — | NON COMMENCÉ | non* | S3 suffisant ; pas VALIDÉ dédié |
 | C-04 | Tâches / graphe / dépendances | 4 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 48/48 A1–K6 ; audit final PASS ; dettes d’implémentation conservées |
 | C-05 | WorkSite / SitePrep | 5 | oui | partielle | OK | OK | OK | OK | OK | **VALIDÉ** | oui | Validé humainement ; 62/62 A1–N3 ; audit final PASS ; Case B reste suspendu ; dettes d’implémentation conservées |
@@ -114,24 +114,23 @@ Légende progression : `—` = non commencé · `OK` = terminé · `EN COURS` ·
 
 ```text
 Contrat actuel : aucun
-Dernier validé : C-21
+Dernier validé : C-01
 ```
 
-**C-21 — VALIDÉ** (clôture formelle — contrat de conception uniquement)
+**C-01 — VALIDÉ** (clôture formelle — documentaire ; ≠ conformité d’implémentation)
 
 | Étape | État |
 | --- | --- |
 | Audit préparatoire / inspection code | **terminé** |
-| Décisions | **prises** — cadrage **T1 + B1–B8** |
-| Rédaction | **terminée** — `CONTRATS/C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md` |
-| Revue / audit contrat | **terminé** (étape 6 · corrections étape 7 · audit final PASS) |
-| Validation | **acquise** — validation humaine explicite |
+| Décisions | **prises** — **D1–D14** inchangées |
+| Rédaction | **terminée** — `CONTRATS/C-01_TERRAIN_RUNTIME.md` |
+| Revue / audit contrat | **terminé** (corrections L21 · E8 · L283 · audit final étape 8 PASS) |
+| Validation | **acquise** — validation humaine explicite (2026-10-11) ; clôture formelle étape 10 |
 
-**C-02**, **C-04**, **C-05**, **C-07**, **C-08**, **C-11**, **C-12**, **C-14**, **C-15**, **C-16**, **C-17**, **C-18**, **C-19**, **C-20** et **C-21** restent **VALIDÉ**.  
-**C-01** demeure **REVUE** / **non VALIDÉ** (validation humaine finale refusée le 2026-10-08).  
+**C-01**, **C-02**, **C-04**, **C-05**, **C-07**, **C-08**, **C-11**, **C-12**, **C-14**, **C-15**, **C-16**, **C-17**, **C-18**, **C-19**, **C-20** et **C-21** sont **VALIDÉ**.  
 **C-03** reste addendum fermé (NON COMMENCÉ / hors compteur).  
 **C-06\***, **C-09\***, **C-10\*** et **C-13\*** restent addenda fermés (SUFFISANT\* / hors compteur).  
-C-21 = conception uniquement (≠ scheduler / Hertz / budgets runtime). Case B reste **suspendu**. ODC-F9 **non démarré**. Aucune implémentation écologique, sol, hydrologique, progression DG-07, persistance runtime, UX produit ni cadence. O6, P9, C-17 Q8, R6, O-FREQ, O-OVER, O-EXC, O-INST, O-SCALE, R1–R8, R11, Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts.
+C-01 = règle officielle documentaire ; dettes E1–E7 **ouvertes** ; E8 lexique conservé. C-21 = conception uniquement (≠ scheduler / Hertz / budgets runtime). Case B reste **suspendu**. ODC-F9 **non démarré**. Aucune implémentation écologique, sol, hydrologique, progression DG-07, persistance runtime, UX produit ni cadence. O6, P9, C-17 Q8, R6, O-FREQ, O-OVER, O-EXC, O-INST, O-SCALE, R1–R8, R11, Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts.
 
 ---
 
@@ -139,11 +138,11 @@ C-21 = conception uniquement (≠ scheduler / Hertz / budgets runtime). Case B r
 
 ```text
 Contrat en cours : aucun (aucune rédaction ouverte)
-Prochain contrat requis au compteur 16 : C-01 (REVUE — non VALIDÉ)
+Prochain contrat requis au compteur 16 : aucun (16 / 16)
 ```
 
-**15 / 16** contrats dédiés requis sont **VALIDÉ**. **C-01** reste **REVUE** / **non VALIDÉ**. C-21 est **VALIDÉ** (conception uniquement) — **n’autorise pas** l’implémentation d’un scheduler, de Hertz ou de budgets.  
-La reprise de la validation C-01 exige une **autorisation humaine distincte** — **ne pas** la relancer automatiquement.  
+**16 / 16** contrats dédiés requis sont **VALIDÉ**. **C-01** est **VALIDÉ** (clôture documentaire ; dettes E1–E7 ouvertes ; ≠ conformité runtime). C-21 est **VALIDÉ** (conception uniquement) — **n’autorise pas** l’implémentation d’un scheduler, de Hertz ou de budgets.  
+**Ne pas** ouvrir automatiquement un addendum ni un contrat suivant.  
 C-22 et C-23 restent **NON REQUIS** (présentation) — **ne pas** en faire des contrats gameplay.  
 C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registre §5) — **ne pas les ouvrir** automatiquement. Case B reste **suspendu** (réactivation = autorisation explicite distincte). ODC-F9 reste **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique, déblocage DG-07, persistance runtime, UX produit ni cadence.
 
@@ -193,7 +192,8 @@ C-03, C-06, C-09, C-10 et C-13 restent des addenda `SUFFISANT*` fermés (registr
 | 2026-10-10 | C-21 | NON COMMENCÉ | **VALIDÉ** | Validation humaine explicite ; cadrage T1 + B1–B8 ; audit final PASS ; contrat de conception uniquement ; O6, P9, C-17 Q8, R6, O-FREQ / O-OVER / O-EXC / O-INST / O-SCALE conservés ; compteur alors annoncé **16 / 16** (incluant C-01 à tort) |
 | 2026-10-11 | C-01 | VALIDÉ (déclaré) | **REVUE** | Correction documentaire : trace humaine du 2026-10-08 = C-01 **non validé**, maintenu en revue ; **non VALIDÉ** ; compteur **15 / 16** |
 | 2026-10-11 | C-02 | VALIDÉ (suivi) | **VALIDÉ** | Étape 10 appliquée au fichier : REVUE/DRAFT → **VALIDÉ** ; 31/31 A1–F3 ; C-01 demeure REVUE |
+| 2026-10-11 | C-01 | REVUE | **VALIDÉ** | Validation humaine explicite ; D1–D14 ; audit final PASS ; clôture formelle étape 10 ; documentaire ≠ conformité runtime ; dettes E1–E7 ouvertes ; compteur **16 / 16** |
 
 ---
 
-*Fin du suivi — C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20·C-21 VALIDÉS ; C-01 REVUE / non VALIDÉ ; compteur 15/16 ; Case B suspendu ; C-03·C-06·C-09·C-10·C-13 addenda fermés ; aucune implémentation écologique, DG-07, persist runtime, UX produit ni cadence.*
+*Fin du suivi — C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20·C-21 VALIDÉS ; compteur 16/16 ; Case B suspendu ; C-03·C-06·C-09·C-10·C-13 addenda fermés ; aucune implémentation écologique, DG-07, persist runtime, UX produit ni cadence.*

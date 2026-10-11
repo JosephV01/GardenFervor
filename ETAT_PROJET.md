@@ -1,11 +1,11 @@
 # GardenFervor — État projet (baseline)
 
-Dernière mise à jour : **2026-10-11** (roadmap globale **1.0.13** réconciliée)  
+Dernière mise à jour : **2026-10-11** (clôture documentaire C-01 · compteur **16 / 16**)  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (inventaire sync) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
 
-**Contrats opérationnels :** C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = **VALIDÉ** · **C-01 = REVUE / non VALIDÉ** · progression **15 / 16** · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation écologique, sol, hydrologique, progression DG-07, persistance runtime, UX produit ni cadence**. C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = conception uniquement (≠ runtime). C-18 : Ages / `RequiredAge` / FWSG = legacy isolé. C-19 : persist OFF ; ≠ flags / SaveGame / F1. C-20 : HUD existant = dette ; ≠ UX produit / HUD DG-13. C-21 : pas de scheduler / Hertz / budgets runtime.
+**Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = **VALIDÉ** · progression **16 / 16** · C-01 = clôture **documentaire** (dettes E1–E7 ouvertes ; ≠ conformité runtime) · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation écologique, sol, hydrologique, progression DG-07, persistance runtime, UX produit ni cadence**. C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = conception uniquement (≠ runtime). C-18 : Ages / `RequiredAge` / FWSG = legacy isolé. C-19 : persist OFF ; ≠ flags / SaveGame / F1. C-20 : HUD existant = dette ; ≠ UX produit / HUD DG-13. C-21 : pas de scheduler / Hertz / budgets runtime.
 
-**Roadmap globale :** SoT `ROADMAP/GardenFervor_ROADMAP.md` (v**1.0.13**) alignée sur C-01 **REVUE** · C-21 **VALIDÉ** conception · compteur **15 / 16**. Distincte de la roadmap S3 (`Plan de production/Roadmap`).
+**Roadmap globale :** SoT `ROADMAP/GardenFervor_ROADMAP.md` (v**1.0.13**) encore alignée sur l’ancien compteur **15 / 16** (C-01 REVUE) — synchronisation roadmap **hors** étape 11. Distincte de la roadmap S3 (`Plan de production/Roadmap`).
 
 ---
 
@@ -92,8 +92,8 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 - 00.1–00.7 + sous-items 00.5 (S→X) + 00.6 (V→P) : tous VALIDÉ
 - **00.5.W1** : formulation clarifiée (horizon fondateur + ambition hydrologique à long terme) — **confirmation humaine d’impact acquise** ; Hub local `docs/design-gate.html` aligné et vérifié ; clôture documentaire ; W2·W3·W4·X1·X2 inchangés
 - **Présentation client :** 10 illustrations 2026-10-10 intégrées (WebP) ; capture S3 réelle conservée
-- **C-01 Terrain runtime :** **REVUE** / **non VALIDÉ** (validation humaine finale refusée le 2026-10-08) — fichier en revue ; pas de clôture
-- **C-02 Substrat spatial :** **VALIDÉ** (31/31 A1–F3 ; audit PASS ; clôture formelle étape 10) — C-01 demeure REVUE
+- **C-01 Terrain runtime :** **VALIDÉ** (validation humaine 2026-10-11 ; D1–D14 ; audit du contrat PASS ; clôture formelle étape 10) — documentaire ≠ conformité runtime ; dettes E1–E7 ouvertes ; E8 lexique conservé
+- **C-02 Substrat spatial :** **VALIDÉ** (31/31 A1–F3 ; audit PASS ; clôture formelle étape 10) — C-01 désormais VALIDÉ
 - **C-15 Hydrologie :** **VALIDÉ** (cadrage A–G ; audit après correction PASS ; O1–O9 conservés) — **≠** simulation runtime
 - **C-16 Sol :** **VALIDÉ** (cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; P1–P10 conservés) — **≠** simulation runtime
 - **C-17 Végétation / écosystèmes :** **VALIDÉ** (cadrage A1–K1 ; audit final PASS ; contrat de conception uniquement ; Q1–Q12, O1–O9 C-15 et P1–P10 C-16 conservés) — **≠** simulation runtime
@@ -147,7 +147,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 
 ## Prochain pas
 
-1. Contrats : **15 / 16** VALIDÉS · **C-01 demeure REVUE / non VALIDÉ** · C-02 **VALIDÉ** (clôture formelle) · C-21 **VALIDÉ** (conception uniquement) — **ne pas** relancer la validation C-01 sans ordre explicite ; **aucune implémentation** écologique, sol, hydrologique, déblocage DG-07, persistance runtime, UX produit ni cadence ; O6, P9, C-17 Q8, R6, O-FREQ / O-OVER / O-EXC / O-INST / O-SCALE, R1–R8, R11, Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; C-22·C-23 **NON REQUIS** ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
+1. Contrats : **16 / 16** VALIDÉS · **C-01 VALIDÉ** (clôture documentaire ; dettes E1–E7 ouvertes ; ≠ conformité runtime) · C-02 **VALIDÉ** · C-21 **VALIDÉ** (conception uniquement) — **ne pas** ouvrir un addendum ni un contrat suivant sans ordre explicite ; **aucune implémentation** écologique, sol, hydrologique, déblocage DG-07, persistance runtime, UX produit ni cadence ; O6, P9, C-17 Q8, R6, O-FREQ / O-OVER / O-EXC / O-INST / O-SCALE, R1–R8, R11, Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; C-22·C-23 **NON REQUIS** ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
 2. Cohorte S3 Cas A terminée — **aucun travail gameplay supplémentaire** hors ordre explicite
 3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)
 4. **ODC-F9** Infrastructure lifecycle (sur ordre explicite — sans contourner DG ; C-14 = règles ≠ preuve F9)

@@ -4,7 +4,7 @@
 | --- | --- |
 | **ID** | C-01 |
 | **Nom** | Terrain runtime (vérité hauteur / shipping) |
-| **Statut documentaire** | **REVUE** — rédigé ; **non VALIDÉ** (validation humaine finale refusée / non acquise le 2026-10-08) |
+| **Statut documentaire** | **VALIDÉ** — validation humaine explicite (2026-10-11) ; audit du contrat D1–D14 PASS ; clôture formelle étape 10 |
 | **Profondeur** | Fondamentale (registre) |
 | **Ordre de rédaction** | 1 |
 | **Bloquant** | Oui (F1 shipping · vérité terrain · Cas B durable) |
@@ -12,13 +12,13 @@
 
 Ce document formalise les **décisions de cadrage déjà prises** pour C-01.  
 Il n’invente aucune règle de gameplay supplémentaire.  
-Il **n’est pas** une règle officielle : le statut documentaire reste **REVUE** / **non VALIDÉ**.
+Il constitue la **règle officielle** C-01 après validation humaine et clôture formelle. La clôture est **documentaire**. Elle n’autorise aucune implémentation et ne signifie pas que les dettes E1–E7 sont soldées.
 
 ---
 
 ## 1. Objet
 
-C-01 définit le contrat opérationnel du **relief du terrain** en runtime :
+Ce document validé décrit le périmètre du contrat relatif au relief du terrain en runtime. Il constitue la règle officielle C-01 (voir le statut documentaire ci-dessus).
 
 - quelle donnée fait autorité pour la hauteur ;
 - ce qu’une modification réussie garantit ;
@@ -280,7 +280,7 @@ Ce contrat est considéré **suffisant pour validation documentaire** lorsque :
 ## 14. Écarts constatés avec l’implémentation actuelle
 
 **Section informative uniquement.**  
-Le contrat décrit la règle validée ; l’implémentation actuelle **n’est pas** une preuve de conformité.  
+Ce document validé décrit la règle officielle. L’état de l’implémentation ne vaut pas preuve de conformité au contrat. Les dettes E1–E7 restent ouvertes.  
 Aucune correction n’est effectuée ici.
 
 | # | Écart | Preuve actuelle | Décision contractuelle |
@@ -292,7 +292,7 @@ Aucune correction n’est effectuée ici.
 | E5 | Affichage packaged : store mesurable, visual Landscape surtout PIE (F1 INVALIDÉ) | ODC-F1 INVALIDÉ · ODC-F8 · ETAT | D3 : shipping doit être visible — écart ouvert (pas de techno imposée) |
 | E6 | Persistance terrain désactivée ; `LoadRuntimeTerraform` skip | Settings + code | D12 : persistable + responsabilité C-19 — capacité/politique encore ouvertes |
 | E7 | Enum technique `Raise` / `Lower` / `Paint` ; Compact = alias Lower côté agent | Types + `UnitTaskAgent` | D13 : Creuser / Remblayer / Aplanir = intentions métier ; mapping technique hors invention C-01 |
-| E8 | Vocabulaire doc/code « Raise/Lower/Paint » vs décisions « Creuser/Remblayer/Aplanir » | DG-08 · code · décisions C-01 | **Contradiction lexicale signalée** — non arbitrée ici ; C-01 conserve les termes métier décidés (D13) ; le mapping technique reste à l’implémentation sans changer D13 |
+| E8 | Vocabulaire doc/code « Raise/Lower/Paint » vs décisions « Creuser/Remblayer/Aplanir » | DG-08 · code · décisions C-01 | Écart de vocabulaire entre le code et les décisions métier : Raise/Lower/Paint désignent les mécanismes techniques ; Creuser/Remblayer/Aplanir désignent les intentions métier définies en D13. Leurs règles métier détaillées relèvent de C-08. C-01 ne définit pas leur mapping opérationnel. |
 
 ---
 
@@ -305,4 +305,4 @@ Aucune correction n’est effectuée ici.
 
 ---
 
-*Fin C-01 — document en REVUE, non VALIDÉ. Aucune clôture formelle. Aucune validation humaine finale.*
+*Fin C-01 — VALIDÉ. Clôture documentaire. Case B demeure suspendu. Les écarts E1–E7 restent des dettes d’implémentation. Cette clôture n’autorise aucune implémentation supplémentaire.*

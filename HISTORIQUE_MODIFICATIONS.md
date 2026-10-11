@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-11 — ROADMAP-1.0.13**.
+Dernière entrée historique : **2026-10-11 — C-01-CLOSE**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-11 — C-01-CLOSE — Terrain runtime VALIDÉ (clôture documentaire)
+
+- **Intention :** synchroniser le suivi après clôture formelle de C-01 (validation humaine étape 9 + étape 10 PASS).
+- **Statut :** C-01 = **VALIDÉ** · clôture **documentaire** ≠ conformité runtime · dettes E1–E7 **ouvertes** · E8 lexique conservé · D1–D14 inchangées · compteur **16 / 16** · **pas de code gameplay** · Case B **suspendu** · addenda fermés
+- **Décisions :** aucune décision métier ajoutée ou retirée
+- **Fichiers :** `CONTRATS/C-01_TERRAIN_RUNTIME.md` (étape 10 déjà appliquée) · `CONTRATS/00_SUIVI_CONTRATS.md` · `CONTRATS/00_REGISTRE_CONTRATS.md` · `ETAT_PROJET.md` · `HISTORIQUE_MODIFICATIONS.md`
+- **Design Gate :** aucune modification (hors périmètre étape 11)
+- **Suite :** étapes 12–14 (commit / push / arrêt) **non exécutées** — en attente d’autorisation distincte
 
 ### 2026-10-11 — ROADMAP-1.0.13 — Réconciliation de la roadmap globale
 

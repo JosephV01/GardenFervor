@@ -70,7 +70,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 | ID | Système | Contrat | Profondeur | Doc actuelle | État code | Dépendances amont | Bloquant | Ordre |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | C-00 | Cadre / invariants fondateurs | NON REQUIS | — | DG-00 VALIDÉ | I | — | non | — |
-| C-01 | Terrain runtime (vérité hauteur / shipping) | REQUIS | fondamentale | DG-08 · ODC-F1 À REFAIRE · **C-01 REVUE / non VALIDÉ** | P | C-00 | **oui** | 1 |
+| C-01 | Terrain runtime (vérité hauteur / shipping) | REQUIS | fondamentale | DG-08 · ODC-F1 À REFAIRE · **C-01 VALIDÉ** | P | C-00 | **oui** | 1 |
 | C-02 | Substrat spatial (cellules / dirty / queries) | PARTIEL→REQUIS | détaillée | DG-08/09 · ODC-F3 PASS stubs · **C-02 VALIDÉ** | P | C-01 | **oui** | 2 |
 | C-03 | Projet / Intention→Project | SUFFISANT* | secondaire | DG-01/11 · C4 · T6 | I (S3) | C-00 | non* | 3* |
 | C-04 | Tâches / graphe / dépendances | PARTIEL | détaillée | DG-11 · ODC-F4 · **C-04 VALIDÉ** | I (S3) | C-03 | **oui** | 4 |
@@ -116,7 +116,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 - **Rôle :** vérité hauteur / paint runtime ; shipping Base+Delta (cible F1) vs interim LandscapeEdit.
 - **État code :** **partiel** (F8 données OK ; F1 shipping **À REFAIRE** ; PMC inactif).
 - **Doc :** DG-08 VALIDÉ (concept) ; ODC-F1 incompleté opérationnellement pour shipping.
-- **État :** **REVUE** / **non VALIDÉ** — `CONTRATS/C-01_TERRAIN_RUNTIME.md` · validation humaine finale refusée le 2026-10-08 · pas de clôture formelle.
+- **État :** **VALIDÉ** — `CONTRATS/C-01_TERRAIN_RUNTIME.md` · validation humaine explicite (2026-10-11) · D1–D14 · audit du contrat PASS · clôture formelle étape 10 · clôture **documentaire** ≠ conformité runtime · dettes E1–E7 ouvertes · E8 lexique conservé · Case B suspendu.
 - **Contrat autonome :** **oui — fondamentale**.
 - **Manque opérationnel :** vérité packaged vs PIE ; qui écrit quoi (store vs Landscape) ; dirty Spatial ; ce que « fin d’op terrain » garantit pour le gameplay.
 - **Amont :** C-00 · **Aval :** C-02 · C-05 · C-08 · C-15…C-17 · C-19.
@@ -129,9 +129,9 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 - **Sous-systèmes :** `SpatialSubsystem` · cells · dirty · QuerySoil/Water stubs.
 - **État :** F3 PASS mais soil/water = stubs.
 - **Doc :** partielle (DG-08/09 + F3) ; comportements environnementaux non liés.
-- **État :** **VALIDÉ** — `CONTRATS/C-02_SUBSTRAT_SPATIAL.md` · 31/31 A1–F3 · audit PASS · clôture formelle étape 10 · C-01 demeure REVUE.
+- **État :** **VALIDÉ** — `CONTRATS/C-02_SUBSTRAT_SPATIAL.md` · 31/31 A1–F3 · audit PASS · clôture formelle étape 10 · C-01 désormais VALIDÉ.
 - **Contrat :** **requis détaillé** avant de brancher eco/infra sur queries.
-- **Amont :** C-01 (REVUE / non VALIDÉ) · **Aval :** C-14…C-17 · C-21.
+- **Amont :** C-01 (VALIDÉ) · **Aval :** C-14…C-17 · C-21.
 - **Bloquant :** **oui** dès qu’un système lit soil/water comme vérité.
 - **Ordre 2.**
 
@@ -257,7 +257,7 @@ Légende **État code** : `I` implémenté · `P` partiel · `V` prévu · `N` n
 
 - **État :** **VALIDÉ** — `CONTRATS/C-19_PERSISTANCE_SAUVEGARDE.md` · cadrage S1–S14 · L1–L3 · audit final PASS · contrat de conception uniquement · O5, P8, Q7, R5 ouverts · runtime persist **OFF** · ≠ activation flags / SaveGame / F1.
 - **Contrat :** **requis fondamentale** et **bloquant** avant shipping / F1 redo durable. **N’autorise pas** l’implémentation.
-- **Amont officiel :** C-01 `REVUE` / non VALIDÉ · C-09\* · C-03\* (addenda fermés, cités sans ouvrir).
+- **Amont officiel :** C-01 `VALIDÉ` · C-09\* · C-03\* (addenda fermés, cités sans ouvrir).
 - **Ordre 19.**
 
 ### C-20 — Observabilité / UX lisibilité
@@ -314,7 +314,7 @@ Ordre **par dépendances** (pas thématique). Les entrées marquées `\*` ne son
 | 20 | C-20 | Observabilité produit | Avant UX DG-13 complète |
 | 21 | C-21 | Simulation / fréquences | Avant scale perf |
 
-**Après C-21 :** C-21 est **VALIDÉ** (conception uniquement). **15 / 16** contrats dédiés requis sont **VALIDÉ**. **C-01** demeure **REVUE** / **non VALIDÉ**. **Ne pas** ouvrir les addenda C-03·C-06·C-09·C-10·C-13 automatiquement. C-22 et C-23 restent **NON REQUIS**. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique, déblocage DG-07, persistance runtime, UX produit ni cadence. Ne pas relancer la validation C-01 sans ordre explicite.
+**Après C-01 :** les **16 / 16** contrats dédiés requis sont **VALIDÉ**. **C-01** est **VALIDÉ** (clôture documentaire ; dettes E1–E7 ouvertes ; ≠ conformité runtime). C-21 reste **VALIDÉ** (conception uniquement). **Ne pas** ouvrir les addenda C-03·C-06·C-09·C-10·C-13 automatiquement. C-22 et C-23 restent **NON REQUIS**. ODC-F9 **non démarré** automatiquement. Aucune implémentation écologique, sol, hydrologique, déblocage DG-07, persistance runtime, UX produit ni cadence. Ne pas commencer un contrat suivant sans ordre explicite.
 
 ---
 
