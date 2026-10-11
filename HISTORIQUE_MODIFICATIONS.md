@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-11 — C-01-REVUE / C-02-CLOSE-FILE**.
+Dernière entrée historique : **2026-10-11 — ROADMAP-1.0.13**.
 
 ---
 
@@ -198,6 +198,16 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-11 — ROADMAP-1.0.13 — Réconciliation de la roadmap globale
+
+- **Intention :** aligner la roadmap globale sur l’état contractuel officiel (C-01 REVUE · C-02 VALIDÉ · C-21 VALIDÉ conception · compteur 15/16).
+- **Statut :** C-01 = **REVUE / non VALIDÉ** · C-02 = **VALIDÉ** · C-21 = **VALIDÉ** (conception uniquement ≠ cadence runtime) · compteur **15 / 16** · **pas de code gameplay** · Case B **suspendu**
+- **Décisions :** aucune décision de conception ajoutée ou retirée
+- **Fichiers :** `ROADMAP/GardenFervor_ROADMAP.md` · `ROADMAP/data/roadmap.data.json` · `ROADMAP/GardenFervor_ROADMAP.html` · `docs/roadmap-globale.html` · `ROADMAP/CHANGELOG.md` · `ROADMAP/scripts/validateRoadmap.mjs`
+- **Design Gate :** aucune modification
+- **Note :** l’entrée `2026-10-11 — C-01-REVUE / C-02-CLOSE-FILE` n’est pas réécrite (elle indiquait encore « étape 12 non exécutée ») ; cette entrée décrit l’état plus récent.
+- **Suite :** audit pré-push, puis autorisations d’indexation / commit / push — ne pas relancer la validation C-01 sans ordre explicite
 
 ### 2026-10-11 — C-01-REVUE / C-02-CLOSE-FILE — Correction des statuts C-01 / C-02
 

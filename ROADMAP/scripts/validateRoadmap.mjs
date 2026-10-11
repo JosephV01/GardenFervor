@@ -78,10 +78,14 @@ function main() {
   const suivi = fs.existsSync(path.join(REPO, 'CONTRATS/00_SUIVI_CONTRATS.md'))
     ? fs.readFileSync(path.join(REPO, 'CONTRATS/00_SUIVI_CONTRATS.md'), 'utf8')
     : '';
-  if (suivi.includes('C-01') && suivi.includes('**VALIDÉ**')) {
-    const c01 = data.phases.flatMap((p) => p.jalons || []).find((j) => j.id === 'P2.J1');
-    if (c01 && c01.status !== 'VALIDÉ') fail('Roadmap C-01 jalon not VALIDÉ but suivi says VALIDÉ');
-    else ok('C-01 status coherent with suivi');
+  const c01 = data.phases.flatMap((p) => p.jalons || []).find((j) => j.id === 'P2.J1');
+  if (c01) {
+    if (/C-01 demeure \*\*REVUE\*\*/.test(suivi) || /validation humaine finale \*\*refusée/.test(suivi)) {
+      if (c01.status !== 'REVUE') fail('Roadmap C-01 jalon should be REVUE (suivi: non VALIDÉ)');
+      else ok('C-01 status REVUE coherent with suivi');
+    } else if (c01.status === 'VALIDÉ') {
+      warn('C-01 jalon VALIDÉ — confirm against suivi (official state is REVUE)');
+    }
   }
   if (suivi.includes('C-02') && /C-02[\s\S]{0,200}\*\*VALIDÉ\*\*/.test(suivi)) {
     const c02 = data.phases.flatMap((p) => p.jalons || []).find((j) => j.id === 'P2.J2');
@@ -93,8 +97,8 @@ function main() {
   if (caseB && caseB.status !== 'SUSPENDU') warn('Case B expected SUSPENDU');
   else ok('Case B SUSPENDU');
 
-  if (data.next?.id !== 'next-c21') warn(`next expected next-c21, got ${data.next?.id}`);
-  else ok('next work is C-21 (not started)');
+  if (data.next?.id !== 'next-c01') warn(`next expected next-c01, got ${data.next?.id}`);
+  else ok('next work is C-01 (order of work, not validation)');
 
   if ((data.parseIssues || []).length) {
     for (const i of data.parseIssues) warn(`parse issue: ${i}`);

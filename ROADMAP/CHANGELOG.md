@@ -1,5 +1,12 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-11 — 1.0.13 — Réconciliation C-01 / C-21 / compteur
+
+- C-21 **VALIDÉ** conception (T1 + B1–B8) · **≠** scheduler / Hertz / budgets runtime.
+- C-01 demeure **REVUE / non VALIDÉ** (refus humain 2026-10-08) · compteur **15 / 16**.
+- Prochain à traiter = **C-01** = **ordre de travail**, pas une validation.
+- Régénération HTML / JSON depuis le Markdown.
+
 ## 2026-10-10 — 1.0.12 — Clôture C-20
 
 - C-20 VALIDÉ (cadrage X1–X10 · L1–L3) · progression contrats **15 / 16**.

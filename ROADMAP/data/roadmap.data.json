@@ -1,13 +1,13 @@
 {
   "meta": {
-    "version": "1.0.12",
-    "updated": "2026-10-10",
+    "version": "1.0.13",
+    "updated": "2026-10-11",
     "title": "GardenFervor — Roadmap globale",
-    "git_head_at_audit": "4d27f36",
-    "notes": "C-20 VALIDÉ conception · compteur 15/16 · C-21 non commencé. Distincte de Plan de production/Roadmap (cohorte S3)."
+    "git_head_at_audit": "0b93c92",
+    "notes": "C-21 VALIDÉ conception · compteur 15/16 · C-01 REVUE / non VALIDÉ · prochain à traiter = C-01 (ordre de travail, pas une validation). Distincte de Plan de production/Roadmap (cohorte S3)."
   },
   "now": {
-    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 15/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20 VALIDÉS) · C-21 non commencé · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré · aucune implémentation éco / sol / eau / DG-07 / persist runtime / UX produit",
+    "summary": "Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 15/16 (C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20·C-21 VALIDÉS · C-01 REVUE) · C-21 VALIDÉ conception ≠ cadence runtime · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré · aucune implémentation éco / sol / eau / DG-07 / persist runtime / UX produit / cadence",
     "conception": "VALIDÉ",
     "realisation": "PARTIELLE",
     "validation": "PARTIELLE",
@@ -19,13 +19,13 @@
     "odc_f1": "À REFAIRE"
   },
   "next": {
-    "id": "next-c21",
-    "title": "C-21 — Simulation / fréquences / perf",
-    "status": "À FAIRE",
-    "horizon": "Non commencé",
-    "note": "C-20 VALIDÉ conception (4d27f36). Ne pas démarrer C-21 sans ordre explicite. Pas d’implémentation UX / persist / F1 / DG-07. Addenda fermés. Case B suspendu. ODC-F9 non démarré.",
-    "depends": "C-20 VALIDÉ",
-    "unlocks": "cadences / Hertz (après C-21)"
+    "id": "next-c01",
+    "title": "C-01 — Terrain runtime (ordre de travail)",
+    "status": "REVUE",
+    "horizon": "Actuel",
+    "note": "C-01 demeure REVUE / non VALIDÉ. « Prochain à traiter » = ordre de travail, pas une validation. Ne pas relancer la validation C-01 sans autorisation distincte. C-21 VALIDÉ conception ≠ cadence runtime. Compteur 15/16. Addenda fermés. Case B suspendu. ODC-F9 non démarré.",
+    "depends": "—",
+    "unlocks": "rien automatiquement"
   },
   "phases": [
     {
@@ -131,13 +131,14 @@
           "id": "P2.J1",
           "phase": "P2",
           "title": "C-01 Terrain runtime",
-          "status": "VALIDÉ",
+          "status": "REVUE",
           "conception": "VALIDÉE",
           "realisation": "PARTIELLE",
-          "validation": "PASS",
+          "validation": "NON TERMINÉE",
           "depends": "P0",
           "unlocks": "P2.J2,P3",
           "sources": "CONTRATS/C-01_TERRAIN_RUNTIME.md",
+          "note": "REVUE / non VALIDÉ (refus humain 2026-10-08). ≠ clôture. ≠ relance automatique de validation.",
           "works": []
         },
         {
@@ -184,15 +185,15 @@
         {
           "id": "P2.J5",
           "phase": "P2",
-          "title": "Contrats reste du compteur (C-16…C-21)",
-          "status": "À FAIRE",
-          "conception": "À CONCEVOIR",
+          "title": "Contrats reste du compteur (C-11…C-21)",
+          "status": "VALIDÉ",
+          "conception": "VALIDÉE",
           "realisation": "PARTIELLE",
-          "validation": "NON TERMINÉE",
+          "validation": "PASS",
           "depends": "P2.J3,P2.J4",
           "unlocks": "P7,P8,P9,P10,P11,P13",
-          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-15_HYDROLOGIE.md",
-          "note": "C-16·C-17·C-18·C-19·C-20 VALIDÉS conception ; C-21 non commencé.",
+          "sources": "CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-15_HYDROLOGIE.md · CONTRATS/C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md",
+          "note": "C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20·C-21 VALIDÉS conception ; C-01 demeure REVUE (P2.J1) ; compteur 15/16.",
           "works": []
         }
       ]
@@ -508,6 +509,7 @@
           "title": "Simulation / fréquences / perf",
           "status": "À FAIRE",
           "sources": "C-21 · DG-00.5",
+          "note": "C-21 VALIDÉ conception ≠ implémentation scheduler / Hertz / budgets. Ce jalon reste le travail runtime.",
           "works": []
         },
         {
@@ -523,9 +525,9 @@
     }
   ],
   "generation": {
-    "generatedAt": "2026-10-10T16:25:39.637Z",
-    "mdHash": "48f438437dc58fa14482ad0dc1ffa14222e8e55f25fa3cc0cc7953dcae520f1a",
-    "git": "4d27f36",
+    "generatedAt": "2026-10-11T10:19:00.412Z",
+    "mdHash": "731197d5ff51dc7377e26260387aae1c726f010a6a95b49f2dd61fb54927baf3",
+    "git": "0b93c92",
     "source": "ROADMAP/GardenFervor_ROADMAP.md",
     "generator": "ROADMAP/scripts/buildRoadmap.mjs"
   },

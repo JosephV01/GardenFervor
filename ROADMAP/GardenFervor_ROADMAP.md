@@ -6,11 +6,11 @@ Balises machine : RM:META, RM:NOW, RM:NEXT, RM:PHASE, RM:JALON, RM:WORK
 -->
 
 <!--RM:META
-version: 1.0.12
-updated: 2026-10-10
+version: 1.0.13
+updated: 2026-10-11
 title: GardenFervor — Roadmap globale
-git_head_at_audit: 4d27f36
-notes: C-20 VALIDÉ conception · compteur 15/16 · C-21 non commencé. Distincte de Plan de production/Roadmap (cohorte S3).
+git_head_at_audit: 0b93c92
+notes: C-21 VALIDÉ conception · compteur 15/16 · C-01 REVUE / non VALIDÉ · prochain à traiter = C-01 (ordre de travail, pas une validation). Distincte de Plan de production/Roadmap (cohorte S3).
 -->
 
 # GardenFervor — Roadmap globale
@@ -34,7 +34,7 @@ notes: C-20 VALIDÉ conception · compteur 15/16 · C-21 non commencé. Distinct
 ## Où en est GardenFervor ?
 
 <!--RM:NOW
-summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 15/16 (C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20 VALIDÉS) · C-21 non commencé · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré · aucune implémentation éco / sol / eau / DG-07 / persist runtime / UX produit
+summary: Conception fondatrice VALIDÉE · première preuve S3 Cas A TERMINÉE · contrats opérationnels 15/16 (C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20·C-21 VALIDÉS · C-01 REVUE) · C-21 VALIDÉ conception ≠ cadence runtime · C-03·C-06·C-09·C-10·C-13 addenda fermés · Case B SUSPENDU · ODC-F9 non démarré · aucune implémentation éco / sol / eau / DG-07 / persist runtime / UX produit / cadence
 conception: VALIDÉ
 realisation: PARTIELLE
 validation: PARTIELLE
@@ -46,14 +46,13 @@ design_gate: VALIDÉ (DG-00→DG-14)
 odc_f1: À REFAIRE
 -->
 
-**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; les contrats jusqu’à C-20 sont VALIDÉS (C-15…C-20 = conception uniquement) ; C-20 n’autorise aucune implémentation UX / HUD DG-13 ; C-21 n’est pas commencé.
+**En une phrase :** le *quoi* du jeu est largement décidé ; une première chaîne de chantier simple est prouvée ; **15 / 16** contrats requis sont VALIDÉS (dernier = **C-21**, conception uniquement) ; **C-01** demeure **REVUE / non VALIDÉ** ; C-21 n’autorise aucune implémentation de scheduler / Hertz / budgets.
 
 ### Acquis confirmés
 
 - **Design Gate DG-00 → DG-14** : sections clôturées VALIDÉ (source : `ETAT_PROJET.md`).
 - **Cohorte S3 Cas A** : tranches T1–T9 **VALIDÉ** — chantier forestier sur terrain déjà prêt, jusqu’à « En service » (source : `ETAT_PROJET.md`, suivi production).
 - **Contrats opérationnels VALIDÉS :**
-  - **C-01** — vérité du terrain (hauteur runtime) ;
   - **C-02** — grille spatiale / zones modifiées / consultations ;
   - **C-04** — tâches / graphe / dépendances (**48/48** décisions) ;
   - **C-05** — WorkSite / SitePrep (**62/62** décisions) ;
@@ -64,10 +63,12 @@ odc_f1: À REFAIRE
   - **C-14** — Infrastructures lifecycle (**15/15** décisions) — règles métier formalisées ; ODC-F9 **non démarré** ; points ouverts §18 conservés.
   - **C-15** — Hydrologie (cadrage **A–G**) — règles formalisées ; stub `QueryWater` conservé ; **aucune implémentation** ; O1–O9 conservés.
   - **C-16** — Sol (cadrage **A1–K1**) — conception uniquement ; stub `QuerySoil` ; P1–P10 ouverts.
-  - **C-17** — Végétation / écosystèmes (cadrage **A1–K1**) — conception uniquement ; Q1–Q12 ouverts. Fichier local encore **non suivi Git**.
+  - **C-17** — Végétation / écosystèmes (cadrage **A1–K1**) — conception uniquement ; Q1–Q12 ouverts.
   - **C-18** — Technologie / progression (cadrage **Q1–Q31**) — conception uniquement ; Ages = legacy ; **aucune implémentation DG-07**.
   - **C-19** — Persistance / sauvegarde (cadrage **S1–S14** · **L1–L3**) — conception uniquement ; persist OFF ; **≠ flags / SaveGame / F1**.
   - **C-20** — Observabilité / UX lisibilité (cadrage **X1–X10** · **L1–L3**) — conception uniquement ; HUD = dette ; **≠ UX produit / HUD DG-13**.
+  - **C-21** — Cadences de simulation et budgets temporels (cadrage **T1 + B1–B8**) — conception uniquement ; **≠ scheduler / Hertz / budgets runtime**.
+- **C-01** — Terrain runtime : **REVUE / non VALIDÉ** (refus humain 2026-10-08). Présent au dénominateur 16 ; **non compté** parmi les 15 VALIDÉS. La reprise de validation exige une **autorisation humaine distincte**.
 - **Preuves techniques majeures (ODC) :** F2 présentation · F3 spatial · F4 tâches · F5 autonomie · F6 économie physique · F7 logistique · F8 opérations terrain — **PASS** (F5/F7 avec validation humaine).
 - **Investor Demo** : présentation et démonstration S3 présentes.
 - **Cartographie** : `PROJECT_GRAPH/` disponible (projection, pas SoT).
@@ -86,11 +87,13 @@ odc_f1: À REFAIRE
 ### Notes d’ordre
 
 - **C-03**, **C-06**, **C-09**, **C-10** et **C-13** restent des **addenda fermés** (suffisants pour S3) : **ne pas les ouvrir** sans besoin réel.
-- **Dernier VALIDÉ du compteur 16 = C-20** (ordre 20) — conception uniquement.
+- **Dernier VALIDÉ du compteur 16 = C-21** (ordre 21) — conception uniquement.
+- **C-01** demeure **REVUE / non VALIDÉ** — « prochain à traiter » = **ordre de travail**, pas une validation.
 - **C-15 / C-16 / C-17 / C-18 VALIDÉ ≠** simulation environnementale ni déblocages DG-07 runtime.
 - **C-18 VALIDÉ ≠** implémentation recherche / Ages. Ages = legacy.
 - **C-19 VALIDÉ ≠** activation persist / SaveGame / F1.
 - **C-20 VALIDÉ ≠** UX produit / HUD DG-13 en service.
+- **C-21 VALIDÉ ≠** scheduler / Hertz / budgets runtime.
 - **ODC-F9** reste **non démarré** (C-14 VALIDÉ ≠ preuve F9).
 
 ---
@@ -98,31 +101,31 @@ odc_f1: À REFAIRE
 ## Prochain travail autorisé
 
 <!--RM:NEXT
-id: next-c21
-title: C-21 — Simulation / fréquences / perf
-status: À FAIRE
-horizon: Non commencé
-note: C-20 VALIDÉ conception (4d27f36). Ne pas démarrer C-21 sans ordre explicite. Pas d’implémentation UX / persist / F1 / DG-07. Addenda fermés. Case B suspendu. ODC-F9 non démarré.
-depends: C-20 VALIDÉ
-unlocks: cadences / Hertz (après C-21)
+id: next-c01
+title: C-01 — Terrain runtime (ordre de travail)
+status: REVUE
+horizon: Actuel
+note: C-01 demeure REVUE / non VALIDÉ. « Prochain à traiter » = ordre de travail, pas une validation. Ne pas relancer la validation C-01 sans autorisation distincte. C-21 VALIDÉ conception ≠ cadence runtime. Compteur 15/16. Addenda fermés. Case B suspendu. ODC-F9 non démarré.
+depends: —
+unlocks: rien automatiquement
 -->
 
-### Prochain autorisé — C-21 : simulation / fréquences / perf
+### Prochain à traiter — C-01 : terrain runtime (ordre de travail)
 
-**Statut :** NON COMMENCÉ  
-**Horizon :** Non commencé  
-**En langage simple :** C-20 est la règle de conception de l’observabilité / UX. C-21 est le prochain contrat requis. Il n’est pas ouvert.
+**Statut :** REVUE / **non VALIDÉ**  
+**Horizon :** Actuel  
+**En langage simple :** C-21 est déjà VALIDÉ (conception uniquement). Il reste **C-01** au compteur 16. « Prochain à traiter » décrit l’**ordre de travail** — ce n’est **pas** une validation de C-01, ni une relance automatique.
 
 | | |
 | --- | --- |
-| Prérequis | C-20 VALIDÉ (conception) · addenda C-03/C-06/C-09/C-10/C-13 fermés |
-| Débloque | rien tant que C-21 n’est pas ouvert |
-| Ne pas faire maintenant | démarrer C-21 · implémenter un HUD / UX produit · activer persist / SaveGame / F1 · implémenter DG-07 · ouvrir les addenda · Case B · ODC-F9 |
+| Prérequis | C-21 déjà VALIDÉ (conception) · addenda C-03/C-06/C-09/C-10/C-13 fermés |
+| Débloque | rien automatiquement — clôture C-01 seulement après validation humaine distincte |
+| Ne pas faire maintenant | relancer la validation C-01 sans ordre · implémenter un scheduler / Hertz / budgets · implémenter un HUD / UX produit · activer persist / SaveGame / F1 · implémenter DG-07 · ouvrir les addenda · Case B · ODC-F9 |
 
 ### Travaux ultérieurs (non autorisés comme « en cours »)
 
-1. **C-21** — seulement sur ordre explicite.
-2. **Ensuite** : dettes F1, ODC-F9 (sur ordre), persist runtime — et **seulement sur ordre** reprise Case B.
+1. **C-01** — ordre de travail seulement ; validation / clôture **uniquement** sur autorisation humaine distincte.
+2. **Ensuite** : dettes F1, ODC-F9 (sur ordre), persist runtime, cadence runtime — et **seulement sur ordre** reprise Case B.
 
 ---
 
@@ -306,7 +309,7 @@ sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/00_SUIVI_CONTRATS.md
 
 ## Phase P2 — Contrats opérationnels
 
-**Statut :** EN COURS · **Horizon :** Actuel · Progression documentaire **3 / 16**
+**Statut :** EN COURS · **Horizon :** Actuel · Progression documentaire **15 / 16**
 
 Transformer les décisions de conception en **règles d’exécution** assez précises pour construire la suite sans inventer.
 
@@ -314,18 +317,19 @@ Transformer les décisions de conception en **règles d’exécution** assez pr�
 id: P2.J1
 phase: P2
 title: C-01 Terrain runtime
-status: VALIDÉ
+status: REVUE
 conception: VALIDÉE
 realisation: PARTIELLE
-validation: PASS
+validation: NON TERMINÉE
 depends: P0
 unlocks: P2.J2,P3
 sources: CONTRATS/C-01_TERRAIN_RUNTIME.md
+note: REVUE / non VALIDÉ (refus humain 2026-10-08). ≠ clôture. ≠ relance automatique de validation.
 -->
 
 ### Jalon P2.J1 — C-01 Terrain runtime
 
-**Statut :** VALIDÉ (contrat) · réalisation encore **partielle** (dettes F1, persistance, dirty eau/sol…).
+**Statut :** **REVUE / non VALIDÉ** (refus humain 2026-10-08) · réalisation encore **partielle** (dettes F1, persistance, dirty eau/sol…). Ce jalon n’est **pas** une validation.
 
 <!--RM:JALON
 id: P2.J2
@@ -392,15 +396,15 @@ note: C-05·C-07·C-08 VALIDÉS documentairement ; métier Terraform formalisé 
 <!--RM:JALON
 id: P2.J5
 phase: P2
-title: Contrats reste du compteur (C-16…C-21)
-status: À FAIRE
-conception: À CONCEVOIR
+title: Contrats reste du compteur (C-11…C-21)
+status: VALIDÉ
+conception: VALIDÉE
 realisation: PARTIELLE
-validation: NON TERMINÉE
+validation: PASS
 depends: P2.J3,P2.J4
 unlocks: P7,P8,P9,P10,P11,P13
-sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-15_HYDROLOGIE.md
-note: C-16·C-17·C-18·C-19·C-20 VALIDÉS conception ; C-21 non commencé.
+sources: CONTRATS/00_REGISTRE_CONTRATS.md · CONTRATS/C-15_HYDROLOGIE.md · CONTRATS/C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md
+note: C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20·C-21 VALIDÉS conception ; C-01 demeure REVUE (P2.J1) ; compteur 15/16.
 -->
 
 ### Jalon P2.J5 — Autres contrats obligatoires
@@ -413,9 +417,10 @@ note: C-16·C-17·C-18·C-19·C-20 VALIDÉS conception ; C-21 non commencé.
 **C-17** — **VALIDÉ** — végétation / écosystèmes (conception) ; Q1–Q12 ouverts.  
 **C-18** — **VALIDÉ** — conception uniquement — `C-18_TECHNOLOGIE_PROGRESSION.md` — Ages = legacy ; ≠ runtime DG-07.  
 **C-19** — **VALIDÉ** — conception uniquement — `C-19_PERSISTANCE_SAUVEGARDE.md` — persist OFF ; ≠ flags / SaveGame / F1.  
-**C-20** — **VALIDÉ** — conception uniquement — `C-20_OBSERVABILITE_UX_LISIBILITE.md` — HUD = dette ; ≠ UX produit / HUD DG-13.
+**C-20** — **VALIDÉ** — conception uniquement — `C-20_OBSERVABILITE_UX_LISIBILITE.md` — HUD = dette ; ≠ UX produit / HUD DG-13.  
+**C-21** — **VALIDÉ** — conception uniquement — `C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md` — **≠ scheduler / Hertz / budgets runtime**.
 
-Simulation/perf, persist runtime — **dans l’ordre du registre**, sans démarrer C-21 automatiquement.
+**C-01** demeure **REVUE / non VALIDÉ** (jalon P2.J1). Compteur **15 / 16**. Persistance runtime et cadence runtime restent des travaux d’implémentation ultérieurs — **pas** des contrats encore à ouvrir.
 
 <!--/RM:PHASE-->
 
@@ -907,11 +912,12 @@ phase: P12
 title: Simulation / fréquences / perf
 status: À FAIRE
 sources: C-21 · DG-00.5
+note: C-21 VALIDÉ conception ≠ implémentation scheduler / Hertz / budgets. Ce jalon reste le travail runtime.
 -->
 
 ### Jalon P12.J2 — Performance de simulation
 
-Avant montée en échelle du territoire.
+**C-21** est **VALIDÉ** (conception uniquement). Ce jalon reste **À FAIRE** : aucune implémentation de cadence n’est autorisée par la clôture documentaire. Avant montée en échelle du territoire.
 
 <!--RM:JALON
 id: P12.J3
@@ -935,7 +941,7 @@ Validation humaine des boucles critiques, stabilité, build shipping — **sans 
 ```text
 P0 Fondations (TERMINÉ)
  └─► P1 Preuve S3 Cas A (TERMINÉ) · Case B (SUSPENDU)
-      └─► P2 Contrats (EN COURS : 15/16 VALIDÉS · C-20 VALIDÉ conception · C-21 non commencé)
+      └─► P2 Contrats (EN COURS : 15/16 VALIDÉS · C-21 VALIDÉ conception · C-01 REVUE)
            ├─► P3 Monde / terrain (F1 À REFAIRE)
            ├─► P4 Chantiers (C-05·C-07·C-08 VALIDÉS doc · implémentation métier À FAIRE)
            ├─► P5 Unités (C-07 VALIDÉ)
@@ -968,7 +974,9 @@ P0 Fondations (TERMINÉ)
 | C-12 | VALIDÉ | Contrat opérationnel 25/25 (logistique formalisée ≠ réseaux / multi-flux complets) | — |
 | C-14 | VALIDÉ | Contrat opérationnel 15/15 (lifecycle formalisé ≠ F9 runtime) | — |
 | C-15 | VALIDÉ | Contrat opérationnel cadrage A–G (règles ≠ simulation runtime) | — |
-| C-16 | À FAIRE | Prochain requis (non commencé) | Ordre explicite de rédaction |
+| C-16 | VALIDÉ | Conception uniquement (cadrage A1–K1) · ≠ simulation sol | — |
+| C-21 | VALIDÉ | Conception uniquement (T1 + B1–B8) · ≠ cadence runtime | — |
+| C-01 | REVUE | Non VALIDÉ (refus humain 2026-10-08) · reste du compteur 16 | Autorisation humaine distincte — pas une relance automatique |
 
 ---
 
@@ -991,6 +999,7 @@ P0 Fondations (TERMINÉ)
 
 | Date | Version | Changement |
 | --- | --- | --- |
+| 2026-10-11 | 1.0.13 | Réconciliation : C-21 VALIDÉ conception · C-01 REVUE / non VALIDÉ · compteur 15/16 · prochain = C-01 (ordre de travail, pas une validation) · Case B reste suspendu |
 | 2026-10-10 | 1.0.12 | C-20 VALIDÉ conception · compteur 15/16 · C-21 non commencé · ≠ UX produit / HUD DG-13 · Case B reste suspendu |
 | 2026-10-10 | 1.0.11 | C-19 VALIDÉ conception · compteur 14/16 · C-20 non commencé · persist OFF · ≠ flags / SaveGame / F1 · Case B reste suspendu |
 | 2026-10-10 | 1.0.10 | C-18 VALIDÉ conception · compteur 13/16 · C-19 non commencé · aucune implémentation DG-07 · Case B reste suspendu |
