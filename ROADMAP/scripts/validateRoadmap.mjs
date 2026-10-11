@@ -80,11 +80,16 @@ function main() {
     : '';
   const c01 = data.phases.flatMap((p) => p.jalons || []).find((j) => j.id === 'P2.J1');
   if (c01) {
-    if (/C-01 demeure \*\*REVUE\*\*/.test(suivi) || /validation humaine finale \*\*refusée/.test(suivi)) {
+    const c01CurrentValide = /\|\s*C-01\s*\|[^|]*\|\s*\*\*VALIDÉ\*\*/.test(suivi)
+      || /\*\*16 \/ 16\*\* contrats dédiés requis sont \*\*VALIDÉ\*\*/.test(suivi);
+    if (c01CurrentValide) {
+      if (c01.status !== 'VALIDÉ') fail('Roadmap C-01 jalon should be VALIDÉ (suivi: C-01 VALIDÉ / 16/16)');
+      else ok('C-01 status VALIDÉ coherent with suivi');
+    } else if (/C-01 demeure \*\*REVUE\*\*/.test(suivi) || /validation humaine finale \*\*refusée/.test(suivi)) {
       if (c01.status !== 'REVUE') fail('Roadmap C-01 jalon should be REVUE (suivi: non VALIDÉ)');
       else ok('C-01 status REVUE coherent with suivi');
     } else if (c01.status === 'VALIDÉ') {
-      warn('C-01 jalon VALIDÉ — confirm against suivi (official state is REVUE)');
+      warn('C-01 jalon VALIDÉ — confirm against suivi');
     }
   }
   if (suivi.includes('C-02') && /C-02[\s\S]{0,200}\*\*VALIDÉ\*\*/.test(suivi)) {
@@ -97,8 +102,8 @@ function main() {
   if (caseB && caseB.status !== 'SUSPENDU') warn('Case B expected SUSPENDU');
   else ok('Case B SUSPENDU');
 
-  if (data.next?.id !== 'next-c01') warn(`next expected next-c01, got ${data.next?.id}`);
-  else ok('next work is C-01 (order of work, not validation)');
+  if (data.next?.id !== 'next-none') warn(`next expected next-none (no authorized contract), got ${data.next?.id}`);
+  else ok('next work is none (16/16; no authorized contract)');
 
   if ((data.parseIssues || []).length) {
     for (const i of data.parseIssues) warn(`parse issue: ${i}`);

@@ -1,5 +1,12 @@
 # ROADMAP — CHANGELOG
 
+## 2026-10-11 — 1.0.14 — Clôture C-01 / compteur 16/16
+
+- C-01 **VALIDÉ** (clôture documentaire · dettes E1–E7 ouvertes · ≠ conformité runtime).
+- Compteur **16 / 16** · aucun prochain contrat autorisé · ne pas ouvrir C-02.
+- P2.J1 **VALIDÉ** · P2 documentaire **VALIDÉ**.
+- Régénération HTML / JSON depuis le Markdown.
+
 ## 2026-10-11 — 1.0.13 — Réconciliation C-01 / C-21 / compteur
 
 - C-21 **VALIDÉ** conception (T1 + B1–B8) · **≠** scheduler / Hertz / budgets runtime.

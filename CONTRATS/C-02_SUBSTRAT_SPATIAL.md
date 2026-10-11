@@ -8,12 +8,12 @@
 | **Profondeur** | Détaillée (registre) |
 | **Ordre de rédaction** | 2 |
 | **Bloquant** | Oui (avant gameplay fondé sur soil/water spatial ; avant F9+ / eco) |
-| **Dépendances amont** | **C-01** (**REVUE** / non VALIDÉ) |
+| **Dépendances amont** | **C-01** (**VALIDÉ**) |
 | **Références** | Registre C-02 · DG 00.5.S2/S3/S5 · 00.6.M3 · DG-08.5 · DG-09.1/09.3 · REGLES §7bis · décisions humaines A1–F3 |
 
 Ce document formalise les **décisions humaines C-02 validées** (A1–F3).  
 Il n’invente aucune règle de gameplay supplémentaire.  
-Il constitue la **règle officielle** C-02 après validation humaine et clôture formelle. La clôture est **documentaire**. Elle n’autorise aucune implémentation. **C-01** demeure **REVUE** / **non VALIDÉ**.
+Il constitue la **règle officielle** C-02 après validation humaine et clôture formelle. La clôture est **documentaire**. Elle n’autorise aucune implémentation. **C-01** est **VALIDÉ**.
 
 ---
 
@@ -393,4 +393,4 @@ Après **validation** humaine du contrat et alignement d’implémentation, C-02
 
 ---
 
-*Fin C-02 — VALIDÉ. Clôture documentaire. C-01 demeure REVUE / non VALIDÉ. Case B demeure suspendu. Aucune implémentation spatiale supplémentaire autorisée par cette clôture.*
+*Fin C-02 — VALIDÉ. Clôture documentaire. C-01 est VALIDÉ. Case B demeure suspendu. Aucune implémentation spatiale supplémentaire autorisée par cette clôture.*

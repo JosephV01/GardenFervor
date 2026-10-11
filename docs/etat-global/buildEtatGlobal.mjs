@@ -61,7 +61,7 @@ const payload = {
     validated: SUIVI.progress.validated,
     required: SUIVI.progress.required,
     activeId: SUIVI.activeContractId,
-    nextId: SUIVI.nextAuthorizedId,
+    nextId: SUIVI.nextAuthorizedId || '—',
     caseB: SUIVI.caseB,
   },
   editorial: ETAT,

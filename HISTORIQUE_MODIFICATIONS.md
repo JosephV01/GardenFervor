@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-11 — C-01-CLOSE**.
+Dernière entrée historique : **2026-10-11 — DOC-SYNC-1.0.14**.
 
 ---
 
@@ -198,6 +198,15 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-11 — DOC-SYNC-1.0.14 — Synchronisation post-clôture C-01
+
+- **Intention :** aligner Hub, C-02 (mentions de voisinage), C-01 L276, roadmap 1.0.14 et pages générées ciblées sur la clôture publiée de C-01 (`96d5a55`).
+- **Statut :** C-01 = **VALIDÉ** · compteur **16 / 16** · aucun prochain contrat · C-02 **non ouvert** · clôture **documentaire** ≠ conformité runtime · dettes E1–E7 **ouvertes** · E8 inchangé · D1–D14 inchangées · Case B **suspendu** · **pas de code gameplay**
+- **Décisions :** aucune décision métier ajoutée ou retirée
+- **Fichiers :** `GardenFervor_DesignGate_React/src/data/contractsSuivi.js` · `CONTRATS/C-02_SUBSTRAT_SPATIAL.md` (3 mentions de statut C-01) · `CONTRATS/C-01_TERRAIN_RUNTIME.md` (L276) · `ROADMAP/GardenFervor_ROADMAP.md` · `ROADMAP/CHANGELOG.md` · `ROADMAP/scripts/validateRoadmap.mjs` · `ETAT_PROJET.md` · `docs/etat-global/etatGlobal.data.js` · `docs/etat-global/buildEtatGlobal.mjs` · `docs/index.html` · sorties générées ciblées
+- **Design Gate :** aucune modification
+- **Suite :** aucun contrat suivant autorisé — ne pas ouvrir C-02
 
 ### 2026-10-11 — C-01-CLOSE — Terrain runtime VALIDÉ (clôture documentaire)
 

@@ -75,7 +75,7 @@
   </div>
   <script id="data" type="application/json">
 {
-  "activeId": "C-21",
+  "activeId": "C-01",
   "order": [
     "C-01",
     "C-02",
@@ -100,7 +100,7 @@
     "C-21"
   ],
   "progress": {
-    "validated": 15,
+    "validated": 16,
     "required": 16,
     "requiredIds": [
       "C-01",
@@ -131,11 +131,11 @@
       "id": "C-01",
       "order": "1",
       "name": "Terrain runtime (vérité hauteur / shipping)",
-      "status": "REVUE",
+      "status": "VALIDÉ",
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "REVUE / non VALIDÉ — validation humaine finale refusée / non acquise (2026-10-08) ; pas de clôture ; écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil|Water, lexique)",
+      "note": "VALIDÉ humainement (2026-10-11) — D1–D14 ; audit final PASS ; clôture formelle étape 10 ; clôture documentaire ≠ conformité runtime ; dettes E1–E7 ouvertes ; E8 lexique conservé",
       "dependsOn": [
         "C-00"
       ],
@@ -166,7 +166,7 @@
           "dirty Soil|Water déclenché depuis le brush",
           "présentation shipping F1 encore INVALIDÉE",
           "persistance désactivée / load ignoré",
-          "lexique Raise/Lower/Paint versus Creuser/Remblayer/Aplanir encore à arbitrer"
+          "écart de vocabulaire Raise/Lower/Paint (technique) versus Creuser/Remblayer/Aplanir (métier D13) — mapping hors C-01"
         ]
       }
     },
@@ -178,7 +178,7 @@
       "category": "REQUIS",
       "coverage": "partielle",
       "blocking": true,
-      "note": "VALIDÉ humainement (2026-10-08) — 31/31 A1–F3 ; audit final PASS ; clôture formelle étape 10 ; C-01 demeure REVUE",
+      "note": "VALIDÉ humainement (2026-10-08) — 31/31 A1–F3 ; audit final PASS ; clôture formelle étape 10 ; C-01 désormais VALIDÉ",
       "dependsOn": [
         "C-01"
       ],

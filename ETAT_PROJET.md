@@ -1,11 +1,11 @@
 # GardenFervor — État projet (baseline)
 
-Dernière mise à jour : **2026-10-11** (clôture documentaire C-01 · compteur **16 / 16**)  
+Dernière mise à jour : **2026-10-11** (clôture documentaire C-01 · compteur **16 / 16** · roadmap **1.0.14**)  
 Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (inventaire sync) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
 
 **Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = **VALIDÉ** · progression **16 / 16** · C-01 = clôture **documentaire** (dettes E1–E7 ouvertes ; ≠ conformité runtime) · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation écologique, sol, hydrologique, progression DG-07, persistance runtime, UX produit ni cadence**. C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = conception uniquement (≠ runtime). C-18 : Ages / `RequiredAge` / FWSG = legacy isolé. C-19 : persist OFF ; ≠ flags / SaveGame / F1. C-20 : HUD existant = dette ; ≠ UX produit / HUD DG-13. C-21 : pas de scheduler / Hertz / budgets runtime.
 
-**Roadmap globale :** SoT `ROADMAP/GardenFervor_ROADMAP.md` (v**1.0.13**) encore alignée sur l’ancien compteur **15 / 16** (C-01 REVUE) — synchronisation roadmap **hors** étape 11. Distincte de la roadmap S3 (`Plan de production/Roadmap`).
+**Roadmap globale :** SoT `ROADMAP/GardenFervor_ROADMAP.md` (v**1.0.14**) alignée sur C-01 **VALIDÉ** · compteur **16 / 16** · aucun prochain contrat. Distincte de la roadmap S3 (`Plan de production/Roadmap`).
 
 ---
 
@@ -137,7 +137,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 | --- | --- |
 | Contrôle final | **PASS — PRÊT POUR IMPLÉMENTATION CONTRÔLÉE** — `Audit de readiness pré-implémentation/CONTROLE_FINAL_PRE_IMPLEMENTATION_COHORTE.md` |
 | Plan | `Plan de production/PLAN_PRODUCTION_COHORTE_S3.md` |
-| Roadmap | S3 : SoT `Plan de production/Roadmap/src/roadmap.data.js` · `docs/roadmap.html`. Globale : SoT `ROADMAP/GardenFervor_ROADMAP.md` (1.0.13) · `docs/roadmap-globale.html`. Hub `docs/index.html` · URL `https://josephv01.github.io/GardenFervor/` |
+| Roadmap | S3 : SoT `Plan de production/Roadmap/src/roadmap.data.js` · `docs/roadmap.html`. Globale : SoT `ROADMAP/GardenFervor_ROADMAP.md` (1.0.14) · `docs/roadmap-globale.html`. Hub `docs/index.html` · URL `https://josephv01.github.io/GardenFervor/` |
 | Première preuve | Cohorte S3 **Cas A** (sans Terraform obligatoire) |
 | Tranches | T1–T9 VALIDÉ · progression **9/9 VALIDÉ** (100 %) · cohorte S3 Cas A **clôturée** |
 | Implémentation | T9 preuve S3 Cas A **VALIDÉ** (PIE `gf.Project.SmokeCohortS3` ok=1) — aucune tranche suivante |

@@ -273,7 +273,7 @@ Ce contrat est considéré **suffisant pour validation documentaire** lorsque :
 - shipping exige relief fiable **et** visible sans figer une techno (D3) ;
 - aucune règle gameplay nouvelle n’a été introduite hors des 14 décisions.
 
-*(La validation formelle reste une étape séparée dans `00_SUIVI_CONTRATS.md`.)*
+*(La clôture formelle de C-01 est enregistrée dans `00_SUIVI_CONTRATS.md` et publiée. Cette clôture est documentaire : elle ne prouve pas la conformité de l’implémentation runtime.)*
 
 ---
 

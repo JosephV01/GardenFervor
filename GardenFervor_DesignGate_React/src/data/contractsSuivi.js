@@ -36,11 +36,11 @@ export const CONTRACTS_SUIVI = {
     'CONTRATS/C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md',
   ],
   rule: 'Décidé → Rédigé → En revue → Validé. Un fichier rédigé n’est pas VALIDÉ.',
-  /** Dernier VALIDÉ = C-21 ; C-01 REVUE / non VALIDÉ ; compteur 15/16. C-03·C-06·C-09·C-10·C-13 addenda* fermés. */
-  activeContractId: 'C-21',
-  nextAuthorizedId: 'C-01',
+  /** Dernier VALIDÉ = C-01 ; compteur 16/16 ; aucun prochain contrat autorisé. C-03·C-06·C-09·C-10·C-13 addenda* fermés. */
+  activeContractId: 'C-01',
+  nextAuthorizedId: null,
   progress: {
-    validated: 15,
+    validated: 16,
     required: 16,
     requiredIds: [
       'C-01', 'C-02', 'C-04', 'C-05', 'C-07', 'C-08',
@@ -77,12 +77,12 @@ export const CONTRACTS_SUIVI = {
       order: 1,
       category: 'REQUIS',
       coverage: 'partielle',
-      productionStatus: 'REVUE',
+      productionStatus: 'VALIDÉ',
       blocking: true,
       dependsOn: ['C-00'],
       providesTo: ['C-02', 'C-05', 'C-08', 'C-15', 'C-16', 'C-17', 'C-19'],
-      note: 'REVUE / non VALIDÉ — validation humaine finale refusée / non acquise (2026-10-08) ; pas de clôture ; écarts d’implémentation restent dettes (ApplyBrushAt, GroundUtils, F1, persist, dirty Soil|Water, lexique)',
-      dedicatedValidated: false,
+      note: 'VALIDÉ humainement (2026-10-11) — D1–D14 ; audit final PASS ; clôture formelle étape 10 ; clôture documentaire ≠ conformité runtime ; dettes E1–E7 ouvertes ; E8 lexique conservé',
+      dedicatedValidated: true,
       file: 'CONTRATS/C-01_TERRAIN_RUNTIME.md',
       detail: {
         decisionsTaken: 14,
@@ -102,7 +102,7 @@ export const CONTRACTS_SUIVI = {
           'dirty Soil|Water déclenché depuis le brush',
           'présentation shipping F1 encore INVALIDÉE',
           'persistance désactivée / load ignoré',
-          'lexique Raise/Lower/Paint versus Creuser/Remblayer/Aplanir encore à arbitrer',
+          'écart de vocabulaire Raise/Lower/Paint (technique) versus Creuser/Remblayer/Aplanir (métier D13) — mapping hors C-01',
         ],
         gapNote: 'Écarts constatés — pas des corrections de ce jalon.',
       },
@@ -117,7 +117,7 @@ export const CONTRACTS_SUIVI = {
       blocking: true,
       dependsOn: ['C-01'],
       providesTo: ['C-14', 'C-15', 'C-16', 'C-17', 'C-21'],
-      note: 'VALIDÉ humainement (2026-10-08) — 31/31 A1–F3 ; audit final PASS ; clôture formelle étape 10 ; C-01 demeure REVUE',
+      note: 'VALIDÉ humainement (2026-10-08) — 31/31 A1–F3 ; audit final PASS ; clôture formelle étape 10 ; C-01 désormais VALIDÉ',
       dedicatedValidated: true,
       file: 'CONTRATS/C-02_SUBSTRAT_SPATIAL.md',
       detail: {

@@ -53,10 +53,10 @@ export const ETAT_GLOBAL = {
     unitsRole:
       'Sélectionner une tâche, se déplacer, exécuter, vérifier le résultat, livrer (C-07) sur un graphe de tâches (C-04).',
     maturityOneLiner:
-      'Prototype avancé + conception complète + 15/16 contrats VALIDÉS + C-01 REVUE / non VALIDÉ + C-21 conception uniquement + preuve S3 Cas A. Boucle écologique et déblocages DG-07 non démontrés.',
+      'Prototype avancé + conception complète + 16/16 contrats VALIDÉS + C-01 VALIDÉ documentaire ≠ runtime + C-21 conception uniquement + preuve S3 Cas A. Boucle écologique et déblocages DG-07 non démontrés.',
     acquis: [
       'Design Gate DG-00 → DG-14 VALIDÉ',
-      'Contrats C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20·C-21 VALIDÉS · C-01 REVUE / non VALIDÉ',
+      'Contrats C-01·C-02·C-04·C-05·C-07·C-08·C-11·C-12·C-14·C-15·C-16·C-17·C-18·C-19·C-20·C-21 VALIDÉS (C-01 = clôture documentaire ≠ runtime)',
       'C-18 VALIDÉ conception (≠ runtime DG-07 ; Ages = legacy)',
       'Cohorte S3 Cas A T1–T9 VALIDÉE',
       'Gates techniques F2–F8 PASS (F1 INVALIDÉ)',
@@ -84,7 +84,7 @@ export const ETAT_GLOBAL = {
     { q: 'Risque principal ?', a: 'Confondre VALIDÉ contractuel ou gate technique avec capacité produit.' },
     {
       q: 'Priorité justifiée ?',
-      a: 'Décision humaine : C-21 VALIDÉ conception (15/16 ; C-01 REVUE) — ne pas implémenter cadence / Hertz / budgets — OU consolidation F1 / F8 humain / F9 — sans démarrer F9 automatiquement. Ne pas relancer la validation C-01 sans ordre explicite.',
+      a: 'Décision humaine : C-01 VALIDÉ documentaire (16/16) — aucun prochain contrat — ne pas implémenter cadence / Hertz / budgets — OU consolidation F1 / F8 humain / F9 — sans démarrer F9 automatiquement. Ne pas ouvrir C-02.',
       recommendation: true,
     },
   ],
@@ -100,8 +100,8 @@ export const ETAT_GLOBAL = {
     {
       id: 'contrats',
       label: 'Contrats / règles métier',
-      state: '15 / 16 (C-01 REVUE)',
-      meaning: '15 contrats dédiés requis sont VALIDÉS ; C-01 demeure REVUE / non VALIDÉ (C-15…C-21 = conception uniquement). Persist runtime / UX produit / cadence runtime encore ouvertes.',
+      state: '16 / 16 (C-01 VALIDÉ documentaire)',
+      meaning: '16 contrats dédiés requis sont VALIDÉS ; C-01 = clôture documentaire ≠ conformité runtime (C-15…C-21 = conception uniquement). Persist runtime / UX produit / cadence runtime encore ouvertes.',
       evidence: 'CONTRATS/00_SUIVI_CONTRATS.md',
     },
     {
@@ -177,7 +177,7 @@ export const ETAT_GLOBAL = {
       id: 'terrain',
       domain: 'Terrain',
       name: 'Terrain runtime',
-      docState: 'C-01 REVUE / non VALIDÉ',
+      docState: 'C-01 VALIDÉ documentaire ≠ runtime',
       codeState: 'Partiel',
       function: 'RuntimeTerraformStore + ApplyBrushAt ; LandscapeEdit en PIE (session-only).',
       playerValue: 'Le relief peut changer vraiment (données / PIE).',
@@ -337,7 +337,7 @@ export const ETAT_GLOBAL = {
       proof: 'GardenFervorTerraformSaveGame · flag false',
       limits: 'Politique documentaire seulement · persist OFF · F1 distinct · O5/P8/Q7/R5 ouverts.',
       depends: 'C-01',
-      next: 'Ne pas activer flags / SaveGame / F1. C-21 VALIDÉ conception. Un contrat reste à valider sur les 16 contrats suivis ; C-01 demeure en revue et n’est pas validé.',
+      next: 'Ne pas activer flags / SaveGame / F1. C-01 VALIDÉ documentaire (16/16). Aucun prochain contrat. Dettes runtime encore ouvertes.',
       refs: ['Source/GardenFervor/RTS/Terraform/GardenFervorTerraformSaveGame.h'],
       tags: ['persistance', 'partiel', 'c-19'],
     },
@@ -691,7 +691,7 @@ export const ETAT_GLOBAL = {
       items: [
         {
           work: 'Ne pas implémenter cadence / Hertz / budgets',
-          why: 'C-21 VALIDÉ conception uniquement · 15/16 · C-01 REVUE · ≠ scheduler runtime',
+          why: 'C-21 VALIDÉ conception uniquement · 16/16 · C-01 VALIDÉ documentaire · ≠ scheduler runtime',
           unlocks: 'Cadence seulement sur ordre d’implémentation distinct',
           costOfDelay: 'Fausse base technique si Hertz inventés',
           proof: 'CONTRATS/C-21_CADENCES_SIMULATION_BUDGETS_TEMPORELS.md statut VALIDÉ',
@@ -762,7 +762,7 @@ export const ETAT_GLOBAL = {
 
   roadmapCompare: {
     officialNext:
-      'Roadmap officielle : C-21 VALIDÉ conception (3451288). Ne pas implémenter cadence / UX / persist / F1 / DG-07. Compteur 15/16 · C-01 REVUE. C-15…C-21 VALIDÉS ≠ simulation éco / déblocages / save runtime / UX produit / Hertz · ODC-F9 non démarré.',
+      'Roadmap officielle : C-01 VALIDÉ documentaire (96d5a55). Compteur 16/16 · aucun prochain contrat. Ne pas implémenter cadence / UX / persist / F1 / DG-07. C-15…C-21 VALIDÉS ≠ simulation éco / déblocages / save runtime / UX produit / Hertz · ODC-F9 non démarré.',
     alternative:
       'Recommandation non officielle : si l’objectif immédiat est le shipping jouable, prioriser F1 + validation visuelle F8 / éventuel F9 avant d’élargir à l’hydrologie.',
   },
@@ -869,10 +869,10 @@ export const ETAT_GLOBAL = {
 
   conclusion: {
     acquired:
-      'Conception fondatrice · 15/16 contrats VALIDÉS · C-01 REVUE / non VALIDÉ · C-21 conception uniquement · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-15…C-21 conception (≠ runtime persist / UX produit / cadence).',
+      'Conception fondatrice · 16/16 contrats VALIDÉS · C-01 VALIDÉ documentaire ≠ runtime · C-21 conception uniquement · preuve S3 Cas A · chaîne F2–F8 · haul A→B et PE Timber · C-15…C-21 conception (≠ runtime persist / UX produit / cadence).',
     missing:
       'Runtime eau/sol/éco · déblocages DG-07 · Case B · métier terrain produit · F1 shipping · persist runtime · UX · cadence runtime · réseaux/N4 · ODC-F9.',
     decision:
-      'C-21 VALIDÉ conception (15/16 ; C-01 REVUE) n’autorise pas un scheduler. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9. Aucun VALIDÉ C-15…C-21 n’autorise une simulation environnementale, un déblocage DG-07, une activation persist, une UX produit ni des Hertz. Ne pas relancer la validation C-01 sans ordre explicite.',
+      'C-01 VALIDÉ documentaire (16/16) n’autorise pas une conformité runtime. C-21 VALIDÉ conception n’autorise pas un scheduler. Si le shipping / infra runtime prime → F1 + validation F8 humaine et/ou F9. Aucun VALIDÉ n’autorise une simulation environnementale, un déblocage DG-07, une activation persist, une UX produit ni des Hertz. Aucun prochain contrat autorisé.',
   },
 };
