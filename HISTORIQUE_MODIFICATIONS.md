@@ -14,7 +14,7 @@ Il doit permettre, **à tout moment**, de savoir : ce qui existe, pourquoi, comm
 
 **Règle d’entretien :** après **chaque modification validée** (gate PASS, fix accepté, règle ajoutée), ajouter une entrée en §4 **avant** de considérer la tâche livrée. Mettre aussi à jour `ETAT_PROJET.md` et le delta chat (`REGLES_PROJET.md` §1bis).
 
-Dernière entrée historique : **2026-10-11 — DOC-SYNC-1.0.14**.
+Dernière entrée historique : **2026-10-12 — EXT-TERRADYNE-A02**.
 
 ---
 
@@ -64,7 +64,7 @@ F1 Terrain → F2 M4/UDS/UDW → **F3 Spatial** → **F4 Project/Task** → F5 A
 | ODC-F7 | **PASS (humain)** | `Saved/ODC_F7_LogisticsGate.txt` + PIE |
 | ODC-F8 | **PASS** | `Saved/ODC_F8_TerraformOperationGate.txt` |
 
-Prochain pas ODC : **F1** (shipping Base+Delta) **À REFAIRE** — dettes C-01 E1–E7 ouvertes. **ODC-F9** non démarré (ordre explicite distinct ; C-14 = règles ≠ preuve F9).
+Prochain pas ODC : **F1** (shipping Base+Delta) **À REFAIRE** — 08.6 principes VALIDÉ ; 08.7 architecture ouverte ; dettes C-01 E1–E7 ouvertes. **ODC-F9** non démarré (ordre explicite distinct ; C-14 = règles ≠ preuve F9).
 
 ---
 
@@ -198,6 +198,65 @@ Format d’entrée (à dupliquer) :
 ```
 
 ---
+
+### 2026-10-12 — DG-00.5.S4-CLARIFICATION — Représentation physique ≠ autorité de hauteur
+
+- **Intention :** lever l’ambiguïté de la formule « Landscape = vérité physique ; données GardenFervor = vérité gameplay », qui pouvait être lue comme maintenant le Landscape autorité de hauteur après terraformation.
+- **Statut :** VALIDÉ (clarification rédactionnelle) · fond **inchangé** (C-01 D1 ; 08.6) · **08.7 À DÉFINIR inchangé** · **pas de code gameplay** · dettes E1–E8 **non clôturées**
+- **Avant → Après :** formulation opératoire pouvant faire du Landscape une « vérité physique » de hauteur. Après : Landscape = représentation physique actuelle (rendu / collision de surface) ; `RuntimeTerraformStore` = autorité des données de hauteur après terraform ; la représentation doit refléter le Store ; sync technique non fixé ; runtime non validé par cette clarification.
+- **Changements :** `GardenFervor_DesignGate_React/src/data/designGate.js` (00.5.S4) · vues DG générées (`syncStandaloneFromJs.mjs` → `docs/design-gate.html`) · `TERRAIN_FOUNDATION.md` · `ETAT_PROJET.md` · `HISTORIQUE_MODIFICATIONS.md`
+- **Non modifié :** `CONTRATS/` · 08.7 · implémentation · audits TerraDyne
+- **Design Gate :** Mis à jour : DG-00 / 00.5.S4 (rédaction) — aucun nouveau statut de contrat
+- **Pièges :** ne pas relire « représentation physique » comme choix d’architecture 08.7 ; ne pas relire cette clarification comme PASS F1 / G5 / E5
+- **Dette ouverte :** E1–E8 ; 08.7 ; F1 À REFAIRE ; sync Store↔représentation non spécifiée
+- **Suite ODC :** inchangée (F1 À REFAIRE)
+
+### 2026-10-12 — EXT-TERRADYNE-A03 — Versions TerraDyne, conversion Landscape, compatibilité M4
+
+- **Intention :** exécuter l’audit 3 (identité d’édition, conversion Landscape, matériaux / M4) et enregistrer le rapport canonique, sans code, sans achat commercial, sans Design Gate.
+- **Statut :** `TECHNICAL_REVIEW_COMPLETE` · verdict M4 **D conservé** (`INCOMPATIBILITÉ_TECHNIQUE_DÉMONTRÉE` directe OSS 0.4) · 08.7 **À DÉFINIR inchangé** · **pas d’intégration** · **pas de code gameplay**
+- **Avant → Après :** A03 `NOT_STARTED` ; M4 campagne **D** hors clôture. Après : `AUDIT-03/REPORT.md` canonique ; proto identifié OSS **0.4 / `270c311`** (uplugin local 5.8.0 vs GitHub 5.7.0) ; conversion Landscape **présente éditeur, 4 couches** ; binding 8 couches = **0.7 annoncé hors proto**.
+- **Changements :** `ExternalTechnologyAudits/01_TerraDyne/01_Audits/AUDIT-03/**` · `AUDIT_REGISTER.md` · `01_TerraDyne/README.md` · `FINDINGS.md` (TF-12…14) · `TESTS.md` FUT-09 · `INDEX.md` preuves · `SCOPE.md` · `ETAT_PROJET.md` · `HISTORIQUE_MODIFICATIONS.md` · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (DOC-EXT-TD-A03)
+- **Non modifié :** proto TerraDyne · `designGate.js` · `CONTRATS/` · `REGLES_PROJET.md` · Source/Content/Config gameplay · AUDIT-01 / AUDIT-02 (non réécrits)
+- **Design Gate :** aucun contrat ni statut modifié — audit M4, versions et compatibilité en lecture seule
+- **Pièges :** ne pas fusionner OSS 0.4 / manuel 0.4.1 / forum 0.7 / Fab 0.5.1 ; conversion Landscape ≠ Store GF ; `M4_Eval` n’est pas une install M4 ; HoleFix = validations utilisateur, pas M4
+- **Dette ouverte :** décision humaine 08.7 ; adaptateur Store→`LoadFromData` ; graphe `M4UE5MasterMat` non décompilé ; RVT hors binding même en 0.7 annoncé ; persist / G5 / 25 cm
+- **Suite ODC :** F1 À REFAIRE — pas d’implémentation TerraDyne / M4
+
+### 2026-10-12 — EXT-TERRADYNE-A02 — Comparaison architecturale TerraDyne / GardenFervor
+
+- **Intention :** exécuter l’audit 2 (faisabilité / compatibilité / risque d’autorité) et enregistrer le rapport canonique, sans code ni Design Gate.
+- **Statut :** `TECHNICAL_REVIEW_COMPLETE` · verdict **Option B recommandée** · 08.7 **À DÉFINIR inchangé** · **pas d’intégration** · **pas de code gameplay**
+- **Avant → Après :** A02 `NOT_STARTED` ; PHASE3A proto seule note d’architecture. Après : `AUDIT-02/REPORT.md` canonique ; PHASE3A reste source externe ; 107,5 UU corrigé comme pas démo TD, pas Landscape GF.
+- **Changements :** `ExternalTechnologyAudits/01_TerraDyne/01_Audits/AUDIT-02/**` · `AUDIT_REGISTER.md` · `01_TerraDyne/README.md` · `FINDINGS.md` (TF-09…11) · `TESTS.md` FUT-08 · `ETAT_PROJET.md` · `HISTORIQUE_MODIFICATIONS.md` · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (DOC-EXT-TD-A02)
+- **Non modifié :** proto TerraDyne · `designGate.js` · `CONTRATS/` · `REGLES_PROJET.md` · Source/Content/Config gameplay
+- **Design Gate :** aucune modification de contrat ou de statut — audit architectural et documentation uniquement
+- **Pièges :** recommandation ≠ décision 08.7 ; HoleFix = validations utilisateur ; ne pas promouvoir PHASE3A ; hybride Store→`LoadFromData` non démontré
+- **Dette ouverte :** décision humaine 08.7 ; A03 M4 ; persist ; G5 ; 25 cm ; adaptateur présentation TD éventuel
+- **Suite ODC :** F1 À REFAIRE — pas d’implémentation TerraDyne
+
+### 2026-10-12 — DOC-EXT-AUDIT-REPO — Référentiel audits de technologies externes
+
+- **Intention :** créer à la racine un classement durable des audits de techno externes, en commençant par TerraDyne, **sans** exécuter l’audit 2 ni modifier le proto / le Design Gate.
+- **Statut :** organisation documentaire livrée · A01 `TECHNICAL_REVIEW_COMPLETE` (verdict **Favorable sous réserves**) · A02/A03 `NOT_STARTED` · **aucune décision 08.7** · **pas de code gameplay** · **pas d’intégration**
+- **Avant → Après :** aucun dossier d’audits techno externes ; TerraDyne n’existait que hors dépôt (proto). Après : `ExternalTechnologyAudits/` + registre ; preuves proto **référencées**, non copiées.
+- **Changements :** `ExternalTechnologyAudits/**` (création) · `ETAT_PROJET.md` · `HISTORIQUE_MODIFICATIONS.md` · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (§2.12)
+- **Non modifié :** `REGLES_PROJET.md` (pointeur volontairement non ajouté) · `designGate.js` · `CONTRATS/` · prototype TerraDyne
+- **Design Gate :** aucun contrat ni statut modifié — organisation documentaire uniquement
+- **Pièges :** statut documentaire ≠ verdict ≠ VALIDÉ DG ; confirmations HoleFix = validations **utilisateur**, pas tests Cursor ; ne pas lancer A02/A03 sans ordre
+- **Dette ouverte :** A02 comparaison 08.7 ; A03 M4 ; persist / perf RTS / 25 cm île ; éventuel pointeur dans `REGLES_PROJET.md` si confirmé
+- **Suite ODC :** inchangée (F1 À REFAIRE) — pas d’audit 2 automatique
+
+### 2026-10-11 — DG-08.6-ARBITRAGE — Principes terrain runtime Base+Delta
+
+- **Intention :** enregistrer les quatre arbitrages humains 08.6 et réconcilier 00.5.S4 sans choisir d’architecture ni autoriser E5/E6.
+- **Statut :** VALIDÉ (principes) · architecture **08.7 À DÉFINIR** · ODC-F1 **INVALIDÉ / À REFAIRE** · **pas de code gameplay**
+- **Avant → Après :** 08.6 était une proposition À DÉFINIR ; 00.5.S4 disait « Landscape = vérité physique ». Après : Store Base+Delta = autorité hauteur post-terraform ; Landscape = base initiale / surface non encore modifiée ; critères données / visibilité / physique / persist séparés ; aucune techno retenue.
+- **Changements :** `GardenFervor_DesignGate_React/src/data/designGate.js` (00.5.S4 amendé + rationale ; 08.6 VALIDÉ ; 08.7 À DÉFINIR ; impacts G5 / A2) · `ETAT_PROJET.md` · `HISTORIQUE_MODIFICATIONS.md`
+- **Design Gate :** Mis à jour : DG-08 / 08.6 VALIDÉ · 08.7 À DÉFINIR · 00.5.S4 réconcilié (trace antérieure conservée)
+- **Pièges :** ne pas lire 08.6 comme autorisation E5 ; ne pas déclarer F1 PASS sur la seule visibilité ; ne pas exécuter `docs/syncPages.mjs` (publication)
+- **Dette ouverte :** comparaison d’architectures 08.7 ; E5 présentation ; E6 persist C-19 ; F1 shipping durable
+- **Suite ODC :** F1 reste À REFAIRE — comparaison documentée 08.7 sur ordre explicite ; pas d’implémentation automatique
 
 ### 2026-10-11 — DOC-SYNC-1.0.14 — Synchronisation post-clôture C-01
 

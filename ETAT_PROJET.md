@@ -1,7 +1,7 @@
 # GardenFervor — État projet (baseline)
 
-Dernière mise à jour : **2026-10-11** (clôture documentaire C-01 · compteur **16 / 16** · roadmap **1.0.14**)  
-Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (inventaire sync) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`).
+Dernière mise à jour : **2026-10-12** (clarification rédactionnelle **00.5.S4** · Store = autorité hauteur après terraform · Landscape = représentation, pas une seconde vérité · **08.6 VALIDÉ** · **08.7 À DÉFINIR** · ODC-F1 **INVALIDÉ** — **aucun statut de contrat modifié**)  
+Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémoire longue) · `REGISTRE_MAINTENANCE_DOCUMENTAIRE.md` (inventaire sync) · Design Gate React (`GardenFervor_DesignGate_React/src/data/designGate.js`) · Contrats (`CONTRATS/00_SUIVI_CONTRATS.md`) · audits techno `ExternalTechnologyAudits/`.
 
 **Contrats opérationnels :** C-01 · C-02 · C-04 · C-05 · C-07 · C-08 · C-11 · C-12 · C-14 · C-15 · C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = **VALIDÉ** · progression **16 / 16** · C-01 = clôture **documentaire** (dettes E1–E7 ouvertes ; ≠ conformité runtime) · C-03·C-06·C-09·C-10·C-13 addenda **fermés** · Case B **suspendu** · ODC-F9 **non démarré** · **aucune implémentation écologique, sol, hydrologique, progression DG-07, persistance runtime, UX produit ni cadence**. C-16 · C-17 · C-18 · C-19 · C-20 · C-21 = conception uniquement (≠ runtime). C-18 : Ages / `RequiredAge` / FWSG = legacy isolé. C-19 : persist OFF ; ≠ flags / SaveGame / F1. C-20 : HUD existant = dette ; ≠ UX produit / HUD DG-13. C-21 : pas de scheduler / Hertz / budgets runtime.
 
@@ -34,7 +34,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 
 ## Risques / ouvert
 
-- F1 shipping Base+Delta visual packaged encore à refaire (F8 prouve la **donnée**, pas le PMC)
+- F1 shipping Base+Delta encore à refaire (F8 = **donnée** ; visibilité, collision/nav et persist = critères **séparés** ; 08.6 principes VALIDÉ ; 08.7 architecture ouverte)
 - Compact/Grade = alias industriels basiques
 - Sol / eau spatial = stubs · végétation / écosystème gameplay = absent
 - **Readiness :** F01·F02·F03 · **contrôle final PASS** · Plan S3 + T1–T9 **VALIDÉ** · cohorte Cas A **clôturée** ; aucun travail gameplay hors ordre explicite (DG-14.4)
@@ -82,7 +82,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 - **DG-05 RESSOURCES ET ÉCONOMIE : VALIDÉ** (clôture section ; 4/4 items VALIDÉ ; audit de cohérence PASS)
 - **DG-06 LOGISTIQUE ET TRANSPORT : VALIDÉ** (clôture section ; 5/5 items VALIDÉ ; audit de cohérence PASS ; saturation = N4)
 - **DG-07 RECHERCHE ET PROGRESSION : VALIDÉ** (clôture section ; 7/7 items VALIDÉ ; audit de cohérence PASS)
-- **DG-08 TERRAIN ET TERRAFORMATION : VALIDÉ** (clôture section ; 5/5 items VALIDÉ ; audit de cohérence PASS)
+- **DG-08 TERRAIN ET TERRAFORMATION : VALIDÉ** pour 08.1–08.6 (principes Base+Delta **08.6 VALIDÉ**) ; **08.7 À DÉFINIR** (architecture technique non sélectionnée ; E5/E6 non autorisés)
 - **DG-09 ENVIRONNEMENT ET ÉCOSYSTÈMES : VALIDÉ** (clôture section ; 6/6 items VALIDÉ ; audit de cohérence PASS)
 - **DG-10 INFRASTRUCTURES : VALIDÉ** (clôture section ; 5/5 items VALIDÉ ; audit de cohérence PASS)
 - **DG-11 CHANTIERS ET EXÉCUTION PROCÉDURALE : VALIDÉ** (clôture section ; 8/8 items VALIDÉ ; audit de cohérence PASS)
@@ -120,7 +120,7 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 15. **DG-05 clôturé** — taxonomie / chaîne / stocks-réservations / progressives VALIDÉ ; ressources env. = vérité minimale (09.1) ; consommables si besoin réel
 16. **DG-06 clôturé** — modes / accès réseaux / accès auto / réutilisation / chaîne VALIDÉ ; saturation = N4 ; économie d’entretien réseau encore ouverte  
 17. **DG-07 clôturé** — principal / recherche / schémas / technologies / déblocages / progression horizontale / environnementale VALIDÉ ; effets écologiques → DG-09  
-18. **DG-08 clôturé** — état terrain / Raise-Lower-Paint / travaux / accès / conséquences VALIDÉ ; Eau/Sols/Végétation dirty → comportements DG-09  
+18. **DG-08** — 08.1–08.5 VALIDÉ ; **08.6 VALIDÉ** (Store = autorité hauteur après terraform ; critères indépendants ; F1 PASS seulement si shipping durable complet) ; **08.7 À DÉFINIR** (architecture sur preuves ; aucune techno retenue) ; Eau/Sols/Végétation dirty → comportements DG-09  
 19. **DG-09 clôturé** — couches / écosystèmes / transitions / impacts / objectif / grands ouvrages VALIDÉ ; aquatique associé différé ; détail ouvrages différé
 20. **DG-10 clôturé** — temporaires / cycle / permanentes / partage / impact VALIDÉ ; conversion temp→perm différée ; rails différés ; entretien = état simplifié
 21. **DG-11 clôturé** — déclenchement / analyse / génération / solution cachée / procédural / réaction / fin / rejouabilité VALIDÉ ; recalcul chantier ≠ `04.5`
@@ -145,6 +145,13 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 
 ---
 
+## Audits de technologies externes
+
+Référentiel : `ExternalTechnologyAudits/`.  
+TerraDyne : proto isolé **hors** ce dépôt. A01 = `TECHNICAL_REVIEW_COMPLETE` / **Favorable sous réserves**. A02 = `TECHNICAL_REVIEW_COMPLETE` / recommandation **option B** (GF conserve l’autorité) — **pas** une décision 08.7. A03 = `TECHNICAL_REVIEW_COMPLETE` / **D conservé** (`INCOMPATIBILITÉ_TECHNIQUE_DÉMONTRÉE` directe OSS 0.4). Intégration **non autorisée**. DG-08.7 **inchangé**.
+
+---
+
 ## Prochain pas
 
 1. Contrats : **16 / 16** VALIDÉS · **C-01 VALIDÉ** (clôture documentaire ; dettes E1–E7 ouvertes ; ≠ conformité runtime) · C-02 **VALIDÉ** · C-21 **VALIDÉ** (conception uniquement) — **ne pas** ouvrir un addendum ni un contrat suivant sans ordre explicite ; **aucune implémentation** écologique, sol, hydrologique, déblocage DG-07, persistance runtime, UX produit ni cadence ; O6, P9, C-17 Q8, R6, O-FREQ / O-OVER / O-EXC / O-INST / O-SCALE, R1–R8, R11, Q1–Q12 C-17, C-15 O1–O9 et C-16 P1–P10 restent ouverts ; C-03·C-06·C-09·C-10·C-13 restent addenda* fermés ; C-22·C-23 **NON REQUIS** ; Case B **suspendu** ; ODC-F9 **non démarré** automatiquement
@@ -152,3 +159,5 @@ Companions : `REGLES_PROJET.md` (§1bis) · `HISTORIQUE_MODIFICATIONS.md` (mémo
 3. **Validation humaine F8** : PIE → Start LevelPad → constater raise Landscape près du pad (session-only)
 4. **ODC-F9** Infrastructure lifecycle (sur ordre explicite — sans contourner DG ; C-14 = règles ≠ preuve F9)
 5. Interdit sans validation : carte / M4 / T01
+6. **08.7** : reste **À DÉFINIR**. AUDIT-02 recommande de **ne pas** faire de TerraDyne l’autorité (option B) ; cela **n’adopte pas** 08.7 et **n’autorise pas** E5/E6
+7. Audits techno : A01–A03 clos documentairement ; ne pas traiter un verdict d’audit comme intégration ; `REGLES_PROJET.md` **non** modifié ; **pas** d’achat/portage 0.7 ni d’intégration M4/TerraDyne

@@ -278,9 +278,11 @@
             ],
             "impacts": [
               "DG-08",
-              "DG-09"
+              "DG-09",
+              "08.6"
             ],
-            "decision": "Territoire physique et simulation découplés mais spatialement liés. Landscape = vérité physique ; données GardenFervor = vérité gameplay."
+            "decision": "Territoire physique et simulation restent découplés mais spatialement liés. Le Landscape fournit la représentation physique actuelle du relief (rendu du monde et, le cas échéant, collision de cette surface) : ce rôle de représentation n’en fait pas l’autorité des données de hauteur. Après terraformation, le RuntimeTerraformStore (Store Base+Delta) est l’autorité des données de hauteur (C-01 D1). La représentation physique doit refléter cet état autoritaire ; elle ne constitue pas une source concurrente de vérité gameplay. Les données gameplay GardenFervor restent distinctes de la représentation physique (00.6.A2 : M4/UDS/UDW = représentation). Tant qu’aucune modification n’a été appliquée, le Landscape demeure la base initiale / surface existante. Le mécanisme technique de synchronisation entre le Store et la représentation (Landscape ou autre) n’est pas fixé par 00.5.S4. Cette clarification n’autorise aucune implémentation, ne valide pas le runtime actuel et ne clôt pas les dettes C-01 E1–E8. Collision et navigation doivent suivre le relief réellement modifié (00.5.G5) ; cette cohérence n’est pas démontrée par la seule visibilité.",
+            "rationale": "Clarification rédactionnelle 2026-10-12 (fond inchangé). La formule opératoire « Landscape = vérité physique ; données GardenFervor = vérité gameplay » est abrogée : elle pouvait être lue comme maintenant le Landscape autorité de hauteur après terraformation, contrairement à C-01 D1. Amendement 2026-10-11 (validation humaine 08.6) conservé : Store = autorité hauteur après terraform ; Landscape = représentation / base initiale, pas une seconde vérité de hauteur. 08.7 reste À DÉFINIR ; E5/E6 non autorisés par cette clarification."
           },
           {
             "id": "dg00-05-s5",
@@ -821,7 +823,8 @@
             "impacts": [
               "DG-03",
               "DG-04",
-              "DG-08"
+              "DG-08",
+              "08.6"
             ],
             "decision": "Collision et navigation doivent suivre le relief réellement modifié. Des proxies simplifiés sont autorisés pour planification ou optimisation à plus grande échelle, mais ne constituent jamais la vérité physique finale."
           },
@@ -1388,7 +1391,8 @@
             ],
             "impacts": [
               "DG-08",
-              "DG-09"
+              "DG-09",
+              "08.6"
             ],
             "decision": "Données GardenFervor = vérité ; M4/UDS/UDW = représentation. Aucune règle gameplay ne lit l’apparence comme source de vérité."
           },
@@ -3009,6 +3013,61 @@
               "DG-11"
             ],
             "decision": "Dès DG-08 : Accès (invalidation et recalcul local) ; Coûts (durée + moyens + matière ; ressource économique uniquement si une chaîne la déclare explicitement) ; Risques sous forme d’états simplifiés seulement lorsqu’ils ont une conséquence gameplay directe. À reporter à DG-09 : Eau ; Sols ; Végétation ; comportements écologiques détaillés. Raise/Lower et travaux de préparation génèrent un signal/état dirty destiné aux couches écologiques concernées. Aucune conséquence de 08.5 ne permet de peindre directement un résultat écologique ; Raise / Lower / Paint restent des moyens techniques du monde."
+          },
+          {
+            "id": "dg08-06",
+            "code": "08.6",
+            "title": "Arbitrage terrain runtime Base+Delta (principes)",
+            "status": "VALIDÉ",
+            "subpoints": [
+              "Store = autorité hauteur après terraform",
+              "Landscape = base initiale / surface non encore modifiée",
+              "Critères séparés : données / visibilité / physique / persist",
+              "F1 PASS seulement si shipping durable complet",
+              "E5 ≠ E6",
+              "Aucune techno retenue ici"
+            ],
+            "dependsOn": [
+              "08.2",
+              "08.5",
+              "00.5.S4",
+              "00.5.G5",
+              "00.6.A2"
+            ],
+            "impacts": [
+              "08.7",
+              "DG-03",
+              "DG-04",
+              "DG-14"
+            ],
+            "decision": "Arbitrage de principes VALIDÉ (humain, 2026-10-11). N’autorise aucune implémentation (E5 / E6) et ne sélectionne aucune architecture technique. (1) Autorité des données : après terraformation, le Store Base+Delta est la source de vérité des données de hauteur. Le Landscape fournit la base initiale et reste la surface existante tant qu’une modification n’a pas été appliquée. 00.5.S4 est réconcilié en ce sens (C-01 D1 ; 00.6.A2). (2) Périmètre de validation : distinguer visibilité packaged, cohérence physique / collision / navigation (00.5.G5) et persistance durable (C-19 / E6). ODC-F1 ne pourra être déclaré PASS tant que tous les critères requis pour le shipping durable ne seront pas satisfaits. (3) Méthode de sélection d’architecture : aucune architecture n’est présélectionnée ; le choix se fera sur preuves selon les exigences validées. Landscape + M4 reste la référence visuelle actuelle pendant l’étude, sans garantie d’être l’architecture finale. (4) Critères indépendants : données, visibilité, cohérence physique et persistance se vérifient séparément ; un résultat ne prouve pas les autres. Conséquences : une surface visible packaged ne prouve pas G5 ; une collision cohérente ne prouve pas la persistance ; E5 (présentation) et E6 (persistance C-19) restent des travaux distincts ; F1 demeure INVALIDÉ / À REFAIRE.",
+            "question": "Quelle architecture technique concrète satisfait ces principes ? Comparaison documentée encore ouverte — voir 08.7. Implémentation E5 non autorisée.",
+            "rationale": "Les quatre questions de la proposition 08.6 sont tranchées comme principes. L’architecture runtime et l’implémentation restent hors de cette validation. 08.1–08.5 inchangés."
+          },
+          {
+            "id": "dg08-07",
+            "code": "08.7",
+            "title": "Architecture technique Base+Delta",
+            "status": "À DÉFINIR",
+            "subpoints": [
+              "Comparaison sur preuves",
+              "Pas de WPO retenu",
+              "Pas de Landscape runtime retenu",
+              "Pas de géométrie tuilée retenue",
+              "E5 / E6 non autorisés",
+              "F1 reste INVALIDÉ / À REFAIRE"
+            ],
+            "dependsOn": [
+              "08.6",
+              "00.5.G5",
+              "00.6.A2"
+            ],
+            "impacts": [
+              "DG-14"
+            ],
+            "decision": "Aucune architecture technique n’est retenue. Les candidates (notamment WPO sur Landscape M4, géométrie runtime tuilée, modification runtime du Landscape) seront comparées selon des preuves de compatibilité, de cohérence physique (00.5.G5), de rendu, de LOD, de performances et des besoins de simulation futurs. Landscape + M4 est la référence visuelle actuelle pendant l’étude, sans garantie d’être retenue. WPO, Landscape runtime et géométrie tuilée ne sont pas choisis. E5 et E6 ne sont pas autorisés par 08.6.",
+            "question": "Quelle architecture documentée satisfait 08.6 (autorité Store, critères indépendants, G5) sans imposer une techno a priori ?",
+            "rationale": "Ouvert volontairement : 08.6 valide des principes, pas un chemin d’implémentation."
           }
         ]
       },
